@@ -147,5 +147,15 @@
             }
         }
     </script>
+    // This tells the site which day to load
+    let currentDay = 1; 
+    let currentStep = 0;
+    
+    // This grabs the specific list of sentences from our new lessons.js file
+    let sentences = allLessons[currentDay]; 
+
+    function rewardStudent() {
+        const speech = document.getElementById('bubbles-speech');
+        // ... (the rest of your rewardStudent code stays the same!)
 </body>
 </html>
