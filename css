@@ -55,54 +55,76 @@ button:active {
 }
 
 placeholder.md
-style.css
+
+/* General Page Setup */
 body {
     background-color: #fdfdfd; 
-    color: #333;
-    font-family: sans-serif;
+    color: #333333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    padding: 0;
+    line-height: 1.6;
     text-align: center;
 }
 
+/* Mint Green Header */
 header {
     background-color: #e0f2f1;
-    padding: 40px;
+    padding: 40px 20px;
     border-bottom: 3px solid #b2dfdb;
 }
 
-h1 { color: #00796b; margin: 0; }
-
-#bubbles-container {
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    width: fit-content;
-    border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #00796b;
 }
 
+/* Bubbles Container */
+#bubbles-container {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 400px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* The Big Star Button */
 button {
     background-color: #ffd700;
+    color: #444;
     border: none;
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    border-radius: 15px;
+    padding: 25px 50px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 20px;
     cursor: pointer;
-    box-shadow: 0 4px #b8860b;
+    transition: transform 0.2s ease;
+    box-shadow: 0 6px #b8860b;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 button:active {
     box-shadow: 0 2px #b8860b;
-    transform: translateY(2px);
+    transform: translateY(4px);
 }
 
+/* The Heroes Board Circles */
 .day-circle {
-    width: 50px; height: 50px;
-    background: #eee;
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    color: #999;
+    font-size: 1.2rem;
     margin: 5px;
 }
-
