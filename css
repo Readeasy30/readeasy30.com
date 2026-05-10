@@ -104,7 +104,11 @@ button:active {
   color: #444;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
-
+.verb-highlight {
+    color: #e67e22; /* A nice orange for action */
+    font-weight: bold;
+    text-decoration: underline;
+}
 
 
 
