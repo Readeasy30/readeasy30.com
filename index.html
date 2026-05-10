@@ -37,6 +37,27 @@ html<!DOCTYPE html>
         </script>
     </div>
 </section>
+
+  <!-- This is the logic for Bubbles -->
+<script>
+  function rewardStudent() {
+    const speech = document.getElementById('bubbles-speech');
+    const avatar = document.getElementById('bubbles-avatar');
+
+    if (speech && avatar) {
+      // 1. Bubbles gets excited
+      speech.innerText = "Wow! You did it! ✨";
+      avatar.style.transition = "transform 0.3s ease";
+      avatar.style.transform = "scale(1.3) rotate(15deg)";
+      
+      // 2. Reset Bubbles after 2.5 seconds
+      setTimeout(() => {
+        avatar.style.transform = "scale(1.0) rotate(0deg)";
+        speech.innerText = "Ready for the next one?";
+      }, 2500);
+    }
+  }
+</script>  
 </body>
 </html>
 
