@@ -172,5 +172,24 @@
             }
         }
     </script>
+    function repeatSentence() {
+    const textDisplay = document.querySelector('.sentence');
+    const speech = document.getElementById('bubbles-speech');
+    
+    // Bubbles encourages the student
+    speech.innerText = "Let's try that one more time! 🫧";
+    
+    // Briefly hide and show the text to give a visual cue it's "reset"
+    textDisplay.style.opacity = "0";
+    setTimeout(() => {
+        textDisplay.style.opacity = "1";
+    }, 200);
+}
+
+// Update your loadNewDay function to show the repeat button
+function loadNewDay(dayNumber) {
+    // ... existing loadNewDay code ...
+    document.getElementById('repeat-btn').style.display = 'inline-block';
+}
 </body>
 </html>
