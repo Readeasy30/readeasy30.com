@@ -155,6 +155,44 @@
             }
         }
     </script>
+let stars = 0; // Track the total stars
+
+function rewardStudent() {
+    const speech = document.getElementById('bubbles-speech');
+    const avatar = document.getElementById('bubbles-avatar');
+    const textDisplay = document.querySelector('.sentence');
+    const dots = document.querySelectorAll('.day-circle');
+    const starCountDisplay = document.getElementById('star-count');
+
+    if (currentStep < sentences.length - 1) {
+        currentStep++;
+        textDisplay.innerText = sentences[currentStep];
+        
+        // Bubbles Celebration
+        speech.innerText = "You read it! 🫧";
+        avatar.style.transform = "scale(1.4) translateY(-20px) rotate(10deg)";
+        
+        // Check if Lesson is Finished
+        if (currentStep === sentences.length - 1) {
+            stars++; // Add a star!
+            starCountDisplay.innerText = stars;
+            
+            speech.innerText = "You earned a star! ⭐🏆";
+            document.getElementById(`day-${currentDay}`).classList.add('day-active');
+            document.getElementById('next-btn').innerHTML = "See you tomorrow! 👋";
+            
+            // Animation for the Star Bank
+            document.getElementById('star-bank').style.transform = "scale(1.2)";
+            setTimeout(() => {
+                document.getElementById('star-bank').style.transform = "scale(1.0)";
+            }, 500);
+        }
+
+        setTimeout(() => {
+            avatar.style.transform = "scale(1.0)";
+        }, 1200);
+    }
+}
 function loadNewDay(dayNumber) {
     // 1. Update our tracker
     currentDay = dayNumber;
