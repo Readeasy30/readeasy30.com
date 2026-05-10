@@ -83,7 +83,13 @@
             </div>
         </section>
     </main>
-
+<div id="cert-area" style="display: none; margin-top: 30px; padding: 40px; border: 10px double #ffd700; background: #fff;">
+    <h1 style="color: #ffd700;">🏆 OFFICIAL READING HERO 🏆</h1>
+    <h2 style="font-size: 30px;">Congratulations!</h2>
+    <p style="font-size: 24px;">You earned 10 Stars on readeasy30.com!</p>
+    <div style="font-size: 50px;">🫧 ⭐ 🫧</div>
+    <button onclick="window.print()" style="margin-top: 20px; background: #3498db; color: white;">🖨️ Print My Award</button>
+</div>
     <!-- BUBBLES LOGIC -->
     <script>
         let isMuted = false;
@@ -112,6 +118,11 @@ function playSuccessSound() {
             speech.innerText = "Wow! You did it! ✨";
             speech.style.color = "#2ecc71";
             avatar.style.transform = "scale(1.4) rotate(15deg)";
+            // --- Inside rewardStudent where stars++ happens ---
+if (stars >= 10) {
+    document.getElementById('cert-area').style.display = 'block';
+    speech.innerText = "YOU DID IT! You are a Hero! 🏆";
+}
             
             // Reset after a moment
             setTimeout(() => {
