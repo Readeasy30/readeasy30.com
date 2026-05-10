@@ -1,1 +1,22 @@
-
+lessons.js
+// This file stores all the sentences for readeasy30
+const allLessons = {
+    1: [
+        "The cat is big.",
+        "The cat is fat.",
+        "The cat sat on the mat.",
+        "Great job! Day 1 is Done! 🌟"
+    ],
+    2: [
+        "The dog is red.",
+        "The dog can run.",
+        "The dog ran to the sun.",
+        "Amazing! Day 2 is Done! 🌟"
+    ],
+    3: [
+        "I see a bug.",
+        "The bug is on a rug.",
+        "I give the bug a hug.",
+        "Woohoo! Day 3 is Done! 🌟"
+    ]
+};
