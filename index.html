@@ -39,3 +39,24 @@ html<!DOCTYPE html>
 </section>
 </body>
 </html>
+
+<div id="reading-area">
+  <!-- Bubbles lives here to guide the student -->
+  <div id="bubbles-header" style="text-align:center;">
+    <img src="assets/bubbles-happy.png" id="bubbles-avatar" width="100" alt="Bubbles your reading buddy">
+    <p id="bubbles-speech">"Let's read this together!"</p>
+  </div>
+
+  <hr>
+
+  <!-- The Text to Read -->
+  <div id="text-display">
+    <span class="sentence">The cat sat on the mat.</span>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <button onclick="rewardStudent()" id="next-btn" style="padding: 15px 30px; font-size: 20px; border-radius: 50px; background: #2ecc71; color: white; border: none; cursor: pointer;">
+      I finished reading! ✨
+    </button>
+  </div>
+</div>
