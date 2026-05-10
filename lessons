@@ -32,3 +32,11 @@ const allLessons = {
         "The pot is on a cot.",
         "You're a Star! Day 5 is Done! 🌟"
     ]
+    6: [
+        "Review Day! Let's go!",
+        "The big cat is on the cot.",
+        "The red pig sat on the rug.",
+        "The fat dog ran in the sun.",
+        "Review Master! Day 6 is Done! 🌟"
+    ]
+
