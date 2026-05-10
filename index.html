@@ -141,7 +141,20 @@ function playSuccessSound() {
             const avatar = document.getElementById('bubbles-avatar');
             const textDisplay = document.querySelector('.sentence'); // Matches your HTML class
             const dots = document.querySelectorAll('.day-circle');
+// --- Inside the lesson-finished section of rewardStudent() ---
+document.getElementById('dash-stars').innerText = stars;
+document.getElementById('dash-completed').innerText += " Day " + currentDay + ",";
 
+// Add this function to allow you to clear data for a new student
+function resetProgress() {
+    if(confirm("Are you sure you want to clear all stars?")) {
+        stars = 0;
+        document.getElementById('star-count').innerText = "0";
+        document.getElementById('dash-stars').innerText = "0";
+        document.getElementById('dash-completed').innerText = "-";
+        alert("Student progress reset!");
+    }
+}
             if (currentStep < sentences.length - 1) {
                 currentStep++;
                 
