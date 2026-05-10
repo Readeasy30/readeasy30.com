@@ -79,6 +79,10 @@
 
     <!-- BUBBLES LOGIC -->
     <script>
+            for (let i = 1; i <= 30; i++) {
+        // We add an 'onclick' so Bubbles knows which day was picked
+        document.write(`<div class="day-circle" id="day-${i}" onclick="loadNewDay(${i})">${i}</div>`);
+    }
         function rewardStudent() {
             const speech = document.getElementById('bubbles-speech');
             const avatar = document.getElementById('bubbles-avatar');
