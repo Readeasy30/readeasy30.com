@@ -52,4 +52,12 @@ const allLessons = {
         "The bug can hop.",
         "The cat will sit.",
         "Action Hero! Day 8 is Done! 🌟"
+  9: [
+        "Colors are fun! Red, Blue, Green.",
+        "The big rug is red.",
+        "The small mat is blue.",
+        "The happy frog is green.",
+        "Color Master! Day 9 is Done! 🌟"
+    ]
+
     ]e code with caution.
