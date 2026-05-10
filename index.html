@@ -22,8 +22,20 @@ html<!DOCTYPE html>
 
         <button style="padding: 20px 40px; font-size: 24px; background-color: #ffd700; border: none; border-radius: 10px; cursor: pointer;">
             Start Today's Lesson
-        </button>
-    </main>
+        </button> 
 
+        
+    </main>
+<section id="heroes-board" style="margin-top: 50px; padding: 20px;">
+    <h3>Your 30-Day Hero Journey</h3>
+    <div id="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 15px; max-width: 600px; margin: 0 auto;">
+        <!-- We will use a small script to make 30 circles -->
+        <script>
+            for (let i = 1; i <= 30; i++) {
+                document.write(`<div class="day-circle">${i}</div>`);
+            }
+        </script>
+    </div>
+</section>
 </body>
 </html>
