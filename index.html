@@ -78,9 +78,22 @@
         <p><strong>Total Stars:</strong> <span id="dash-stars">0</span></p>
         <p><strong>Log:</strong> <span id="dash-completed">-</span></p>
         <button onclick="resetProgress()" style="padding: 5px 10px; background: #ffcdd2; border: none; cursor: pointer;">Reset Student Data</button>
+        <button onclick="downloadReport()" style="padding: 5px 10px; font-size: 12px; background: #c8e6c9; color: #2e7d32; border: none; cursor: pointer; margin-left: 10px;">
+    📥 Download Progress Report
+</button>
     </section>
 
     <!-- CONSOLIDATED LOGIC -->
+    <hr style="margin-top: 100px; border: 1px dashed #ccc;">
+<section id="teacher-dashboard" style="padding: 20px; color: #777; font-size: 14px; text-align: left; max-width: 800px; margin: 0 auto;">
+    <h3>🍎 Teacher Dashboard</h3>
+    <p><strong>Total Stars:</strong> <span id="dash-stars">0</span></p>
+    <p><strong>Log:</strong> <span id="dash-completed">-</span></p>
+        <!-- The buttons for your records -->
+    <button onclick="downloadReport()" style="padding: 5px 10px; background: #c8e6c9; border: none; cursor: pointer;">📥 Download Progress Report</button>
+    <button onclick="resetProgress()" style="padding: 5px 10px; background: #ffcdd2; border: none; cursor: pointer; margin-left: 10px;">Reset Student Data</button>
+</section>
+Use code with caution.
     <script>
         let currentDay = 0;
         let currentStep = 0;
