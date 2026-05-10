@@ -86,6 +86,20 @@
 
     <!-- BUBBLES LOGIC -->
     <script>
+        let isMuted = false;
+
+function toggleMute() {
+    isMuted = !isMuted;
+    document.getElementById('mute-btn').innerText = isMuted ? "🔇 Sound: OFF" : "🔊 Sound: ON";
+}
+
+// Update your reward function to check this variable before playing sounds
+function playSuccessSound() {
+    if (!isMuted) {
+        // let audio = new Audio('assets/success.mp3');
+        // audio.play();
+    }
+}
             for (let i = 1; i <= 30; i++) {
         // We add an 'onclick' so Bubbles knows which day was picked
         document.write(`<div class="day-circle" id="day-${i}" onclick="loadNewDay(${i})">${i}</div>`);
