@@ -24,7 +24,6 @@
     </header>
 
     <main>
-        <!-- Top Bar: Star Bank & Mute -->
         <div style="margin-bottom: 20px;">
             <div id="star-bank" style="font-size: 24px; background: #fffde7; padding: 10px 25px; border-radius: 50px; display: inline-block; border: 2px dashed #ffd700; transition: 0.3s;">
                 ⭐ Stars: <span id="star-count">0</span>
@@ -32,7 +31,6 @@
             <button id="mute-btn" onclick="toggleMute()" style="padding: 10px 20px; font-size: 16px; background: #eee; border-radius: 10px; border: 1px solid #ccc; margin-left: 10px; cursor: pointer;">🔊 Sound: ON</button>
         </div>
 
-        <!-- READING SECTION -->
         <div id="reading-area">
             <div id="bubbles-header">
                 <div id="bubbles-avatar" style="font-size: 80px; transition: transform 0.3s ease; display: inline-block;">
@@ -50,8 +48,7 @@
             </button>
         </div>
 
-        <!-- HERO JOURNEY SECTION -->
-        <section id="heroes-board" style="margin-top: 50px; padding: 20px; background: #f0f8ff; border-radius: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <section id="heroes-board" style="margin-top: 50px; padding: 20px; background: #f0f8ff; border-radius: 20px; max-width: 800px; margin: 0 auto;">
             <h3>Your 30-Day Hero Journey</h3>
             <div id="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 15px; margin: 0 auto;">
                 <script>
@@ -62,7 +59,6 @@
             </div>
         </section>
 
-        <!-- Certificate Area -->
         <div id="cert-area">
             <h1 style="color: #ffd700;">🏆 OFFICIAL READING HERO 🏆</h1>
             <h2>Congratulations!</h2>
@@ -71,29 +67,15 @@
         </div>
     </main>
 
-    <!-- TEACHER DASHBOARD -->
     <hr style="margin-top: 100px; border: 1px dashed #ccc;">
     <section id="teacher-dashboard" style="padding: 20px; color: #777; font-size: 14px; text-align: left; max-width: 800px; margin: 0 auto;">
         <h3>🍎 Teacher Dashboard</h3>
         <p><strong>Total Stars:</strong> <span id="dash-stars">0</span></p>
         <p><strong>Log:</strong> <span id="dash-completed">-</span></p>
-        <button onclick="resetProgress()" style="padding: 5px 10px; background: #ffcdd2; border: none; cursor: pointer;">Reset Student Data</button>
-        <button onclick="downloadReport()" style="padding: 5px 10px; font-size: 12px; background: #c8e6c9; color: #2e7d32; border: none; cursor: pointer; margin-left: 10px;">
-    📥 Download Progress Report
-</button>
+        <button onclick="downloadReport()" style="padding: 10px 15px; background: #c8e6c9; border: none; cursor: pointer; border-radius: 5px;">📥 Download Progress Report</button>
+        <button onclick="resetProgress()" style="padding: 10px 15px; background: #ffcdd2; border: none; cursor: pointer; border-radius: 5px; margin-left: 10px;">Reset Student Data</button>
     </section>
 
-    <!-- CONSOLIDATED LOGIC -->
-    <hr style="margin-top: 100px; border: 1px dashed #ccc;">
-<section id="teacher-dashboard" style="padding: 20px; color: #777; font-size: 14px; text-align: left; max-width: 800px; margin: 0 auto;">
-    <h3>🍎 Teacher Dashboard</h3>
-    <p><strong>Total Stars:</strong> <span id="dash-stars">0</span></p>
-    <p><strong>Log:</strong> <span id="dash-completed">-</span></p>
-        <!-- The buttons for your records -->
-    <button onclick="downloadReport()" style="padding: 5px 10px; background: #c8e6c9; border: none; cursor: pointer;">📥 Download Progress Report</button>
-    <button onclick="resetProgress()" style="padding: 5px 10px; background: #ffcdd2; border: none; cursor: pointer; margin-left: 10px;">Reset Student Data</button>
-</section>
-Use code with caution.
     <script>
         let currentDay = 0;
         let currentStep = 0;
@@ -114,11 +96,9 @@ Use code with caution.
             currentDay = dayNumber;
             currentStep = 0;
             sentences = allLessons[currentDay];
-            
             document.querySelector('.sentence').innerText = sentences[0];
             document.getElementById('next-btn').style.display = 'inline-block';
             document.getElementById('next-btn').innerHTML = "I finished reading! ✨";
-            
             document.querySelectorAll('.day-circle').forEach(dot => dot.classList.remove('day-active'));
             document.getElementById(`day-${dayNumber}`).classList.add('day-active');
             document.getElementById('bubbles-speech').innerText = "Welcome to Day " + dayNumber + "!";
@@ -128,29 +108,21 @@ Use code with caution.
             const speech = document.getElementById('bubbles-speech');
             const avatar = document.getElementById('bubbles-avatar');
             const textDisplay = document.querySelector('.sentence');
-
             if (currentStep < sentences.length - 1) {
                 currentStep++;
                 textDisplay.innerText = sentences[currentStep];
                 speech.innerText = "You read it! 🫧";
                 avatar.style.transform = "scale(1.3) rotate(10deg)";
-
-                // FINISHED LESSON
                 if (currentStep === sentences.length - 1) {
                     animateStar();
                     stars++;
                     document.getElementById('star-count').innerText = stars;
                     document.getElementById('dash-stars').innerText = stars;
                     document.getElementById('dash-completed').innerText += " Day " + currentDay + ",";
-                    
                     speech.innerText = "Day Complete! ⭐🏆";
                     document.getElementById('next-btn').innerHTML = "See you tomorrow! 👋";
-
-                    if (stars >= 10) {
-                        document.getElementById('cert-area').style.display = 'block';
-                    }
+                    if (stars >= 10) { document.getElementById('cert-area').style.display = 'block'; }
                 }
-
                 setTimeout(() => { avatar.style.transform = "scale(1.0)"; }, 1000);
             }
         }
@@ -159,23 +131,31 @@ Use code with caution.
             const star = document.getElementById('flying-star');
             const start = document.getElementById('bubbles-avatar').getBoundingClientRect();
             const end = document.getElementById('star-bank').getBoundingClientRect();
-
             star.style.left = start.left + 'px';
             star.style.top = start.top + 'px';
             star.style.display = 'block';
-            
             setTimeout(() => {
                 star.style.transition = "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
                 star.style.left = (end.left + 20) + 'px';
                 star.style.top = (end.top + 10) + 'px';
                 star.style.transform = "scale(1.5) rotate(360deg)";
             }, 50);
-
             setTimeout(() => {
                 star.style.display = 'none';
                 star.style.transition = "none";
                 star.style.transform = "scale(1.0)";
             }, 850);
+        }
+
+        function downloadReport() {
+            const starTotal = document.getElementById('dash-stars').innerText;
+            const log = document.getElementById('dash-completed').innerText;
+            const content = `READEASY30 REPORT\nStars: ${starTotal}\nDays: ${log}`;
+            const blob = new Blob([content], {type: 'text/plain'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Student_Progress.txt';
+            a.click();
         }
 
         function resetProgress() {
@@ -184,7 +164,7 @@ Use code with caution.
                 document.getElementById('star-count').innerText = "0";
                 document.getElementById('dash-stars').innerText = "0";
                 document.getElementById('dash-completed').innerText = "-";
-                document.querySelectorAll('.day-active').forEach(d => d.classList.remove('day-active'));
+                document.querySelectorAll('.day-circle').forEach(d => d.classList.remove('day-active'));
             }
         }
     </script>
