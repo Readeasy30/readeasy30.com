@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>readeasy30 - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Small fixes for the Hero Journey dots */
+        .day-circle {
+            width: 50px;
+            height: 50px;
+            background-color: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid #ccc;
+        }
+        .day-active {
+            background-color: #ffd700;
+            border-color: #ffa500;
+        }
+        #reading-area {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            border: 5px solid #3498db;
+            border-radius: 30px;
+            background: white;
+        }
+    </style>
+</head>
+<body style="background-color: #fdfdfd; font-family: sans-serif; text-align: center; color: #333;">
 
+    <header style="padding: 30px;">
+        <h1>readeasy30</h1>
+        <p>25 Minutes to Reading Success</p>
+    </header>
+
+    <main>
+        <!-- READING SECTION -->
+        <div id="reading-area">
+            <div id="bubbles-header">
+                <!-- If you don't have the image yet, the 🫧 emoji shows up -->
+                <div id="bubbles-avatar" style="font-size: 80px; transition: transform 0.3s ease;">
+                    <img src="assets/bubbles-happy.png" width="120" alt="🫧" onerror="this.style.display='none'">
+                    <span id="bubbles-emoji">🫧</span>
+                </div>
+                <h2 id="bubbles-speech">"Let's read this together!"</h2>
+            </div>
+            
+            <hr style="border: 1px solid #eee; margin: 20px 0;">
+
+            <div id="text-display" style="font-size: 32px; font-weight: bold; margin: 40px 0;">
+                <span class="sentence">The cat sat on the mat.</span>
+            </div>
+
+            <button onclick="rewardStudent()" id="next-btn" style="padding: 20px 40px; font-size: 24px; border-radius: 50px; background: #2ecc71; color: white; border: none; cursor: pointer; box-shadow: 0 4px #27ae60;">
+                I finished reading! ✨
+            </button>
+        </div>
+
+        <!-- HERO JOURNEY SECTION -->
+        <section id="heroes-board" style="margin-top: 50px; padding: 20px; background: #f0f8ff; border-radius: 20px;">
+            <h3>Your 30-Day Hero Journey</h3>
+            <div id="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 15px; max-width: 600px; margin: 0 auto;">
+                <script>
+                    for (let i = 1; i <= 30; i++) {
+                        let activeClass = (i === 1) ? 'day-circle day-active' : 'day-circle';
+                        document.write(`<div class="${activeClass}">${i}</div>`);
+                    }
+                </script>
+            </div>
+        </section>
+    </main>
+
+    <!-- BUBBLES LOGIC -->
+    <script>
+        function rewardStudent() {
+            const speech = document.getElementById('bubbles-speech');
+            const avatar = document.getElementById('bubbles-avatar');
+            
+            // Bubbles reacts!
+            speech.innerText = "Wow! You did it! ✨";
+            speech.style.color = "#2ecc71";
+            avatar.style.transform = "scale(1.4) rotate(15deg)";
+            
+            // Reset after a moment
+            setTimeout(() => {
+                avatar.style.transform = "scale(1.0) rotate(0deg)";
+                speech.innerText = "Ready for the next one?";
+                speech.style.color = "#333";
+            }, 2500);
+        }
+    </script>
+
+</body>
+</html>
