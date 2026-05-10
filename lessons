@@ -20,3 +20,15 @@ const allLessons = {
         "Woohoo! Day 3 is Done! 🌟"
     ]
 };
+    4: [
+        "I see a red pig.",
+        "The pig is in a bin.",
+        "The pig can win.",
+        "Fantastic! Day 4 is Done! 🌟"
+    ],
+    5: [
+        "The sun is hot.",
+        "I have a pot.",
+        "The pot is on a cot.",
+        "You're a Star! Day 5 is Done! 🌟"
+    ]
