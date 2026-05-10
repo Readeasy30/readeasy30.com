@@ -98,3 +98,53 @@
 
 </body>
 </html>
+   <!-- BUBBLES LESSON LOGIC -->
+    <script>
+        let currentStep = 0;
+        
+        // Short, repetitive sentences for Day 1 success
+        const sentences = [
+            "The cat is big.",
+            "The cat is fat.",
+            "The cat sat on the mat.",
+            "Great job! Day 1 is Done! 🌟"
+        ];
+
+        function rewardStudent() {
+            const speech = document.getElementById('bubbles-speech');
+            const avatar = document.getElementById('bubbles-avatar');
+            const textDisplay = document.querySelector('.sentence'); // Matches your HTML class
+            const dots = document.querySelectorAll('.day-circle');
+
+            if (currentStep < sentences.length - 1) {
+                currentStep++;
+                
+                // 1. Update the text for the student
+                textDisplay.innerText = sentences[currentStep];
+                
+                // 2. Bubbles celebrates the "Pop"
+                speech.innerText = "You read it! 🫧";
+                speech.style.color = "#3498db";
+                avatar.style.transform = "scale(1.4) translateY(-20px) rotate(10deg)";
+                
+                // 3. Final Step: Mark Day 1 as Complete
+                if (currentStep === sentences.length - 1) {
+                    speech.innerText = "Day 1 Hero! 🏆";
+                    if(dots[0]) dots[0].classList.add('day-active'); // Lights up the first circle
+                    document.getElementById('next-btn').innerHTML = "See you tomorrow! 👋";
+                    document.getElementById('next-btn').style.backgroundColor = "#3498db";
+                }
+
+                // Reset Bubbles' position after 1 second
+                setTimeout(() => {
+                    avatar.style.transform = "scale(1.0)";
+                    if (currentStep < sentences.length - 1) {
+                        speech.innerText = "Keep going! You got this!";
+                        speech.style.color = "#333";
+                    }
+                }, 1200);
+            }
+        }
+    </script>
+</body>
+</html>
