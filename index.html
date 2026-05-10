@@ -151,6 +151,27 @@
             }
         }
     </script>
+function loadNewDay(dayNumber) {
+    // 1. Update our tracker
+    currentDay = dayNumber;
+    currentStep = 0;
+    
+    // 2. Grab the new sentences from lessons.js
+    sentences = allLessons[currentDay];
+    
+    // 3. Update the screen immediately
+    document.querySelector('.sentence').innerText = sentences[0];
+    document.getElementById('next-btn').style.display = 'inline-block';
+    document.getElementById('next-btn').innerHTML = "I finished reading! ✨";
+    
+    // 4. Update the visual 'active' dot
+    document.querySelectorAll('.day-circle').forEach(dot => dot.classList.remove('day-active'));
+    document.getElementById(`day-${dayNumber}`).classList.add('day-active');
+
+    // 5. Bubbles announces the change
+    const speech = document.getElementById('bubbles-speech');
+    speech.innerText = "Welcome to Day " + dayNumber + "! Let's go!";
+}
     // This tells the site which day to load
     let currentDay = 1; 
     let currentStep = 0;
@@ -161,9 +182,6 @@
     function rewardStudent() {
         const speech = document.getElementById('bubbles-speech');
         // ... (the rest of your rewardStudent code stays the same!)
-javascriptfunction loadNewDay(dayNumber) {
-    // 1. Update our tracker
-    currentDay = dayNumber;
-    currentStep = 0;
+
 </body>
 </html>
