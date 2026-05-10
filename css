@@ -1,62 +1,3 @@
-/* Calm, low-glare background */
-body {
-    background-color: #fdfdfd; 
-    color: #333333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-/* Header styling */
-header {
-    background-color: #e0f2f1; /* Soft mint green */
-    padding: 40px 20px;
-    border-bottom: 3px solid #b2dfdb;
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #00796b;
-}
-
-/* Bubbles Container */
-#bubbles-container {
-    margin: 50px auto;
-    padding: 20px;
-    max-width: 400px;
-    background: white;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-/* The Big Star Button */
-button {
-    background-color: #ffd700; /* Gold like the Star Tag */
-    color: #444;
-    border: none;
-    padding: 25px 50px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    box-shadow: 0 6px #b8860b;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-button:active {
-    box-shadow: 0 2px #b8860b;
-    transform: translateY(4px);
-}
-
-placeholder.md
-
-/* General Page Setup */
 body {
     background-color: #fdfdfd; 
     color: #333333;
@@ -67,7 +8,6 @@ body {
     text-align: center;
 }
 
-/* Mint Green Header */
 header {
     background-color: #e0f2f1;
     padding: 40px 20px;
@@ -80,7 +20,6 @@ h1 {
     color: #00796b;
 }
 
-/* Bubbles Container */
 #bubbles-container {
     margin: 50px auto;
     padding: 20px;
@@ -90,7 +29,6 @@ h1 {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* The Big Star Button */
 button {
     background-color: #ffd700;
     color: #444;
@@ -113,7 +51,6 @@ button:active {
     transform: translateY(4px);
 }
 
-/* The Heroes Board Circles */
 .day-circle {
     width: 60px;
     height: 60px;
