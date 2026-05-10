@@ -46,4 +46,10 @@ const allLessons = {
         "The dog was on the rug.",
         "Sight Word Hero! Day 7 is Done! 🌟"
     ]
-Use code with caution.
+    8: [
+        "New words! 'Run', 'Hop', 'Sit'.",
+        "The dog can run.",
+        "The bug can hop.",
+        "The cat will sit.",
+        "Action Hero! Day 8 is Done! 🌟"
+    ]e code with caution.
