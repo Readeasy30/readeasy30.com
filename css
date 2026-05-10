@@ -65,3 +65,40 @@ button:active {
     font-size: 1.2rem;
     margin: 5px;
 }
+:root {
+  --bg-color: #fdfdfd; /* Soft white to prevent glare */
+  --text-color: #2c3e50;
+  --accent-color: #3498db; /* Bubbles Blue */
+  --highlight-color: #fff176; /* Gentle yellow for the rainbow trail */
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 24px; /* Large for easy tracking */
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  padding: 20px;
+}
+
+#reading-area {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  border: 4px solid var(--accent-color);
+  border-radius: 25px; /* Rounded edges are friendlier */
+  background: white;
+}
+
+.word-highlight {
+  background-color: var(--highlight-color);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+/* Bubbles Container */
+#bubbles-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  text-align: center;
+}
