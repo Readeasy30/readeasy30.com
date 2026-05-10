@@ -227,6 +227,37 @@ function loadNewDay(dayNumber) {
     function rewardStudent() {
         const speech = document.getElementById('bubbles-speech');
         // ... (the rest of your rewardStudent code stays the same!)
+// --- Inside rewardStudent() where the lesson ends ---
+if (currentStep === sentences.length - 1) {
+    const star = document.getElementById('flying-star');
+    const startPos = document.getElementById('bubbles-avatar').getBoundingClientRect();
+    const endPos = document.getElementById('star-bank').getBoundingClientRect();
 
+    // 1. Position the star at Bubbles
+    star.style.left = startPos.left + 'px';
+    star.style.top = startPos.top + 'px';
+    star.style.display = 'block';
+    star.style.transition = "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+
+    // 2. Animate to the Star Bank
+    setTimeout(() => {
+        star.style.left = (endPos.left + 20) + 'px';
+        star.style.top = (endPos.top + 10) + 'px';
+        star.style.transform = "scale(1.5) rotate(360deg)";
+    }, 50);
+
+    // 3. Complete the reward
+    setTimeout(() => {
+        star.style.display = 'none';
+        star.style.transform = "scale(1.0) rotate(0deg)";
+        stars++; 
+        document.getElementById('star-count').innerText = stars;
+        
+        // Success celebration
+        speech.innerText = "Day Complete! ⭐🏆";
+        document.getElementById(`day-${currentDay}`).classList.add('day-active');
+        document.getElementById('next-btn').innerHTML = "See you tomorrow! 👋";
+    }, 850);
+}
 </body>
 </html>
