@@ -53,3 +53,54 @@ button:active {
     box-shadow: 0 2px #b8860b;
     transform: translateY(4px);
 }
+style.css
+body {
+    background-color: #fdfdfd; 
+    color: #333;
+    font-family: sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #e0f2f1;
+    padding: 40px;
+    border-bottom: 3px solid #b2dfdb;
+}
+
+h1 { color: #00796b; margin: 0; }
+
+#bubbles-container {
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    width: fit-content;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+button {
+    background-color: #ffd700;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px #b8860b;
+}
+
+button:active {
+    box-shadow: 0 2px #b8860b;
+    transform: translateY(2px);
+}
+
+.day-circle {
+    width: 50px; height: 50px;
+    background: #eee;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
