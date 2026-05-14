@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReadEasy30 - Home</title>
 
+<style>
+.day-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #eee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid #ccc;
+  cursor: pointer;
+}
+
+.day-active {
+  background-color: #ffd700;
+  border-color: #ffa500;
+}
+</style>
+</head>
+
+<body style="font-family: Arial; text-align:center; padding:20px;">
+
+<a href="https://bubbles-ai-guide.wholelychit.workers.dev"
+style="display:inline-block;padding:12px 18px;background:#4A90E2;color:white;border-radius:8px;text-decoration:none;font-weight:bold;">
+💬 Ask Bubbles (Reading Help)
+</a>
+
+<h1>readeasy30</h1>
+<p>25 Minutes to Reading Success</p>
+
+<hr>
+
+<h2>⭐ Stars: <span id="star-count">0</span></h2>
+<button id="mute-btn" onclick="toggleMute()">🔊 Sound: ON</button>
+
+<hr>
+
+<h2>🫧 Bubbles</h2>
+<h3 id="bubbles-speech">Let's read this together!</h3>
+
+<div style="font-size:40px;">🫧</div>
+
+<p class="sentence">Click a day below to start!</p>
+
+<button id="repeat-btn" onclick="repeatSentence()" style="display:none;">
+Read it again 🔄
+</button>
+
+<hr>
+
+<h2>Your 30-Day Hero Journey</h2>
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:400px;margin:auto;">
+
+<script>
+for (let i = 1; i <= 30; i++) {
+  document.write(`<div class="day-circle" onclick="loadNewDay(${i})">${i}</div>`);
+}
+</script>
+
+</div>
+
+<script>
+let stars = 0;
+let currentDay = 0;
+let sentences = ["Click a day below to start!"];
+let step = 0;
+
+function toggleMute() {
+  let btn = document.getElementById("mute-btn");
+  btn.innerText = btn.innerText.includes("ON") ? "🔇 Sound: OFF" : "🔊 Sound: ON";
+}
+
+function loadNewDay(day) {
+  currentDay = day;
+  step = 0;
+
+  sentences = [
+    "Tom went to the park.",
+    "He saw a dog.",
+    "The dog was friendly."
+  ];
+
+  document.querySelector(".sentence").innerText = sentences[0];
+  document.getElementById("repeat-btn").style.display = "inline-block";
+
+  document.querySelectorAll(".day-circle").forEach(d => d.classList.remove("day-active"));
+  event.target.classList.add("day-active");
+
+  document.getElementById("bubbles-speech").innerText = "Day " + day + " started!";
+}
+
+function repeatSentence() {
+  document.getElementById("bubbles-speech").innerText = "Let's try again 🫧";
+}
+
+</script>
+
+</body>
+</html>
