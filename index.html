@@ -1,1 +1,35 @@
+function loadDay(i){
+  currentDay = i;
 
+  document.getElementById("dayNum").innerText = i + 1;
+  document.getElementById("story").innerText = lessons[i].story;
+  document.getElementById("q1").innerText = "1. " + lessons[i].q1;
+  document.getElementById("q2").innerText = "2. " + lessons[i].q2;
+  document.getElementById("q3").innerText = "3. " + lessons[i].q3;
+}
+
+function nextDay(){
+  if(currentDay < 29) loadDay(currentDay + 1);
+}
+
+function prevDay(){
+  if(currentDay > 0) loadDay(currentDay - 1);
+}
+
+// build grid
+let grid = document.getElementById("grid");
+for(let i=0;i<30;i++){
+  let d = document.createElement("div");
+  d.className = "day";
+  d.innerText = i+1;
+  d.onclick = () => loadDay(i);
+  grid.appendChild(d);
+}
+
+// start
+loadDay(0);
+</script>
+
+</body>
+</html>
+🧠 WHY THIS IS THE BEST LONG-
