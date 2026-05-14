@@ -3,106 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReadEasy30 - Home</title>
+<title>ReadEasy30</title>
 
 <style>
-.day-circle {
-  width: 50px;
-  height: 50px;
-  background-color: #eee;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border: 2px solid #ccc;
-  cursor: pointer;
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f9fc;
+  text-align: center;
+  padding: 20px;
 }
 
-.day-active {
-  background-color: #ffd700;
-  border-color: #ffa500;
+h1 {
+  color: #2c3e50;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 700px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #4A90E2;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 350px;
+  margin: 20px auto;
+}
+
+.day {
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.day:hover {
+  background: #eaf3ff;
+  border-color: #4A90E2;
+}
+
+.bubbles {
+  font-size: 50px;
 }
 </style>
 </head>
 
-<body style="font-family: Arial; text-align:center; padding:20px;">
+<body>
 
-<a href="https://bubbles-ai-guide.wholelychit.workers.dev"
-style="display:inline-block;padding:12px 18px;background:#4A90E2;color:white;border-radius:8px;text-decoration:none;font-weight:bold;">
-💬 Ask Bubbles (Reading Help)
-</a>
-
-<h1>readeasy30</h1>
+<h1>📘 ReadEasy30</h1>
 <p>25 Minutes to Reading Success</p>
 
-<hr>
+<div class="card">
+  <div class="bubbles">🫧</div>
+  <h2>Meet Bubbles</h2>
+  <p>Your friendly reading coach. Bubbles helps you learn step by step, one short story at a time.</p>
 
-<h2>⭐ Stars: <span id="star-count">0</span></h2>
-<button id="mute-btn" onclick="toggleMute()">🔊 Sound: ON</button>
-
-<hr>
-
-<h2>🫧 Bubbles</h2>
-<h3 id="bubbles-speech">Let's read this together!</h3>
-
-<div style="font-size:40px;">🫧</div>
-
-<p class="sentence">Click a day below to start!</p>
-
-<button id="repeat-btn" onclick="repeatSentence()" style="display:none;">
-Read it again 🔄
-</button>
-
-<hr>
-
-<h2>Your 30-Day Hero Journey</h2>
-
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:400px;margin:auto;">
-
-<script>
-for (let i = 1; i <= 30; i++) {
-  document.write(`<div class="day-circle" onclick="loadNewDay(${i})">${i}</div>`);
-}
-</script>
-
+  <a class="button" href="https://bubbles-ai-guide.wholelychit.workers.dev" target="_blank">
+    💬 Ask Bubbles for Help
+  </a>
 </div>
 
-<script>
-let stars = 0;
-let currentDay = 0;
-let sentences = ["Click a day below to start!"];
-let step = 0;
+<div class="card">
+  <h2>⭐ Your Reading Journey</h2>
+  <p>Pick a day and start reading:</p>
 
-function toggleMute() {
-  let btn = document.getElementById("mute-btn");
-  btn.innerText = btn.innerText.includes("ON") ? "🔇 Sound: OFF" : "🔊 Sound: ON";
-}
+  <div class="grid">
+    <a class="day" href="day1.html">1</a>
+    <a class="day" href="day2.html">2</a>
+    <a class="day" href="day3.html">3</a>
+    <a class="day" href="day4.html">4</a>
+    <a class="day" href="day5.html">5</a>
+    <a class="day" href="day6.html">6</a>
+    <a class="day" href="day7.html">7</a>
+    <a class="day" href="day8.html">8</a>
+    <a class="day" href="day9.html">9</a>
+    <a class="day" href="day10.html">10</a>
+    <a class="day" href="day11.html">11</a>
+    <a class="day" href="day12.html">12</a>
+    <a class="day" href="day13.html">13</a>
+    <a class="day" href="day14.html">14</a>
+    <a class="day" href="day15.html">15</a>
+    <a class="day" href="day16.html">16</a>
+    <a class="day" href="day17.html">17</a>
+    <a class="day" href="day18.html">18</a>
+    <a class="day" href="day19.html">19</a>
+    <a class="day" href="day20.html">20</a>
+    <a class="day" href="day21.html">21</a>
+    <a class="day" href="day22.html">22</a>
+    <a class="day" href="day23.html">23</a>
+    <a class="day" href="day24.html">24</a>
+    <a class="day" href="day25.html">25</a>
+    <a class="day" href="day26.html">26</a>
+    <a class="day" href="day27.html">27</a>
+    <a class="day" href="day28.html">28</a>
+    <a class="day" href="day29.html">29</a>
+    <a class="day" href="day30.html">30</a>
+  </div>
+</div>
 
-function loadNewDay(day) {
-  currentDay = day;
-  step = 0;
-
-  sentences = [
-    "Tom went to the park.",
-    "He saw a dog.",
-    "The dog was friendly."
-  ];
-
-  document.querySelector(".sentence").innerText = sentences[0];
-  document.getElementById("repeat-btn").style.display = "inline-block";
-
-  document.querySelectorAll(".day-circle").forEach(d => d.classList.remove("day-active"));
-  event.target.classList.add("day-active");
-
-  document.getElementById("bubbles-speech").innerText = "Day " + day + " started!";
-}
-
-function repeatSentence() {
-  document.getElementById("bubbles-speech").innerText = "Let's try again 🫧";
-}
-
-</script>
+<div class="card">
+  <h2>🎯 Goal</h2>
+  <p>Build reading confidence one day at a time. Small steps. Big progress.</p>
+</div>
 
 </body>
 </html>
