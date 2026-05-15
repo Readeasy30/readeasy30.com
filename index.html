@@ -1,4 +1,95 @@
-  <!-- STUDENT MODE -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ReadEasy30</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f6f9fc;
+  color: #222;
+}
+
+header {
+  background: #2d6cdf;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+button {
+  padding: 12px 16px;
+  margin: 8px 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.primary {
+  background: #2d6cdf;
+  color: white;
+}
+
+.secondary {
+  background: #e6eefc;
+}
+
+.hidden {
+  display: none;
+}
+
+select {
+  padding: 10px;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.lesson-box {
+  background: #f0f6ff;
+  padding: 15px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📘 ReadEasy30</h1>
+  <p>30 Minutes to Reading Success</p>
+</header>
+
+<div class="container">
+
+  <!-- MODE -->
+  <div class="card">
+    <h2>Choose Mode</h2>
+    <button class="primary" onclick="showStudent()">🧑‍🎓 Student</button>
+    <button class="secondary" onclick="showTeacher()">🧑‍🏫 Teacher (Bubbles AI)</button>
+  </div>
+
+  <!-- STUDENT -->
   <div id="studentMode" class="card">
     <h2>🧑‍🎓 Student Lesson</h2>
 
@@ -8,13 +99,13 @@
     <ol>
       <li>Where did Tom go?</li>
       <li>What did he see?</li>
-      <li>Was it a good day?</li>
+      <li>Was the dog friendly?</li>
     </ol>
 
     <button class="primary">Mark Complete</button>
   </div>
 
-  <!-- TEACHER MODE -->
+  <!-- TEACHER -->
   <div id="teacherMode" class="card hidden">
     <h2>🫧 Bubbles AI Teacher Mode</h2>
 
@@ -25,14 +116,14 @@
       <option>4–6</option>
     </select>
 
-    <label>Skill Focus</label>
+    <label>Skill</label>
     <select id="skill">
       <option>Main Idea</option>
       <option>Vocabulary</option>
       <option>Reading Comprehension</option>
     </select>
 
-    <label>Time (minutes)</label>
+    <label>Time</label>
     <select id="time">
       <option>10</option>
       <option>20</option>
@@ -77,9 +168,9 @@ async function generateLesson() {
           {
             role: "user",
             content: `
-Create a reading lesson for a child.
+Create a reading lesson.
 
-Grade level: ${grade}
+Grade: ${grade}
 Skill: ${skill}
 Time: ${time}
 
@@ -102,15 +193,15 @@ Return ONLY JSON:
     const data = await res.json();
 
     const raw =
-      data.response ||
-      data.output ||
-      data.result ||
+      data?.response ||
+      data?.result?.response ||
+      data?.output ||
       JSON.stringify(data);
 
     let lesson;
 
     try {
-      lesson = typeof raw === "string" ? JSON.parse(raw) : raw;
+      lesson = JSON.parse(raw);
     } catch {
       lesson = {
         story: raw,
@@ -136,7 +227,7 @@ Return ONLY JSON:
     `;
 
   } catch (err) {
-    output.innerHTML = "❌ Error connecting to AI backend.";
+    output.innerHTML = "❌ Error connecting to AI.";
     console.error(err);
   }
 }
@@ -144,4 +235,3 @@ Return ONLY JSON:
 
 </body>
 </html>
-.
