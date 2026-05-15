@@ -1,98 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ReadEasy30</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f6f9fc;
-  color: #222;
-}
-
-header {
-  background: #2d6cdf;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  margin: 15px 0;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-button {
-  padding: 12px 16px;
-  margin: 8px 5px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.primary {
-  background: #2d6cdf;
-  color: white;
-}
-
-.secondary {
-  background: #e6eefc;
-}
-
-.hidden {
-  display: none;
-}
-
-input, select {
-  padding: 10px;
-  width: 100%;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-h2 {
-  margin-top: 0;
-}
-
-.lesson-box {
-  background: #f0f6ff;
-  padding: 15px;
-  border-radius: 10px;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>📘 ReadEasy30</h1>
-  <p>30 Minutes to Reading Success</p>
-</header>
-
-<div class="container">
-
-  <!-- MODE SELECT -->
-  <div class="card">
-    <h2>Choose Mode</h2>
-    <button class="primary" onclick="showStudent()">🧑‍🎓 Student Mode</button>
-    <button class="secondary" onclick="showTeacher()">🧑‍🏫 Teacher Mode (Bubbles AI)</button>
-  </div>
-
   <!-- STUDENT MODE -->
   <div id="studentMode" class="card">
     <h2>🧑‍🎓 Student Lesson</h2>
@@ -161,26 +66,82 @@ async function generateLesson() {
   output.classList.remove("hidden");
   output.innerHTML = "🫧 Generating lesson...";
 
-  // Placeholder (we connect Cloudflare Worker next step)
-  setTimeout(() => {
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        messages: [
+          {
+            role: "user",
+            content: `
+Create a reading lesson for a child.
+
+Grade level: ${grade}
+Skill: ${skill}
+Time: ${time}
+
+Return ONLY JSON:
+{
+  "story": "",
+  "questions": [],
+  "vocabulary": {
+    "word": "",
+    "definition": ""
+  },
+  "challenge_question": ""
+}
+            `
+          }
+        ]
+      })
+    });
+
+    const data = await res.json();
+
+    const raw =
+      data.response ||
+      data.output ||
+      data.result ||
+      JSON.stringify(data);
+
+    let lesson;
+
+    try {
+      lesson = typeof raw === "string" ? JSON.parse(raw) : raw;
+    } catch {
+      lesson = {
+        story: raw,
+        questions: [],
+        vocabulary: { word: "", definition: "" },
+        challenge_question: ""
+      };
+    }
+
     output.innerHTML = `
-      <h3>📖 Sample Lesson (Bubbles AI)</h3>
-      <p><b>Story:</b> Mia went to the garden and saw butterflies dancing in the sun.</p>
+      <h3>📖 Bubbles AI Lesson</h3>
+
+      <p><b>Story:</b> ${lesson.story}</p>
 
       <h4>Questions</h4>
       <ol>
-        <li>Where did Mia go?</li>
-        <li>What did she see?</li>
-        <li>How did the butterflies move?</li>
+        ${(lesson.questions || []).map(q => `<li>${q}</li>`).join("")}
       </ol>
 
-      <p><b>Vocabulary:</b> Garden - a place where plants and flowers grow.</p>
+      <p><b>Vocabulary:</b> ${lesson.vocabulary?.word || ""} - ${lesson.vocabulary?.definition || ""}</p>
 
-      <p><i>Want easier or harder version?</i></p>
+      <p><b>Challenge:</b> ${lesson.challenge_question || ""}</p>
     `;
-  }, 1200);
+
+  } catch (err) {
+    output.innerHTML = "❌ Error connecting to AI backend.";
+    console.error(err);
+  }
 }
 </script>
 
 </body>
 </html>
+.
