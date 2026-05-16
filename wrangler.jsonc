@@ -1,14 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "readeasy",
+  "name": "readeasy30",
   "compatibility_date": "2026-05-10",
-  "observability": {
-    "enabled": true
-  },
   "assets": {
     "directory": "."
   },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  "observability": {
+    "enabled": true
+  }
 }
