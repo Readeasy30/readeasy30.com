@@ -162,7 +162,11 @@ button:disabled {
   border-color: var(--gold-shadow);
   color: #21313a;
 }
-
+.day-complete {
+  background: #3fa66b;
+  border-color: #237a49;
+  color: #ffffff;
+}
 .question-list li {
   margin-bottom: 12px;
 }
