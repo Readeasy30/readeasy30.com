@@ -57,15 +57,20 @@
     const preview = document.getElementById("lessonPreview");
     const dayBoard = document.getElementById("dayBoard");
     const lesson = window.readEasyLessons?.[1] || [];
+    const day1Complete = localStorage.getItem("readeasy30_day1_complete") === "yes";
 
     preview.innerHTML = lesson.length
       ? `<p><strong>Day 1:</strong> ${lesson.slice(0, 3).join(" ")}</p>`
       : "<p>Day 1 lesson is ready to be added.</p>";
-
+dot.className = day === 1 && day1Complete
+  ? "day-circle day-complete"
+  : day === 1
+    ? "day-circle day-active"
+    : "day-circle";
     for (let day = 1; day <= 30; day += 1) {
       const dot = document.createElement("span");
-      dot.className = day === 1 ? "day-circle day-active" : "day-circle";
-      dot.textContent = day;
+      dot.textContent = day === 1 && day1Complete ? "Done" : day;
+    
       dayBoard.appendChild(dot);
     }
   </script>
