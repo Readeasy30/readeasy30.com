@@ -1,1 +1,194 @@
+:root {
+  --bg-color: #fdfdfd;
+  --text-color: #243033;
+  --blue: #2d6cdf;
+  --soft-blue: #e9f2ff;
+  --teal: #00796b;
+  --soft-teal: #e0f2f1;
+  --gold: #ffd95a;
+  --gold-shadow: #b88712;
+  --border: #c8dde8;
+  --white: #ffffff;
+}
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, "Segoe UI", sans-serif;
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.wrap {
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.site-header {
+  background: var(--soft-teal);
+  border-bottom: 4px solid #b2dfdb;
+  padding: 44px 0;
+  text-align: center;
+}
+
+.site-header.compact {
+  padding: 28px 0;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--teal);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  line-height: 1.15;
+}
+
+h1 {
+  margin: 0;
+  color: var(--teal);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.tagline {
+  max-width: 680px;
+  margin: 16px auto 24px;
+  font-size: 1.25rem;
+}
+
+.panel {
+  margin: 24px 0;
+  padding: 28px;
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+}
+
+.lesson-box,
+.sentence-box {
+  background: var(--soft-blue);
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.sentence-box {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--blue);
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.button,
+button {
+  display: inline-block;
+  min-width: 128px;
+  margin: 10px 8px 10px 0;
+  padding: 16px 22px;
+  border: 0;
+  border-radius: 8px;
+  color: #21313a;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button.primary,
+button.primary {
+  background: var(--gold);
+  box-shadow: 0 5px 0 var(--gold-shadow);
+}
+
+.button.secondary,
+button.secondary {
+  background: var(--soft-blue);
+  color: #194a8d;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+.day-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(54px, 1fr));
+  gap: 10px;
+}
+
+.day-circle {
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 2px solid #d8e1e6;
+  border-radius: 50%;
+  color: #637078;
+  font-weight: 700;
+}
+
+.day-active {
+  background: var(--gold);
+  border-color: var(--gold-shadow);
+  color: #21313a;
+}
+
+.question-list li {
+  margin-bottom: 12px;
+}
+
+.coach-note {
+  background: #fff9dc;
+  border-color: #ead06f;
+}
+
+.site-footer {
+  padding: 28px 16px;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 19px;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .button,
+  button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
