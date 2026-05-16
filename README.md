@@ -1,3 +1,5 @@
+# ReadEasy30
+
 ReadEasy30 is a starter website for 30 days of reading practice.
 
 The goal is simple:
