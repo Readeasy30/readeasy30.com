@@ -89,7 +89,7 @@ dot.className = isComplete
     : "day-circle";
     for (let day = 1; day <= 30; day += 1) {
       const dot = document.createElement("span");
-      dot.textContent = day === 1 && day1Complete ? "Done" : day;
+      dot.textContent = isComplete ? "Done" : day;
     
       dayBoard.appendChild(dot);
     }
