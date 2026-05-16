@@ -85,7 +85,8 @@
         currentSentence = currentSentence + 1;
         showSentence();
       } else {
-        window.location.href = "index.html";
+       localStorage.setItem("readeasy30_day1_complete", "yes");
+window.location.href = "index.html"; 
       }
     });
 
