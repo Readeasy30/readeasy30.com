@@ -1,237 +1,74 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ReadEasy30</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f6f9fc;
-  color: #222;
-}
-
-header {
-  background: #2d6cdf;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  margin: 15px 0;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-button {
-  padding: 12px 16px;
-  margin: 8px 5px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.primary {
-  background: #2d6cdf;
-  color: white;
-}
-
-.secondary {
-  background: #e6eefc;
-}
-
-.hidden {
-  display: none;
-}
-
-select {
-  padding: 10px;
-  width: 100%;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.lesson-box {
-  background: #f0f6ff;
-  padding: 15px;
-  border-radius: 10px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReadEasy30</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">AI reading practice for children</p>
+      <h1>ReadEasy30</h1>
+      <p class="tagline">30 days. 30 minutes a day. A slower, kinder path to reading.</p>
+      <a class="button primary" href="day1.html">Start Day 1</a>
+    </div>
+  </header>
 
-<header>
-  <h1>📘 ReadEasy30</h1>
-  <p>30 Minutes to Reading Success</p>
-</header>
+  <main class="wrap">
+    <section class="panel">
+      <h2>What This Site Does</h2>
+      <p>
+        ReadEasy30 is being built to help children practice reading with short,
+        simple lessons. The first version starts with early reading: sounds,
+        short words, simple sentences, and comprehension questions.
+      </p>
+    </section>
 
-<div class="container">
+    <section class="panel">
+      <h2>Today&apos;s Lesson</h2>
+      <div id="lessonPreview" class="lesson-box" aria-live="polite">
+        Loading Day 1...
+      </div>
+      <a class="button secondary" href="day1.html">Open Full Lesson</a>
+    </section>
 
-  <!-- MODE -->
-  <div class="card">
-    <h2>Choose Mode</h2>
-    <button class="primary" onclick="showStudent()">🧑‍🎓 Student</button>
-    <button class="secondary" onclick="showTeacher()">🧑‍🏫 Teacher (Bubbles AI)</button>
-  </div>
+    <section class="panel">
+      <h2>Parent And Guardian Note</h2>
+      <p>
+        The goal is AI-led reading practice with responsible adult oversight.
+        A child should not be asked to share private information while using the site.
+      </p>
+    </section>
 
-  <!-- STUDENT -->
-  <div id="studentMode" class="card">
-    <h2>🧑‍🎓 Student Lesson</h2>
+    <section class="panel">
+      <h2>30 Day Path</h2>
+      <div id="dayBoard" class="day-board" aria-label="30 day reading path"></div>
+    </section>
+  </main>
 
-    <p><b>Day 1:</b> Tom went to the park. He saw a dog. The dog was friendly.</p>
+  <footer class="site-footer">
+    <p>ReadEasy30.com - teaching reading one simple step at a time.</p>
+  </footer>
 
-    <h3>Questions</h3>
-    <ol>
-      <li>Where did Tom go?</li>
-      <li>What did he see?</li>
-      <li>Was the dog friendly?</li>
-    </ol>
+  <script src="lessons/lessons.js"></script>
+  <script>
+    const preview = document.getElementById("lessonPreview");
+    const dayBoard = document.getElementById("dayBoard");
+    const lesson = window.readEasyLessons?.[1] || [];
 
-    <button class="primary">Mark Complete</button>
-  </div>
+    preview.innerHTML = lesson.length
+      ? `<p><strong>Day 1:</strong> ${lesson.slice(0, 3).join(" ")}</p>`
+      : "<p>Day 1 lesson is ready to be added.</p>";
 
-  <!-- TEACHER -->
-  <div id="teacherMode" class="card hidden">
-    <h2>🫧 Bubbles AI Teacher Mode</h2>
-
-    <label>Grade Level</label>
-    <select id="grade">
-      <option>K–1</option>
-      <option>2–3</option>
-      <option>4–6</option>
-    </select>
-
-    <label>Skill</label>
-    <select id="skill">
-      <option>Main Idea</option>
-      <option>Vocabulary</option>
-      <option>Reading Comprehension</option>
-    </select>
-
-    <label>Time</label>
-    <select id="time">
-      <option>10</option>
-      <option>20</option>
-      <option>30</option>
-    </select>
-
-    <button class="primary" onclick="generateLesson()">Generate Lesson</button>
-
-    <div id="lessonOutput" class="lesson-box hidden"></div>
-  </div>
-
-</div>
-
-<script>
-function showStudent() {
-  document.getElementById("studentMode").style.display = "block";
-  document.getElementById("teacherMode").style.display = "none";
-}
-
-function showTeacher() {
-  document.getElementById("studentMode").style.display = "none";
-  document.getElementById("teacherMode").style.display = "block";
-}
-
-async function generateLesson() {
-  const grade = document.getElementById("grade").value;
-  const skill = document.getElementById("skill").value;
-  const time = document.getElementById("time").value;
-
-  const output = document.getElementById("lessonOutput");
-  output.classList.remove("hidden");
-  output.innerHTML = "🫧 Generating lesson...";
-
-  try {
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        messages: [
-          {
-            role: "user",
-            content: `
-Create a reading lesson.
-
-Grade: ${grade}
-Skill: ${skill}
-Time: ${time}
-
-Return ONLY JSON:
-{
-  "story": "",
-  "questions": [],
-  "vocabulary": {
-    "word": "",
-    "definition": ""
-  },
-  "challenge_question": ""
-}
-            `
-          }
-        ]
-      })
-    });
-
-    const data = await res.json();
-
-    const raw =
-      data?.response ||
-      data?.result?.response ||
-      data?.output ||
-      JSON.stringify(data);
-
-    let lesson;
-
-    try {
-      lesson = JSON.parse(raw);
-    } catch {
-      lesson = {
-        story: raw,
-        questions: [],
-        vocabulary: { word: "", definition: "" },
-        challenge_question: ""
-      };
+    for (let day = 1; day <= 30; day += 1) {
+      const dot = document.createElement("span");
+      dot.className = day === 1 ? "day-circle day-active" : "day-circle";
+      dot.textContent = day;
+      dayBoard.appendChild(dot);
     }
-
-    output.innerHTML = `
-      <h3>📖 Bubbles AI Lesson</h3>
-
-      <p><b>Story:</b> ${lesson.story}</p>
-
-      <h4>Questions</h4>
-      <ol>
-        ${(lesson.questions || []).map(q => `<li>${q}</li>`).join("")}
-      </ol>
-
-      <p><b>Vocabulary:</b> ${lesson.vocabulary?.word || ""} - ${lesson.vocabulary?.definition || ""}</p>
-
-      <p><b>Challenge:</b> ${lesson.challenge_question || ""}</p>
-    `;
-
-  } catch (err) {
-    output.innerHTML = "❌ Error connecting to AI.";
-    console.error(err);
-  }
-}
-</script>
-
+  </script>
 </body>
 </html>
+
