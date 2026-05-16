@@ -18,7 +18,7 @@
   <main class="wrap lesson-layout">
     <section class="panel reading-panel">
       <h2>Read With Bubbles</h2>
-      <div id="sentenceBox" class="sentence-box" aria-live="polite"></div>
+      <div id="sentenceBox" class="sentence-box" aria-live="polite">The cat is big.</div>
       <div class="controls">
         <button type="button" class="button secondary" id="backButton">Back</button>
         <button type="button" class="button primary" id="nextButton">Next</button>
@@ -53,12 +53,18 @@
     <p><a href="index.html">Back to home</a></p>
   </main>
 
-  <script src="lessons/lessons.js"></script>
   <script>
-    const sentences = window.readEasyLessons?.[1] || ["The cat is big."];
+    const sentences = [
+      "The cat is big.",
+      "The cat is fat.",
+      "The cat sat on the mat.",
+      "Great job! Day 1 is done!"
+    ];
+
     const sentenceBox = document.getElementById("sentenceBox");
     const backButton = document.getElementById("backButton");
     const nextButton = document.getElementById("nextButton");
+
     let currentSentence = 0;
 
     function showSentence() {
@@ -67,25 +73,21 @@
       nextButton.textContent = currentSentence === sentences.length - 1 ? "Done" : "Next";
     }
 
-    backButton.addEventListener("click", () => {
+    backButton.addEventListener("click", function () {
       if (currentSentence > 0) {
-        currentSentence -= 1;
+        currentSentence = currentSentence - 1;
         showSentence();
       }
     });
 
- nextButton.addEventListener("click", () => {
-  if (currentSentence < sentences.length - 1) {
-    currentSentence += 1;
-    showSentence();
-    return;
-  }
-
-  window.location.href = "index.html";
-});
-
-  window.location.href = "index.html";
-});
+    nextButton.addEventListener("click", function () {
+      if (currentSentence < sentences.length - 1) {
+        currentSentence = currentSentence + 1;
+        showSentence();
+      } else {
+        window.location.href = "index.html";
+      }
+    });
 
     showSentence();
   </script>
