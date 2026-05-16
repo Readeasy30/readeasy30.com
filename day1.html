@@ -1,36 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReadEasy30 - Day 1</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
+  <header class="site-header compact">
+    <div class="wrap">
+      <p class="eyebrow">Day 1</p>
+      <h1>ReadEasy30</h1>
+      <p class="tagline">Read slowly. Try again. You are learning.</p>
+    </div>
+  </header>
 
-<h1>ReadEasy30 – Day 1</h1>
+  <main class="wrap lesson-layout">
+    <section class="panel reading-panel">
+      <h2>Read With Bubbles</h2>
+      <div id="sentenceBox" class="sentence-box" aria-live="polite"></div>
+      <div class="controls">
+        <button type="button" class="button secondary" id="backButton">Back</button>
+        <button type="button" class="button primary" id="nextButton">Next</button>
+      </div>
+    </section>
 
-<h2>📘 Story</h2>
-<p>
-Tom went to the park. He saw a dog. The dog was small and friendly. Tom gave the dog water. The dog was happy.
-</p>
+    <section class="panel">
+      <h2>Story</h2>
+      <p>
+        Tom went to the park. He saw a dog. The dog was small and friendly.
+        Tom gave the dog water. The dog was happy.
+      </p>
+    </section>
 
-<h2>🧠 What happened?</h2>
-<p>Answer in one sentence.</p>
+    <section class="panel">
+      <h2>Questions</h2>
+      <ol class="question-list">
+        <li>Where did Tom go?</li>
+        <li>What did Tom give the dog?</li>
+        <li>Was the dog happy or sad?</li>
+      </ol>
+    </section>
 
-<h3>Question 1:</h3>
-<p>Where did Tom go?</p>
+    <section class="panel coach-note">
+      <h2>Bubbles Coach</h2>
+      <p>
+        Good reading can be slow reading. Point to each word, say it out loud,
+        and take another turn when you need one.
+      </p>
+    </section>
 
-<h3>Question 2:</h3>
-<p>What did Tom give the dog?</p>
+    <p><a href="index.html">Back to home</a></p>
+  </main>
 
-<h3>Question 3:</h3>
-<p>Was the dog happy or sad?</p>
+  <script src="lessons/lessons.js"></script>
+  <script>
+    const sentences = window.readEasyLessons?.[1] || ["The cat is big."];
+    const sentenceBox = document.getElementById("sentenceBox");
+    const backButton = document.getElementById("backButton");
+    const nextButton = document.getElementById("nextButton");
+    let currentSentence = 0;
 
-<hr>
+    function showSentence() {
+      sentenceBox.textContent = sentences[currentSentence];
+      backButton.disabled = currentSentence === 0;
+      nextButton.textContent = currentSentence === sentences.length - 1 ? "Done" : "Next";
+    }
 
-<h2>🤖 Bubbles Coach</h2>
-<p>
-Type your answers below. Bubbles will help you improve your reading.
-</p>
+    backButton.addEventListener("click", () => {
+      if (currentSentence > 0) {
+        currentSentence -= 1;
+        showSentence();
+      }
+    });
 
+    nextButton.addEventListener("click", () => {
+      if (currentSentence < sentences.length - 1) {
+        currentSentence += 1;
+        showSentence();
+      }
+    });
+
+    showSentence();
+  </script>
 </body>
 </html>
