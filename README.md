@@ -101,8 +101,7 @@ Before making changes:
 - ChatGPT
 - Codex
 - Canva
-Then Save It
 
-Now your README becomes:
 
-much more professional
+
+
