@@ -4,95 +4,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReadEasy30</title>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
+
   <header class="site-header">
     <div class="wrap">
-      <p class="eyebrow">AI reading practice for children</p>
+
+      <p class="eyebrow">
+        AI reading practice for children
+      </p>
+
       <h1>ReadEasy30</h1>
-      <p class="tagline">30 days. 30 minutes a day. A slower, kinder path to reading.</p>
-      
-    </div><a class="button primary" id="mainLessonButton" href="day1.html">Start Day 1</a>
+
+      <p class="tagline">
+        30 days. 30 minutes a day.
+        A slower, kinder path to reading.
+      </p>
+
+      <a
+        class="button primary"
+        id="mainLessonButton"
+        href="day1.html"
+      >
+        Start Day 1
+      </a>
+
+    </div>
   </header>
 
   <main class="wrap">
+
     <section class="panel">
       <h2>What This Site Does</h2>
+
       <p>
-        ReadEasy30 is being built to help children practice reading with short,
-        simple lessons. The first version starts with early reading: sounds,
-        short words, simple sentences, and comprehension questions.
+        ReadEasy30 helps children practice reading with
+        short simple lessons, vocabulary, phonics,
+        and comprehension activities.
       </p>
     </section>
 
     <section class="panel">
+
       <h2>Today's Lesson</h2>
-      <div id="lessonPreview" class="lesson-box" aria-live="polite">
+
+      <div
+        id="lessonPreview"
+        class="lesson-box"
+        aria-live="polite"
+      >
         Loading Day 1...
       </div>
-      <a class="button secondary" href="day1.html">Open Full Lesson</a>
+
+      <a
+        class="button secondary"
+        href="day1.html"
+      >
+        Open Full Lesson
+      </a>
+
     </section>
 
     <section class="panel">
+
       <h2>Parent And Guardian Note</h2>
+
       <p>
-        The goal is AI-led reading practice with responsible adult oversight.
-        A child should not be asked to share private information while using the site.
+        Children should always use this site with
+        responsible adult guidance. Never share
+        personal or private information online.
       </p>
+
     </section>
 
     <section class="panel">
-      <h2>30 Day Path</h2>
-      <div id="dayBoard" class="day-board" aria-label="30 day reading path"></div>
+
+      <h2>30 Day Reading Path</h2>
+
+      <div
+        id="dayBoard"
+        class="day-board"
+        aria-label="30 day reading path"
+      ></div>
+
     </section>
+
   </main>
 
   <footer class="site-footer">
-    <p>ReadEasy30.com - teaching reading one simple step at a time.</p>
+
+    <p>
+      ReadEasy30.com —
+      teaching reading one simple step at a time.
+    </p>
+
   </footer>
 
   <script src="lessons/lessons.js"></script>
+
   <script>
-    const preview = document.getElementById("lessonPreview");
-    const dayBoard = document.getElementById("dayBoard");
-    const lesson = window.readEasyLessons?.[1] || [];
-    const day1Complete = localStorage.getItem("readeasy30_day1_complete") === "yes";
-const day2Complete = localStorage.getItem("readeasy30_day2_complete") === "yes";
-const mainLessonButton = document.getElementById("mainLessonButton");
 
-if (day1Complete && !day2Complete) {
-  mainLessonButton.href = "day2.html";
-  mainLessonButton.textContent = "Start Day 2";
-}
+    const preview =
+      document.getElementById("lessonPreview");
 
-if (day2Complete) {
-  mainLessonButton.href = "day2.html";
-  mainLessonButton.textContent = "Review Day 2";
-}
+    const dayBoard =
+      document.getElementById("dayBoard");
+
+    const mainLessonButton =
+      document.getElementById("mainLessonButton");
+
+    const lesson =
+      window.readEasyLessons?.[1] || [];
+
+    const day1Complete =
+      localStorage.getItem(
+        "readeasy30_day1_complete"
+      ) === "yes";
+
+    const day2Complete =
+      localStorage.getItem(
+        "readeasy30_day2_complete"
+      ) === "yes";
+
+    // Main lesson button
+
+    if (day1Complete && !day2Complete) {
+
+      mainLessonButton.href = "day2.html";
+
+      mainLessonButton.textContent =
+        "Start Day 2";
+    }
+
+    if (day2Complete) {
+
+      mainLessonButton.href = "day2.html";
+
+      mainLessonButton.textContent =
+        "Review Day 2";
+    }
+
+    // Lesson preview
+
     preview.innerHTML = lesson.length
-      ? `<p><strong>Day 1:</strong> ${lesson.slice(0, 3).join(" ")}</p>`
-      : "<p>Day 1 lesson is ready to be added.</p>";
-;
-    const isComplete =
-  (day === 1 && day1Complete) ||
-  (day === 2 && day2Complete);
 
-const isActive =
-  (day === 1 && !day1Complete) ||
-  (day === 2 && day1Complete && !day2Complete);
+      ? `<p>
+          <strong>Day 1:</strong>
+          ${lesson.slice(0, 3).join(" ")}
+        </p>`
 
-dot.className = isComplete
-  ? "day-circle day-complete"
-  : isActive
-    ? "day-circle day-active"
-    : "day-circle";
+      : "<p>Day 1 lesson is ready.</p>";
+
+    // 30 day board
+
     for (let day = 1; day <= 30; day += 1) {
-      const dot = document.createElement("span");
-      dot.textContent = isComplete ? "Done" : day;
-    
+
+      const dot =
+        document.createElement("span");
+
+      const isComplete =
+        (day === 1 && day1Complete) ||
+        (day === 2 && day2Complete);
+
+      const isActive =
+        (day === 1 && !day1Complete) ||
+        (day === 2 &&
+          day1Complete &&
+          !day2Complete);
+
+      dot.className = isComplete
+        ? "day-circle day-complete"
+        : isActive
+          ? "day-circle day-active"
+          : "day-circle";
+
+      dot.textContent =
+        isComplete ? "Done" : day;
+
       dayBoard.appendChild(dot);
     }
+
   </script>
+
 </body>
 </html>
