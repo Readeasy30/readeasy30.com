@@ -1,6 +1,6 @@
 # ReadEasy30 Default Prompt
 
-Follow RULESET.md before making any changes.
+Follow ruleset.md before making any changes.
 
 PROJECT GOALS:
 - Build a simple reading improvement platform
