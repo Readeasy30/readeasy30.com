@@ -24,3 +24,19 @@ Push to GitHub
 Cloudflare Auto Deploy
     ↓
 Website Live
+
+---
+
+# Save It
+
+Your project structure is now becoming VERY solid.
+
+You now have:
+- rules
+- prompts
+- deployment notes
+- roadmap
+- changelog
+- AI operating instructions
+
+That’s how serious long-term projects stay organized.
