@@ -1,0 +1,48 @@
+  <p class="tagline">Simple reading practice</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="panel">
+      <h2>Story</h2>
+
+      <div class="lesson-box">
+        <p>Tom went to the park.</p>
+        <p>He saw a dog.</p>
+        <p>The dog was friendly.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Questions</h2>
+
+      <ol>
+        <li>Where did Tom go?</li>
+        <li>What did he see?</li>
+        <li>Was the dog friendly?</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <button class="button primary" id="completeBtn">
+        Mark Day 1 Complete
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>ReadEasy30.com</p>
+  </footer>
+
+  <script>
+    document.getElementById("completeBtn").addEventListener("click", () => {
+      localStorage.setItem("readeasy30_day1_complete", "yes");
+      alert("Great job! Day 1 completed.");
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>
