@@ -22,7 +22,7 @@ Never guess steps. Always follow this workflow exactly.
 
 ## 2. BUILD (Codex)
 - Make ONLY the requested changes
-- Follow RULESET.md
+- Follow ruleset.md
 - Do not redesign unrelated parts
 - Explain changes before applying them
 
@@ -79,7 +79,7 @@ Never guess steps. Always follow this workflow exactly.
 
 When making changes, always respect:
 
-1. RULESET.md (hard rules)
+1. ruleset.md (hard rules)
 2. DEFAULT-PROMPT.md (behavior rules)
 3. WORKFLOW.md (process rules)
 4. README.md (project structure)
