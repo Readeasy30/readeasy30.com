@@ -1,48 +1,93 @@
 let day = parseInt(localStorage.getItem("readeasy_day")) || 1;
 
-function generateLesson(day) {
-  return {
-    title: `Day ${day}: The Reading Adventure`,
-    story:
-      `Tom went to a quiet place on day ${day}. ` +
-      `He noticed something interesting near him. ` +
-      `It made him stop and think carefully. ` +
-      `Small moments can teach big lessons.`,
+/* -----------------------------
+   PROGRESS TRACKING
+------------------------------*/
+let streak = parseInt(localStorage.getItem("readeasy_streak")) || 0;
 
-    q1: "Where did Tom go?",
-    q2: "What did he notice?",
-    q3: "What should you do when something is interesting or unusual?",
+/* -----------------------------
+   AI-STYLE CONTENT ENGINE
+------------------------------*/
+function generateLesson(day) {
+
+  const places = [
+    "a quiet park",
+    "a school hallway",
+    "a small library",
+    "a backyard garden",
+    "a busy street corner",
+    "a calm riverbank"
+  ];
+
+  const events = [
+    "noticed something unusual",
+    "heard a strange sound",
+    "met someone new",
+    "found a hidden object",
+    "saw something interesting",
+    "made an unexpected discovery"
+  ];
+
+  const lessons = [
+    "Paying attention helps you understand more.",
+    "Small details can teach big lessons.",
+    "Curiosity helps you learn faster.",
+    "Thinking before acting is important.",
+    "Observation is a powerful skill.",
+    "Every moment can teach something new."
+  ];
+
+  const place = places[day % places.length];
+  const event = events[day % events.length];
+  const lesson = lessons[day % lessons.length];
+
+  return {
+    title: `Day ${day}: A Small Discovery`,
+    story:
+      `On day ${day}, a student went to ${place}. ` +
+      `While there, they ${event}. ` +
+      `This made them pause and think. ` +
+      `${lesson}`,
+
+    q1: "Where did the student go?",
+    q2: "What did the student experience?",
+    q3: "What lesson does the story teach?",
+
+    hint: "Look for key details in the story before answering.",
 
     answers: {
-      a1: "quiet place",
-      a2: "something interesting",
-      a3: "stop and think"
+      a1: place,
+      a2: event,
+      a3: lesson
     }
   };
 }
 
+/* -----------------------------
+   LOAD LESSON
+------------------------------*/
 function loadLesson() {
   const lesson = generateLesson(day);
 
-  const titleEl = document.getElementById("title");
-  const storyEl = document.getElementById("story");
-  const q1El = document.getElementById("q1");
-  const q2El = document.getElementById("q2");
-  const q3El = document.getElementById("q3");
+  const set = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = val;
+  };
 
-  if (!titleEl || !storyEl || !q1El || !q2El || !q3El) return;
-
-  titleEl.innerText = lesson.title;
-  storyEl.innerText = lesson.story;
-  q1El.innerText = lesson.q1;
-  q2El.innerText = lesson.q2;
-  q3El.innerText = lesson.q3;
+  set("title", lesson.title);
+  set("story", lesson.story);
+  set("q1", lesson.q1);
+  set("q2", lesson.q2);
+  set("q3", lesson.q3);
 
   window.currentLesson = lesson;
 
   localStorage.setItem("readeasy_day", day);
 }
 
+/* -----------------------------
+   ANSWERS + BUBBLES COACH
+------------------------------*/
 function checkAnswers() {
   const a1 = (document.getElementById("a1")?.value || "").toLowerCase();
   const a2 = (document.getElementById("a2")?.value || "").toLowerCase();
@@ -50,13 +95,29 @@ function checkAnswers() {
 
   let score = 0;
 
-  if (a1.includes("quiet") || a1.includes("place")) score++;
-  if (a2.includes("interesting") || a2.includes("something")) score++;
-  if (a3.includes("think")) score++;
+  if (a1.length > 2) score++;
+  if (a2.length > 2) score++;
+  if (a3.length > 2) score++;
 
-  alert(`Score: ${score}/3`);
+  let message = "";
+
+  if (score === 3) {
+    message = "⭐ Great job! You understood the story well.";
+    streak++;
+  } else if (score === 2) {
+    message = "👍 Good effort! Check the story again for details.";
+  } else {
+    message = "🫧 Bubbles says: Try reading the story one more time slowly.";
+  }
+
+  localStorage.setItem("readeasy_streak", streak);
+
+  alert(`${message}\nScore: ${score}/3\nStreak: ${streak}`);
 }
 
+/* -----------------------------
+   NAVIGATION
+------------------------------*/
 function nextDay() {
   if (day < 30) day++;
   loadLesson();
@@ -67,10 +128,8 @@ function prevDay() {
   loadLesson();
 }
 
-/*
-  SAFE INITIALIZATION:
-  Runs ONLY when page is fully ready.
-  Prevents double-loading and blank screens.
-*/
+/* -----------------------------
+   INIT (SAFE)
+------------------------------*/
 document.addEventListener("DOMContentLoaded", loadLesson);
  
