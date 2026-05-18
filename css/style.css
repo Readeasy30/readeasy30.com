@@ -4,11 +4,16 @@ body {
   padding: 0;
   background: #f4f6fb;
   color: #1a1a1a;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .wrap {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 16px;
 }
@@ -34,12 +39,23 @@ body {
   padding: 16px;
   margin: 16px 0;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* CRITICAL FIX FOR YOUR ISSUE */
+.lesson-box {
+  width: 100%;
+  display: block;
 }
 
 .lesson-box p {
+  width: 100%;
   font-size: 18px;
   line-height: 1.6;
+  margin: 8px 0;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .button {
@@ -49,7 +65,6 @@ body {
   text-decoration: none;
   font-weight: bold;
   border: none;
-  cursor: pointer;
 }
 
 .primary {
