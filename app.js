@@ -24,12 +24,19 @@ function generateLesson(day) {
 function loadLesson() {
   const lesson = generateLesson(day);
 
-  document.getElementById("title").innerText = lesson.title;
-  document.getElementById("story").innerText = lesson.story;
+  const titleEl = document.getElementById("title");
+  const storyEl = document.getElementById("story");
+  const q1El = document.getElementById("q1");
+  const q2El = document.getElementById("q2");
+  const q3El = document.getElementById("q3");
 
-  document.getElementById("q1").innerText = lesson.q1;
-  document.getElementById("q2").innerText = lesson.q2;
-  document.getElementById("q3").innerText = lesson.q3;
+  if (!titleEl || !storyEl || !q1El || !q2El || !q3El) return;
+
+  titleEl.innerText = lesson.title;
+  storyEl.innerText = lesson.story;
+  q1El.innerText = lesson.q1;
+  q2El.innerText = lesson.q2;
+  q3El.innerText = lesson.q3;
 
   window.currentLesson = lesson;
 
@@ -37,17 +44,17 @@ function loadLesson() {
 }
 
 function checkAnswers() {
-  const a1 = document.getElementById("a1").value.toLowerCase();
-  const a2 = document.getElementById("a2").value.toLowerCase();
-  const a3 = document.getElementById("a3").value.toLowerCase();
+  const a1 = (document.getElementById("a1")?.value || "").toLowerCase();
+  const a2 = (document.getElementById("a2")?.value || "").toLowerCase();
+  const a3 = (document.getElementById("a3")?.value || "").toLowerCase();
 
   let score = 0;
 
   if (a1.includes("quiet") || a1.includes("place")) score++;
-  if (a2.includes("interesting")) score++;
+  if (a2.includes("interesting") || a2.includes("something")) score++;
   if (a3.includes("think")) score++;
 
-  alert("Score: " + score + "/3");
+  alert(`Score: ${score}/3`);
 }
 
 function nextDay() {
@@ -60,5 +67,10 @@ function prevDay() {
   loadLesson();
 }
 
-loadLesson();
-window.onload = loadLesson;
+/*
+  SAFE INITIALIZATION:
+  Runs ONLY when page is fully ready.
+  Prevents double-loading and blank screens.
+*/
+document.addEventListener("DOMContentLoaded", loadLesson);
+ 
