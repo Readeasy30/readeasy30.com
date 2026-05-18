@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReadEasy30 - Day 2</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Day 2</h1>
+      <p class="tagline">Reading practice continues</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="panel">
+      <h2>Story</h2>
+
+      <div class="lesson-box">
+        <p>Anna went to school.</p>
+        <p>She read a book.</p>
+        <p>The book was about animals.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Questions</h2>
+
+      <ol>
+        <li>Where did Anna go?</li>
+        <li>What did she read?</li>
+        <li>What was the book about?</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <button class="button primary" id="completeBtn">
+        Mark Day 2 Complete
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>ReadEasy30.com</p>
+  </footer>
+
+  <script>
+    document.getElementById("completeBtn").addEventListener("click", () => {
+
+      localStorage.setItem("readeasy30_day2_complete", "yes");
+
+      alert("Great job! Day 2 completed.");
+
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>
