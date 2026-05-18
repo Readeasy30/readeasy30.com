@@ -1,163 +1,331 @@
-let day = parseInt(localStorage.getItem("readeasy_day")) || 1;
+// =========================
+// READEASY30
+// =========================
 
-/* =========================
-   USER STATE (C)
-========================= */
-let streak = parseInt(localStorage.getItem("readeasy_streak")) || 0;
-let correctTotal = parseInt(localStorage.getItem("readeasy_correct")) || 0;
-let attempts = parseInt(localStorage.getItem("readeasy_attempts")) || 0;
 
-/* =========================
-   (A) AI LESSON ENGINE (SIMULATED AI)
-   READY FOR REAL API REPLACEMENT
-========================= */
-function generateLesson(day) {
+// -------------------------
+// LESSON DATA
+// -------------------------
 
-  const themes = [
-    "a quiet park",
-    "a school hallway",
-    "a library corner",
-    "a riverside path",
-    "a small town street",
-    "a backyard garden"
-  ];
-
-  const events = [
-    "noticed something unusual",
-    "heard a strange sound",
-    "met someone interesting",
-    "found a hidden object",
-    "saw something surprising",
-    "made an unexpected discovery"
-  ];
-
-  const insights = [
-    "Paying attention helps you understand more.",
-    "Small details often carry big meaning.",
-    "Curiosity leads to learning.",
-    "Thinking before acting is smart.",
-    "Observation builds understanding.",
-    "Every moment can teach something."
-  ];
-
-  const theme = themes[day % themes.length];
-  const event = events[day % events.length];
-  const insight = insights[day % insights.length];
-
-  return {
-    title: `Day ${day}: The Discovery Path`,
-    story:
-      `A student went to ${theme}. ` +
-      `While there, they ${event}. ` +
-      `They paused and reflected. ` +
-      insight,
-
-    q1: "Where did the student go?",
-    q2: "What did the student experience?",
-    q3: "What lesson does the story teach?",
-
-    answerKeywords: {
-      a1: theme,
-      a2: event,
-      a3: insight
+const lessons = [
+    {
+        title: "Day 1",
+        passage: `
+Tom went to the park.
+He saw a dog.
+The dog was friendly.
+        `,
+        questions: [
+            "Where did Tom go?",
+            "What did he see?",
+            "Was the dog friendly?"
+        ]
     }
-  };
+];
+
+
+// -------------------------
+// ASSESSMENT DATA
+// -------------------------
+
+const assessmentLevels = [
+
+    {
+        level: 1,
+        passage: `
+Sam has a cat.
+The cat is small.
+Sam likes the cat.
+        `,
+        questions: [
+            "Who has a cat?",
+            "What is small?",
+            "Does Sam like the cat?"
+        ]
+    },
+
+    {
+        level: 2,
+        passage: `
+Lisa went to the store with her mother.
+She bought apples and milk.
+        `,
+        questions: [
+            "Where did Lisa go?",
+            "Who went with Lisa?",
+            "What did she buy?"
+        ]
+    },
+
+    {
+        level: 3,
+        passage: `
+Michael enjoyed walking through the forest trail.
+He stopped to watch birds in the trees.
+        `,
+        questions: [
+            "Where did Michael walk?",
+            "What did he watch?",
+            "Where were the birds?"
+        ]
+    }
+
+];
+
+
+// -------------------------
+// APP STATE
+// -------------------------
+
+let lessonStarted = false;
+let lessonCompleted = false;
+
+let placementComplete = false;
+let currentAssessmentLevel = 0;
+let assessmentScore = 0;
+
+let assignedReadingLevel = 1;
+
+
+// -------------------------
+// START ASSESSMENT
+// -------------------------
+
+function startAssessment() {
+    renderAssessment();
 }
 
-/* =========================
-   LOAD LESSON
-========================= */
-function loadLesson() {
-  const lesson = generateLesson(day);
 
-  const set = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.innerText = val;
-  };
+// -------------------------
+// RENDER ASSESSMENT
+// -------------------------
 
-  set("title", lesson.title);
-  set("story", lesson.story);
-  set("q1", lesson.q1);
-  set("q2", lesson.q2);
-  set("q3", lesson.q3);
+function renderAssessment() {
 
-  window.currentLesson = lesson;
+    const app = document.getElementById("app");
 
-  localStorage.setItem("readeasy_day", day);
+    const assessment = assessmentLevels[currentAssessmentLevel];
+
+    app.innerHTML = `
+        <div class="assessment-screen">
+
+            <h1>📘 Reading Assessment</h1>
+
+            <p>
+                Read the passage below and answer the questions.
+            </p>
+
+            <div class="passage">
+                ${assessment.passage}
+            </div>
+
+            <div class="questions">
+
+                ${assessment.questions.map((question, index) => `
+                    <div class="question-block">
+                        <p>${question}</p>
+
+                        <input
+                            type="text"
+                            id="answer-${index}"
+                            placeholder="Type your answer"
+                        >
+                    </div>
+                `).join("")}
+
+            </div>
+
+            <button onclick="submitAssessment()">
+                Continue
+            </button>
+
+        </div>
+    `;
 }
 
-/* =========================
-   (B) BUBBLES AI COACH (SIMPLE CHAT LOGIC)
-========================= */
-function bubblesCoach(message) {
-  const msg = message.toLowerCase();
 
-  if (msg.includes("help")) {
-    return "🫧 Bubbles: Try rereading the story slowly and look for key words.";
-  }
-  if (msg.includes("answer")) {
-    return "🫧 Bubbles: Look for where, what happened, and the lesson.";
-  }
-  if (msg.includes("hard")) {
-    return "🫧 Bubbles: Take your time. There are no rush answers here.";
-  }
+// -------------------------
+// SUBMIT ASSESSMENT
+// -------------------------
 
-  return "🫧 Bubbles: Keep going — you're building strong reading skills!";
+function submitAssessment() {
+
+    assessmentScore++;
+
+    currentAssessmentLevel++;
+
+    if (currentAssessmentLevel >= assessmentLevels.length) {
+
+        placementComplete = true;
+
+        assignedReadingLevel = assessmentScore;
+
+        renderLesson();
+
+        return;
+    }
+
+    renderAssessment();
 }
 
-/* =========================
-   CHECK ANSWERS + (C + D LOGIC)
-========================= */
-function checkAnswers() {
-  const a1 = (document.getElementById("a1")?.value || "").toLowerCase();
-  const a2 = (document.getElementById("a2")?.value || "").toLowerCase();
-  const a3 = (document.getElementById("a3")?.value || "").toLowerCase();
 
-  attempts++;
+// -------------------------
+// START LESSON
+// -------------------------
 
-  let score = 0;
+function startLesson() {
 
-  if (a1.length > 2) score++;
-  if (a2.length > 2) score++;
-  if (a3.length > 2) score++;
+    lessonStarted = true;
 
-  correctTotal += score;
-
-  let feedback = "";
-
-  if (score === 3) {
-    streak++;
-    feedback = "⭐ Excellent work! Full understanding.";
-  } else if (score === 2) {
-    feedback = bubblesCoach("help");
-  } else {
-    streak = 0;
-    feedback = bubblesCoach("hard");
-  }
-
-  localStorage.setItem("readeasy_streak", streak);
-  localStorage.setItem("readeasy_correct", correctTotal);
-  localStorage.setItem("readeasy_attempts", attempts);
-
-  alert(
-    `${feedback}\n\nScore: ${score}/3\nStreak: ${streak}\nTotal: ${correctTotal}/${attempts}`
-  );
+    renderLesson();
 }
 
-/* =========================
-   NAVIGATION
-========================= */
-function nextDay() {
-  if (day < 30) day++;
-  loadLesson();
+
+// -------------------------
+// FINISH LESSON
+// -------------------------
+
+function finishLesson() {
+
+    lessonCompleted = true;
+
+    const app = document.getElementById("app");
+
+    app.innerHTML = `
+        <div class="complete-screen">
+
+            <h1>⭐ Great Job!</h1>
+
+            <p>
+                You completed today's lesson.
+            </p>
+
+            <p>
+                Reading Level Assigned:
+                <strong>${assignedReadingLevel}</strong>
+            </p>
+
+            <button onclick="location.reload()">
+                Start Again
+            </button>
+
+        </div>
+    `;
 }
 
-function prevDay() {
-  if (day > 1) day--;
-  loadLesson();
+
+// -------------------------
+// MAIN LESSON RENDER
+// -------------------------
+
+function renderLesson() {
+
+    const app = document.getElementById("app");
+
+
+    // -------------------------
+    // START SCREEN
+    // -------------------------
+
+    if (!placementComplete) {
+
+        app.innerHTML = `
+            <div class="start-screen">
+
+                <h1>📘 ReadEasy30</h1>
+
+                <p>
+                    25 Minutes to Reading Success
+                </p>
+
+                <button onclick="startAssessment()">
+                    Find My Reading Level
+                </button>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    // -------------------------
+    // LESSON START SCREEN
+    // -------------------------
+
+    if (!lessonStarted) {
+
+        app.innerHTML = `
+            <div class="lesson-start-screen">
+
+                <h1>
+                    Welcome Reader
+                </h1>
+
+                <p>
+                    Your Reading Level:
+                    <strong>${assignedReadingLevel}</strong>
+                </p>
+
+                <button onclick="startLesson()">
+                    Start Today's Lesson
+                </button>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    // -------------------------
+    // LESSON CONTENT
+    // -------------------------
+
+    const lesson = lessons[0];
+
+    app.innerHTML = `
+        <div class="lesson-screen">
+
+            <h1>${lesson.title}</h1>
+
+            <div class="passage">
+                ${lesson.passage}
+            </div>
+
+            <div class="questions">
+
+                ${lesson.questions.map((question, index) => `
+                    <div class="question-block">
+
+                        <p>${question}</p>
+
+                        <input
+                            type="text"
+                            placeholder="Type your answer"
+                        >
+
+                    </div>
+                `).join("")}
+
+            </div>
+
+            <button onclick="finishLesson()">
+                Finish Lesson
+            </button>
+
+        </div>
+    `;
 }
 
-/* =========================
-   INIT
-========================= */
-document.addEventListener("DOMContentLoaded", loadLesson);
+
+// -------------------------
+// START APP
+// -------------------------
+
+renderLesson();
+
+
+
+
+
