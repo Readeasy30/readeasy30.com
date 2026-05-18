@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReadEasy30 - Lesson</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <h1 id="title">Loading...</h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="panel">
+    <p id="story"></p>
+  </section>
+
+  <section class="panel">
+    <p id="q1"></p>
+    <input id="a1" placeholder="Answer 1" />
+  </section>
+
+  <section class="panel">
+    <p id="q2"></p>
+    <input id="a2" placeholder="Answer 2" />
+  </section>
+
+  <section class="panel">
+    <p id="q3"></p>
+    <input id="a3" placeholder="Answer 3" />
+  </section>
+
+  <button onclick="checkAnswers()">Check Answers</button>
+
+  <div style="display:flex; gap:10px; margin-top:10px;">
+    <button onclick="prevDay()">Prev</button>
+    <button onclick="nextDay()">Next</button>
+  </div>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>
 
