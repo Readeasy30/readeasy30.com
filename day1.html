@@ -1,4 +1,9 @@
-  <p class="tagline">Simple reading practice</p>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Day 1</h1>
+      <p class="tagline">Simple reading practice</p>
     </div>
   </header>
 
@@ -46,3 +51,121 @@
 
 </body>
 </html>
+🟡 FIX 2 — REPLACE css/style.css
+
+This is what fixes the “black & white / tiny text” issue:
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f6fb;
+  color: #1a1a1a;
+  font-size: 16px;
+}
+
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.site-header {
+  background: #2d5bff;
+  color: white;
+  padding: 20px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.tagline {
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+.panel {
+  background: white;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.lesson-box p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: #2d5bff;
+  color: white;
+}
+
+.secondary {
+  background: #e8edff;
+  color: #2d5bff;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #666;
+}
+🔵 STEP 3 — HARD REFRESH (IMPORTANT)
+
+After saving BOTH files:
+
+On your phone or PC:
+CTRL + SHIFT + R (hard refresh)
+OR
+open in incognito
+🎯 WHAT THIS FIXES
+✔ readability restored
+✔ proper colors return
+✔ button becomes visible
+✔ click works reliably
+✔ no dependency issues
+🚦 WHY IT BROKE (REAL REASON)
+
+You had:
+
+partial CSS changes across sessions
+mixed structure updates
+missing styling rules after simplification
+
+So browser fell back to default:
+👉 plain black/white rendering
+
+🧭 NEXT STEP AFTER THIS WORKS
+
+Once you confirm:
+
+👉 “working”
+
+we move to:
+
+Phase 2 (SAFE UPGRADE)
+auto unlock Day 2 logic
+fix homepage progress tracking properly
+THEN add Bubbles AI without breaking anything
+
+Do this first. Then tell me what you see.
+
+Today 7:20 PM •
+3343 chars • 418 words
+⋮
+No default selected
