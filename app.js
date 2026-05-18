@@ -61,3 +61,4 @@ function prevDay() {
 }
 
 loadLesson();
+window.onload = loadLesson;
