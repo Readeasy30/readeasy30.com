@@ -1,71 +1,72 @@
 let day = parseInt(localStorage.getItem("readeasy_day")) || 1;
 
-/* -----------------------------
-   PROGRESS TRACKING
-------------------------------*/
+/* =========================
+   USER STATE (C)
+========================= */
 let streak = parseInt(localStorage.getItem("readeasy_streak")) || 0;
+let correctTotal = parseInt(localStorage.getItem("readeasy_correct")) || 0;
+let attempts = parseInt(localStorage.getItem("readeasy_attempts")) || 0;
 
-/* -----------------------------
-   AI-STYLE CONTENT ENGINE
-------------------------------*/
+/* =========================
+   (A) AI LESSON ENGINE (SIMULATED AI)
+   READY FOR REAL API REPLACEMENT
+========================= */
 function generateLesson(day) {
 
-  const places = [
+  const themes = [
     "a quiet park",
     "a school hallway",
-    "a small library",
-    "a backyard garden",
-    "a busy street corner",
-    "a calm riverbank"
+    "a library corner",
+    "a riverside path",
+    "a small town street",
+    "a backyard garden"
   ];
 
   const events = [
     "noticed something unusual",
     "heard a strange sound",
-    "met someone new",
+    "met someone interesting",
     "found a hidden object",
-    "saw something interesting",
+    "saw something surprising",
     "made an unexpected discovery"
   ];
 
-  const lessons = [
+  const insights = [
     "Paying attention helps you understand more.",
-    "Small details can teach big lessons.",
-    "Curiosity helps you learn faster.",
-    "Thinking before acting is important.",
-    "Observation is a powerful skill.",
-    "Every moment can teach something new."
+    "Small details often carry big meaning.",
+    "Curiosity leads to learning.",
+    "Thinking before acting is smart.",
+    "Observation builds understanding.",
+    "Every moment can teach something."
   ];
 
-  const place = places[day % places.length];
+  const theme = themes[day % themes.length];
   const event = events[day % events.length];
-  const lesson = lessons[day % lessons.length];
+  const insight = insights[day % insights.length];
 
   return {
-    title: `Day ${day}: A Small Discovery`,
+    title: `Day ${day}: The Discovery Path`,
     story:
-      `On day ${day}, a student went to ${place}. ` +
+      `A student went to ${theme}. ` +
       `While there, they ${event}. ` +
-      `This made them pause and think. ` +
-      `${lesson}`,
+      `They paused and reflected. ` +
+      insight,
 
     q1: "Where did the student go?",
     q2: "What did the student experience?",
     q3: "What lesson does the story teach?",
 
-    hint: "Look for key details in the story before answering.",
-
-    answers: {
-      a1: place,
+    answerKeywords: {
+      a1: theme,
       a2: event,
-      a3: lesson
+      a3: insight
     }
   };
 }
 
-/* -----------------------------
+/* =========================
    LOAD LESSON
-------------------------------*/
+========================= */
 function loadLesson() {
   const lesson = generateLesson(day);
 
@@ -85,13 +86,34 @@ function loadLesson() {
   localStorage.setItem("readeasy_day", day);
 }
 
-/* -----------------------------
-   ANSWERS + BUBBLES COACH
-------------------------------*/
+/* =========================
+   (B) BUBBLES AI COACH (SIMPLE CHAT LOGIC)
+========================= */
+function bubblesCoach(message) {
+  const msg = message.toLowerCase();
+
+  if (msg.includes("help")) {
+    return "🫧 Bubbles: Try rereading the story slowly and look for key words.";
+  }
+  if (msg.includes("answer")) {
+    return "🫧 Bubbles: Look for where, what happened, and the lesson.";
+  }
+  if (msg.includes("hard")) {
+    return "🫧 Bubbles: Take your time. There are no rush answers here.";
+  }
+
+  return "🫧 Bubbles: Keep going — you're building strong reading skills!";
+}
+
+/* =========================
+   CHECK ANSWERS + (C + D LOGIC)
+========================= */
 function checkAnswers() {
   const a1 = (document.getElementById("a1")?.value || "").toLowerCase();
   const a2 = (document.getElementById("a2")?.value || "").toLowerCase();
   const a3 = (document.getElementById("a3")?.value || "").toLowerCase();
+
+  attempts++;
 
   let score = 0;
 
@@ -99,25 +121,32 @@ function checkAnswers() {
   if (a2.length > 2) score++;
   if (a3.length > 2) score++;
 
-  let message = "";
+  correctTotal += score;
+
+  let feedback = "";
 
   if (score === 3) {
-    message = "⭐ Great job! You understood the story well.";
     streak++;
+    feedback = "⭐ Excellent work! Full understanding.";
   } else if (score === 2) {
-    message = "👍 Good effort! Check the story again for details.";
+    feedback = bubblesCoach("help");
   } else {
-    message = "🫧 Bubbles says: Try reading the story one more time slowly.";
+    streak = 0;
+    feedback = bubblesCoach("hard");
   }
 
   localStorage.setItem("readeasy_streak", streak);
+  localStorage.setItem("readeasy_correct", correctTotal);
+  localStorage.setItem("readeasy_attempts", attempts);
 
-  alert(`${message}\nScore: ${score}/3\nStreak: ${streak}`);
+  alert(
+    `${feedback}\n\nScore: ${score}/3\nStreak: ${streak}\nTotal: ${correctTotal}/${attempts}`
+  );
 }
 
-/* -----------------------------
+/* =========================
    NAVIGATION
-------------------------------*/
+========================= */
 function nextDay() {
   if (day < 30) day++;
   loadLesson();
@@ -128,8 +157,7 @@ function prevDay() {
   loadLesson();
 }
 
-/* -----------------------------
-   INIT (SAFE)
-------------------------------*/
+/* =========================
+   INIT
+========================= */
 document.addEventListener("DOMContentLoaded", loadLesson);
- 
