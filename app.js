@@ -197,6 +197,56 @@ const lessons = [
       "Where was the sign?",
       "What did the sign say?"
     ]
+  },
+
+  {
+    title: "Day 21 Reading",
+    story: "Harper picked apples from the tree and placed them in a basket.",
+    questions: [
+      "Who picked apples?",
+      "Where were the apples?",
+      "What did Harper use?"
+    ]
+  },
+
+  {
+    title: "Day 22 Reading",
+    story: "Jack watered the plants on the porch before the sun came up.",
+    questions: [
+      "Who watered the plants?",
+      "Where were the plants?",
+      "When did Jack water them?"
+    ]
+  },
+
+  {
+    title: "Day 23 Reading",
+    story: "Leah wore her rain boots because the ground was wet outside.",
+    questions: [
+      "Who wore rain boots?",
+      "Why did Leah wear them?",
+      "What was wet?"
+    ]
+  },
+
+  {
+    title: "Day 24 Reading",
+    story: "Ryan opened the window to let fresh air into the room.",
+    questions: [
+      "Who opened the window?",
+      "Why did Ryan open it?",
+      "Where did the fresh air go?"
+    ]
+  },
+
+  {
+    title: "Day 25 Reading",
+    story: "Chloe drew stars and moons on her science project poster.",
+    questions: [
+      "Who drew stars and moons?",
+      "What did Chloe draw on?",
+      "What shapes did she draw?"
+    ]
   }
 ];
 
