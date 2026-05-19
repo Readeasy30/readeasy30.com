@@ -239,3 +239,23 @@ button:active {
     font-size: 42px;
   }
 }
+.start-button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 16px 24px;
+  background: #1597ad;
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+  font-weight: 800;
+  box-shadow: 0 8px 16px rgba(21, 151, 173, 0.18);
+}
+
+.start-button:hover {
+  background: #0f7688;
+}
+
+.feature-list p {
+  font-size: 18px;
+  margin: 12px 0;
+}
