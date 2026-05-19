@@ -19,15 +19,29 @@ const lessons = [
   }
 ];
 
+let savedDay =
+  Number(localStorage.getItem("readeasy30-currentDay"));
+
 let currentDay =
-  Number(localStorage.getItem("readeasy30-currentDay")) || 0;
+  Number.isInteger(savedDay) &&
+  savedDay >= 0 &&
+  savedDay < lessons.length
+    ? savedDay
+    : 0;
 
 function loadLesson() {
+
   const lesson = lessons[currentDay];
 
-  document.getElementById("title").textContent = lesson.title;
+  if (!lesson) {
+    return;
+  }
 
-  document.getElementById("story").textContent = lesson.story;
+  document.getElementById("title").textContent =
+    lesson.title;
+
+  document.getElementById("story").textContent =
+    lesson.story;
 
   document.getElementById("q1").textContent =
     lesson.questions[0];
@@ -42,7 +56,8 @@ function loadLesson() {
   document.getElementById("a2").value = "";
   document.getElementById("a3").value = "";
 
-  document.getElementById("result").style.display = "none";
+  document.getElementById("result").style.display =
+    "none";
 
   document.getElementById("coachMessage").textContent =
     "Take your time. Read the story first. Then answer the questions.";
@@ -54,6 +69,7 @@ function loadLesson() {
 }
 
 function checkAnswers() {
+
   const a1 =
     document.getElementById("a1").value.trim();
 
@@ -116,5 +132,8 @@ function prevDay() {
   }
 }
 
-loadLesson();
+window.checkAnswers = checkAnswers;
+window.nextDay = nextDay;
+window.prevDay = prevDay;
 
+loadLesson();
