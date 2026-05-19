@@ -147,6 +147,56 @@ const lessons = [
       "Who listened to the story?",
       "When did Zoe read it?"
     ]
+  },
+
+  {
+    title: "Day 16 Reading",
+    story: "Caleb packed his lunch before leaving for school.",
+    questions: [
+      "Who packed his lunch?",
+      "What did Caleb pack?",
+      "Where was Caleb going?"
+    ]
+  },
+
+  {
+    title: "Day 17 Reading",
+    story: "Grace found a small bird near the tree. She called her dad for help.",
+    questions: [
+      "What did Grace find?",
+      "Where was the bird?",
+      "Who did Grace call?"
+    ]
+  },
+
+  {
+    title: "Day 18 Reading",
+    story: "Henry put his shoes by the door so he could find them in the morning.",
+    questions: [
+      "Who put shoes by the door?",
+      "Where did Henry put his shoes?",
+      "When did he want to find them?"
+    ]
+  },
+
+  {
+    title: "Day 19 Reading",
+    story: "Ella helped set the table before dinner. She put out plates and forks.",
+    questions: [
+      "Who helped set the table?",
+      "When did Ella help?",
+      "What did she put out?"
+    ]
+  },
+
+  {
+    title: "Day 20 Reading",
+    story: "Lucas read a sign at the park. The sign said to keep the gate closed.",
+    questions: [
+      "Who read the sign?",
+      "Where was the sign?",
+      "What did the sign say?"
+    ]
   }
 ];
 
@@ -249,4 +299,3 @@ function prevDay() {
 }
 
 loadLesson();
-
