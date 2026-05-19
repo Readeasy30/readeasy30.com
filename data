@@ -1,2 +1,12 @@
 
 lessons.js
+export const testData = [
+  {
+    text: "Tom went to the park. He saw a dog.",
+    q: "Where did Tom go?"
+  },
+  {
+    text: "Maria read a book at school.",
+    q: "Where did Maria read the book?"
+  }
+];
