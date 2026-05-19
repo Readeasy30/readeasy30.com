@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -6,10 +10,6 @@ body {
   color: #1a1a1a;
   font-size: 18px;
   line-height: 1.6;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .wrap {
@@ -21,60 +21,79 @@ body {
 .site-header {
   background: #2d5bff;
   color: white;
-  padding: 20px;
+  padding: 24px 20px;
 }
 
 .site-header h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-weight: bold;
+  opacity: 0.9;
 }
 
 .tagline {
   margin-top: 8px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .panel {
   background: white;
-  padding: 16px;
+  padding: 18px;
   margin: 16px 0;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
 }
 
-/* CRITICAL FIX FOR YOUR ISSUE */
-.lesson-box {
-  width: 100%;
-  display: block;
+.bubbles-box {
+  background: #eef8ff;
+  border-left: 6px solid #2d5bff;
 }
 
-.lesson-box p {
-  width: 100%;
-  font-size: 18px;
-  line-height: 1.6;
-  margin: 8px 0;
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-.button {
+.button,
+button {
   display: inline-block;
-  padding: 12px 16px;
+  background: #2563eb;
+  color: white;
+  padding: 12px 18px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
   border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.primary {
-  background: #2d5bff;
-  color: white;
+.button:hover,
+button:hover {
+  opacity: 0.9;
 }
 
 .secondary {
   background: #e8edff;
   color: #2d5bff;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0 14px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#story {
+  font-size: 21px;
+  line-height: 1.7;
+}
+
+#result {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .site-footer {
@@ -84,46 +103,23 @@ body {
   color: #666;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f7f8fb;
-  margin: 0;
-  padding: 0;
-  color: #222;
-}
+@media (max-width: 600px) {
+  body {
+    font-size: 17px;
+  }
 
-.screen {
-  max-width: 600px;
-  margin: 60px auto;
-  padding: 20px;
-}
+  .site-header h1 {
+    font-size: 28px;
+  }
 
-.center {
-  text-align: center;
-}
+  .panel {
+    padding: 16px;
+  }
 
-button {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-.lesson-text {
-  font-size: 20px;
-  line-height: 1.6;
+  button,
+  .button {
+    width: 100%;
+    margin-top: 8px;
+    text-align: center;
+  }
 }
