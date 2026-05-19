@@ -10,7 +10,7 @@ let state = {
 
 function renderStart() {
   app.innerHTML = `
-    <div style="text-align:center;font-family:Arial;margin-top:60px;">
+    <div class="screen center">
       <h1>📘 ReadEasy30</h1>
       <p>Find your reading level in 2 minutes</p>
 
@@ -43,14 +43,14 @@ function renderTest() {
   const item = testData[state.level];
 
   app.innerHTML = `
-    <div style="max-width:600px;margin:40px auto;font-family:Arial;">
-      <h2>Reading Check</h2>
+    <div class="screen">
+      <h2>Reading Check</
 
-      <p style="font-size:18px;">${item.text}</p>
+      <p class="lesson-text">${item.text}</p>
 
       <p>${item.q}</p>
 
-      <input id="answer" placeholder="Type answer..." style="width:100%;padding:10px;" />
+      <input id="answer" placeholder="Type answer..." />
 
       <br><br>
 
