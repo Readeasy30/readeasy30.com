@@ -1,3 +1,5 @@
+import { testData } from "./data/lessons.js";
+
 const app = document.getElementById("app");
 
 let state = {
