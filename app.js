@@ -124,4 +124,6 @@ function resetProgress() {
     "Progress reset. Start again at Day 1.";
 }
 
-loadLesson();
+document.addEventListener("DOMContentLoaded", () => {
+  loadLesson();
+});
