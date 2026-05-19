@@ -1,69 +1,51 @@
-  <input id="a3" placeholder="Type answer 3" />
+const lessons = [
+  {
+    title: "Day 1 Reading",
+    story: "Tom went to the park. He saw a dog. The dog was friendly.",
+    questions: [
+      "Where did Tom go?",
+      "What did Tom see?",
+      "Was the dog friendly?"
+    ]
+  },
 
-  </section>
+  {
+    title: "Day 2 Reading",
+    story: "Maria read a book at school. The book was about a cat.",
+    questions: [
+      "Where did Maria read?",
+      "What did Maria read?",
+      "What was the book about?"
+    ]
+  },
 
-  <section class="panel">
+  {
+    title: "Day 3 Reading",
+    story: "Jake helped his mother carry groceries into the house.",
+    questions: [
+      "Who helped his mother?",
+      "What did Jake carry?",
+      "Where did they take the groceries?"
+    ]
+  },
 
-    <h2>Parent / Helper Tip</h2>
+  {
+    title: "Day 4 Reading",
+    story: "Sara planted flowers in the garden. She watered them every day.",
+    questions: [
+      "What did Sara plant?",
+      "Where were the flowers planted?",
+      "What did Sara do every day?"
+    ]
+  },
 
-    <p id="parentTip">
-      If the reader struggles, read the story together slowly. Then ask one question at a time.
-    </p>
-
-  </section>
-
-  <button onclick="checkAnswers()">
-    Check Answers
-  </button>
-
-  <div id="result"
-       class="panel"
-       style="display:none;">
-  </div>
-
-  <div style="display:flex; gap:10px; margin-top:10px;">
-
-    <button onclick="prevDay()">
-      ⬅ Prev
-    </button>
-
-    <button onclick="nextDay()">
-      Next ➡
-    </button>
-
-  </div>
-
-  <div style="margin-top:10px;">
-
-    <button onclick="resetProgress()">
-      Reset Progress
-    </button>
-
-  </div>
-
-  <section class="panel">
-
-    <h2>Reading Level Path</h2>
-
-    <p>
-      Level A builds early reading confidence. Future levels will grow toward stronger paragraph reading,
-      vocabulary, comprehension, and middle-school reading skills.
-    </p>
-
-  </section>
-
-  <p style="margin-top:20px;">
-
-    <a href="./index.html">
-      ⬅ Back to Home
-    </a>
-
-  </p>
-
-</main>
-
-<script src="./app.js"></script>
-
-</body>
-
-</html>
+  {
+    title: "Day 5 Reading",
+    story: "Ben rode his bicycle to the store to buy some milk.",
+    questions: [
+      "Who rode the bicycle?",
+      "Where did Ben go?",
+      "What did Ben buy?"
+    ]
+  }
+];
