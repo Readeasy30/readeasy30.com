@@ -28,23 +28,14 @@ function startTest() {
   renderTest();
 }
 
-const testData = [
-  {
-    text: "Tom went to the park. He saw a dog.",
-    q: "Where did Tom go?"
-  },
-  {
-    text: "Maria read a book at school.",
-    q: "Where did Maria read the book?"
-  }
-];
+
 
 function renderTest() {
   const item = testData[state.level];
 
   app.innerHTML = `
     <div class="screen">
-      <h2>Reading Check</
+      <h2>Reading Check</h2>
 
       <p class="lesson-text">${item.text}</p>
 
@@ -82,7 +73,7 @@ function showResult() {
   if (state.score >= 2) levelText = "Level 3";
 
   app.innerHTML = `
-    <div style="text-align:center;font-family:Arial;margin-top:60px;">
+    <div class="screen center">
       <h1>✅ Placement Complete</h1>
       <h2>${levelText}</h2>
 
