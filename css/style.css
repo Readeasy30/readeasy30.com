@@ -1,1 +1,149 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #eafaff, #f8fdff);
+  color: #17343b;
+}
 
+.container {
+  max-width: 780px;
+  margin: 24px auto;
+  padding: 24px;
+}
+
+.app-header,
+.status-card,
+.bubbles-card,
+.story-box,
+.questions,
+.app-footer {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.eyebrow {
+  text-align: center;
+  color: #1597ad;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1 {
+  text-align: center;
+  color: #147c91;
+  font-size: 42px;
+  margin: 8px 0;
+}
+
+.subtitle,
+.app-footer {
+  text-align: center;
+}
+
+#progress {
+  font-weight: bold;
+  text-align: center;
+}
+
+.progress-wrap {
+  width: 100%;
+  height: 18px;
+  background: #d9eef2;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #33c6dd, #1597ad);
+  transition: width 0.4s ease;
+}
+
+.bubbles-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border: 2px solid #bfeaf2;
+}
+
+.bubbles-face {
+  font-size: 48px;
+  background: #eefcff;
+  border-radius: 50%;
+  padding: 12px;
+}
+
+.story-box p {
+  font-size: 24px;
+  line-height: 1.7;
+}
+
+.questions label {
+  display: block;
+  font-weight: bold;
+  margin: 16px 0 6px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #b8dce3;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+button {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  border-radius: 14px;
+  background: #1597ad;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #0f7688;
+}
+
+#result {
+  display: none;
+  padding: 16px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+  background: #fff7d6;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .story-box p {
+    font-size: 21px;
+  }
+}
