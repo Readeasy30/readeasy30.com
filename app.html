@@ -1,102 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </p>
+      </section>
 
-  <title>ReadEasy30 Lesson App</title>
-
-  <meta
-    name="description"
-    content="Practice daily reading with ReadEasy30 short stories, simple questions, progress tracking, and Bubbles the reading coach."
-  />
-
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-  <main class="container">
-
-    <header class="app-header">
-      <div class="logo">🫧 ReadEasy30</div>
-
-      <p class="eyebrow">30-Day Reading Practice</p>
-
-      <h1 id="title">ReadEasy30</h1>
-
-      <p class="subtitle">
-        Read one short story each day. Answer 3 questions. Build confidence.
-      </p>
-
-      <a href="index.html" class="start-button">Back to Home</a>
-    </header>
-
-    <section class="status-card" aria-label="Lesson progress">
-      <p id="progress">Lesson 1 of 30 | Completed: 0 | 0%</p>
-
-      <div class="progress-wrap" aria-hidden="true">
-        <div id="progressBar"></div>
+      <div class="button-row">
+        <button id="checkBtn" type="button">Check Answers</button>
+        <button id="clearBtn" class="secondary-btn" type="button">Clear Answers</button>
       </div>
-    </section>
 
-    <section class="bubbles-card" aria-label="Bubbles reading coach">
-      <div class="bubbles-face" aria-hidden="true">🫧</div>
-
-      <div>
-        <h2>Bubbles Says</h2>
-        <p id="coachMessage">
-          Point to each word as you read. Go slowly.
-        </p>
+      <div class="button-row nav-row">
+        <button id="prevBtn" class="secondary-btn" type="button">⬅ Prev</button>
+        <button id="nextBtn" class="secondary-btn" type="button">Next ➡</button>
       </div>
-    </section>
 
-    <section class="story-box" aria-label="Reading story">
-      <h2>Today’s Story</h2>
-      <p id="story"></p>
-
-      <button type="button" onclick="readStory()">
-        🔊 Read Story Aloud
+      <button id="resetBtn" class="danger-btn" type="button">
+        Reset Progress
       </button>
+
     </section>
 
-    <section class="questions" aria-label="Reading questions">
-      <h2>Answer the Questions</h2>
-
-      <label for="a1" id="q1"></label>
-      <input type="text" id="a1" placeholder="Type answer here" />
-
-      <label for="a2" id="q2"></label>
-      <input type="text" id="a2" placeholder="Type answer here" />
-
-      <label for="a3" id="q3"></label>
-      <input type="text" id="a3" placeholder="Type answer here" />
-    </section>
-
-    <section class="buttons" aria-label="Lesson controls">
-      <button type="button" onclick="checkAnswers()">Check Answers</button>
-      <button type="button" onclick="clearAnswers()">Clear Answers</button>
-      <button type="button" onclick="prevDay()">Previous Day</button>
-      <button type="button" onclick="nextDay()">Next Day</button>
-      <button type="button" onclick="resetProgress()">Reset Progress</button>
-    </section>
-
-    <div id="result" role="status" aria-live="polite"></div>
-
-    <section class="status-card">
-      <h2>Parent Tip</h2>
+    <section class="level-path">
+      <h2>Reading Level Path</h2>
       <p>
-        Sit nearby while your child reads. Let them try first, then help if they get stuck.
+        Level A builds early reading confidence. Future levels will grow toward stronger paragraph reading,
+        vocabulary, comprehension, and middle-school reading skills.
       </p>
     </section>
-
-    <footer class="app-footer">
-      <p>
-        ReadEasy30 helps young readers practice one small win at a time.
-      </p>
-    </footer>
 
   </main>
 
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>ReadEasy30 — simple reading, one step at a time.</p>
+    </div>
+  </footer>
+
   <script src="app.js"></script>
+
 </body>
 </html>
+
