@@ -3,57 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>ReadEasy30</title>
+
+  <meta
+    name="description"
+    content="ReadEasy30 is a simple 30-day reading practice app with short stories, questions, progress tracking, and a friendly coach named Bubbles."
+  />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+  <main class="container">
 
-  <div class="container">
+    <header class="app-header">
+      <p class="eyebrow">30-Day Reading Practice</p>
+      <h1 id="title">ReadEasy30</h1>
+      <p class="subtitle">
+        Read one short story each day. Answer 3 questions. Build confidence.
+      </p>
+    </header>
 
-    <h1 id="title">ReadEasy30</h1>
+    <section class="status-card" aria-label="Lesson progress">
+      <p id="progress">Lesson 1 of 30 | Completed: 0</p>
 
-    <p id="progress"></p>
-<div class="progress-wrap">
-  <div id="progressBar"></div>
-</div>
-    <div class="story-box">
+      <div class="progress-wrap" aria-hidden="true">
+        <div id="progressBar"></div>
+      </div>
+    </section>
+
+    <section class="bubbles-card" aria-label="Bubbles reading coach">
+      <div class="bubbles-face" aria-hidden="true">🫧</div>
+
+      <div>
+        <h2>Bubbles Says</h2>
+        <p id="coachMessage">
+          Point to each word as you read. Go slowly.
+        </p>
+      </div>
+    </section>
+
+    <section class="story-box" aria-label="Reading story">
+      <h2>Today’s Story</h2>
       <p id="story"></p>
-    </div>
+    </section>
 
-    <div class="questions">
+    <section class="questions" aria-label="Reading questions">
+      <h2>Answer the Questions</h2>
 
-      <p id="q1"></p>
+      <label for="a1" id="q1"></label>
       <input type="text" id="a1" placeholder="Type answer here" />
 
-      <p id="q2"></p>
+      <label for="a2" id="q2"></label>
       <input type="text" id="a2" placeholder="Type answer here" />
 
-      <p id="q3"></p>
+      <label for="a3" id="q3"></label>
       <input type="text" id="a3" placeholder="Type answer here" />
+    </section>
 
-    </div>
+    <section class="buttons" aria-label="Lesson controls">
+      <button type="button" onclick="checkAnswers()">Check Answers</button>
+      <button type="button" onclick="prevDay()">Previous Day</button>
+      <button type="button" onclick="nextDay()">Next Day</button>
+      <button type="button" onclick="resetProgress()">Reset</button>
+    </section>
 
-    <div class="buttons">
-      <button onclick="checkAnswers()">Check Answers</button>
-      <button onclick="prevDay()">Previous Day</button>
-      <button onclick="nextDay()">Next Day</button>
-      <button onclick="resetProgress()">Reset</button>
-    </div>
+    <div id="result" role="status" aria-live="polite"></div>
 
-    <div id="result"></div>
+    <footer class="app-footer">
+      <p>ReadEasy30 helps young readers practice one small win at a time.</p>
+    </footer>
 
-    <div class="coach">
-      <p id="coachMessage"></p>
-    </div>
-
-  </div>
+  </main>
 
   <script src="app.js"></script>
-
 </body>
 </html>
-document.addEventListener("DOMContentLoaded", () => {
-  loadLesson();
-});
