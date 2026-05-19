@@ -1,51 +1,54 @@
-const lessons = [
-  {
-    title: "Day 1 Reading",
-    story: "Tom went to the park. He saw a dog. The dog was friendly.",
-    questions: [
-      "Where did Tom go?",
-      "What did Tom see?",
-      "Was the dog friendly?"
-    ]
-  },
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReadEasy30</title>
 
-  {
-    title: "Day 2 Reading",
-    story: "Maria read a book at school. The book was about a cat.",
-    questions: [
-      "Where did Maria read?",
-      "What did Maria read?",
-      "What was the book about?"
-    ]
-  },
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-  {
-    title: "Day 3 Reading",
-    story: "Jake helped his mother carry groceries into the house.",
-    questions: [
-      "Who helped his mother?",
-      "What did Jake carry?",
-      "Where did they take the groceries?"
-    ]
-  },
+<body>
 
-  {
-    title: "Day 4 Reading",
-    story: "Sara planted flowers in the garden. She watered them every day.",
-    questions: [
-      "What did Sara plant?",
-      "Where were the flowers planted?",
-      "What did Sara do every day?"
-    ]
-  },
+  <div class="container">
 
-  {
-    title: "Day 5 Reading",
-    story: "Ben rode his bicycle to the store to buy some milk.",
-    questions: [
-      "Who rode the bicycle?",
-      "Where did Ben go?",
-      "What did Ben buy?"
-    ]
-  }
-];
+    <h1 id="title">ReadEasy30</h1>
+
+    <p id="progress"></p>
+
+    <div class="story-box">
+      <p id="story"></p>
+    </div>
+
+    <div class="questions">
+
+      <p id="q1"></p>
+      <input type="text" id="a1" placeholder="Type answer here" />
+
+      <p id="q2"></p>
+      <input type="text" id="a2" placeholder="Type answer here" />
+
+      <p id="q3"></p>
+      <input type="text" id="a3" placeholder="Type answer here" />
+
+    </div>
+
+    <div class="buttons">
+      <button onclick="checkAnswers()">Check Answers</button>
+      <button onclick="prevDay()">Previous Day</button>
+      <button onclick="nextDay()">Next Day</button>
+      <button onclick="resetProgress()">Reset</button>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="coach">
+      <p id="coachMessage"></p>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
