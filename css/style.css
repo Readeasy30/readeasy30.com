@@ -83,3 +83,47 @@ body {
   font-size: 14px;
   color: #666;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f8fb;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+.screen {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.lesson-text {
+  font-size: 20px;
+  line-height: 1.6;
+}
