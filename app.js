@@ -1,91 +1,79 @@
-import { testData } from "./data/lessons.js";
-
-const app = document.getElementById("app");
-
-let state = {
-  step: "start",
-  score: 0,
-  level: 0
-};
-
-function renderStart() {
-  app.innerHTML = `
-    <div class="screen center">
-      <h1>📘 ReadEasy30</h1>
-      <p>Find your reading level in 2 minutes</p>
-
-      <button onclick="startTest()">
-        Start Placement Test
-      </button>
-    </div>
-  `;
-}
-
-function startTest() {
-  state.step = "test";
-  state.score = 0;
-  state.level = 0;
-  renderTest();
-}
-
-
-
-function renderTest() {
-  const item = testData[state.level];
-
-  app.innerHTML = `
-    <div class="screen">
-      <h2>Reading Check</h2>
-
-      <p class="lesson-text">${item.text}</p>
-
-      <p>${item.q}</p>
-
-      <input id="answer" placeholder="Type answer..." />
-
-      <br><br>
-
-      <button onclick="nextQuestion()">Next</button>
-    </div>
-  `;
-}
-
-function nextQuestion() {
-  const answer = document.getElementById("answer").value;
-
-  if (answer.length > 2) {
-    state.score++;
+const lessons = [
+  {
+    day: 1,
+    title: "Day 1 Reading",
+    story: "Tom went to the park. He saw a dog. The dog was friendly.",
+    questions: [
+      "Where did Tom go?",
+      "What did Tom see?",
+      "Was the dog friendly?"
+    ]
+  },
+  {
+    day: 2,
+    title: "Day 2 Reading",
+    story: "Maria read a book at school. The book was about a cat.",
+    questions: [
+      "Where did Maria read?",
+      "What did Maria read?",
+      "What was the book about?"
+    ]
   }
+];
 
-  state.level++;
+let currentDay = 0;
 
-  if (state.level >= testData.length) {
-    showResult();
+function loadLesson() {
+  const lesson = lessons[currentDay];
+
+  document.getElementById("title").textContent = lesson.title;
+  document.getElementById("story").textContent = lesson.story;
+  document.getElementById("q1").textContent = lesson.questions[0];
+  document.getElementById("q2").textContent = lesson.questions[1];
+  document.getElementById("q3").textContent = lesson.questions[2];
+
+  document.getElementById("a1").value = "";
+  document.getElementById("a2").value = "";
+  document.getElementById("a3").value = "";
+
+  document.getElementById("result").style.display = "none";
+  document.getElementById("coachMessage").textContent =
+    "Take your time. Read the story first. Then answer the questions.";
+}
+
+function checkAnswers() {
+  const a1 = document.getElementById("a1").value.trim();
+  const a2 = document.getElementById("a2").value.trim();
+  const a3 = document.getElementById("a3").value.trim();
+
+  const result = document.getElementById("result");
+
+  if (a1 && a2 && a3) {
+    result.style.display = "block";
+    result.innerHTML = "✅ Nice work. You answered all 3 questions.";
+    document.getElementById("coachMessage").textContent =
+      "Great job. You stayed with the story and answered the questions.";
   } else {
-    renderTest();
+    result.style.display = "block";
+    result.innerHTML = "🫧 Please answer all 3 questions before moving on.";
+    document.getElementById("coachMessage").textContent =
+      "No rush. Go back to the story and try again.";
   }
 }
 
-function showResult() {
-  let levelText = "Level 1";
-
-  if (state.score === 1) levelText = "Level 2";
-  if (state.score >= 2) levelText = "Level 3";
-
-  app.innerHTML = `
-    <div class="screen center">
-      <h1>✅ Placement Complete</h1>
-      <h2>${levelText}</h2>
-
-      <button onclick="location.reload()">
-        Restart
-      </button>
-    </div>
-  `;
+function nextDay() {
+  if (currentDay < lessons.length - 1) {
+    currentDay++;
+    loadLesson();
+  }
 }
 
-window.startTest = startTest;
-window.nextQuestion = nextQuestion;
+function prevDay() {
+  if (currentDay > 0) {
+    currentDay--;
+    loadLesson();
+  }
+}
 
-renderStart();
+loadLesson();
 
