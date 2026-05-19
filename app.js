@@ -107,6 +107,18 @@ function nextDay() {
 function prevDay() {
   if (currentDay > 0) {
     currentDay--;
+    function resetProgress() {
+  localStorage.removeItem("readeasy-currentDay");
+  localStorage.removeItem("readeasy-completedLessons");
+
+  currentDay = 0;
+  completedLessons = [];
+
+  loadLesson();
+
+  document.getElementById("coachMessage").textContent =
+    "Progress reset. Start again at Day 1.";
+}
     loadLesson();
   }
 }
