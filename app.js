@@ -19,17 +19,24 @@ const lessons = [
   }
 ];
 
-let currentDay = 0;
+let currentDay =
+  Number(localStorage.getItem("readeasy30-currentDay")) || 0;
 
 function loadLesson() {
   const lesson = lessons[currentDay];
 
   document.getElementById("title").textContent = lesson.title;
+
   document.getElementById("story").textContent = lesson.story;
 
-  document.getElementById("q1").textContent = lesson.questions[0];
-  document.getElementById("q2").textContent = lesson.questions[1];
-  document.getElementById("q3").textContent = lesson.questions[2];
+  document.getElementById("q1").textContent =
+    lesson.questions[0];
+
+  document.getElementById("q2").textContent =
+    lesson.questions[1];
+
+  document.getElementById("q3").textContent =
+    lesson.questions[2];
 
   document.getElementById("a1").value = "";
   document.getElementById("a2").value = "";
@@ -39,44 +46,75 @@ function loadLesson() {
 
   document.getElementById("coachMessage").textContent =
     "Take your time. Read the story first. Then answer the questions.";
+
+  localStorage.setItem(
+    "readeasy30-currentDay",
+    currentDay
+  );
 }
 
 function checkAnswers() {
-  const a1 = document.getElementById("a1").value.trim();
-  const a2 = document.getElementById("a2").value.trim();
-  const a3 = document.getElementById("a3").value.trim();
+  const a1 =
+    document.getElementById("a1").value.trim();
 
-  const result = document.getElementById("result");
+  const a2 =
+    document.getElementById("a2").value.trim();
+
+  const a3 =
+    document.getElementById("a3").value.trim();
+
+  const result =
+    document.getElementById("result");
+
   result.style.display = "block";
 
   if (a1 && a2 && a3) {
-    result.textContent = "✅ Nice work. You answered all 3 questions.";
+
+    result.textContent =
+      "✅ Nice work. You answered all 3 questions.";
+
     document.getElementById("coachMessage").textContent =
       "Great job. You stayed with the story and answered the questions.";
+
   } else {
-    result.textContent = "🫧 Please answer all 3 questions before moving on.";
+
+    result.textContent =
+      "🫧 Please answer all 3 questions before moving on.";
+
     document.getElementById("coachMessage").textContent =
       "No rush. Go back to the story and try again.";
   }
 }
 
 function nextDay() {
+
   if (currentDay < lessons.length - 1) {
+
     currentDay++;
+
+    localStorage.setItem(
+      "readeasy30-currentDay",
+      currentDay
+    );
+
     loadLesson();
   }
 }
 
 function prevDay() {
+
   if (currentDay > 0) {
+
     currentDay--;
+
+    localStorage.setItem(
+      "readeasy30-currentDay",
+      currentDay
+    );
+
     loadLesson();
   }
 }
 
 loadLesson();
-
-Commit message:
-
-LOCKED: restore working app.js lesson engine
 
