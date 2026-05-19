@@ -39,16 +39,22 @@ function saveProgress() {
   localStorage.setItem("readeasy-completedLessons", JSON.stringify(completedLessons));
 }
 
+function updateProgress() {
+  const percent = Math.round((completedLessons.length / lessons.length) * 100);
+
+  document.getElementById("progress").textContent =
+    `Lesson ${currentDay + 1} of ${lessons.length} | Completed: ${completedLessons.length} | ${percent}%`;
+
+  const bar = document.getElementById("progressBar");
+  if (bar) bar.style.width = percent + "%";
+}
+
 function loadLesson() {
   const lesson = lessons[currentDay];
 
   document.getElementById("title").textContent = lesson.title;
-
-  document.getElementById("progress").textContent =
-    "Lesson " + (currentDay + 1) + " of " + lessons.length +
-    " | Completed: " + completedLessons.length;
-
   document.getElementById("story").textContent = lesson.story;
+
   document.getElementById("q1").textContent = lesson.questions[0];
   document.getElementById("q2").textContent = lesson.questions[1];
   document.getElementById("q3").textContent = lesson.questions[2];
@@ -57,45 +63,57 @@ function loadLesson() {
   document.getElementById("a2").value = "";
   document.getElementById("a3").value = "";
 
-  document.getElementById("result").style.display = "none";
-  document.getElementById("result").textContent = "";
+  const result = document.getElementById("result");
+  result.style.display = "none";
+  result.textContent = "";
 
-  document.getElementById("coachMessage").textContent = lesson.coach;
+  const alreadyDone = completedLessons.includes(currentDay);
 
+  document.getElementById("coachMessage").textContent = alreadyDone
+    ? "You already completed this lesson. Review it or move to the next day."
+    : lesson.coach;
+
+  updateProgress();
   saveProgress();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function checkAnswers() {
-  const a1 = document.getElementById("a1").value.trim();
-  const a2 = document.getElementById("a2").value.trim();
-  const a3 = document.getElementById("a3").value.trim();
+  const answers = [
+    document.getElementById("a1").value.trim(),
+    document.getElementById("a2").value.trim(),
+    document.getElementById("a3").value.trim()
+  ];
 
   const result = document.getElementById("result");
   result.style.display = "block";
 
-  if (a1 && a2 && a3) {
+  if (answers.every(answer => answer.length > 0)) {
     if (!completedLessons.includes(currentDay)) {
       completedLessons.push(currentDay);
     }
 
     saveProgress();
+    updateProgress();
 
-    result.textContent = "✅ Nice work. Lesson complete.";
+    result.innerHTML = `
+      ✅ Great job!<br>
+      You finished Day ${currentDay + 1}.
+    `;
+
     document.getElementById("coachMessage").textContent =
-      "Great job. You have completed " + completedLessons.length + " lesson(s).";
+      `Bubbles is proud of you. You have completed ${completedLessons.length} lesson(s).`;
+
+    if (completedLessons.length === lessons.length) {
+      showCompletionScreen();
+    }
+
   } else {
     result.textContent = "🫧 Please answer all 3 questions before moving on.";
     document.getElementById("coachMessage").textContent =
       "No rush. Go back to the story and try again.";
   }
-
-  document.getElementById("progress").textContent =const progressPercent =
-  ((completedLessons.length / lessons.length) * 100);
-
-document.getElementById("progressBar").style.width =
-  progressPercent + "%";
-    "Lesson " + (currentDay + 1) + " of " + lessons.length +
-    " | Completed: " + completedLessons.length;
 }
 
 function nextDay() {
@@ -103,8 +121,7 @@ function nextDay() {
     currentDay++;
     loadLesson();
   } else {
-    document.getElementById("coachMessage").textContent =
-      "🎉 You finished all 30 lessons. Great work.";
+    showCompletionScreen();
   }
 }
 
@@ -122,10 +139,18 @@ function resetProgress() {
   currentDay = 0;
   completedLessons = [];
 
-  loadLesson();
+  location.reload();
+}
 
-  document.getElementById("coachMessage").textContent =
-    "Progress reset. Start again at Day 1.";
+function showCompletionScreen() {
+  document.querySelector(".container").innerHTML = `
+    <section class="completion-screen">
+      <h1>🎉 You Finished ReadEasy30!</h1>
+      <p>You completed all 30 reading lessons.</p>
+      <p>Bubbles is proud of you.</p>
+      <button onclick="resetProgress()">Start Again</button>
+    </section>
+  `;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
