@@ -152,6 +152,39 @@ function showCompletionScreen() {
     </section>
   `;
 }
+function readStory() {
+  const story = document.getElementById("story").textContent;
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+
+    const reading = new SpeechSynthesisUtterance(story);
+    reading.rate = 0.85;
+    reading.pitch = 1;
+    reading.volume = 1;
+
+    window.speechSynthesis.speak(reading);
+
+    document.getElementById("coachMessage").textContent =
+      "Bubbles is reading the story aloud. Follow along with your eyes.";
+  } else {
+    document.getElementById("coachMessage").textContent =
+      "This browser does not support reading aloud.";
+  }
+}
+
+function clearAnswers() {
+  document.getElementById("a1").value = "";
+  document.getElementById("a2").value = "";
+  document.getElementById("a3").value = "";
+
+  document.getElementById("result").style.display = "none";
+  document.getElementById("result").textContent = "";
+
+  document.getElementById("coachMessage").textContent =
+    "Answers cleared. Try again slowly.";
+}
+add read aloud and clear answers
 
 document.addEventListener("DOMContentLoaded", () => {
   loadLesson();
