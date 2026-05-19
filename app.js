@@ -89,7 +89,11 @@ function checkAnswers() {
       "No rush. Go back to the story and try again.";
   }
 
-  document.getElementById("progress").textContent =
+  document.getElementById("progress").textContent =const progressPercent =
+  ((completedLessons.length / lessons.length) * 100);
+
+document.getElementById("progressBar").style.width =
+  progressPercent + "%";
     "Lesson " + (currentDay + 1) + " of " + lessons.length +
     " | Completed: " + completedLessons.length;
 }
