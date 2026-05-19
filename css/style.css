@@ -1,14 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #eafaff, #f8fdff);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, #dff9ff 0, transparent 34%),
+    linear-gradient(180deg, #eefbff 0%, #ffffff 100%);
   color: #17343b;
 }
 
 .container {
-  max-width: 780px;
+  max-width: 820px;
   margin: 24px auto;
-  padding: 24px;
+  padding: 18px;
 }
 
 .app-header,
@@ -16,52 +22,71 @@ body {
 .bubbles-card,
 .story-box,
 .questions,
-.app-footer {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 22px;
+.app-footer,
+.completion-screen {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #d7f0f5;
+  border-radius: 24px;
+  padding: 24px;
   margin-bottom: 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 28px rgba(20, 124, 145, 0.1);
+}
+
+.app-header {
+  text-align: center;
 }
 
 .eyebrow {
-  text-align: center;
+  margin: 0;
   color: #1597ad;
-  font-weight: bold;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
+  font-size: 13px;
 }
 
 h1 {
-  text-align: center;
   color: #147c91;
-  font-size: 42px;
+  font-size: 44px;
   margin: 8px 0;
+  line-height: 1.1;
+}
+
+h2 {
+  color: #147c91;
+  margin-top: 0;
 }
 
 .subtitle,
-.app-footer {
+.app-footer p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.status-card {
   text-align: center;
 }
 
 #progress {
-  font-weight: bold;
-  text-align: center;
+  font-weight: 800;
+  margin-top: 0;
 }
 
 .progress-wrap {
   width: 100%;
-  height: 18px;
+  height: 20px;
   background: #d9eef2;
-  border-radius: 30px;
+  border-radius: 999px;
   overflow: hidden;
 }
 
 #progressBar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(to right, #33c6dd, #1597ad);
-  transition: width 0.4s ease;
+  background: linear-gradient(90deg, #55d8e9, #1597ad);
+  border-radius: 999px;
+  transition: width 0.35s ease;
 }
 
 .bubbles-card {
@@ -72,30 +97,51 @@ h1 {
 }
 
 .bubbles-face {
-  font-size: 48px;
+  flex: 0 0 auto;
+  font-size: 54px;
   background: #eefcff;
+  border: 2px solid #c7f2fa;
   border-radius: 50%;
   padding: 12px;
+  box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.bubbles-card p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.story-box {
+  border-left: 8px solid #1597ad;
 }
 
 .story-box p {
-  font-size: 24px;
-  line-height: 1.7;
+  font-size: 25px;
+  line-height: 1.75;
+  margin-bottom: 0;
 }
 
 .questions label {
   display: block;
-  font-weight: bold;
-  margin: 16px 0 6px;
+  font-weight: 800;
+  font-size: 18px;
+  margin: 18px 0 7px;
 }
 
 input {
   width: 100%;
-  padding: 15px;
+  padding: 16px;
   font-size: 18px;
   border: 2px solid #b8dce3;
-  border-radius: 12px;
-  box-sizing: border-box;
+  border-radius: 14px;
+  outline: none;
+  background: #fbfeff;
+}
+
+input:focus {
+  border-color: #1597ad;
+  box-shadow: 0 0 0 4px rgba(21, 151, 173, 0.13);
 }
 
 .buttons {
@@ -106,44 +152,90 @@ input {
 }
 
 button {
-  padding: 15px;
+  padding: 16px;
   font-size: 17px;
   border: none;
-  border-radius: 14px;
+  border-radius: 16px;
   background: #1597ad;
   color: white;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 800;
+  box-shadow: 0 8px 16px rgba(21, 151, 173, 0.18);
 }
 
 button:hover {
   background: #0f7688;
 }
 
-#result {
-  display: none;
-  padding: 16px;
-  margin-bottom: 18px;
-  border-radius: 16px;
-  background: #fff7d6;
-  font-weight: bold;
-  text-align: center;
+button:active {
+  transform: translateY(1px);
 }
 
-@media (max-width: 600px) {
+#result {
+  display: none;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  background: #fff7d6;
+  border: 1px solid #f0dc91;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.completion-screen {
+  text-align: center;
+  padding: 54px 24px;
+}
+
+.completion-screen h1 {
+  font-size: 40px;
+}
+
+.completion-screen p {
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+.app-footer {
+  text-align: center;
+  color: #4b6970;
+}
+
+@media (max-width: 640px) {
   .container {
+    margin: 0;
     padding: 12px;
+  }
+
+  .app-header,
+  .status-card,
+  .bubbles-card,
+  .story-box,
+  .questions,
+  .app-footer,
+  .completion-screen {
+    border-radius: 20px;
+    padding: 18px;
   }
 
   h1 {
     font-size: 34px;
   }
 
+  .story-box p {
+    font-size: 21px;
+  }
+
   .buttons {
     grid-template-columns: 1fr;
   }
 
-  .story-box p {
-    font-size: 21px;
+  .bubbles-card {
+    align-items: flex-start;
+  }
+
+  .bubbles-face {
+    font-size: 42px;
   }
 }
