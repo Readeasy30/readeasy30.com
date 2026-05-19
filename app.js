@@ -1,6 +1,5 @@
 const lessons = [
   {
-    day: 1,
     title: "Day 1 Reading",
     story: "Tom went to the park. He saw a dog. The dog was friendly.",
     questions: [
@@ -10,7 +9,6 @@ const lessons = [
     ]
   },
   {
-    day: 2,
     title: "Day 2 Reading",
     story: "Maria read a book at school. The book was about a cat.",
     questions: [
@@ -28,6 +26,7 @@ function loadLesson() {
 
   document.getElementById("title").textContent = lesson.title;
   document.getElementById("story").textContent = lesson.story;
+
   document.getElementById("q1").textContent = lesson.questions[0];
   document.getElementById("q2").textContent = lesson.questions[1];
   document.getElementById("q3").textContent = lesson.questions[2];
@@ -37,6 +36,7 @@ function loadLesson() {
   document.getElementById("a3").value = "";
 
   document.getElementById("result").style.display = "none";
+
   document.getElementById("coachMessage").textContent =
     "Take your time. Read the story first. Then answer the questions.";
 }
@@ -47,15 +47,14 @@ function checkAnswers() {
   const a3 = document.getElementById("a3").value.trim();
 
   const result = document.getElementById("result");
+  result.style.display = "block";
 
   if (a1 && a2 && a3) {
-    result.style.display = "block";
-    result.innerHTML = "✅ Nice work. You answered all 3 questions.";
+    result.textContent = "✅ Nice work. You answered all 3 questions.";
     document.getElementById("coachMessage").textContent =
       "Great job. You stayed with the story and answered the questions.";
   } else {
-    result.style.display = "block";
-    result.innerHTML = "🫧 Please answer all 3 questions before moving on.";
+    result.textContent = "🫧 Please answer all 3 questions before moving on.";
     document.getElementById("coachMessage").textContent =
       "No rush. Go back to the story and try again.";
   }
@@ -76,4 +75,8 @@ function prevDay() {
 }
 
 loadLesson();
+
+Commit message:
+
+LOCKED: restore working app.js lesson engine
 
