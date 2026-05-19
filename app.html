@@ -1,68 +1,63 @@
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-let currentDay = 0;
+  <title>ReadEasy30 - Lesson App</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
 
-function loadLesson() {
-  const lesson = lessons[currentDay];
+<body>
 
-  document.getElementById("title").textContent = lesson.title;
-  document.getElementById("progress").textContent =
-    "Lesson " + (currentDay + 1) + " of " + lessons.length;
-  document.getElementById("story").textContent = lesson.story;
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">30-minute reading practice</p>
+    <h1 id="title">Day 1 Reading</h1>
+    <p class="tagline">Read slowly. Think clearly. One step at a time.</p>
+    <p id="progress">Lesson 1</p>
+  </div>
+</header>
 
-  document.getElementById("q1").textContent = lesson.questions[0];
-  document.getElementById("q2").textContent = lesson.questions[1];
-  document.getElementById("q3").textContent = lesson.questions[2];
+<main class="wrap">
 
-  document.getElementById("a1").value = "";
-  document.getElementById("a2").value = "";
-  document.getElementById("a3").value = "";
+  <section class="panel bubbles-box">
+    <h2>🫧 Bubbles Says</h2>
+    <p id="coachMessage">Take your time. Read the story first. Then answer the questions.</p>
+  </section>
 
-  document.getElementById("result").style.display = "none";
-  document.getElementById("result").textContent = "";
+  <section class="panel">
+    <h2>Reading Story</h2>
+    <p id="story">Loading lesson...</p>
+  </section>
 
-  document.getElementById("coachMessage").textContent =
-    "Take your time. Read the story first. Then answer the questions.";
-}
+  <section class="panel">
+    <p id="q1"></p>
+    <input id="a1" placeholder="Type answer 1" />
 
-function checkAnswers() {
-  const a1 = document.getElementById("a1").value.trim();
-  const a2 = document.getElementById("a2").value.trim();
-  const a3 = document.getElementById("a3").value.trim();
+    <p id="q2"></p>
+    <input id="a2" placeholder="Type answer 2" />
 
-  const result = document.getElementById("result");
-  result.style.display = "block";
+    <p id="q3"></p>
+    <input id="a3" placeholder="Type answer 3" />
+  </section>
 
-  if (a1 && a2 && a3) {
-    result.textContent = "✅ Nice work. You answered all 3 questions.";
-    document.getElementById("coachMessage").textContent =
-      "Great job. You stayed with the story and answered the questions.";
-  } else {
-    result.textContent = "🫧 Please answer all 3 questions before moving on.";
-    document.getElementById("coachMessage").textContent =
-      "No rush. Go back to the story and try again.";
-  }
-}
+  <button onclick="checkAnswers()">Check Answers</button>
 
-function nextDay() {
-  if (currentDay < lessons.length - 1) {
-    currentDay++;
-    loadLesson();
-  } else {
-    document.getElementById("coachMessage").textContent =
-      "🎉 You finished all available lessons. Great work.";
-  }
-}
+  <div id="result" class="panel" style="display:none;"></div>
 
-function prevDay() {
-  if (currentDay > 0) {
-    currentDay--;
-    loadLesson();
-  }
-}
+  <div style="display:flex; gap:10px; margin-top:10px;">
+    <button onclick="prevDay()">⬅ Prev</button>
+    <button onclick="nextDay()">Next ➡</button>
+  </div>
 
-loadLesson();
-</script>
+  <p style="margin-top:20px;">
+    <a href="./index.html">⬅ Back to Home</a>
+  </p>
+
+</main>
+
+<script src="./app.js"></script>
 
 </body>
 </html>
