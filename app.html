@@ -2,81 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>ReadEasy30</title>
+  <title>ReadEasy30 | Reading Practice for Children</title>
 
   <meta
     name="description"
-    content="ReadEasy30 is a simple 30-day reading practice app with short stories, questions, progress tracking, and a friendly coach named Bubbles."
+    content="ReadEasy30 helps children build reading confidence with short stories, comprehension questions, progress tracking, and a calm reading coach."
   />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+
   <main class="container">
 
     <header class="app-header">
-      <p class="eyebrow">30-Day Reading Practice</p>
-      <h1 id="title">ReadEasy30</h1>
-      <p class="subtitle">
-        Read one short story each day. Answer 3 questions. Build confidence.
+
+      <p class="eyebrow">
+        AI Reading Practice for Children
       </p>
+
+      <h1>ReadEasy30</h1>
+
+      <p class="subtitle">
+        30 days. Short daily lessons. A slower, kinder path to reading confidence.
+      </p>
+
+      <a href="app.html" class="start-button">
+        Start ReadEasy
+      </a>
+
     </header>
 
-    <section class="status-card" aria-label="Lesson progress">
-      <p id="progress">Lesson 1 of 30 | Completed: 0</p>
+    <section class="story-box">
 
-      <div class="progress-wrap" aria-hidden="true">
-        <div id="progressBar"></div>
-      </div>
+      <h2>What ReadEasy30 Does</h2>
+
+      <p>
+        ReadEasy30 helps children practice reading with short stories,
+        simple comprehension questions, and gentle daily repetition.
+      </p>
+
+      <p>
+        Each lesson is designed to feel calm, achievable, and encouraging.
+      </p>
+
     </section>
 
-    <section class="bubbles-card" aria-label="Bubbles reading coach">
-      <div class="bubbles-face" aria-hidden="true">🫧</div>
+    <section class="bubbles-card">
+
+      <div class="bubbles-face">🫧</div>
 
       <div>
-        <h2>Bubbles Says</h2>
-        <p id="coachMessage">
-          Point to each word as you read. Go slowly.
+
+        <h2>Meet Bubbles</h2>
+
+        <p>
+          Bubbles is the calm reading coach who helps children slow down,
+          read carefully, and keep building confidence.
         </p>
+
       </div>
+
     </section>
 
-    <section class="story-box" aria-label="Reading story">
-      <h2>Today’s Story</h2>
-      <p id="story"></p>
+    <section class="questions">
+
+      <h2>Why Parents Like It</h2>
+
+      <div class="feature-list">
+
+        <p>✅ Simple daily reading structure</p>
+
+        <p>✅ Short stories children can finish</p>
+
+        <p>✅ Reading comprehension practice</p>
+
+        <p>✅ Progress tracking</p>
+
+        <p>✅ Calm and distraction-free</p>
+
+        <p>✅ Mobile-friendly lessons</p>
+
+      </div>
+
     </section>
 
-    <section class="questions" aria-label="Reading questions">
-      <h2>Answer the Questions</h2>
+    <section class="status-card">
 
-      <label for="a1" id="q1"></label>
-      <input type="text" id="a1" placeholder="Type answer here" />
+      <h2>Start the 30-Day Reading Path</h2>
 
-      <label for="a2" id="q2"></label>
-      <input type="text" id="a2" placeholder="Type answer here" />
+      <p>
+        Open the lesson app and begin with Day 1.
+      </p>
 
-      <label for="a3" id="q3"></label>
-      <input type="text" id="a3" placeholder="Type answer here" />
+      <a href="app.html" class="start-button">
+        Open Lesson App
+      </a>
+
     </section>
-
-    <section class="buttons" aria-label="Lesson controls">
-      <button type="button" onclick="checkAnswers()">Check Answers</button>
-      <button type="button" onclick="prevDay()">Previous Day</button>
-      <button type="button" onclick="nextDay()">Next Day</button>
-      <button type="button" onclick="resetProgress()">Reset</button>
-    </section>
-
-    <div id="result" role="status" aria-live="polite"></div>
 
     <footer class="app-footer">
-      <p>ReadEasy30 helps young readers practice one small win at a time.</p>
+
+      <p>
+        ReadEasy30 — simple reading, one step at a time.
+      </p>
+
     </footer>
 
   </main>
 
-  <script src="app.js"></script>
 </body>
 </html>
+
+Then add this to the bottom of css/style.css:
+
+.start-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 16px 28px;
+  background: #1597ad;
+  color: white;
+  text-decoration: none;
+  border-radius: 18px;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 8px 16px rgba(21, 151, 173, 0.18);
+}
+
+.start-button:hover {
+  background: #0f7688;
+}
+
+.feature-list p {
+  font-size: 18px;
+  margin: 14px 0;
+}
