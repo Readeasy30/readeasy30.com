@@ -15,8 +15,12 @@
 <header class="site-header">
   <div class="wrap">
     <p class="eyebrow">30-minute reading practice</p>
+
     <h1 id="title">ReadEasy30</h1>
-    <p class="tagline">Read slowly. Think clearly. One step at a time.</p>
+
+    <p class="tagline">
+      Read slowly. Think clearly. One step at a time.
+    </p>
   </div>
 </header>
 
@@ -24,11 +28,15 @@
 
   <section class="panel bubbles-box">
     <h2>🫧 Bubbles Says</h2>
-    <p id="coachMessage">Take your time. Read the story first. Then answer the questions.</p>
+
+    <p id="coachMessage">
+      Take your time. Read the story first. Then answer the questions.
+    </p>
   </section>
 
   <section class="panel">
     <h2>Reading Story</h2>
+
     <p id="story">Loading lesson...</p>
   </section>
 
@@ -47,17 +55,33 @@
     <input id="a3" placeholder="Type answer 3" />
   </section>
 
-  <button onclick="checkAnswers()">Check Answers</button>
+  <button onclick="checkAnswers()">
+    Check Answers
+  </button>
 
-  <div id="result" class="panel" style="display:none;"></div>
+  <div id="result"
+       class="panel"
+       style="display:none;">
+  </div>
 
   <div style="display:flex; gap:10px; margin-top:10px;">
-    <button onclick="prevDay()">⬅ Prev</button>
-    <button onclick="nextDay()">Next ➡</button>
+
+    <button onclick="prevDay()">
+      ⬅ Prev
+    </button>
+
+    <button onclick="nextDay()">
+      Next ➡
+    </button>
+
   </div>
 
   <p style="margin-top:20px;">
-    <a href="./index.html">⬅ Back to Home</a>
+
+    <a href="./index.html">
+      ⬅ Back to Home
+    </a>
+
   </p>
 
 </main>
@@ -87,53 +111,85 @@ const lessons = [
 let currentDay = 0;
 
 function loadLesson() {
+
   const lesson = lessons[currentDay];
 
-  document.getElementById("title").textContent = lesson.title;
-  document.getElementById("story").textContent = lesson.story;
-  document.getElementById("q1").textContent = lesson.questions[0];
-  document.getElementById("q2").textContent = lesson.questions[1];
-  document.getElementById("q3").textContent = lesson.questions[2];
+  document.getElementById("title").textContent =
+    lesson.title;
+
+  document.getElementById("story").textContent =
+    lesson.story;
+
+  document.getElementById("q1").textContent =
+    lesson.questions[0];
+
+  document.getElementById("q2").textContent =
+    lesson.questions[1];
+
+  document.getElementById("q3").textContent =
+    lesson.questions[2];
 
   document.getElementById("a1").value = "";
   document.getElementById("a2").value = "";
   document.getElementById("a3").value = "";
 
-  document.getElementById("result").style.display = "none";
+  document.getElementById("result").style.display =
+    "none";
 
   document.getElementById("coachMessage").textContent =
     "Take your time. Read the story first. Then answer the questions.";
 }
 
 function checkAnswers() {
-  const a1 = document.getElementById("a1").value.trim();
-  const a2 = document.getElementById("a2").value.trim();
-  const a3 = document.getElementById("a3").value.trim();
 
-  const result = document.getElementById("result");
+  const a1 =
+    document.getElementById("a1").value.trim();
+
+  const a2 =
+    document.getElementById("a2").value.trim();
+
+  const a3 =
+    document.getElementById("a3").value.trim();
+
+  const result =
+    document.getElementById("result");
+
   result.style.display = "block";
 
   if (a1 && a2 && a3) {
-    result.textContent = "✅ Nice work. You answered all 3 questions.";
+
+    result.textContent =
+      "✅ Nice work. You answered all 3 questions.";
+
     document.getElementById("coachMessage").textContent =
       "Great job. You stayed with the story and answered the questions.";
+
   } else {
-    result.textContent = "🫧 Please answer all 3 questions before moving on.";
+
+    result.textContent =
+      "🫧 Please answer all 3 questions before moving on.";
+
     document.getElementById("coachMessage").textContent =
       "No rush. Go back to the story and try again.";
   }
 }
 
 function nextDay() {
+
   if (currentDay < lessons.length - 1) {
+
     currentDay++;
+
     loadLesson();
   }
 }
 
 function prevDay() {
+
   if (currentDay > 0) {
+
     currentDay--;
+
     loadLesson();
   }
 }
