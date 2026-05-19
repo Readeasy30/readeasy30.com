@@ -1,68 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ReadEasy30 - Lesson</title>
+  <button onclick="prevDay()">
+      ⬅ Prev
+    </button>
 
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+    <button onclick="nextDay()">
+      Next ➡
+    </button>
 
-<body>
-
-<header class="site-header">
-  <div class="wrap">
-    <p class="eyebrow">30-minute reading practice</p>
-    <h1 id="title">ReadEasy30</h1>
-    <p class="tagline">Read slowly. Think clearly. One step at a time.</p>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <section class="panel bubbles-box">
-    <h2>🫧 Bubbles Says</h2>
-    <p id="coachMessage">
-      Take your time. Read the story first. Then answer the questions.
-    </p>
-  </section>
-
-  <section class="panel">
-    <h2>Reading Story</h2>
-    <p id="story">Loading lesson...</p>
-  </section>
-
-  <section class="panel">
-    <p id="q1"></p>
-    <input id="a1" placeholder="Type answer 1" />
-  </section>
-
-  <section class="panel">
-    <p id="q2"></p>
-    <input id="a2" placeholder="Type answer 2" />
-  </section>
-
-  <section class="panel">
-    <p id="q3"></p>
-    <input id="a3" placeholder="Type answer 3" />
-  </section>
-
-  <button onclick="checkAnswers()">Check Answers</button>
-
-  <div id="result" class="panel" style="display:none;"></div>
-
-  <div style="display:flex; gap:10px; margin-top:10px;">
-    <button onclick="prevDay()">⬅ Prev</button>
-    <button onclick="nextDay()">Next ➡</button>
   </div>
 
   <p style="margin-top:20px;">
-    <a href="index.html">⬅ Back to Home</a>
+    <a href="./index.html">⬅ Back to Home</a>
   </p>
 
 </main>
 
-<script src="app.js"></script>
+<script src="./app.js"></script>
 
 </body>
 </html>
