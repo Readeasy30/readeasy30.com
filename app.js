@@ -1,176 +1,259 @@
-const lessons = [];
+const lessons = [
+  {
+    title: "Day 1 Reading",
+    story: "Tom went to the park. He saw a dog. The dog was friendly.",
+    questions: [
+      "Where did Tom go?",
+      "What did he see?",
+      "Was the dog friendly?"
+    ],
+    answers: ["park", "dog", "yes"]
+  },
 
-for (let i = 1; i <= 30; i++) {
+  {
+    title: "Day 2 Reading",
+    story: "Sara baked cookies with her grandmother in the kitchen.",
+    questions: [
+      "Who baked cookies?",
+      "Who helped Sara?",
+      "Where did they bake?"
+    ],
+    answers: ["sara", "grandmother", "kitchen"]
+  },
+
+  {
+    title: "Day 3 Reading",
+    story: "Jake helped his mother carry groceries into the house.",
+    questions: [
+      "Who helped his mother?",
+      "What did Jake carry?",
+      "Where did they take the groceries?"
+    ],
+    answers: ["jake", "groceries", "house"]
+  },
+
+  {
+    title: "Day 4 Reading",
+    story: "Emily read a book under a large tree after school.",
+    questions: [
+      "Who read the book?",
+      "Where did Emily sit?",
+      "When did she read?"
+    ],
+    answers: ["emily", "tree", "after school"]
+  },
+
+  {
+    title: "Day 5 Reading",
+    story: "Noah fed the fish before eating breakfast.",
+    questions: [
+      "Who fed the fish?",
+      "What animal was fed?",
+      "When did Noah feed them?"
+    ],
+    answers: ["noah", "fish", "before breakfast"]
+  }
+];
+
+while (lessons.length < 30) {
+  const day = lessons.length + 1;
+
   lessons.push({
-    day: i,
-    title: `Day ${i} Reading`,
-    story:
-      i === 1
-        ? "Tom went to the park. He saw a friendly dog near a tree."
-        : i === 2
-        ? "Maria read a book at school before lunch."
-        : i === 3
-        ? "Jake helped his mother carry groceries into the house."
-        : `This is the reading story for Day ${i}. Read slowly. Think about the words. Then answer the questions.`,
-    questions:
-      i === 1
-        ? ["Where did Tom go?", "What did Tom see?", "Where was the dog?"]
-        : i === 2
-        ? ["Who read a book?", "Where did Maria read?", "When did she read?"]
-        : i === 3
-        ? ["Who helped his mother?", "What did Jake carry?", "Where did they take the groceries?"]
-        : ["What day is this lesson?", "How should you read?", "What should you do after reading?"],
-    answers:
-      i === 1
-        ? ["park", "dog", "tree"]
-        : i === 2
-        ? ["maria", "school", "before lunch"]
-        : i === 3
-        ? ["jake", "groceries", "house"]
-        : [`${i}`, "slowly", "answer"],
-    bubbles: "Read slowly. Look for the answer in the story."
+    title: `Day ${day} Reading`,
+    story: `This is the reading story for Day ${day}. Read slowly. Think about the words. Then answer the questions.`,
+    questions: [
+      "What day is this lesson?",
+      "How should you read?",
+      "What should you do after reading?"
+    ],
+    answers: [
+      `${day}`,
+      "slowly",
+      "answer questions"
+    ]
   });
 }
 
-let currentLesson = Number(localStorage.getItem("readEasyLesson")) || 0;
+let currentLesson = 0;
 
-function get(id) {
-  return document.getElementById(id);
-}
+const storyTitle = document.getElementById("storyTitle");
+const storyText = document.getElementById("storyText");
+const questionsDiv = document.getElementById("questions");
 
-function buildDaySelector() {
-  const daySelect = get("daySelect");
-  if (!daySelect) return;
+const lessonCount = document.getElementById("lessonCount");
+const completedCount = document.getElementById("completedCount");
 
-  daySelect.innerHTML = "";
+const resultMessage = document.getElementById("resultMessage");
+const coachMessage = document.getElementById("coachMessage");
 
-  lessons.forEach((lesson, index) => {
-    const option = document.createElement("option");
-    option.value = index;
-    option.textContent = `Day ${lesson.day}`;
-    daySelect.appendChild(option);
-  });
-}
+const daySelect = document.getElementById("daySelect");
 
 function loadLesson() {
+
   const lesson = lessons[currentLesson];
 
-  get("lessonLabel").textContent = `Lesson ${lesson.day} of 30`;
-  get("completedLabel").textContent = `Completed: ${currentLesson}`;
+  storyTitle.textContent = lesson.title;
+  storyText.textContent = lesson.story;
 
-  get("storyTitle").textContent = lesson.title;
-  get("storyText").textContent = lesson.story;
+  lessonCount.textContent =
+    `Lesson ${currentLesson + 1} of 30`;
 
-  get("question1Label").textContent = lesson.questions[0];
-  get("question2Label").textContent = lesson.questions[1];
-  get("question3Label").textContent = lesson.questions[2];
+  updateCompleted();
 
-  get("bubblesMessage").textContent = lesson.bubbles;
+  questionsDiv.innerHTML = "";
 
-  get("answer1").value = "";
-  get("answer2").value = "";
-  get("answer3").value = "";
+  lesson.questions.forEach((question, index) => {
 
-  get("feedback").textContent = "";
+    questionsDiv.innerHTML += `
+      <div class="question-block">
+        <label>${question}</label>
 
-  get("progressBar").style.width =
-    `${((currentLesson + 1) / lessons.length) * 100}%`;
+        <input
+          type="text"
+          id="answer${index}"
+          placeholder="Type answer here"
+        />
+      </div>
+    `;
+  });
 
-  get("daySelect").value = currentLesson;
+  coachMessage.textContent =
+    "Read carefully. You can do this.";
 
-  get("prevBtn").disabled = currentLesson === 0;
-  get("nextBtn").textContent =
-    currentLesson === lessons.length - 1 ? "Finish" : "Next ➡";
+  resultMessage.textContent = "";
 
-  localStorage.setItem("readEasyLesson", currentLesson);
+  daySelect.value = currentLesson;
 }
 
 function checkAnswers() {
-  const lesson = lessons[currentLesson];
 
-  const answers = [
-    get("answer1").value.trim().toLowerCase(),
-    get("answer2").value.trim().toLowerCase(),
-    get("answer3").value.trim().toLowerCase()
-  ];
+  const lesson = lessons[currentLesson];
 
   let score = 0;
 
-  lesson.answers.forEach((correct, index) => {
-    if (answers[index].includes(correct)) {
+  lesson.answers.forEach((answer, index) => {
+
+    const userAnswer =
+      document.getElementById(`answer${index}`)
+      .value
+      .trim()
+      .toLowerCase();
+
+    if (userAnswer.includes(answer.toLowerCase())) {
       score++;
     }
   });
 
-  if (score === 3) {
-    get("feedback").textContent = "✅ Great job! All answers look correct.";
-  } else if (score === 2) {
-    get("feedback").textContent = "🟡 Good work. Check one answer again.";
+  if (score === lesson.answers.length) {
+
+    resultMessage.textContent =
+      "✅ Great job! All answers are correct.";
+
+    coachMessage.textContent =
+      "Fantastic reading today.";
+
+    saveProgress();
+
   } else {
-    get("feedback").textContent = "🔵 Read the story again slowly and try once more.";
+
+    resultMessage.textContent =
+      `You got ${score} out of ${lesson.answers.length} correct.`;
+
+    coachMessage.textContent =
+      "Good effort. Try reading the story again slowly.";
   }
 }
 
-function clearAnswers() {
-  get("answer1").value = "";
-  get("answer2").value = "";
-  get("answer3").value = "";
-  get("feedback").textContent = "";
-}
-
 function nextLesson() {
+
   if (currentLesson < lessons.length - 1) {
+
     currentLesson++;
+
     loadLesson();
-  } else {
-    get("feedback").textContent = "🎉 You finished all 30 lessons!";
   }
 }
 
 function prevLesson() {
+
   if (currentLesson > 0) {
+
     currentLesson--;
+
     loadLesson();
   }
 }
 
-function resetProgress() {
-  currentLesson = 0;
-  localStorage.removeItem("readEasyLesson");
-  loadLesson();
+function clearAnswers() {
+
+  const inputs = document.querySelectorAll("input");
+
+  inputs.forEach(input => {
+    input.value = "";
+  });
+
+  resultMessage.textContent = "";
+
+  coachMessage.textContent =
+    "Answers cleared. Try again slowly.";
 }
 
 function readStory() {
-  speechSynthesis.cancel();
 
-  const speech = new SpeechSynthesisUtterance(get("storyText").textContent);
-  speech.rate = 0.9;
-  speech.pitch = 1;
+  const speech = new SpeechSynthesisUtterance(
+    lessons[currentLesson].story
+  );
 
-  speechSynthesis.speak(speech);
+  speech.rate = 0.85;
+
+  window.speechSynthesis.speak(speech);
 }
 
-document.addEventListener("click", function (event) {
-  if (event.target.id === "checkBtn") checkAnswers();
-  if (event.target.id === "clearBtn") clearAnswers();
-  if (event.target.id === "nextBtn") nextLesson();
-  if (event.target.id === "prevBtn") prevLesson();
-  if (event.target.id === "resetBtn") resetProgress();
-  if (event.target.id === "readAloudBtn") readStory();
-});
+function saveProgress() {
 
-document.addEventListener("change", function (event) {
-  if (event.target.id === "daySelect") {
-    currentLesson = Number(event.target.value);
-    loadLesson();
-  }
-});
+  localStorage.setItem(
+    "readEasyProgress",
+    currentLesson + 1
+  );
+
+  updateCompleted();
+}
+
+function updateCompleted() {
+
+  const completed =
+    localStorage.getItem("readEasyProgress") || 0;
+
+  completedCount.textContent =
+    `Completed: ${completed}`;
+}
+
+function buildDaySelector() {
+
+  daySelect.innerHTML = "";
+
+  lessons.forEach((lesson, index) => {
+
+    const option = document.createElement("option");
+
+    option.value = index;
+
+    option.textContent = `Day ${index + 1}`;
+
+    daySelect.appendChild(option);
+  });
+}
+
+function jumpToDay() {
+
+  currentLesson = Number(daySelect.value);
+
+  loadLesson();
+}
+
+daySelect.addEventListener("change", jumpToDay);
 
 buildDaySelector();
+
 loadLesson();
-window.checkAnswers = checkAnswers;
-window.clearAnswers = clearAnswers;
-window.nextLesson = nextLesson;
-window.prevLesson = prevLesson;
-window.resetProgress = resetProgress;
-window.readStory = readStory;
+Step 6 — Save
