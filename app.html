@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -24,16 +25,51 @@
 
       <a class="home-link" href="index.html">⬅ Back to Home</a>
 
-      <section class="placement-box">
-        <h2>Start at the Right Level</h2>
-        <p>Pick the closest reading comfort level. You can still move slowly.</p>
-
-        <div class="placement-buttons">
-          <button onclick="setStartingLevel('A')">Level A<br><span>Short sentences</span></button>
-          <button onclick="setStartingLevel('B')">Level B<br><span>Longer sentences</span></button>
-          <button onclick="setStartingLevel('C')">Level C<br><span>Short paragraphs</span></button>
-          <button onclick="setStartingLevel('D')">Level D<br><span>Stronger reading</span></button>
+      <section id="assessmentBox" class="assessment-box">
+        <div class="assessment-header">
+          <div>
+            <p class="assessment-label">Placement Check</p>
+            <h2>Start at the Right Level</h2>
+            <p>
+              Read a short passage and answer a few questions. ReadEasy30 will suggest a starting level.
+            </p>
+          </div>
         </div>
+
+        <div id="assessmentIntro" class="assessment-intro">
+          <button class="primary-action" onclick="startPlacementTest()">Start Placement Check</button>
+          <p class="small-note">No pressure. This only helps choose a good starting point.</p>
+        </div>
+
+        <div id="assessmentTest" class="assessment-test hidden">
+          <p id="assessmentStepLabel" class="assessment-step-label">Step 1 of 4</p>
+          <h3 id="assessmentStoryTitle">Placement Reading</h3>
+          <p id="assessmentStoryText" class="assessment-story">Loading placement reading...</p>
+
+          <button class="small-btn" onclick="readPlacementStory()">
+            🔊 Read Placement Aloud
+          </button>
+
+          <div id="assessmentQuestions" class="assessment-questions"></div>
+
+          <div class="button-row">
+            <button onclick="checkPlacementAnswers()">Check Placement</button>
+            <button onclick="restartPlacementTest()">Restart Placement</button>
+          </div>
+        </div>
+
+        <div id="assessmentResult" class="assessment-result hidden"></div>
+
+        <details class="manual-levels">
+          <summary>Choose level manually instead</summary>
+
+          <div class="placement-buttons">
+            <button onclick="setStartingLevel('A')">Level A<br><span>Short sentences</span></button>
+            <button onclick="setStartingLevel('B')">Level B<br><span>Longer sentences</span></button>
+            <button onclick="setStartingLevel('C')">Level C<br><span>Short paragraphs</span></button>
+            <button onclick="setStartingLevel('D')">Level D<br><span>Stronger reading</span></button>
+          </div>
+        </details>
       </section>
 
       <div class="lesson-status">
@@ -129,7 +165,7 @@
 
   </main>
 
-  <script src="./app.js?v=20260520-phase4"></script>
+  <script src="./app.js?v=20260520-placement1"></script>
 
 </body>
 </html>
