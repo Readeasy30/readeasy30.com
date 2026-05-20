@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,33 +32,24 @@
 
       <div class="day-picker">
         <label for="daySelect">Jump to Day</label>
-        <select id="daySelect"></select>
+        <select id="daySelect">
+          <option value="">Loading days...</option>
+        </select>
       </div>
 
       <section class="coach-box">
         <h2>🫧 Bubbles Says</h2>
-
-        <p id="coachMessage">
-          Read slowly. Look for the answer in the story.
-        </p>
+        <p id="coachMessage">Read slowly. Look for the answer in the story.</p>
       </section>
 
       <section class="story-box">
-
         <h2>Reading Story</h2>
-
-        <p id="storyTitle" class="story-title">
-          Day 1 Reading
-        </p>
-
-        <p id="storyText">
-          Loading story...
-        </p>
+        <p id="storyTitle" class="story-title">Day 1 Reading</p>
+        <p id="storyText">Loading story...</p>
 
         <button class="small-btn" onclick="readStory()">
           🔊 Read Aloud
         </button>
-
       </section>
 
       <section class="questions-box">
@@ -67,35 +57,18 @@
       </section>
 
       <section class="helper-tip">
-
         <h2>Parent / Helper Tip</h2>
-
-        <p>
-          If the reader struggles, read together slowly and calmly.
-        </p>
-
+        <p>If the reader struggles, read together slowly and calmly.</p>
       </section>
 
       <div class="button-row">
-        <button onclick="checkAnswers()">
-          Check Answers
-        </button>
-
-        <button onclick="clearAnswers()">
-          Clear Answers
-        </button>
+        <button onclick="checkAnswers()">Check Answers</button>
+        <button onclick="clearAnswers()">Clear Answers</button>
       </div>
 
       <div class="button-row">
-
-        <button onclick="prevLesson()">
-          ⬅ Prev
-        </button>
-
-        <button onclick="nextLesson()">
-          Next ➡
-        </button>
-
+        <button onclick="prevLesson()">⬅ Prev</button>
+        <button onclick="nextLesson()">Next ➡</button>
       </div>
 
       <p id="resultMessage" class="result-message"></p>
@@ -104,11 +77,7 @@
 
   </main>
 
-  <script src="app.js"></script>
+  <script src="./app.js?v=20260520-clean"></script>
 
 </body>
 </html>
-Today 8:38 AM •
-2280 chars • 182 words
-⋮
-No default selected
