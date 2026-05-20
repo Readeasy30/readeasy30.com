@@ -9,7 +9,7 @@
 
   <meta
     name="description"
-    content="ReadEasy30 reading lesson app."
+    content="ReadEasy30 is a calm 30-day reading practice app for children, ESL learners, adults, and struggling readers."
   />
 
   <link rel="stylesheet" href="css/style.css" />
@@ -18,17 +18,14 @@
 <body>
 
   <header class="app-header">
-
     <div class="wrap">
 
-      <p class="eyebrow">
-        30-minute reading practice
-      </p>
+      <p class="eyebrow">30-minute reading practice</p>
 
       <h1>ReadEasy30</h1>
 
       <p class="tagline">
-        Read slowly. Think clearly. One step at a time.
+        Read slowly. Think clearly. Build confidence one lesson at a time.
       </p>
 
       <a class="home-link" href="index.html">
@@ -36,210 +33,156 @@
       </a>
 
     </div>
-
   </header>
 
   <main class="wrap app-main">
 
-    <section class="lesson-card">
+    <section class="placement-preview">
+      <p class="section-label">Coming Next</p>
+
+      <h2>Reading Placement Check</h2>
+
+      <p>
+        Soon, ReadEasy30 will help choose the best starting level before lessons begin.
+      </p>
+    </section>
+
+    <section class="lesson-card" aria-label="Reading lesson">
 
       <div class="lesson-topline">
-
-        <p id="lessonLabel">
-          Lesson 1 of 30
-        </p>
-
-        <p id="completedLabel">
-          Completed: 0
-        </p>
-
+        <p id="lessonLabel">Lesson 1 of 30</p>
+        <p id="completedLabel">Completed: 0</p>
       </div>
 
-      <div class="progress-shell">
-
+      <div class="progress-shell" aria-label="Lesson progress">
         <div id="progressBar" class="progress-bar"></div>
-
       </div>
 
       <div class="day-picker">
-
-        <label for="daySelect">
-          Jump to Day
-        </label>
-
-        <select id="daySelect"></select>
-
+        <label for="daySelect">Jump to Day</label>
+        <select id="daySelect" aria-label="Choose lesson day"></select>
       </div>
 
-      <div class="bubbles-box">
-
+      <div class="bubbles-box" aria-live="polite">
         <h2>🫧 Bubbles Says</h2>
 
         <p id="bubblesMessage">
-          Read slowly and answer carefully.
+          Read slowly. Look for the answer in the story.
         </p>
-
       </div>
 
-      <div class="story-box">
+      <article class="story-box">
 
-        <p class="section-label">
-          Reading Story
-        </p>
+        <p class="section-label">Reading Story</p>
 
-        <h2 id="storyTitle">
-          Day 1 Reading
-        </h2>
+        <h2 id="storyTitle">Day 1 Reading</h2>
 
         <p id="storyText" class="story-text">
           Story loading...
         </p>
 
-        <button
-          id="readAloudBtn"
-          class="secondary-btn"
-          type="button"
-        >
+        <button id="readAloudBtn" class="secondary-btn" type="button">
           🔊 Read Aloud
         </button>
 
-      </div>
+      </article>
 
-      <div class="question-box">
+      <section class="question-box" aria-label="Reading questions">
 
         <div class="question-group">
-
-          <label id="question1Label" for="answer1">
-            Question 1
-          </label>
-
-          <input
-            id="answer1"
-            type="text"
-            autocomplete="off"
-          />
-
+          <label id="question1Label" for="answer1">Question 1</label>
+          <input id="answer1" type="text" autocomplete="off" />
         </div>
 
         <div class="question-group">
-
-          <label id="question2Label" for="answer2">
-            Question 2
-          </label>
-
-          <input
-            id="answer2"
-            type="text"
-            autocomplete="off"
-          />
-
+          <label id="question2Label" for="answer2">Question 2</label>
+          <input id="answer2" type="text" autocomplete="off" />
         </div>
 
         <div class="question-group">
-
-          <label id="question3Label" for="answer3">
-            Question 3
-          </label>
-
-          <input
-            id="answer3"
-            type="text"
-            autocomplete="off"
-          />
-
+          <label id="question3Label" for="answer3">Question 3</label>
+          <input id="answer3" type="text" autocomplete="off" />
         </div>
 
-        <div id="feedback" class="feedback"></div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
 
-      </div>
+      </section>
 
-      <div class="parent-tip">
-
-        <h2>
-          Parent / Helper Tip
-        </h2>
+      <section class="parent-tip">
+        <h2>Parent / Helper Tip</h2>
 
         <p>
-          If the reader struggles, read together slowly and calmly.
+          If the reader struggles, read the story together slowly.
+          Then ask one question at a time.
         </p>
-
-      </div>
+      </section>
 
       <div class="button-row">
-
         <button id="checkBtn" type="button">
           Check Answers
         </button>
 
-        <button
-          id="clearBtn"
-          class="secondary-btn"
-          type="button"
-        >
+        <button id="clearBtn" class="secondary-btn" type="button">
           Clear Answers
         </button>
-
       </div>
 
-     <div class="button-row">
+      <div class="button-row">
+        <button id="prevBtn" class="secondary-btn" type="button">
+          ⬅ Prev
+        </button>
 
-  <button id="checkBtn" type="button" onclick="checkAnswers()">
-    Check Answers
-  </button>
+        <button id="nextBtn" class="secondary-btn" type="button">
+          Next ➡
+        </button>
+      </div>
 
-  <button id="clearBtn" class="secondary-btn" type="button" onclick="clearAnswers()">
-    Clear Answers
-  </button>
+      <button id="resetBtn" class="danger-btn" type="button">
+        Reset Progress
+      </button>
 
-</div>
-
-<div class="button-row">
-
-  <button id="prevBtn" class="secondary-btn" type="button" onclick="prevLesson()">
-    ⬅ Prev
-  </button>
-
-  <button id="nextBtn" class="secondary-btn" type="button" onclick="nextLesson()">
-    Next ➡
-  </button>
-
-</div>
-
-<button id="resetBtn" class="danger-btn" type="button" onclick="resetProgress()">
-  Reset Progress
-</button>
     </section>
 
     <section class="level-path">
+      <p class="section-label">Future Growth Path</p>
 
-      <h2>
-        Reading Level Path
-      </h2>
+      <h2>Reading Level Path</h2>
 
-      <p>
-        Level A builds early reading confidence.
-        Future levels will grow toward stronger
-        reading, vocabulary, and comprehension.
-      </p>
+      <div class="level-grid">
 
+        <div class="level-card">
+          <h3>Level A</h3>
+          <p>Short sentences, simple who/what/where questions.</p>
+        </div>
+
+        <div class="level-card">
+          <h3>Level B</h3>
+          <p>Longer sentences, details, and simple sequence.</p>
+        </div>
+
+        <div class="level-card">
+          <h3>Level C</h3>
+          <p>Short paragraphs, vocabulary, and main idea.</p>
+        </div>
+
+        <div class="level-card">
+          <h3>Level D+</h3>
+          <p>Future lessons grow toward stronger comprehension and middle-school reading.</p>
+        </div>
+
+      </div>
     </section>
 
   </main>
 
   <footer class="site-footer">
-
     <div class="wrap">
-
-      <p>
-        ReadEasy30 — simple reading, one step at a time.
-      </p>
-
+      <p>ReadEasy30 — simple reading, one step at a time.</p>
     </div>
-
   </footer>
 
   <script src="app.js"></script>
 
 </body>
-</html>  
+</html>
 
