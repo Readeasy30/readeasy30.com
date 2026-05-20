@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -25,14 +24,26 @@
 
       <a class="home-link" href="index.html">⬅ Back to Home</a>
 
+      <section class="placement-box">
+        <h2>Start at the Right Level</h2>
+        <p>Pick the closest reading comfort level. You can still move slowly.</p>
+
+        <div class="placement-buttons">
+          <button onclick="setStartingLevel('A')">Level A<br><span>Short sentences</span></button>
+          <button onclick="setStartingLevel('B')">Level B<br><span>Longer sentences</span></button>
+          <button onclick="setStartingLevel('C')">Level C<br><span>Short paragraphs</span></button>
+          <button onclick="setStartingLevel('D')">Level D<br><span>Stronger reading</span></button>
+        </div>
+      </section>
+
       <div class="lesson-status">
         <p id="lessonCount">Lesson 1 of 30</p>
         <p id="completedCount">Completed: 0</p>
         <p id="streakCount">Streak: 0</p>
+        <p id="timerCount">Time: 0:00</p>
       </div>
 
       <div class="progress-wrap">
-
         <div class="progress-label">
           <span>Reading Progress</span>
           <span id="progressText">0%</span>
@@ -41,69 +52,47 @@
         <div class="progress-track">
           <div id="progressBar" class="progress-bar"></div>
         </div>
-
       </div>
 
       <div class="level-wrap">
-
         <div class="level-card">
           <span class="level-label">Current Reading Level</span>
-
           <h2 id="levelTitle">Level A</h2>
-
-          <p id="levelDescription">
-            Short sentences and beginner reading confidence.
-          </p>
+          <p id="levelDescription">Short sentences and beginner reading confidence.</p>
         </div>
-
       </div>
 
       <div class="day-picker">
-
         <label for="daySelect">Jump to Day</label>
-
         <select id="daySelect">
           <option value="">Loading days...</option>
         </select>
-
       </div>
 
       <section class="coach-box">
-
         <h2>🫧 Bubbles Says</h2>
-
-        <p id="coachMessage">
-          Read slowly. Look for the answer in the story.
-        </p>
-
+        <p id="coachMessage">Read slowly. Look for the answer in the story.</p>
       </section>
 
       <section class="story-box">
-
         <div class="story-header">
-
           <div>
             <h2>Reading Story</h2>
-
-            <p id="storyLevel" class="story-level">
-              Level A
-            </p>
+            <p id="storyLevel" class="story-level">Level A</p>
           </div>
-
         </div>
 
-        <p id="storyTitle" class="story-title">
-          Day 1 Reading
-        </p>
-
-        <p id="storyText">
-          Loading story...
-        </p>
+        <p id="storyTitle" class="story-title">Day 1 Reading</p>
+        <p id="storyText">Loading story...</p>
 
         <button class="small-btn" onclick="readStory()">
           🔊 Read Aloud
         </button>
+      </section>
 
+      <section class="vocab-box">
+        <h2>Words to Know</h2>
+        <div id="vocabList"></div>
       </section>
 
       <section class="questions-box">
@@ -111,55 +100,27 @@
       </section>
 
       <section id="completeCard" class="complete-card hidden">
-
         <h2>🎉 Day Complete!</h2>
-
-        <p id="completeMessage">
-          You finished today’s reading lesson.
-        </p>
-
+        <p id="completeMessage">You finished today’s reading lesson.</p>
       </section>
 
       <section class="helper-tip">
-
         <h2>Parent / Helper Tip</h2>
-
-        <p>
-          If the reader struggles, read together slowly and calmly.
-        </p>
-
+        <p>If the reader struggles, read together slowly and calmly.</p>
       </section>
 
       <div class="button-row">
-
-        <button onclick="checkAnswers()">
-          Check Answers
-        </button>
-
-        <button onclick="clearAnswers()">
-          Clear Answers
-        </button>
-
+        <button onclick="checkAnswers()">Check Answers</button>
+        <button onclick="clearAnswers()">Clear Answers</button>
       </div>
 
       <div class="button-row">
-
-        <button onclick="prevLesson()">
-          ⬅ Prev
-        </button>
-
-        <button id="nextBtn" onclick="nextLesson()">
-          Next ➡
-        </button>
-
+        <button onclick="prevLesson()">⬅ Prev</button>
+        <button id="nextBtn" onclick="nextLesson()">Next ➡</button>
       </div>
 
       <div class="button-row danger-row">
-
-        <button onclick="resetProgress()">
-          Reset Progress
-        </button>
-
+        <button onclick="resetProgress()">Reset Progress</button>
       </div>
 
       <p id="resultMessage" class="result-message"></p>
@@ -168,11 +129,7 @@
 
   </main>
 
-  <script src="./app.js?v=20260520-levels"></script>
+  <script src="./app.js?v=20260520-phase4"></script>
 
 </body>
 </html>
-Today 9:57 AM •
-3554 chars • 261 words
-⋮
-No default selected
