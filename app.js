@@ -168,3 +168,9 @@ document.addEventListener("change", function (event) {
 
 buildDaySelector();
 loadLesson();
+window.checkAnswers = checkAnswers;
+window.clearAnswers = clearAnswers;
+window.nextLesson = nextLesson;
+window.prevLesson = prevLesson;
+window.resetProgress = resetProgress;
+window.readStory = readStory;
