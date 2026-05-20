@@ -59,7 +59,8 @@ h1 {
   color: #111827;
 }
 
-h2 {
+h2,
+h3 {
   margin-top: 0;
   line-height: 1.25;
   color: #111827;
@@ -89,17 +90,112 @@ p {
   text-decoration: underline;
 }
 
+.assessment-box,
 .placement-box {
   margin-top: 1.4rem;
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  padding: 1.2rem;
-  border-radius: 0.8rem;
+  background: linear-gradient(180deg, #f8fafc, #eefcff);
+  border: 1px solid #cfeff5;
+  padding: 1.25rem;
+  border-radius: 1rem;
 }
 
+.assessment-box p,
 .placement-box p {
   color: #555;
   line-height: 1.7;
+}
+
+.assessment-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.assessment-label,
+.assessment-step-label {
+  display: inline-block;
+  margin: 0 0 0.45rem;
+  padding: 0.25rem 0.55rem;
+  background: #dff7fb;
+  color: #0f7f92;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.assessment-intro,
+.assessment-test,
+.assessment-result {
+  margin-top: 1rem;
+  background: white;
+  border: 1px solid #dbeafe;
+  padding: 1rem;
+  border-radius: 0.85rem;
+}
+
+.assessment-test h3,
+.assessment-result h3 {
+  margin-bottom: 0.6rem;
+}
+
+.assessment-story {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  background: #fafafa;
+  border-left: 0.35rem solid #1597ad;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.assessment-questions {
+  margin-top: 1.1rem;
+}
+
+.assessment-result {
+  border-left: 0.35rem solid #22c55e;
+  background: #f0fdf4;
+}
+
+.assessment-result p {
+  color: #166534;
+}
+
+.placement-complete {
+  background: #f8fafc;
+  border-color: #d1d5db;
+}
+
+.manual-levels {
+  margin-top: 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.8rem;
+  padding: 0.9rem;
+}
+
+.manual-levels summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+.primary-action {
+  width: 100%;
+  background: #1597ad;
+  color: white;
+  border: none;
+  padding: 0.95rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary-action:hover,
+.primary-action:focus {
+  background: #0f7f92;
 }
 
 .placement-buttons {
@@ -227,7 +323,8 @@ p {
   color: #111827;
 }
 
-.day-picker select:focus {
+.day-picker select:focus,
+.question-block input:focus {
   outline: none;
   border-color: #4f46e5;
   box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
@@ -338,12 +435,6 @@ p {
   border: 1px solid #cbd5e1;
   background: white;
   color: #111827;
-}
-
-.question-block input:focus {
-  outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
 }
 
 .correct-answer {
@@ -588,17 +679,15 @@ p {
     border-radius: 0.9rem;
   }
 
-  .lesson-status {
+  .assessment-header,
+  .lesson-status,
+  .story-header {
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .placement-buttons {
     grid-template-columns: 1fr;
-  }
-
-  .story-header {
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .button-row {
@@ -631,7 +720,8 @@ p {
 
   .lesson-card,
   .status-card,
-  .bubbles-card {
+  .bubbles-card,
+  .assessment-box {
     padding: 1rem;
   }
 
