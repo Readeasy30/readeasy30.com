@@ -1,188 +1,260 @@
-<!DOCTYPE html>
-<html lang="en">
+<header class="app-header">
+  <div class="wrap">
+    <p class="eyebrow">30-minute reading practice</p>
+    <h1>ReadEasy30</h1>
+    <p class="tagline">Read slowly. Think clearly. Build confidence one lesson at a time.</p>
+    <a class="home-link" href="index.html">⬅ Back to Home</a>
+  </div>
+</header>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<main class="wrap app-main">
 
-  <title>ReadEasy30 Lesson App</title>
+  <section class="lesson-card">
 
-  <meta
-    name="description"
-    content="ReadEasy30 is a calm 30-day reading practice app for children, ESL learners, adults, and struggling readers."
-  />
-
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-
-  <header class="app-header">
-    <div class="wrap">
-
-      <p class="eyebrow">30-minute reading practice</p>
-
-      <h1>ReadEasy30</h1>
-
-      <p class="tagline">
-        Read slowly. Think clearly. Build confidence one lesson at a time.
-      </p>
-
-      <a class="home-link" href="index.html">
-        ⬅ Back to Home
-      </a>
-
+    <div class="lesson-topline">
+      <p id="lessonLabel">Lesson 1 of 30</p>
+      <p id="completedLabel">Completed: 0</p>
     </div>
-  </header>
 
-  <main class="wrap app-main">
+    <div class="progress-shell">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
 
-    <section class="placement-preview">
-      <p class="section-label">Coming Next</p>
+    <div class="day-picker">
+      <label for="daySelect">Jump to Day</label>
+      <select id="daySelect"></select>
+    </div>
 
-      <h2>Reading Placement Check</h2>
+    <div class="bubbles-box">
+      <h2>🫧 Bubbles Says</h2>
+      <p id="bubblesMessage">Read slowly. Look for the answer in the story.</p>
+    </div>
 
-      <p>
-        Soon, ReadEasy30 will help choose the best starting level before lessons begin.
-      </p>
-    </section>
+    <article class="story-box">
+      <p class="section-label">Reading Story</p>
+      <h2 id="storyTitle">Day 1 Reading</h2>
+      <p id="storyText" class="story-text">Loading...</p>
 
-    <section class="lesson-card" aria-label="Reading lesson">
-
-      <div class="lesson-topline">
-        <p id="lessonLabel">Lesson 1 of 30</p>
-        <p id="completedLabel">Completed: 0</p>
-      </div>
-
-      <div class="progress-shell" aria-label="Lesson progress">
-        <div id="progressBar" class="progress-bar"></div>
-      </div>
-
-      <div class="day-picker">
-        <label for="daySelect">Jump to Day</label>
-        <select id="daySelect" aria-label="Choose lesson day"></select>
-      </div>
-
-      <div class="bubbles-box" aria-live="polite">
-        <h2>🫧 Bubbles Says</h2>
-
-        <p id="bubblesMessage">
-          Read slowly. Look for the answer in the story.
-        </p>
-      </div>
-
-      <article class="story-box">
-
-        <p class="section-label">Reading Story</p>
-
-        <h2 id="storyTitle">Day 1 Reading</h2>
-
-        <p id="storyText" class="story-text">
-          Story loading...
-        </p>
-
-        <button id="readAloudBtn" class="secondary-btn" type="button">
-          🔊 Read Aloud
-        </button>
-
-      </article>
-
-      <section class="question-box" aria-label="Reading questions">
-
-        <div class="question-group">
-          <label id="question1Label" for="answer1">Question 1</label>
-          <input id="answer1" type="text" autocomplete="off" />
-        </div>
-
-        <div class="question-group">
-          <label id="question2Label" for="answer2">Question 2</label>
-          <input id="answer2" type="text" autocomplete="off" />
-        </div>
-
-        <div class="question-group">
-          <label id="question3Label" for="answer3">Question 3</label>
-          <input id="answer3" type="text" autocomplete="off" />
-        </div>
-
-        <div id="feedback" class="feedback" aria-live="polite"></div>
-
-      </section>
-
-      <section class="parent-tip">
-        <h2>Parent / Helper Tip</h2>
-
-        <p>
-          If the reader struggles, read the story together slowly.
-          Then ask one question at a time.
-        </p>
-      </section>
-
-      <div class="button-row">
-        <button id="checkBtn" type="button">
-          Check Answers
-        </button>
-
-        <button id="clearBtn" class="secondary-btn" type="button">
-          Clear Answers
-        </button>
-      </div>
-
-      <div class="button-row">
-        <button id="prevBtn" class="secondary-btn" type="button">
-          ⬅ Prev
-        </button>
-
-        <button id="nextBtn" class="secondary-btn" type="button">
-          Next ➡
-        </button>
-      </div>
-
-      <button id="resetBtn" class="danger-btn" type="button">
-        Reset Progress
+      <button id="readAloudBtn" class="secondary-btn" type="button">
+        🔊 Read Aloud
       </button>
+    </article>
 
-    </section>
+    <section class="question-box">
 
-    <section class="level-path">
-      <p class="section-label">Future Growth Path</p>
-
-      <h2>Reading Level Path</h2>
-
-      <div class="level-grid">
-
-        <div class="level-card">
-          <h3>Level A</h3>
-          <p>Short sentences, simple who/what/where questions.</p>
-        </div>
-
-        <div class="level-card">
-          <h3>Level B</h3>
-          <p>Longer sentences, details, and simple sequence.</p>
-        </div>
-
-        <div class="level-card">
-          <h3>Level C</h3>
-          <p>Short paragraphs, vocabulary, and main idea.</p>
-        </div>
-
-        <div class="level-card">
-          <h3>Level D+</h3>
-          <p>Future lessons grow toward stronger comprehension and middle-school reading.</p>
-        </div>
-
+      <div class="question-group">
+        <label id="question1Label" for="answer1">Question 1</label>
+        <input id="answer1" type="text" autocomplete="off" />
       </div>
+
+      <div class="question-group">
+        <label id="question2Label" for="answer2">Question 2</label>
+        <input id="answer2" type="text" autocomplete="off" />
+      </div>
+
+      <div class="question-group">
+        <label id="question3Label" for="answer3">Question 3</label>
+        <input id="answer3" type="text" autocomplete="off" />
+      </div>
+
+      <div id="feedback" class="feedback"></div>
+
     </section>
 
-  </main>
+    <section class="parent-tip">
+      <h2>Parent / Helper Tip</h2>
+      <p>If the reader struggles, read together slowly and calmly.</p>
+    </section>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>ReadEasy30 — simple reading, one step at a time.</p>
+    <div class="button-row">
+      <button id="checkBtn" type="button">Check Answers</button>
+      <button id="clearBtn" class="secondary-btn" type="button">Clear Answers</button>
     </div>
-  </footer>
 
-  <script src="app.js"></script>
+    <div class="button-row">
+      <button id="prevBtn" class="secondary-btn" type="button">⬅ Prev</button>
+      <button id="nextBtn" class="secondary-btn" type="button">Next ➡</button>
+    </div>
+
+    <button id="resetBtn" class="danger-btn" type="button">
+      Reset Progress
+    </button>
+
+  </section>
+
+  <section class="level-path">
+    <h2>Reading Level Path</h2>
+    <p>
+      Level A builds early reading confidence. Future levels will grow toward stronger
+      paragraph reading, vocabulary, comprehension, and middle-school reading skills.
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>ReadEasy30 — simple reading, one step at a time.</p>
+  </div>
+</footer>
+
+<script>
+  const lessons = [];
+
+  for (let i = 1; i <= 30; i++) {
+    lessons.push({
+      day: i,
+      title: `Day ${i} Reading`,
+      story:
+        i === 1
+          ? "Tom went to the park. He saw a friendly dog near a tree."
+          : i === 2
+          ? "Maria read a book at school before lunch."
+          : i === 3
+          ? "Jake helped his mother carry groceries into the house."
+          : `This is the reading story for Day ${i}. Read slowly. Think about the words. Then answer the questions.`,
+      questions:
+        i === 1
+          ? ["Where did Tom go?", "What did Tom see?", "Where was the dog?"]
+          : i === 2
+          ? ["Who read a book?", "Where did Maria read?", "When did she read?"]
+          : i === 3
+          ? ["Who helped his mother?", "What did Jake carry?", "Where did they take the groceries?"]
+          : ["What day is this lesson?", "How should you read?", "What should you do after reading?"],
+      answers:
+        i === 1
+          ? ["park", "dog", "tree"]
+          : i === 2
+          ? ["maria", "school", "before lunch"]
+          : i === 3
+          ? ["jake", "groceries", "house"]
+          : [`${i}`, "slowly", "answer"],
+      bubbles: "Read slowly. Look for the answer in the story."
+    });
+  }
+
+  let currentLesson = Number(localStorage.getItem("readEasyLesson")) || 0;
+
+  const $ = (id) => document.getElementById(id);
+
+  function buildDaySelector() {
+    $("daySelect").innerHTML = "";
+
+    lessons.forEach((lesson, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = `Day ${lesson.day}`;
+      $("daySelect").appendChild(option);
+    });
+  }
+
+  function loadLesson() {
+    const lesson = lessons[currentLesson];
+
+    $("lessonLabel").textContent = `Lesson ${lesson.day} of 30`;
+    $("completedLabel").textContent = `Completed: ${currentLesson}`;
+    $("storyTitle").textContent = lesson.title;
+    $("storyText").textContent = lesson.story;
+
+    $("question1Label").textContent = lesson.questions[0];
+    $("question2Label").textContent = lesson.questions[1];
+    $("question3Label").textContent = lesson.questions[2];
+
+    $("bubblesMessage").textContent = lesson.bubbles;
+
+    $("answer1").value = "";
+    $("answer2").value = "";
+    $("answer3").value = "";
+    $("feedback").textContent = "";
+
+    $("daySelect").value = currentLesson;
+
+    $("progressBar").style.width =
+      `${((currentLesson + 1) / lessons.length) * 100}%`;
+
+    $("prevBtn").disabled = currentLesson === 0;
+    $("nextBtn").textContent =
+      currentLesson === lessons.length - 1 ? "Finish" : "Next ➡";
+
+    localStorage.setItem("readEasyLesson", currentLesson);
+  }
+
+  function nextLesson() {
+    if (currentLesson < lessons.length - 1) {
+      currentLesson++;
+      loadLesson();
+    } else {
+      $("feedback").textContent = "🎉 You finished all 30 lessons!";
+    }
+  }
+
+  function prevLesson() {
+    if (currentLesson > 0) {
+      currentLesson--;
+      loadLesson();
+    }
+  }
+
+  function checkAnswers() {
+    const lesson = lessons[currentLesson];
+
+    const userAnswers = [
+      $("answer1").value.toLowerCase(),
+      $("answer2").value.toLowerCase(),
+      $("answer3").value.toLowerCase()
+    ];
+
+    let score = 0;
+
+    lesson.answers.forEach((answer, index) => {
+      if (userAnswers[index].includes(answer)) score++;
+    });
+
+    $("feedback").textContent =
+      score === 3
+        ? "✅ Great job! All answers look correct."
+        : score === 2
+        ? "🟡 Good work. Check one answer again."
+        : "🔵 Read the story again slowly and try once more.";
+  }
+
+  function clearAnswers() {
+    $("answer1").value = "";
+    $("answer2").value = "";
+    $("answer3").value = "";
+    $("feedback").textContent = "";
+  }
+
+  function resetProgress() {
+    currentLesson = 0;
+    localStorage.removeItem("readEasyLesson");
+    loadLesson();
+  }
+
+  function readStory() {
+    speechSynthesis.cancel();
+    const speech = new SpeechSynthesisUtterance($("storyText").textContent);
+    speech.rate = 0.9;
+    speechSynthesis.speak(speech);
+  }
+
+  $("nextBtn").addEventListener("click", nextLesson);
+  $("prevBtn").addEventListener("click", prevLesson);
+  $("checkBtn").addEventListener("click", checkAnswers);
+  $("clearBtn").addEventListener("click", clearAnswers);
+  $("resetBtn").addEventListener("click", resetProgress);
+  $("readAloudBtn").addEventListener("click", readStory);
+
+  $("daySelect").addEventListener("change", function () {
+    currentLesson = Number(this.value);
+    loadLesson();
+  });
+
+  buildDaySelector();
+  loadLesson();
+</script>
 
 </body>
 </html>
 
+After saving:
