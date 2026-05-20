@@ -4,725 +4,99 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>ReadEasy30</title>
-
-  <meta
-    name="description"
-    content="ReadEasy30 helps children and struggling readers build confidence one lesson at a time."
-  />
+  <title>ReadEasy30 Lesson App</title>
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-<header class="app-header">
-  <div class="wrap">
-    <p class="eyebrow">30-minute reading practice</p>
+  <main class="lesson-page">
 
-    <h1>ReadEasy30</h1>
+    <section class="lesson-card">
 
-    <p class="tagline">
-      Start with a quick reading check. Then begin the best lesson path.
-    </p>
+      <p class="eyebrow">30-minute reading practice</p>
 
-    <a class="home-link" href="index.html">⬅ Back to Home</a>
-  </div>
-</header>
+      <h1>ReadEasy30</h1>
 
-<main class="wrap app-main">
-
-  <section id="placementCard" class="lesson-card">
-
-    <p class="section-label">Step 1</p>
-
-    <h2>Find the Best Starting Level</h2>
-
-    <p>
-      Read the short passage below. Answer the questions.
-      This helps choose a better starting point.
-    </p>
-
-    <div class="bubbles-box">
-      <h2>🫧 Bubbles Says</h2>
-      <p>
-        No pressure. This is not a test. It only helps us start in the right place.
+      <p class="lesson-subtitle">
+        Read slowly. Think clearly. Build confidence one lesson at a time.
       </p>
-    </div>
 
-    <article class="story-box">
-      <p class="section-label">Placement Reading</p>
+      <a class="home-link" href="index.html">⬅ Back to Home</a>
 
-      <h2>The Helpful Neighbor</h2>
-
-      <p class="story-text">
-        Ella saw her neighbor carrying a heavy box. The box was full of books.
-        Ella opened the gate and helped carry the box to the porch.
-        Her neighbor smiled and said thank you.
-      </p>
-    </article>
-
-    <section class="question-box">
-
-      <div class="question-group">
-        <label for="placeAnswer1">Who was carrying a heavy box?</label>
-        <input id="placeAnswer1" type="text" autocomplete="off" />
+      <div class="lesson-status">
+        <p id="lessonCount">Lesson 1 of 30</p>
+        <p id="completedCount">Completed: 0</p>
       </div>
 
-      <div class="question-group">
-        <label for="placeAnswer2">What was inside the box?</label>
-        <input id="placeAnswer2" type="text" autocomplete="off" />
+      <div class="day-picker">
+        <label for="daySelect">Jump to Day</label>
+        <select id="daySelect"></select>
       </div>
 
-      <div class="question-group">
-        <label for="placeAnswer3">Where did Ella help carry the box?</label>
-        <input id="placeAnswer3" type="text" autocomplete="off" />
+      <section class="coach-box">
+        <h2>🫧 Bubbles Says</h2>
+        <p id="coachMessage">
+          Read slowly. Look for the answer in the story.
+        </p>
+      </section>
+
+      <section class="story-box">
+        <h2>Reading Story</h2>
+
+        <p id="storyTitle" class="story-title">Day 1 Reading</p>
+
+        <p id="storyText">
+          Loading story...
+        </p>
+
+        <button class="small-btn" onclick="readStory()">🔊 Read Aloud</button>
+      </section>
+
+      <section class="questions-box">
+        <div id="questions"></div>
+      </section>
+
+      <section class="helper-tip">
+        <h2>Parent / Helper Tip</h2>
+        <p>
+          If the reader struggles, read together slowly and calmly.
+        </p>
+      </section>
+
+      <div class="button-row">
+        <button onclick="checkAnswers()">Check Answers</button>
+        <button onclick="clearAnswers()">Clear Answers</button>
       </div>
 
-      <div id="placementFeedback" class="feedback"></div>
+      <div class="button-row">
+        <button onclick="prevLesson()">⬅ Prev</button>
+        <button onclick="nextLesson()">Next ➡</button>
+      </div>
+
+      <p id="resultMessage" class="result-message"></p>
 
     </section>
 
-    <div class="button-row">
-      <button id="checkPlacementBtn" type="button">
-        Check Starting Level
-      </button>
+  </main>
 
-      <button id="skipPlacementBtn" class="secondary-btn" type="button">
-        Skip and Start Day 1
-      </button>
-    </div>
-
-  </section>
-
-  <section id="lessonApp" class="lesson-card" style="display:none;">
-
-    <div class="lesson-topline">
-      <p id="lessonLabel">Lesson 1 of 30</p>
-      <p id="completedLabel">Completed: 0 • ⭐ 0</p>
-    </div>
-
-    <div class="progress-shell">
-      <div id="progressBar" class="progress-bar"></div>
-    </div>
-
-    <div class="day-picker">
-      <label for="daySelect">Jump to Day</label>
-      <select id="daySelect"></select>
-    </div>
-
-    <div class="daily-mission">
-      <h2>🎯 Today's Reading Mission</h2>
-      <p>Read carefully. Find clues. Answer slowly and confidently.</p>
-    </div>
-
-    <div class="bubbles-box">
-      <h2>🫧 Bubbles Says</h2>
-      <p id="bubblesMessage">Read slowly. Look for clue words.</p>
-    </div>
-
-    <article class="story-box">
-      <p class="section-label">Reading Story</p>
-
-      <h2 id="storyTitle">Day 1 Reading</h2>
-
-      <p id="storyText" class="story-text">
-        Loading lesson...
-      </p>
-
-      <button id="readAloudBtn" class="secondary-btn" type="button">
-        🔊 Read Aloud
-      </button>
-    </article>
-
-    <section class="question-box">
-
-      <div class="question-group">
-        <label id="question1Label" for="answer1">Question 1</label>
-        <input id="answer1" type="text" autocomplete="off" />
-      </div>
-
-      <div class="question-group">
-        <label id="question2Label" for="answer2">Question 2</label>
-        <input id="answer2" type="text" autocomplete="off" />
-      </div>
-
-      <div class="question-group">
-        <label id="question3Label" for="answer3">Question 3</label>
-        <input id="answer3" type="text" autocomplete="off" />
-      </div>
-
-      <div id="feedback" class="feedback"></div>
-
-    </section>
-
-    <section class="parent-tip">
-      <h2>Parent / Helper Tip</h2>
-      <p>
-        If the reader struggles, read together slowly.
-        Then ask one question at a time.
-      </p>
-    </section>
-
-    <div class="button-row">
-      <button id="checkBtn" type="button">Check Answers</button>
-      <button id="clearBtn" class="secondary-btn" type="button">Clear Answers</button>
-    </div>
-
-    <div class="button-row">
-      <button id="prevBtn" class="secondary-btn" type="button">⬅ Prev</button>
-      <button id="nextBtn" class="secondary-btn" type="button">Next ➡</button>
-    </div>
-
-    <button id="resetBtn" class="danger-btn" type="button">
-      Reset Progress
-    </button>
-
-  </section>
-
-  <section class="level-path">
-    <p class="section-label">Reading Growth Path</p>
-
-    <h2>Levels A → F</h2>
-
-    <p>
-      ReadEasy30 starts with simple confidence-building reading and grows toward
-      vocabulary, sequencing, paragraph reading, and stronger comprehension.
-    </p>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p>ReadEasy30 — simple reading, one step at a time.</p>
-  </div>
-</footer>
-
-<script>
-const lessons = [
-  {
-    day: 1,
-    level: "A",
-    title: "Day 1: Tom and the Dog",
-    story: "Tom went to the park. He saw a friendly dog near a tree.",
-    questions: ["Where did Tom go?", "What did Tom see?", "Where was the dog?"],
-    answers: ["park", "dog", "tree"],
-    bubbles: "Start simple. Look for who, what, and where."
-  },
-  {
-    day: 2,
-    level: "A",
-    title: "Day 2: Maria Reads",
-    story: "Maria read a book at school before lunch. She liked the story.",
-    questions: ["Who read a book?", "Where did Maria read?", "When did she read?"],
-    answers: ["maria", "school", "before lunch"],
-    bubbles: "Time words help you understand what happened."
-  },
-  {
-    day: 3,
-    level: "A",
-    title: "Day 3: Jake Helps",
-    story: "Jake helped his mother carry groceries into the house. He put the bags on the table.",
-    questions: ["Who helped his mother?", "What did Jake carry?", "Where did he put the bags?"],
-    answers: ["jake", "groceries", "table"],
-    bubbles: "Good readers notice actions."
-  },
-  {
-    day: 4,
-    level: "A",
-    title: "Day 4: The Red Ball",
-    story: "Nina had a red ball. The ball rolled under the chair. Nina picked it up.",
-    questions: ["What did Nina have?", "Where did the ball roll?", "What did Nina do?"],
-    answers: ["red ball", "chair", "picked"],
-    bubbles: "Look for the problem and what happened next."
-  },
-  {
-    day: 5,
-    level: "A",
-    title: "Day 5: Ben Feeds the Cat",
-    story: "Ben saw the cat by the door. The cat was hungry. Ben gave the cat food.",
-    questions: ["Where was the cat?", "How did the cat feel?", "What did Ben give the cat?"],
-    answers: ["door", "hungry", "food"],
-    bubbles: "Feelings are clues in a story."
-  },
-  {
-    day: 6,
-    level: "B",
-    title: "Day 6: The Rainy Walk",
-    story: "It started to rain while Ava walked home. She opened her blue umbrella and stayed dry.",
-    questions: ["What started to fall?", "What did Ava open?", "Why did she stay dry?"],
-    answers: ["rain", "umbrella", "umbrella"],
-    bubbles: "Ask yourself what caused the result."
-  },
-  {
-    day: 7,
-    level: "B",
-    title: "Day 7: The Lost Pencil",
-    story: "Sam could not find his pencil. He looked under his desk and found it beside his shoe.",
-    questions: ["What was Sam looking for?", "Where did he look?", "Where was the pencil?"],
-    answers: ["pencil", "desk", "shoe"],
-    bubbles: "Details tell you where things happen."
-  },
-  {
-    day: 8,
-    level: "B",
-    title: "Day 8: Lily Shares",
-    story: "Lily had two apples. Her friend forgot a snack, so Lily gave one apple to her friend.",
-    questions: ["How many apples did Lily have?", "Who forgot a snack?", "What did Lily do?"],
-    answers: ["two", "friend", "gave"],
-    bubbles: "Kind actions are part of the meaning."
-  },
-  {
-    day: 9,
-    level: "B",
-    title: "Day 9: The Bus Stop",
-    story: "Omar waited at the bus stop. The bus was late, so he sat on the bench and read a sign.",
-    questions: ["Where did Omar wait?", "What was late?", "What did Omar read?"],
-    answers: ["bus stop", "bus", "sign"],
-    bubbles: "Slow down when a sentence has more than one action."
-  },
-  {
-    day: 10,
-    level: "B",
-    title: "Day 10: Clean Room",
-    story: "Mia cleaned her room before dinner. She put books on the shelf and toys in a box.",
-    questions: ["When did Mia clean her room?", "Where did she put books?", "Where did she put toys?"],
-    answers: ["before dinner", "shelf", "box"],
-    bubbles: "Sorting details helps comprehension."
-  },
-  {
-    day: 11,
-    level: "C",
-    title: "Day 11: First, Then, Last",
-    story: "First, Leo washed his hands. Then he made a sandwich. Last, he sat at the table to eat.",
-    questions: ["What did Leo do first?", "What did he make?", "What did he do last?"],
-    answers: ["washed", "sandwich", "eat"],
-    bubbles: "Sequence words show order."
-  },
-  {
-    day: 12,
-    level: "C",
-    title: "Day 12: The Garden",
-    story: "Grandma planted seeds in the garden. Each morning, she watered them. After many days, small green plants grew.",
-    questions: ["What did Grandma plant?", "When did she water them?", "What grew after many days?"],
-    answers: ["seeds", "morning", "plants"],
-    bubbles: "Some stories happen over time."
-  },
-  {
-    day: 13,
-    level: "C",
-    title: "Day 13: The Broken Kite",
-    story: "Eli's kite fell and tore. He felt sad, but his sister helped him fix it with tape.",
-    questions: ["What happened to the kite?", "How did Eli feel?", "Who helped him fix it?"],
-    answers: ["tore", "sad", "sister"],
-    bubbles: "Notice feelings and solutions."
-  },
-  {
-    day: 14,
-    level: "C",
-    title: "Day 14: The Library Card",
-    story: "Tara got her first library card. She chose a book about space and promised to return it next week.",
-    questions: ["What did Tara get?", "What was the book about?", "When would she return it?"],
-    answers: ["library card", "space", "next week"],
-    bubbles: "Look for promises and future actions."
-  },
-  {
-    day: 15,
-    level: "C",
-    title: "Day 15: Team Cleanup",
-    story: "After the game, the team saw bottles on the field. They worked together and cleaned the field before leaving.",
-    questions: ["What did the team see?", "Where were the bottles?", "What did the team do?"],
-    answers: ["bottles", "field", "cleaned"],
-    bubbles: "Main idea: people can solve problems together."
-  },
-  {
-    day: 16,
-    level: "D",
-    title: "Day 16: A Careful Choice",
-    story: "Noah wanted to buy a toy, but he also wanted to save money. He chose to save half and spend half.",
-    questions: ["What did Noah want to buy?", "What else did he want to do?", "What choice did he make?"],
-    answers: ["toy", "save money", "half"],
-    bubbles: "Good readers notice decisions."
-  },
-  {
-    day: 17,
-    level: "D",
-    title: "Day 17: The New Student",
-    story: "A new student joined the class. At first, she looked nervous. Maya smiled and invited her to sit nearby.",
-    questions: ["Who joined the class?", "How did she look at first?", "What did Maya do?"],
-    answers: ["new student", "nervous", "invited"],
-    bubbles: "Characters often change because someone helps."
-  },
-  {
-    day: 18,
-    level: "D",
-    title: "Day 18: The Science Jar",
-    story: "The class placed a bean in a jar with a wet paper towel. A few days later, a tiny root began to grow.",
-    questions: ["What did the class place in the jar?", "What was wet?", "What began to grow?"],
-    answers: ["bean", "paper towel", "root"],
-    bubbles: "Science reading uses careful details."
-  },
-  {
-    day: 19,
-    level: "D",
-    title: "Day 19: The Long Hill",
-    story: "Carlos rode his bike up a long hill. He was tired, but he kept pedaling until he reached the top.",
-    questions: ["What did Carlos ride?", "How did he feel?", "What did he keep doing?"],
-    answers: ["bike", "tired", "pedaling"],
-    bubbles: "Persistence means not quitting when something is hard."
-  },
-  {
-    day: 20,
-    level: "D",
-    title: "Day 20: A Better Plan",
-    story: "Jenna forgot her homework twice. She made a checklist and put it by her backpack so she would remember.",
-    questions: ["What did Jenna forget?", "What did she make?", "Where did she put it?"],
-    answers: ["homework", "checklist", "backpack"],
-    bubbles: "A problem and solution can be the heart of a story."
-  },
-  {
-    day: 21,
-    level: "E",
-    title: "Day 21: The Small Business",
-    story: "Malik and his sister opened a lemonade stand. They made a sign, counted cups, and thanked each customer. By the end of the day, they had earned enough money to buy more lemons.",
-    questions: ["What did Malik and his sister open?", "What did they count?", "Why could they buy more lemons?"],
-    answers: ["lemonade stand", "cups", "earned"],
-    bubbles: "Longer passages may include several steps."
-  },
-  {
-    day: 22,
-    level: "E",
-    title: "Day 22: Helping the Neighbor",
-    story: "Mrs. Green dropped a bag of oranges on the sidewalk. Several oranges rolled away. Darius helped pick them up and carried the bag to her porch.",
-    questions: ["What did Mrs. Green drop?", "What rolled away?", "Where did Darius carry the bag?"],
-    answers: ["oranges", "oranges", "porch"],
-    bubbles: "Look for who needed help and who helped."
-  },
-  {
-    day: 23,
-    level: "E",
-    title: "Day 23: The Class Vote",
-    story: "The class voted on a reward for finishing their reading goal. Some students wanted extra recess, but most chose a reading picnic under the trees.",
-    questions: ["What did the class vote on?", "What did some students want?", "What did most students choose?"],
-    answers: ["reward", "recess", "reading picnic"],
-    bubbles: "Compare what some people wanted with what most chose."
-  },
-  {
-    day: 24,
-    level: "E",
-    title: "Day 24: The Map",
-    story: "Rosa studied the map before the field trip. She noticed the museum was across from the park and next to the library.",
-    questions: ["What did Rosa study?", "Where was the museum compared to the park?", "What was next to the museum?"],
-    answers: ["map", "across", "library"],
-    bubbles: "Location words matter: across, near, beside, next to."
-  },
-  {
-    day: 25,
-    level: "E",
-    title: "Day 25: Practice Pays Off",
-    story: "Amir practiced reading each night for ten minutes. At first, he read slowly. After two weeks, he read smoother and felt proud.",
-    questions: ["How often did Amir practice?", "How did he read at first?", "How did he feel after two weeks?"],
-    answers: ["each night", "slowly", "proud"],
-    bubbles: "Progress can be slow and still be real."
-  },
-  {
-    day: 26,
-    level: "F",
-    title: "Day 26: The Wise Choice",
-    story: "Kayla wanted to finish her game, but her little brother needed help with his shoes. She paused the game and helped him. Later, her mother thanked her for being patient.",
-    questions: ["What did Kayla want to finish?", "Who needed help?", "Why did her mother thank her?"],
-    answers: ["game", "brother", "patient"],
-    bubbles: "Strong readers explain why a character acted."
-  },
-  {
-    day: 27,
-    level: "F",
-    title: "Day 27: The Weather Report",
-    story: "The weather report said storms might arrive by afternoon. Because of that, the coach moved soccer practice indoors before the rain began.",
-    questions: ["What might arrive by afternoon?", "Who moved practice indoors?", "Why was practice moved indoors?"],
-    answers: ["storms", "coach", "rain"],
-    bubbles: "Cause and effect: because this happened, that happened."
-  },
-  {
-    day: 28,
-    level: "F",
-    title: "Day 28: Different Opinions",
-    story: "Two friends disagreed about the best book in class. Instead of arguing, they explained what they liked. They learned that different readers can enjoy different things.",
-    questions: ["What did the friends disagree about?", "What did they do instead of arguing?", "What did they learn?"],
-    answers: ["book", "explained", "different"],
-    bubbles: "Understanding opinions helps deeper reading."
-  },
-  {
-    day: 29,
-    level: "F",
-    title: "Day 29: The Long Project",
-    story: "The history project seemed too big at first. Luis divided it into smaller jobs: reading, notes, pictures, and a short report. The plan helped him finish without panic.",
-    questions: ["How did the project seem at first?", "What did Luis divide it into?", "Why did the plan help?"],
-    answers: ["too big", "smaller jobs", "finish"],
-    bubbles: "Big tasks become easier when broken into steps."
-  },
-  {
-    day: 30,
-    level: "F",
-    title: "Day 30: A Stronger Reader",
-    story: "Thirty days ago, reading felt hard for Jordan. Now he still read slowly sometimes, but he did not give up. He used clues, reread sentences, and asked better questions.",
-    questions: ["How did reading feel thirty days ago?", "What did Jordan not do?", "Name one strategy Jordan used."],
-    answers: ["hard", "give up", "reread"],
-    bubbles: "A stronger reader is not perfect. A stronger reader keeps going."
-  }
-];
-
-let currentLesson = Number(localStorage.getItem("readEasyLesson")) || 0;
-let readingStars = Number(localStorage.getItem("readEasyStars")) || 0;
-
-const $ = (id) => document.getElementById(id);
-
-function normalize(text) {
-  return text.trim().toLowerCase();
-}
-
-function openLessonApp(startLesson = currentLesson) {
-  currentLesson = startLesson;
-
-  $("placementCard").style.display = "none";
-  $("lessonApp").style.display = "block";
-
-  buildDaySelector();
-  loadLesson();
-}
-
-function checkPlacement() {
-  const answers = [
-    normalize($("placeAnswer1").value),
-    normalize($("placeAnswer2").value),
-    normalize($("placeAnswer3").value)
-  ];
-
-  let score = 0;
-
-  if (answers[0].includes("neighbor")) score++;
-  if (answers[1].includes("books")) score++;
-  if (answers[2].includes("porch")) score++;
-
-  if (score === 3) {
-    $("placementFeedback").innerHTML =
-      "✅ Strong start. Recommended starting point: <strong>Level B, Day 6</strong>.";
-    setTimeout(() => openLessonApp(5), 900);
-  } else if (score === 2) {
-    $("placementFeedback").innerHTML =
-      "🟡 Good start. Recommended starting point: <strong>Level A, Day 3</strong>.";
-    setTimeout(() => openLessonApp(2), 900);
-  } else {
-    $("placementFeedback").innerHTML =
-      "🫧 Start gently. Recommended starting point: <strong>Level A, Day 1</strong>.";
-    setTimeout(() => openLessonApp(0), 900);
-  }
-}
-
-function buildDaySelector() {
-  $("daySelect").innerHTML = "";
-
-  lessons.forEach((lesson, index) => {
-    const option = document.createElement("option");
-    option.value = index;
-    option.textContent = `Day ${lesson.day} • Level ${lesson.level}`;
-    $("daySelect").appendChild(option);
-  });
-}
-
-function updateProgressBar() {
-  $("progressBar").style.width =
-    `${((currentLesson + 1) / lessons.length) * 100}%`;
-}
-
-function loadLesson() {
-  const lesson = lessons[currentLesson];
-
-  $("lessonLabel").innerHTML = `Lesson ${lesson.day} of 30 • Level ${lesson.level}`;
-  $("completedLabel").innerHTML = `Completed: ${currentLesson} • ⭐ ${readingStars}`;
-
-  $("storyTitle").textContent = lesson.title;
-  $("storyText").textContent = lesson.story;
-
-  $("question1Label").textContent = lesson.questions[0];
-  $("question2Label").textContent = lesson.questions[1];
-  $("question3Label").textContent = lesson.questions[2];
-
-  $("bubblesMessage").textContent = lesson.bubbles;
-
-  $("answer1").value = "";
-  $("answer2").value = "";
-  $("answer3").value = "";
-  $("feedback").innerHTML = "";
-
-  $("daySelect").value = currentLesson;
-
-  updateProgressBar();
-
-  $("prevBtn").disabled = currentLesson === 0;
-
-  $("nextBtn").textContent =
-    currentLesson >= lessons.length - 1 ? "Finish 🎉" : "Next ➡";
-
-  localStorage.setItem("readEasyLesson", currentLesson);
-}
-
-function checkAnswers() {
-  const lesson = lessons[currentLesson];
-
-  const userAnswers = [
-    normalize($("answer1").value),
-    normalize($("answer2").value),
-    normalize($("answer3").value)
-  ];
-
-  let score = 0;
-
-  lesson.answers.forEach((answer, index) => {
-    if (userAnswers[index].includes(answer.toLowerCase())) {
-      score++;
-    }
-  });
-
-  if (score === 3) {
-    readingStars++;
-    localStorage.setItem("readEasyStars", readingStars);
-
-    $("feedback").innerHTML = `
-      <div style="background:#ecfdf5;border:2px solid #22c55e;padding:18px;border-radius:18px;">
-        ⭐ <strong>Great work!</strong><br><br>
-        You found all three answers and earned a reading star.<br>
-        Total Stars: ⭐ ${readingStars}
-      </div>
-    `;
-  } else if (score === 2) {
-    $("feedback").innerHTML = `
-      <div style="background:#fef9c3;border:2px solid #eab308;padding:18px;border-radius:18px;">
-        🟡 <strong>Good work.</strong><br><br>
-        You found two answers. Read one more time and look for the tricky detail.
-      </div>
-    `;
-  } else if (score === 1) {
-    $("feedback").innerHTML = `
-      <div style="background:#dbeafe;border:2px solid #3b82f6;padding:18px;border-radius:18px;">
-        🔵 <strong>Nice start.</strong><br><br>
-        You found one answer. Slow down and look for clue words.
-      </div>
-    `;
-  } else {
-    $("feedback").innerHTML = `
-      <div style="background:#f3f4f6;border:2px solid #9ca3af;padding:18px;border-radius:18px;">
-        🫧 <strong>Keep trying.</strong><br><br>
-        Strong readers reread difficult parts.
-      </div>
-    `;
-  }
-
-  $("completedLabel").innerHTML = `Completed: ${currentLesson} • ⭐ ${readingStars}`;
-}
-
-function clearAnswers() {
-  $("answer1").value = "";
-  $("answer2").value = "";
-  $("answer3").value = "";
-  $("feedback").innerHTML = "";
-}
-
-function nextLesson() {
-  if (currentLesson < lessons.length - 1) {
-    currentLesson++;
-    loadLesson();
-  } else {
-    showCompletionScreen();
-  }
-}
-
-function prevLesson() {
-  if (currentLesson > 0) {
-    currentLesson--;
-    loadLesson();
-  }
-}
-
-function resetProgress() {
-  const confirmReset = confirm("Reset all reading progress?");
-  if (!confirmReset) return;
-
-  currentLesson = 0;
-  readingStars = 0;
-
-  localStorage.removeItem("readEasyLesson");
-  localStorage.removeItem("readEasyStars");
-
-  $("placementCard").style.display = "block";
-  $("lessonApp").style.display = "none";
-
-  $("placeAnswer1").value = "";
-  $("placeAnswer2").value = "";
-  $("placeAnswer3").value = "";
-  $("placementFeedback").innerHTML = "";
-}
-
-function readStory() {
-  speechSynthesis.cancel();
-
-  const speech = new SpeechSynthesisUtterance($("storyText").textContent);
-  speech.rate = 0.85;
-  speech.pitch = 1;
-
-  speechSynthesis.speak(speech);
-}
-
-function showCompletionScreen() {
-  $("lessonApp").innerHTML = `
-    <div style="text-align:center;padding:40px;">
-      <div style="font-size:64px;margin-bottom:20px;">🎉</div>
-
-      <h2>You Finished ReadEasy30</h2>
-
-      <p style="font-size:20px;line-height:1.8;">
-        Reading grows one step at a time.
-      </p>
-
-      <p>Total Reading Stars:</p>
-
-      <div style="font-size:36px;margin:20px 0;">
-        ⭐ ${readingStars}
-      </div>
-
-      <button
-        onclick="localStorage.clear(); location.reload();"
-        style="background:#2563eb;color:white;border:none;padding:16px 26px;border-radius:18px;font-size:18px;font-weight:bold;cursor:pointer;"
-      >
-        Restart Course
-      </button>
-    </div>
-  `;
-}
-
-$("checkPlacementBtn").addEventListener("click", checkPlacement);
-
-$("skipPlacementBtn").addEventListener("click", function () {
-  openLessonApp(0);
-});
-
-$("nextBtn").addEventListener("click", nextLesson);
-$("prevBtn").addEventListener("click", prevLesson);
-$("checkBtn").addEventListener("click", checkAnswers);
-$("clearBtn").addEventListener("click", clearAnswers);
-$("resetBtn").addEventListener("click", resetProgress);
-$("readAloudBtn").addEventListener("click", readStory);
-
-$("daySelect").addEventListener("change", function () {
-  currentLesson = Number(this.value);
-  loadLesson();
-});
-
-if (localStorage.getItem("readEasyLesson")) {
-  openLessonApp(currentLesson);
-}
-</script>
-
+  <script src="app.js"></script>
 </body>
 </html>
+Step 3 — Save
+
+At the bottom:
+
+Click Commit changes
+Choose Commit directly to main
+Click Commit changes
+
+Then tell me:
+
+“app.html saved”
+
+Today 8:15 AM •
+2376 chars • 210 words
+⋮
+No default selected
