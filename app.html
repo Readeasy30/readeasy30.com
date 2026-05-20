@@ -28,6 +28,7 @@
       <div class="lesson-status">
         <p id="lessonCount">Lesson 1 of 30</p>
         <p id="completedCount">Completed: 0</p>
+        <p id="streakCount">Streak: 0</p>
       </div>
 
       <div class="progress-wrap">
@@ -55,9 +56,7 @@
 
       <section class="story-box">
         <h2>Reading Story</h2>
-
         <p id="storyTitle" class="story-title">Day 1 Reading</p>
-
         <p id="storyText">Loading story...</p>
 
         <button class="small-btn" onclick="readStory()">
@@ -71,7 +70,7 @@
 
       <section id="completeCard" class="complete-card hidden">
         <h2>🎉 Day Complete!</h2>
-        <p>You finished today’s reading lesson. Nice steady work.</p>
+        <p id="completeMessage">You finished today’s reading lesson.</p>
       </section>
 
       <section class="helper-tip">
@@ -92,13 +91,19 @@
         </button>
       </div>
 
+      <div class="button-row danger-row">
+        <button onclick="resetProgress()">
+          Reset Progress
+        </button>
+      </div>
+
       <p id="resultMessage" class="result-message"></p>
 
     </section>
 
   </main>
 
-  <script src="./app.js?v=20260520-progress"></script>
+  <script src="./app.js?v=20260520-section2"></script>
 
 </body>
 </html>
