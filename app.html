@@ -1,4 +1,86 @@
-   <button onclick="checkAnswers()">Check Answers</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ReadEasy30 Lesson App</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <main class="lesson-page">
+
+    <section class="lesson-card">
+
+      <p class="eyebrow">30-minute reading practice</p>
+
+      <h1>ReadEasy30</h1>
+
+      <p class="lesson-subtitle">
+        Read slowly. Think clearly. Build confidence one lesson at a time.
+      </p>
+
+      <a class="home-link" href="index.html">⬅ Back to Home</a>
+
+      <div class="lesson-status">
+        <p id="lessonCount">Lesson 1 of 30</p>
+        <p id="completedCount">Completed: 0</p>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>Reading Progress</span>
+          <span id="progressText">0%</span>
+        </div>
+
+        <div class="progress-track">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="day-picker">
+        <label for="daySelect">Jump to Day</label>
+        <select id="daySelect">
+          <option value="">Loading days...</option>
+        </select>
+      </div>
+
+      <section class="coach-box">
+        <h2>🫧 Bubbles Says</h2>
+        <p id="coachMessage">Read slowly. Look for the answer in the story.</p>
+      </section>
+
+      <section class="story-box">
+        <h2>Reading Story</h2>
+
+        <p id="storyTitle" class="story-title">Day 1 Reading</p>
+
+        <p id="storyText">Loading story...</p>
+
+        <button class="small-btn" onclick="readStory()">
+          🔊 Read Aloud
+        </button>
+      </section>
+
+      <section class="questions-box">
+        <div id="questions"></div>
+      </section>
+
+      <section id="completeCard" class="complete-card hidden">
+        <h2>🎉 Day Complete!</h2>
+        <p>You finished today’s reading lesson. Nice steady work.</p>
+      </section>
+
+      <section class="helper-tip">
+        <h2>Parent / Helper Tip</h2>
+        <p>If the reader struggles, read together slowly and calmly.</p>
+      </section>
+
+      <div class="button-row">
+        <button onclick="checkAnswers()">Check Answers</button>
         <button onclick="clearAnswers()">Clear Answers</button>
       </div>
 
@@ -16,7 +98,7 @@
 
   </main>
 
-  <script src="./app.js?v=20260520-clean"></script>
+  <script src="./app.js?v=20260520-progress"></script>
 
 </body>
 </html>
