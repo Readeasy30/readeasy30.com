@@ -181,34 +181,33 @@
 
       </div>
 
-      <div class="button-row">
+     <div class="button-row">
 
-        <button
-          id="prevBtn"
-          class="secondary-btn"
-          type="button"
-        >
-          ⬅ Prev
-        </button>
+  <button id="checkBtn" type="button" onclick="checkAnswers()">
+    Check Answers
+  </button>
 
-        <button
-          id="nextBtn"
-          class="secondary-btn"
-          type="button"
-        >
-          Next ➡
-        </button>
+  <button id="clearBtn" class="secondary-btn" type="button" onclick="clearAnswers()">
+    Clear Answers
+  </button>
 
-      </div>
+</div>
 
-      <button
-        id="resetBtn"
-        class="danger-btn"
-        type="button"
-      >
-        Reset Progress
-      </button>
+<div class="button-row">
 
+  <button id="prevBtn" class="secondary-btn" type="button" onclick="prevLesson()">
+    ⬅ Prev
+  </button>
+
+  <button id="nextBtn" class="secondary-btn" type="button" onclick="nextLesson()">
+    Next ➡
+  </button>
+
+</div>
+
+<button id="resetBtn" class="danger-btn" type="button" onclick="resetProgress()">
+  Reset Progress
+</button>
     </section>
 
     <section class="level-path">
