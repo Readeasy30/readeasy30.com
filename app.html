@@ -1,3 +1,89 @@
+  speechSynthesis.speak(speech);
+}
+
+function showCompletionScreen() {
+  $(".lesson-card");
+
+  document.querySelector(
+    ".lesson-card"
+  ).innerHTML = `
+    <div style="
+      text-align:center;
+      padding:40px;
+    ">
+
+      <div style="
+        font-size:60px;
+        margin-bottom:20px;
+      ">
+        🎉
+      </div>
+
+      <h2>
+        You Finished ReadEasy30
+      </h2>
+
+      <p style="
+        font-size:20px;
+        line-height:1.8;
+      ">
+        Reading grows one step at a time.
+      </p>
+
+      <p>
+        Total Reading Stars:
+      </p>
+
+      <div style="
+        font-size:34px;
+        margin:20px 0;
+      ">
+        ⭐ ${readingStars}
+      </div>
+
+      <button
+        onclick="location.reload()"
+        style="
+          background:#2563eb;
+          color:white;
+          border:none;
+          padding:16px 26px;
+          border-radius:18px;
+          font-size:18px;
+          font-weight:bold;
+          cursor:pointer;
+        "
+      >
+        Restart Course
+      </button>
+
+    </div>
+  `;
+}
+
+$("nextBtn").addEventListener(
+  "click",
+  nextLesson
+);
+
+$("prevBtn").addEventListener(
+  "click",
+  prevLesson
+);
+
+$("checkBtn").addEventListener(
+  "click",
+  checkAnswers
+);
+
+$("clearBtn").addEventListener(
+  "click",
+  clearAnswers
+);
+
+$("resetBtn").addEventListener(
+  "click",
+  resetProgress
 );
 
 $("readAloudBtn").addEventListener(
@@ -19,7 +105,4 @@ buildDaySelector();
 
 loadLesson();
 </script>
-Today 8:31 PM •
-8935 chars • 964 words
-⋮
-No default selected
+
