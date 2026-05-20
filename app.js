@@ -221,6 +221,7 @@ function loadLesson() {
 
   updateCompleted();
   updateProgressBar();
+  updateAchievements();
   updateNextButton();
   startTimer();
 }
@@ -502,6 +503,7 @@ function saveProgress() {
 
   updateCompleted();
   updateProgressBar();
+  updateAchievements();
   buildDaySelector();
 }
 
@@ -519,6 +521,92 @@ function updateProgressBar() {
 
   progressBar.style.width = `${percent}%`;
   progressText.textContent = `${percent}%`;
+}
+
+function createAchievementSystem() {
+  if (document.getElementById("achievementWrap")) return;
+
+  const progressWrap = document.querySelector(".progress-wrap");
+  if (!progressWrap) return;
+
+  const achievementWrap = document.createElement("section");
+  achievementWrap.id = "achievementWrap";
+  achievementWrap.className = "achievement-wrap";
+  achievementWrap.innerHTML = `
+    <div class="achievement-card">
+      <div>
+        <p class="achievement-label">Current Goal</p>
+        <h2 id="goalTitle">Complete 5 Reading Days</h2>
+        <p id="goalText">Finish lessons one step at a time.</p>
+      </div>
+      <div class="achievement-progress">
+        <span id="goalProgress">0 / 5</span>
+      </div>
+    </div>
+
+    <div class="badge-grid">
+      <div id="badge1" class="badge-card locked-badge">
+        <span>🌱</span>
+        <p>Started Reading</p>
+      </div>
+      <div id="badge2" class="badge-card locked-badge">
+        <span>📘</span>
+        <p>5 Lessons</p>
+      </div>
+      <div id="badge3" class="badge-card locked-badge">
+        <span>🔥</span>
+        <p>10 Lesson Streak</p>
+      </div>
+      <div id="badge4" class="badge-card locked-badge">
+        <span>🏆</span>
+        <p>Reading Champion</p>
+      </div>
+    </div>
+  `;
+
+  progressWrap.insertAdjacentElement("afterend", achievementWrap);
+}
+
+function updateAchievements() {
+  createAchievementSystem();
+
+  const completed = getCompleted();
+  const streak = getStreak();
+  const goalTitle = document.getElementById("goalTitle");
+  const goalText = document.getElementById("goalText");
+  const goalProgress = document.getElementById("goalProgress");
+
+  const goals = [
+    { limit: 1, title: "Complete Your First Reading Day", text: "Start with one calm win.", progress: Math.min(completed, 1) },
+    { limit: 5, title: "Complete 5 Reading Days", text: "Build a steady reading habit.", progress: Math.min(completed, 5) },
+    { limit: 10, title: "Complete 10 Reading Days", text: "Keep the momentum going.", progress: Math.min(completed, 10) },
+    { limit: 20, title: "Complete 20 Reading Days", text: "You are becoming a stronger reader.", progress: Math.min(completed, 20) },
+    { limit: 30, title: "Finish the 30-Day Path", text: "Complete the full ReadEasy30 journey.", progress: Math.min(completed, 30) }
+  ];
+
+  const activeGoal = goals.find(goal => completed < goal.limit) || goals[goals.length - 1];
+
+  if (goalTitle) goalTitle.textContent = activeGoal.title;
+  if (goalText) goalText.textContent = activeGoal.text;
+  if (goalProgress) goalProgress.textContent = `${activeGoal.progress} / ${activeGoal.limit}`;
+
+  unlockBadge("badge1", completed >= 1);
+  unlockBadge("badge2", completed >= 5);
+  unlockBadge("badge3", streak >= 10);
+  unlockBadge("badge4", completed >= 30);
+}
+
+function unlockBadge(id, isUnlocked) {
+  const badge = document.getElementById(id);
+  if (!badge) return;
+
+  if (isUnlocked) {
+    badge.classList.remove("locked-badge");
+    badge.classList.add("unlocked-badge");
+  } else {
+    badge.classList.add("locked-badge");
+    badge.classList.remove("unlocked-badge");
+  }
 }
 
 function buildDaySelector() {
@@ -594,6 +682,7 @@ function resetProgress() {
 
   buildDaySelector();
   loadLesson();
+  updateAchievements();
 
   coachMessage.textContent = "Progress reset. Start again slowly with Day 1.";
   resultMessage.textContent = "Progress has been reset.";
@@ -697,5 +786,6 @@ function restoreSavedPlacement() {
 daySelect.addEventListener("change", jumpToDay);
 
 buildDaySelector();
+createAchievementSystem();
 restoreSavedPlacement();
 loadLesson();
