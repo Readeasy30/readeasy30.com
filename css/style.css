@@ -31,6 +31,10 @@ h1 {
   margin: 0;
 }
 
+h2 {
+  margin-top: 0;
+}
+
 .lesson-subtitle {
   font-size: 18px;
   line-height: 1.6;
@@ -54,6 +58,36 @@ h1 {
   background: #eef2ff;
   padding: 16px;
   border-radius: 12px;
+}
+
+.progress-wrap {
+  margin-top: 24px;
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress-track {
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #1597ad;
+  border-radius: 999px;
+  transition: width 0.3s ease;
 }
 
 .day-picker {
@@ -128,6 +162,35 @@ h1 {
   box-sizing: border-box;
 }
 
+.correct-answer {
+  border-color: #16a34a !important;
+  background: #f0fdf4;
+}
+
+.wrong-answer {
+  border-color: #dc2626 !important;
+  background: #fef2f2;
+}
+
+.answer-feedback {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+.complete-card {
+  margin-top: 28px;
+  background: #f0fdf4;
+  border-left: 6px solid #22c55e;
+  padding: 22px;
+  border-radius: 14px;
+}
+
+.hidden {
+  display: none;
+}
+
 .helper-tip {
   margin-top: 30px;
   background: #fff7ed;
@@ -155,30 +218,26 @@ h1 {
   cursor: pointer;
 }
 
+.button-row button:hover {
+  transform: translateY(-1px);
+}
+
+.disabled-btn,
+.button-row button:disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .result-message {
   margin-top: 28px;
   font-size: 18px;
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
+/* Homepage styles */
 
-  .lesson-card {
-    padding: 22px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  .button-row {
-    flex-direction: column;
-  }
-
-  .button-row button {
-    width: 100%;
-  }
-}
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -278,6 +337,22 @@ h1 {
 
 @media (max-width: 768px) {
 
+  .lesson-card {
+    padding: 22px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+  .button-row button {
+    width: 100%;
+  }
+
   .hero {
     padding: 50px 10px;
   }
@@ -296,7 +371,3 @@ h1 {
     box-sizing: border-box;
   }
 }
-Today 8:56 AM •
-1673 chars • 202 words
-⋮
-No default selected
