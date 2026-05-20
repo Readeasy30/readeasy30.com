@@ -1,108 +1,283 @@
-  speechSynthesis.speak(speech);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-function showCompletionScreen() {
-  $(".lesson-card");
+  <title>ReadEasy30</title>
 
-  document.querySelector(
-    ".lesson-card"
-  ).innerHTML = `
-    <div style="
-      text-align:center;
-      padding:40px;
-    ">
+  <meta
+    name="description"
+    content="ReadEasy30 helps children and struggling readers build confidence one lesson at a time."
+  />
 
-      <div style="
-        font-size:60px;
-        margin-bottom:20px;
-      ">
-        🎉
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<header class="app-header">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      30-minute reading practice
+    </p>
+
+    <h1>
+      ReadEasy30
+    </h1>
+
+    <p class="tagline">
+      Read slowly. Think clearly. Build confidence one lesson at a time.
+    </p>
+
+    <a class="home-link" href="index.html">
+      ⬅ Back to Home
+    </a>
+
+  </div>
+
+</header>
+
+<main class="wrap app-main">
+
+  <section class="lesson-card">
+
+    <div class="lesson-topline">
+
+      <div>
+        <p id="lessonLabel">
+          Lesson 1 of 30
+        </p>
       </div>
+
+      <div>
+        <p id="completedLabel">
+          Completed: 0 • ⭐ 0
+        </p>
+      </div>
+
+    </div>
+
+    <div class="progress-shell">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div class="day-picker">
+
+      <label for="daySelect">
+        Jump to Day
+      </label>
+
+      <select id="daySelect"></select>
+
+    </div>
+
+    <div class="daily-mission">
 
       <h2>
-        You Finished ReadEasy30
+        🎯 Today's Reading Mission
       </h2>
 
-      <p style="
-        font-size:20px;
-        line-height:1.8;
-      ">
-        Reading grows one step at a time.
-      </p>
-
       <p>
-        Total Reading Stars:
+        Read carefully. Find clues. Answer slowly and confidently.
       </p>
 
-      <div style="
-        font-size:34px;
-        margin:20px 0;
-      ">
-        ⭐ ${readingStars}
-      </div>
+    </div>
+
+    <div class="bubbles-box">
+
+      <h2>
+        🫧 Bubbles Says
+      </h2>
+
+      <p id="bubblesMessage">
+        Read slowly. Look for clue words.
+      </p>
+
+    </div>
+
+    <article class="story-box">
+
+      <p class="section-label">
+        Reading Story
+      </p>
+
+      <h2 id="storyTitle">
+        Day 1 Reading
+      </h2>
+
+      <p id="storyText" class="story-text">
+        Loading lesson...
+      </p>
 
       <button
-        onclick="location.reload()"
-        style="
-          background:#2563eb;
-          color:white;
-          border:none;
-          padding:16px 26px;
-          border-radius:18px;
-          font-size:18px;
-          font-weight:bold;
-          cursor:pointer;
-        "
+        id="readAloudBtn"
+        class="secondary-btn"
+        type="button"
       >
-        Restart Course
+        🔊 Read Aloud
+      </button>
+
+    </article>
+
+    <section class="question-box">
+
+      <div class="question-group">
+
+        <label
+          id="question1Label"
+          for="answer1"
+        >
+          Question 1
+        </label>
+
+        <input
+          id="answer1"
+          type="text"
+          autocomplete="off"
+        />
+
+      </div>
+
+      <div class="question-group">
+
+        <label
+          id="question2Label"
+          for="answer2"
+        >
+          Question 2
+        </label>
+
+        <input
+          id="answer2"
+          type="text"
+          autocomplete="off"
+        />
+
+      </div>
+
+      <div class="question-group">
+
+        <label
+          id="question3Label"
+          for="answer3"
+        >
+          Question 3
+        </label>
+
+        <input
+          id="answer3"
+          type="text"
+          autocomplete="off"
+        />
+
+      </div>
+
+      <div
+        id="feedback"
+        class="feedback"
+      ></div>
+
+    </section>
+
+    <section class="parent-tip">
+
+      <h2>
+        Parent / Helper Tip
+      </h2>
+
+      <p>
+        If the reader struggles, read together slowly.
+        Then ask one question at a time.
+      </p>
+
+    </section>
+
+    <div class="button-row">
+
+      <button
+        id="checkBtn"
+        type="button"
+      >
+        Check Answers
+      </button>
+
+      <button
+        id="clearBtn"
+        class="secondary-btn"
+        type="button"
+      >
+        Clear Answers
       </button>
 
     </div>
-  `;
-}
 
-$("nextBtn").addEventListener(
-  "click",
-  nextLesson
-);
+    <div class="button-row">
 
-$("prevBtn").addEventListener(
-  "click",
-  prevLesson
-);
+      <button
+        id="prevBtn"
+        class="secondary-btn"
+        type="button"
+      >
+        ⬅ Prev
+      </button>
 
-$("checkBtn").addEventListener(
-  "click",
-  checkAnswers
-);
+      <button
+        id="nextBtn"
+        class="secondary-btn"
+        type="button"
+      >
+        Next ➡
+      </button>
 
-$("clearBtn").addEventListener(
-  "click",
-  clearAnswers
-);
+    </div>
 
-$("resetBtn").addEventListener(
-  "click",
-  resetProgress
-);
+    <button
+      id="resetBtn"
+      class="danger-btn"
+      type="button"
+    >
+      Reset Progress
+    </button>
 
-$("readAloudBtn").addEventListener(
-  "click",
-  readStory
-);
+  </section>
 
-$("daySelect").addEventListener(
-  "change",
-  function () {
-    currentLesson =
-      Number(this.value);
+  <section class="level-path">
 
-    loadLesson();
-  }
-);
+    <p class="section-label">
+      Reading Growth Path
+    </p>
 
-buildDaySelector();
+    <h2>
+      Levels A → F
+    </h2>
 
-loadLesson();
-</script>
+    <p>
+      ReadEasy30 starts with simple confidence-building reading
+      and grows toward vocabulary, sequencing,
+      paragraph reading, and stronger comprehension.
+    </p>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+
+  <div class="wrap">
+
+    <p>
+      ReadEasy30 — simple reading, one step at a time.
+    </p>
+
+  </div>
+
+</footer>
+
+<!-- KEEP YOUR CURRENT SCRIPT BLOCK HERE -->
+
+</body>
+</html>
 
