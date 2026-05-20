@@ -256,4 +256,4 @@ daySelect.addEventListener("change", jumpToDay);
 buildDaySelector();
 
 loadLesson();
-Step 6 — Save
+
