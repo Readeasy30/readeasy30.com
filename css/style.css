@@ -21,3 +21,146 @@
     transform: scale(1);
   }
 }
+/* ===== SECTION 2 UX UPGRADE ===== */
+
+.lesson-card {
+  animation: fadeIn 0.35s ease;
+}
+
+.story-box,
+.coach-box,
+.helper-tip,
+.complete-card,
+.progress-wrap {
+  transition: all 0.25s ease;
+}
+
+.story-box:hover,
+.coach-box:hover,
+.helper-tip:hover {
+  transform: translateY(-2px);
+}
+
+.question-block input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+}
+
+.button-row button {
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.button-row button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.button-row button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.progress-bar {
+  background:
+    linear-gradient(
+      90deg,
+      #1597ad,
+      #06b6d4
+    );
+}
+
+.complete-card {
+  text-align: center;
+}
+
+.complete-card h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.complete-card p {
+  font-size: 18px;
+  color: #166534;
+}
+
+.result-message {
+  line-height: 1.5;
+}
+
+.story-title {
+  color: #111827;
+}
+
+.questions-box {
+  margin-bottom: 10px;
+}
+
+.day-picker select:hover {
+  border-color: #4f46e5;
+}
+
+.coach-box p,
+.helper-tip p,
+.story-box p {
+  line-height: 1.7;
+}
+
+.correct-answer {
+  animation: correctGlow 0.25s ease;
+}
+
+.wrong-answer {
+  animation: wrongShake 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes correctGlow {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wrongShake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-2px);
+  }
+
+  50% {
+    transform: translateX(2px);
+  }
+
+  75% {
+    transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+Today 9:52 AM •
+1878 chars • 227 words
