@@ -90,6 +90,10 @@ const coachMessage = document.getElementById("coachMessage");
 const daySelect = document.getElementById("daySelect");
 const nextBtn = document.getElementById("nextBtn");
 
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const completeCard = document.getElementById("completeCard");
+
 function loadLesson() {
   const lesson = lessons[currentLesson];
 
@@ -100,19 +104,20 @@ function loadLesson() {
 
   lessonCount.textContent = `Lesson ${currentLesson + 1} of 30`;
 
-  updateCompleted();
-
   questionsDiv.innerHTML = "";
 
   lesson.questions.forEach((question, index) => {
     questionsDiv.innerHTML += `
       <div class="question-block">
         <label>${question}</label>
+
         <input
           type="text"
           id="answer${index}"
           placeholder="Type answer here"
         />
+
+        <p id="feedback${index}" class="answer-feedback"></p>
       </div>
     `;
   });
@@ -120,8 +125,14 @@ function loadLesson() {
   coachMessage.textContent = "Read carefully. You can do this.";
   resultMessage.textContent = "";
 
+  if (completeCard) {
+    completeCard.classList.add("hidden");
+  }
+
   daySelect.value = currentLesson;
 
+  updateCompleted();
+  updateProgressBar();
   updateNextButton();
 }
 
@@ -131,14 +142,21 @@ function checkAnswers() {
   let score = 0;
 
   lesson.answers.forEach((answer, index) => {
-    const userAnswer = document
-      .getElementById(`answer${index}`)
-      .value
-      .trim()
-      .toLowerCase();
+    const input = document.getElementById(`answer${index}`);
+    const feedback = document.getElementById(`feedback${index}`);
 
-    if (userAnswer.includes(answer.toLowerCase())) {
+    const userAnswer = input.value.trim().toLowerCase();
+    const correctAnswer = answer.toLowerCase();
+
+    input.classList.remove("correct-answer", "wrong-answer");
+
+    if (userAnswer.includes(correctAnswer)) {
       score++;
+      input.classList.add("correct-answer");
+      feedback.textContent = "Correct";
+    } else {
+      input.classList.add("wrong-answer");
+      feedback.textContent = "Try again";
     }
   });
 
@@ -148,12 +166,20 @@ function checkAnswers() {
     resultMessage.textContent = "✅ Great job! All answers are correct.";
     coachMessage.textContent = "Fantastic reading today. You may go to the next lesson.";
 
+    if (completeCard) {
+      completeCard.classList.remove("hidden");
+    }
+
     saveProgress();
   } else {
     lessonPassed = false;
 
     resultMessage.textContent = `You got ${score} out of ${lesson.answers.length} correct.`;
-    coachMessage.textContent = "Good effort. Try reading the story again slowly.";
+    coachMessage.textContent = "Good effort. Read the story again slowly and try once more.";
+
+    if (completeCard) {
+      completeCard.classList.add("hidden");
+    }
   }
 
   updateNextButton();
@@ -169,6 +195,7 @@ function nextLesson() {
   if (currentLesson < lessons.length - 1) {
     currentLesson++;
     loadLesson();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
@@ -176,20 +203,31 @@ function prevLesson() {
   if (currentLesson > 0) {
     currentLesson--;
     loadLesson();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
 function clearAnswers() {
-  const inputs = document.querySelectorAll("input");
+  const inputs = document.querySelectorAll(".question-block input");
+  const feedbackMessages = document.querySelectorAll(".answer-feedback");
 
   inputs.forEach(input => {
     input.value = "";
+    input.classList.remove("correct-answer", "wrong-answer");
+  });
+
+  feedbackMessages.forEach(message => {
+    message.textContent = "";
   });
 
   lessonPassed = false;
 
   resultMessage.textContent = "";
   coachMessage.textContent = "Answers cleared. Try again slowly.";
+
+  if (completeCard) {
+    completeCard.classList.add("hidden");
+  }
 
   updateNextButton();
 }
@@ -216,13 +254,29 @@ function saveProgress() {
   }
 
   updateCompleted();
+  updateProgressBar();
 }
 
 function updateCompleted() {
   const completed =
-    localStorage.getItem("readEasyProgress") || 0;
+    Number(localStorage.getItem("readEasyProgress")) || 0;
 
   completedCount.textContent = `Completed: ${completed}`;
+}
+
+function updateProgressBar() {
+  const completed =
+    Number(localStorage.getItem("readEasyProgress")) || 0;
+
+  const percent = Math.round((completed / lessons.length) * 100);
+
+  if (progressBar) {
+    progressBar.style.width = `${percent}%`;
+  }
+
+  if (progressText) {
+    progressText.textContent = `${percent}%`;
+  }
 }
 
 function buildDaySelector() {
@@ -247,6 +301,12 @@ function updateNextButton() {
   if (!nextBtn) return;
 
   nextBtn.disabled = !lessonPassed;
+
+  if (lessonPassed) {
+    nextBtn.classList.remove("disabled-btn");
+  } else {
+    nextBtn.classList.add("disabled-btn");
+  }
 }
 
 daySelect.addEventListener("change", jumpToDay);
