@@ -252,9 +252,104 @@
 
   buildDaySelector();
   loadLesson();
-</script>
+
 
 </body>
 </html>
+    $("feedback").textContent = "";
 
-After saving:
+    $("daySelect").value = currentLesson;
+
+    $("progressBar").style.width =
+      `${((currentLesson + 1) / lessons.length) * 100}%`;
+
+    $("prevBtn").disabled = currentLesson === 0;
+    $("nextBtn").textContent =
+      currentLesson === lessons.length - 1 ? "Finish" : "Next ➡";
+
+    localStorage.setItem("readEasyLesson", currentLesson);
+  }
+
+  function nextLesson() {
+    if (currentLesson < lessons.length - 1) {
+      currentLesson++;
+      loadLesson();
+    } else {
+      $("feedback").textContent = "🎉 You finished all 30 lessons!";
+    }
+  }
+
+  function prevLesson() {
+    if (currentLesson > 0) {
+      currentLesson--;
+      loadLesson();
+    }
+  }
+
+  function checkAnswers() {
+    const lesson = lessons[currentLesson];
+
+    const userAnswers = [
+      $("answer1").value.trim().toLowerCase(),
+      $("answer2").value.trim().toLowerCase(),
+      $("answer3").value.trim().toLowerCase()
+    ];
+
+    let score = 0;
+
+    lesson.answers.forEach((answer, index) => {
+      if (userAnswers[index].includes(answer.toLowerCase())) {
+        score++;
+      }
+    });
+
+    if (score === 3) {
+      $("feedback").textContent = "✅ Great job. You found all three answers.";
+    } else if (score === 2) {
+      $("feedback").textContent = "🟡 Good work. One answer may need another look.";
+    } else if (score === 1) {
+      $("feedback").textContent = "🔵 You found one answer. Read again slowly and try the others.";
+    } else {
+      $("feedback").textContent = "🫧 No problem. Read the story again and look for clue words.";
+    }
+  }
+
+  function clearAnswers() {
+    $("answer1").value = "";
+    $("answer2").value = "";
+    $("answer3").value = "";
+    $("feedback").textContent = "";
+  }
+
+  function resetProgress() {
+    currentLesson = 0;
+    localStorage.removeItem("readEasyLesson");
+    loadLesson();
+  }
+
+  function readStory() {
+    speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance($("storyText").textContent);
+    speech.rate = 0.85;
+    speech.pitch = 1;
+
+    speechSynthesis.speak(speech);
+  }
+
+  $("nextBtn").addEventListener("click", nextLesson);
+  $("prevBtn").addEventListener("click", prevLesson);
+  $("checkBtn").addEventListener("click", checkAnswers);
+  $("clearBtn").addEventListener("click", clearAnswers);
+  $("resetBtn").addEventListener("click", resetProgress);
+  $("readAloudBtn").addEventListener("click", readStory);
+
+  $("daySelect").addEventListener("change", function () {
+    currentLesson = Number(this.value);
+    loadLesson();
+  });
+
+  buildDaySelector();
+  loadLesson();
+</script>
+
