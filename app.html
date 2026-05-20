@@ -1,40 +1,246 @@
-    </p>
-      </section>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ReadEasy30 Lesson App</title>
+
+  <meta
+    name="description"
+    content="ReadEasy30 reading lesson app."
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="app-header">
+
+    <div class="wrap">
+
+      <p class="eyebrow">
+        30-minute reading practice
+      </p>
+
+      <h1>ReadEasy30</h1>
+
+      <p class="tagline">
+        Read slowly. Think clearly. One step at a time.
+      </p>
+
+      <a class="home-link" href="index.html">
+        ⬅ Back to Home
+      </a>
+
+    </div>
+
+  </header>
+
+  <main class="wrap app-main">
+
+    <section class="lesson-card">
+
+      <div class="lesson-topline">
+
+        <p id="lessonLabel">
+          Lesson 1 of 30
+        </p>
+
+        <p id="completedLabel">
+          Completed: 0
+        </p>
+
+      </div>
+
+      <div class="progress-shell">
+
+        <div id="progressBar" class="progress-bar"></div>
+
+      </div>
+
+      <div class="day-picker">
+
+        <label for="daySelect">
+          Jump to Day
+        </label>
+
+        <select id="daySelect"></select>
+
+      </div>
+
+      <div class="bubbles-box">
+
+        <h2>🫧 Bubbles Says</h2>
+
+        <p id="bubblesMessage">
+          Read slowly and answer carefully.
+        </p>
+
+      </div>
+
+      <div class="story-box">
+
+        <p class="section-label">
+          Reading Story
+        </p>
+
+        <h2 id="storyTitle">
+          Day 1 Reading
+        </h2>
+
+        <p id="storyText" class="story-text">
+          Story loading...
+        </p>
+
+        <button
+          id="readAloudBtn"
+          class="secondary-btn"
+          type="button"
+        >
+          🔊 Read Aloud
+        </button>
+
+      </div>
+
+      <div class="question-box">
+
+        <div class="question-group">
+
+          <label id="question1Label" for="answer1">
+            Question 1
+          </label>
+
+          <input
+            id="answer1"
+            type="text"
+            autocomplete="off"
+          />
+
+        </div>
+
+        <div class="question-group">
+
+          <label id="question2Label" for="answer2">
+            Question 2
+          </label>
+
+          <input
+            id="answer2"
+            type="text"
+            autocomplete="off"
+          />
+
+        </div>
+
+        <div class="question-group">
+
+          <label id="question3Label" for="answer3">
+            Question 3
+          </label>
+
+          <input
+            id="answer3"
+            type="text"
+            autocomplete="off"
+          />
+
+        </div>
+
+        <div id="feedback" class="feedback"></div>
+
+      </div>
+
+      <div class="parent-tip">
+
+        <h2>
+          Parent / Helper Tip
+        </h2>
+
+        <p>
+          If the reader struggles, read together slowly and calmly.
+        </p>
+
+      </div>
 
       <div class="button-row">
-        <button id="checkBtn" type="button">Check Answers</button>
-        <button id="clearBtn" class="secondary-btn" type="button">Clear Answers</button>
+
+        <button id="checkBtn" type="button">
+          Check Answers
+        </button>
+
+        <button
+          id="clearBtn"
+          class="secondary-btn"
+          type="button"
+        >
+          Clear Answers
+        </button>
+
       </div>
 
-      <div class="button-row nav-row">
-        <button id="prevBtn" class="secondary-btn" type="button">⬅ Prev</button>
-        <button id="nextBtn" class="secondary-btn" type="button">Next ➡</button>
+      <div class="button-row">
+
+        <button
+          id="prevBtn"
+          class="secondary-btn"
+          type="button"
+        >
+          ⬅ Prev
+        </button>
+
+        <button
+          id="nextBtn"
+          class="secondary-btn"
+          type="button"
+        >
+          Next ➡
+        </button>
+
       </div>
 
-      <button id="resetBtn" class="danger-btn" type="button">
+      <button
+        id="resetBtn"
+        class="danger-btn"
+        type="button"
+      >
         Reset Progress
       </button>
 
     </section>
 
     <section class="level-path">
-      <h2>Reading Level Path</h2>
+
+      <h2>
+        Reading Level Path
+      </h2>
+
       <p>
-        Level A builds early reading confidence. Future levels will grow toward stronger paragraph reading,
-        vocabulary, comprehension, and middle-school reading skills.
+        Level A builds early reading confidence.
+        Future levels will grow toward stronger
+        reading, vocabulary, and comprehension.
       </p>
+
     </section>
 
   </main>
 
   <footer class="site-footer">
+
     <div class="wrap">
-      <p>ReadEasy30 — simple reading, one step at a time.</p>
+
+      <p>
+        ReadEasy30 — simple reading, one step at a time.
+      </p>
+
     </div>
+
   </footer>
 
   <script src="app.js"></script>
 
 </body>
-</html>
+</html>  
 
