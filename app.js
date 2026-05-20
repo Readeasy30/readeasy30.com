@@ -83,6 +83,7 @@ const questionsDiv = document.getElementById("questions");
 
 const lessonCount = document.getElementById("lessonCount");
 const completedCount = document.getElementById("completedCount");
+const streakCount = document.getElementById("streakCount");
 
 const resultMessage = document.getElementById("resultMessage");
 const coachMessage = document.getElementById("coachMessage");
@@ -93,6 +94,15 @@ const nextBtn = document.getElementById("nextBtn");
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progressText");
 const completeCard = document.getElementById("completeCard");
+const completeMessage = document.getElementById("completeMessage");
+
+function getCompleted() {
+  return Number(localStorage.getItem("readEasyProgress")) || 0;
+}
+
+function getStreak() {
+  return Number(localStorage.getItem("readEasyStreak")) || 0;
+}
 
 function loadLesson() {
   const lesson = lessons[currentLesson];
@@ -122,7 +132,8 @@ function loadLesson() {
     `;
   });
 
-  coachMessage.textContent = "Read carefully. You can do this.";
+  coachMessage.textContent = getBubblesMessage();
+
   resultMessage.textContent = "";
 
   if (completeCard) {
@@ -168,6 +179,11 @@ function checkAnswers() {
 
     if (completeCard) {
       completeCard.classList.remove("hidden");
+    }
+
+    if (completeMessage) {
+      completeMessage.textContent =
+        `You completed Day ${currentLesson + 1}. Slow reading wins.`;
     }
 
     saveProgress();
@@ -244,30 +260,31 @@ function readStory() {
 }
 
 function saveProgress() {
-  const savedProgress =
-    Number(localStorage.getItem("readEasyProgress")) || 0;
-
+  const savedProgress = getCompleted();
   const newProgress = currentLesson + 1;
 
   if (newProgress > savedProgress) {
     localStorage.setItem("readEasyProgress", newProgress);
+
+    const newStreak = getStreak() + 1;
+    localStorage.setItem("readEasyStreak", newStreak);
   }
 
   updateCompleted();
   updateProgressBar();
+  buildDaySelector();
 }
 
 function updateCompleted() {
-  const completed =
-    Number(localStorage.getItem("readEasyProgress")) || 0;
+  const completed = getCompleted();
+  const streak = getStreak();
 
   completedCount.textContent = `Completed: ${completed}`;
+  streakCount.textContent = `Streak: ${streak}`;
 }
 
 function updateProgressBar() {
-  const completed =
-    Number(localStorage.getItem("readEasyProgress")) || 0;
-
+  const completed = getCompleted();
   const percent = Math.round((completed / lessons.length) * 100);
 
   if (progressBar) {
@@ -280,20 +297,39 @@ function updateProgressBar() {
 }
 
 function buildDaySelector() {
+  const completed = getCompleted();
+  const maxOpenDay = Math.min(completed + 1, lessons.length);
+
   daySelect.innerHTML = "";
 
   lessons.forEach((lesson, index) => {
     const option = document.createElement("option");
 
     option.value = index;
-    option.textContent = `Day ${index + 1}`;
+
+    if (index + 1 <= maxOpenDay) {
+      option.textContent = `Day ${index + 1}`;
+      option.disabled = false;
+    } else {
+      option.textContent = `Day ${index + 1} 🔒`;
+      option.disabled = true;
+    }
 
     daySelect.appendChild(option);
   });
 }
 
 function jumpToDay() {
-  currentLesson = Number(daySelect.value);
+  const selectedLesson = Number(daySelect.value);
+  const completed = getCompleted();
+
+  if (selectedLesson > completed) {
+    coachMessage.textContent = "Finish the open lessons first. One step at a time.";
+    daySelect.value = currentLesson;
+    return;
+  }
+
+  currentLesson = selectedLesson;
   loadLesson();
 }
 
@@ -307,6 +343,48 @@ function updateNextButton() {
   } else {
     nextBtn.classList.add("disabled-btn");
   }
+}
+
+function resetProgress() {
+  const confirmReset = confirm(
+    "Reset all ReadEasy30 progress on this device?"
+  );
+
+  if (!confirmReset) return;
+
+  localStorage.removeItem("readEasyProgress");
+  localStorage.removeItem("readEasyStreak");
+
+  currentLesson = 0;
+  lessonPassed = false;
+
+  buildDaySelector();
+  loadLesson();
+
+  coachMessage.textContent = "Progress reset. Start again slowly with Day 1.";
+  resultMessage.textContent = "Progress has been reset.";
+}
+
+function getBubblesMessage() {
+  const completed = getCompleted();
+
+  if (completed === 0) {
+    return "Start slow. Look back at the story when you need help.";
+  }
+
+  if (completed < 5) {
+    return "You are building a reading habit. Small steps count.";
+  }
+
+  if (completed < 15) {
+    return "You are getting stronger. Read carefully and trust the words.";
+  }
+
+  if (completed < 30) {
+    return "You have built real momentum. Keep going one lesson at a time.";
+  }
+
+  return "You completed the full 30-day path. That is real progress.";
 }
 
 daySelect.addEventListener("change", jumpToDay);
