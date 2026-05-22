@@ -1,26 +1,93 @@
 const readEasyVocabDefinitions = {
-  park: "A place outside where people can walk, play, or rest.",
-  friendly: "Kind and nice to others.",
-  saw: "Looked at something in the past.",
-  baked: "Cooked food using heat in an oven.",
-  grandmother: "The mother of your mother or father.",
-  kitchen: "A room where food is cooked.",
-  helped: "Gave support or made something easier.",
-  carry: "To hold something and move it from one place to another.",
-  groceries: "Food and household items bought from a store.",
-  simple: "Easy to understand or do.",
+  hat: "Something people wear on their head.",
+  bed: "A place where someone sleeps or rests.",
+  soft: "Easy to touch. Not hard or rough.",
+  cup: "A small container used for drinking.",
+  water: "A clear drink people need every day.",
   slowly: "Not fast. Taking your time.",
-  think: "Use your mind to understand something.",
+  helps: "Gives support or makes something easier.",
+  bag: "Something used to carry items.",
+  thank: "A word used to show appreciation.",
+  little: "Small in size.",
+  gate: "A door in a fence or wall.",
+  waits: "Stays in one place until something happens.",
+  lunch: "A meal eaten in the middle of the day.",
+  soup: "A warm liquid food eaten from a bowl.",
+  table: "A piece of furniture used for eating, writing, or working.",
+  rain: "Water that falls from clouds.",
+  boots: "Strong shoes that cover the feet and ankles.",
+  puddle: "A small pool of water on the ground.",
+  sock: "Clothing worn on the foot.",
+  under: "Below something.",
+  beside: "Next to something.",
+  book: "A set of pages with words or pictures.",
+  page: "One side of a sheet in a book.",
+  rests: "Stops moving or relaxes.",
   library: "A place where people can read or borrow books.",
-  return: "To bring something back.",
-  animals: "Living creatures like dogs, cats, birds, or horses.",
+  card: "A small piece of paper or plastic with information on it.",
+  turtles: "Animals with hard shells that often live near water.",
+  grocery: "Food and household items bought from a store.",
+  list: "Words written down to remember things.",
+  cart: "A basket on wheels used in a store.",
+  "bus stop": "A place where people wait for a bus.",
+  late: "After the expected time.",
+  sign: "Words or symbols that give information.",
+  guess: "To answer without being sure.",
+  sentence: "A group of words that tells a complete idea.",
+  understand: "To know what something means.",
+  doctor: "A person trained to help people stay healthy.",
+  nurse: "A person trained to help care for sick or injured people.",
+  directions: "Steps that tell what to do.",
+  note: "A short written message.",
+  folder: "A cover used to hold papers.",
+  visit: "To go see a place or person.",
+  corner: "The place where two lines, roads, or walls meet.",
+  crosswalk: "A marked place where people cross a street.",
+  crossed: "Went from one side to the other.",
+  rice: "A small grain often cooked and eaten as food.",
+  rinsed: "Washed with water.",
   practiced: "Did something again and again to improve.",
-  confident: "Feeling sure that you can do something.",
-  noticed: "Saw or became aware of something.",
-  routine: "A regular way of doing something.",
+  underlined: "Drew a line under words.",
   passage: "A short piece of reading.",
+  schedule: "A plan that shows times or days.",
+  copied: "Wrote or made the same information again.",
+  forget: "To not remember.",
+  label: "Words on a package or bottle that give information.",
+  mix: "To put things together.",
+  message: "Words sent or written to tell someone something.",
+  carefully: "With attention and care.",
+  front: "The part that faces forward.",
+  garden: "A place where plants are grown.",
+  weeds: "Plants growing where they are not wanted.",
   "main idea": "The most important point in a reading passage.",
-  improve: "To get better at something."
+  proof: "Information that shows an answer is true.",
+  paragraph: "A group of sentences about one idea.",
+  hiding: "Staying where others may not see you.",
+  appointment: "A planned time to meet or get help.",
+  refrigerator: "A machine that keeps food cold.",
+  routine: "A regular way of doing something.",
+  improve: "To get better at something.",
+  medicine: "Something used to help a person feel better or stay healthy.",
+  dose: "The amount of medicine to take.",
+  careful: "Taking time to avoid mistakes.",
+  permission: "Approval to do something.",
+  reminded: "Helped someone remember.",
+  signed: "Wrote a name to show agreement.",
+  password: "A secret word or code used to enter an account.",
+  urgent: "Needing quick attention.",
+  deleted: "Removed or erased.",
+  "online safety": "Careful habits that help protect people on the internet.",
+  notice: "A written message that gives information.",
+  repair: "To fix something.",
+  laundry: "Clothes or a place where clothes are washed.",
+  pipe: "A tube that carries water or gas.",
+  clinic: "A place where people get health care.",
+  form: "A paper or screen where information is filled in.",
+  patient: "A person getting medical care.",
+  explain: "To make something clear.",
+  notebook: "A book of blank or lined pages for writing.",
+  steady: "Regular and continuing.",
+  practice: "Doing something again to get better."
 };
 
 function getVocabDefinition(word) {
@@ -93,16 +160,16 @@ function attachVocabEvents() {
 function getVocabTip(word) {
   const cleanWord = word.trim().toLowerCase();
 
-  if (["main idea", "passage", "routine"].includes(cleanWord)) {
-    return "Tip: This is a stronger reading word. Ask: What does this word do in the sentence?";
+  if (["main idea", "passage", "paragraph", "proof", "directions", "schedule", "form", "label"].includes(cleanWord)) {
+    return "Tip: This is an important reading word. Ask what job it does in the sentence.";
   }
 
-  if (["slowly", "think", "confident", "improve"].includes(cleanWord)) {
-    return "Tip: This word tells how someone acts, feels, or grows.";
+  if (["slowly", "carefully", "steady", "practice", "improve", "understand"].includes(cleanWord)) {
+    return "Tip: This word tells how someone acts, learns, or grows.";
   }
 
-  if (["park", "kitchen", "library"].includes(cleanWord)) {
-    return "Tip: This word tells where something happens.";
+  if (["library", "clinic", "garden", "corner", "crosswalk", "refrigerator"].includes(cleanWord)) {
+    return "Tip: This word tells about a place or object in the story.";
   }
 
   return "Tip: Reread the sentence and look for clues before and after the word.";
