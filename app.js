@@ -4,10 +4,10 @@ function addLesson(level, description, title, story, questions, answers, vocab) 
   lessons.push({ level, levelDescription: description, title, story, questions, answers, vocab });
 }
 
-const levelA = "Short sentences and beginner reading confidence.";
-const levelB = "Longer sentences and stronger comprehension practice.";
-const levelC = "Short paragraphs and deeper understanding skills.";
-const levelD = "Longer passages with stronger thinking and detail recall.";
+const levelA = "Short sentences, familiar words, and beginner reading confidence.";
+const levelB = "Longer sentences, daily-life vocabulary, and stronger comprehension practice.";
+const levelC = "Short paragraphs, sequencing, main idea, and deeper understanding skills.";
+const levelD = "Longer practical passages with stronger thinking, details, and real-life reading.";
 
 const levelStart = { A: 0, B: 8, C: 16, D: 23 };
 
@@ -42,25 +42,40 @@ const placementSteps = [
   }
 ];
 
-addLesson("Level A", levelA, "Day 1 Reading", "Tom went to the park. He saw a dog. The dog was friendly.", ["Where did Tom go?", "What did he see?", "Was the dog friendly?"], ["park", "dog", "yes"], ["park", "friendly", "saw"]);
-addLesson("Level A", levelA, "Day 2 Reading", "Sara baked cookies with her grandmother in the kitchen.", ["Who baked cookies?", "Who helped Sara?", "Where did they bake?"], ["sara", "grandmother", "kitchen"], ["baked", "grandmother", "kitchen"]);
-addLesson("Level A", levelA, "Day 3 Reading", "Jake helped his mother carry groceries into the house.", ["Who helped his mother?", "What did Jake carry?", "Where did they take the groceries?"], ["jake", "groceries", "house"], ["helped", "carry", "groceries"]);
+const lessonData = [
+  ["Level A", levelA, "Day 1: The Red Hat", "Ben has a red hat. He puts the hat on his bed. The hat is soft.", ["Who has a red hat?", "Where does Ben put the hat?", "How does the hat feel?"], ["ben", "bed", "soft"], ["hat", "bed", "soft"]],
+  ["Level A", levelA, "Day 2: Sara's Cup", "Sara has a blue cup. She fills the cup with water. She drinks slowly.", ["Who has a blue cup?", "What does Sara put in the cup?", "How does she drink?"], ["sara", "water", "slowly"], ["cup", "water", "slowly"]],
+  ["Level A", levelA, "Day 3: Max Helps", "Max helps Dad. Max picks up a bag. Dad says thank you.", ["Who helps Dad?", "What does Max pick up?", "What does Dad say?"], ["max", "bag", "thank you"], ["helps", "bag", "thank"]],
+  ["Level A", levelA, "Day 4: The Little Dog", "A little dog runs to the gate. The dog sits and waits. Kim opens the gate.", ["What animal runs to the gate?", "What does the dog do?", "Who opens the gate?"], ["dog", "waits", "kim"], ["little", "gate", "waits"]],
+  ["Level A", levelA, "Day 5: Lunch Time", "Eli eats lunch. He has soup and bread. He wipes the table when he is done.", ["What does Eli eat?", "Name one food Eli has.", "What does Eli wipe?"], ["lunch", "soup|bread", "table"], ["lunch", "soup", "table"]],
+  ["Level A", levelA, "Day 6: Rain Boots", "Rain falls outside. Mia puts on her boots. She steps over a puddle.", ["What falls outside?", "What does Mia put on?", "What does she step over?"], ["rain", "boots", "puddle"], ["rain", "boots", "puddle"]],
+  ["Level A", levelA, "Day 7: The Lost Sock", "Sam looks for one sock. He checks under the chair. The sock is beside the chair.", ["What does Sam look for?", "Where does he check?", "Where is the sock?"], ["sock", "under the chair", "beside the chair"], ["sock", "under", "beside"]],
+  ["Level A", levelA, "Day 8: Bedtime Book", "Nora picks a book before bed. Mom reads one page. Nora smiles and rests.", ["What does Nora pick?", "When does Nora pick the book?", "Who reads one page?"], ["book", "before bed", "mom"], ["book", "page", "rests"]],
+  ["Level B", levelB, "Day 9: The Library Card", "Maria went to the library with her aunt. She got a library card and chose a book about turtles. Maria said she would read ten pages at home.", ["Where did Maria go?", "What kind of card did she get?", "What was the book about?"], ["library", "library card", "turtles"], ["library", "card", "turtles"]],
+  ["Level B", levelB, "Day 10: A Grocery List", "Owen helped make a grocery list. He wrote milk, eggs, rice, and apples. At the store, he checked each item before putting it in the cart.", ["What did Owen help make?", "Name one item on the list.", "Where did Owen put the items?"], ["grocery list", "milk|eggs|rice|apples", "cart"], ["grocery", "list", "cart"]],
+  ["Level B", levelB, "Day 11: Bus Stop", "Leah waited at the bus stop after school. The bus was late, so she read the sign on the pole. The sign helped her know the next bus time.", ["Where did Leah wait?", "What was late?", "What helped Leah know the next bus time?"], ["bus stop", "bus", "sign"], ["bus stop", "late", "sign"]],
+  ["Level B", levelB, "Day 12: The New Word", "Jay saw a new word in his book. He did not guess. He read the sentence again and used the other words to help him.", ["What did Jay see?", "What did Jay not do?", "What helped Jay understand the word?"], ["new word", "guess", "other words"], ["guess", "sentence", "understand"]],
+  ["Level B", levelB, "Day 13: Doctor Visit", "Tara went to the doctor for a checkup. The nurse gave her a paper with three simple directions. Tara read each direction with her grandmother.", ["Where did Tara go?", "Who gave Tara a paper?", "Who helped Tara read the directions?"], ["doctor", "nurse", "grandmother"], ["doctor", "nurse", "directions"]],
+  ["Level B", levelB, "Day 14: The Class Note", "A note came home in Luis's folder. It said the class would visit the zoo on Friday. Luis gave the note to his father after dinner.", ["Where was the note?", "Where would the class visit?", "When would the class visit the zoo?"], ["folder", "zoo", "friday"], ["note", "folder", "visit"]],
+  ["Level B", levelB, "Day 15: A Safe Walk", "Rina walked to the corner with her brother. They stopped at the crosswalk and looked both ways. Then they crossed when the light changed.", ["Where did Rina walk?", "Where did they stop?", "When did they cross?"], ["corner", "crosswalk", "light changed"], ["corner", "crosswalk", "crossed"]],
+  ["Level B", levelB, "Day 16: Cooking Rice", "Grandpa showed Maya how to cook rice. First, they rinsed the rice. Then they added water and waited until the rice was soft.", ["Who showed Maya how to cook rice?", "What did they do first?", "When was the rice ready?"], ["grandpa", "rinsed", "soft"], ["rice", "rinsed", "soft"]],
+  ["Level C", levelC, "Day 17: Reading After Dinner", "Jordan practiced reading every evening after dinner. At first, some words felt difficult. He reread each sentence and underlined words he wanted to learn. After one week, he could read the same passage with fewer stops.", ["When did Jordan practice reading?", "What did Jordan underline?", "What changed after one week?"], ["after dinner", "words", "fewer stops"], ["practiced", "underlined", "passage"]],
+  ["Level C", levelC, "Day 18: The Work Schedule", "Angela looked at her work schedule on the break room wall. The schedule showed that she worked Monday, Wednesday, and Friday. She copied the days into her phone so she would not forget.", ["Where was the schedule?", "What days did Angela work?", "Why did she copy the days into her phone?"], ["break room wall", "monday wednesday friday", "not forget"], ["schedule", "copied", "forget"]],
+  ["Level C", levelC, "Day 19: A Helpful Label", "Marcus read the label on a bottle of plant food. The label said to mix one spoon with water. Marcus read the directions twice before feeding the tomato plants.", ["What did Marcus read?", "How much plant food did the label say to mix?", "Why did Marcus read the directions twice?"], ["label", "one spoon", "before feeding|careful"], ["label", "directions", "mix"]],
+  ["Level C", levelC, "Day 20: The Text Message", "A text message from Aunt Rose said to meet her by the front door at four. Jada read the message carefully. She knew where to go and what time to be there.", ["Who sent the text message?", "Where should Jada meet Aunt Rose?", "What time should Jada be there?"], ["aunt rose", "front door", "four|4"], ["message", "carefully", "front"]],
+  ["Level C", levelC, "Day 21: Main Idea Practice", "The school garden needed water every morning. Three students filled watering cans, and two students pulled small weeds. By Friday, the lettuce plants looked taller and greener.", ["What needed water every morning?", "What did two students pull?", "What is the main idea of the passage?"], ["school garden", "weeds", "garden grew|students cared"], ["garden", "weeds", "main idea"]],
+  ["Level C", levelC, "Day 22: Finding Proof", "Noah thought the story was about a lost kitten. He went back and reread the first paragraph. The paragraph said the kitten was hiding under the porch, not lost.", ["What did Noah think at first?", "What did Noah reread?", "Where was the kitten?"], ["lost kitten", "first paragraph", "under the porch"], ["proof", "paragraph", "hiding"]],
+  ["Level C", levelC, "Day 23: The Appointment Card", "Mrs. Patel gave Eric an appointment card. The card said Tuesday at ten thirty. Eric placed the card on the refrigerator so everyone at home could see it.", ["Who gave Eric the card?", "What day was the appointment?", "Where did Eric place the card?"], ["mrs patel", "tuesday", "refrigerator"], ["appointment", "card", "refrigerator"]],
+  ["Level D", levelD, "Day 24: Building a Reading Routine", "Ava wanted to improve her reading, so she made a quiet routine after dinner. Each night, she read one passage, marked difficult words, and explained the main idea to her father. After two weeks, Ava noticed that she could read longer passages without stopping as often.", ["Why did Ava make a quiet routine?", "What did Ava mark each night?", "What changed after two weeks?"], ["improve her reading", "difficult words", "longer passages"], ["routine", "passage", "main idea", "improve"]],
+  ["Level D", levelD, "Day 25: Reading Medicine Directions", "Darnell read the medicine directions before giving his son a dose. The label said to shake the bottle first and use the small cup in the box. Darnell read the label twice because he wanted to be careful.", ["What did Darnell read?", "What did the label say to do first?", "Why did Darnell read the label twice?"], ["medicine directions", "shake the bottle", "careful"], ["medicine", "dose", "careful", "label"]],
+  ["Level D", levelD, "Day 26: Comparing Two Notes", "Two notes were on the table. One note was from school, and one note was from the dentist. The school note asked for a signed permission form. The dentist note reminded the family about an appointment next Thursday.", ["Where were the two notes?", "What did the school note ask for?", "What did the dentist note remind the family about?"], ["table", "signed permission form", "appointment next thursday"], ["permission", "appointment", "reminded", "signed"]],
+  ["Level D", levelD, "Day 27: Online Safety", "Mina received an email that asked for her password. The message looked urgent, but Mina stopped and read it carefully. She remembered that real companies should not ask for passwords by email, so she deleted the message.", ["What did the email ask for?", "How did the message look?", "Why did Mina delete the message?"], ["password", "urgent", "companies should not ask for passwords"], ["password", "urgent", "deleted", "online safety"]],
+  ["Level D", levelD, "Day 28: Reading a Notice", "A notice on the apartment door said the water would be off from nine to eleven on Saturday morning. The notice also said workers would repair a pipe near the laundry room. Carla filled two bottles with water on Friday night.", ["Where was the notice?", "When would the water be off?", "Why did Carla fill two bottles with water?"], ["apartment door", "nine to eleven", "water would be off"], ["notice", "repair", "laundry", "pipe"]],
+  ["Level D", levelD, "Day 29: Understanding a Form", "Roberto filled out a simple clinic form. First, he wrote his name and phone number. Then he checked a box that said new patient. He asked the front desk worker to explain one question before he answered it.", ["What kind of form did Roberto fill out?", "What did he write first?", "Why did he ask the front desk worker for help?"], ["clinic form", "name and phone number", "explain one question"], ["clinic", "form", "patient", "explain"]],
+  ["Level D", levelD, "Day 30: Looking Back", "On the last day, Maya looked back at her reading notebook. Some early pages had short sentences, and later pages had longer passages. Maya smiled because she could see proof that steady practice had helped her grow.", ["What did Maya look back at?", "What was different about the later pages?", "What helped Maya grow?"], ["reading notebook", "longer passages", "steady practice"], ["notebook", "steady", "practice", "proof"]]
+];
 
-for (let day = 4; day <= 8; day++) {
-  addLesson("Level A", levelA, `Day ${day} Reading`, `This is a simple reading lesson for Day ${day}. Read slowly. Think about each word.`, ["What day is this lesson?", "How should you read?", "What should you think about?"], [`${day}`, "slowly", "word"], ["simple", "slowly", "think"]);
-}
-
-for (let day = 9; day <= 16; day++) {
-  addLesson("Level B", levelB, `Day ${day} Reading`, "Maria walked to the library after school to return her books. She stayed to read a story about animals from around the world.", ["Where did Maria go?", "Why did she go there?", "What did she read about?"], ["library", "return", "animals"], ["library", "return", "animals"]);
-}
-
-for (let day = 17; day <= 23; day++) {
-  addLesson("Level C", levelC, `Day ${day} Reading`, "Jordan practiced reading every evening after dinner. At first, some words felt difficult, but over time he became more confident. His teacher noticed that he was raising his hand more often during class reading time.", ["When did Jordan practice reading?", "How did he feel at first?", "What did his teacher notice?"], ["evening", "difficult", "raising his hand"], ["practiced", "confident", "noticed"]);
-}
-
-for (let day = 24; day <= 30; day++) {
-  addLesson("Level D", levelD, `Day ${day} Reading`, "Ava wanted to improve her reading, so she made a quiet routine after dinner. Each night, she read one passage, marked difficult words, and explained the main idea to her father. After two weeks, Ava noticed that she could read longer passages without stopping as often.", ["Why did Ava make a quiet routine?", "What did she mark?", "What changed after two weeks?"], ["improve", "difficult words", "longer passages"], ["routine", "passage", "main idea", "improve"]);
-}
+lessonData.forEach(lesson => addLesson(...lesson));
 
 let currentLesson = 0;
 let lessonPassed = false;
@@ -307,11 +322,12 @@ function checkAnswers() {
     const input = document.getElementById(`answer${index}`);
     const feedback = document.getElementById(`feedback${index}`);
     const userAnswer = normalizeAnswer(input.value);
-    const correctAnswer = normalizeAnswer(answer);
+    const correctAnswers = answer.split("|").map(item => normalizeAnswer(item));
+    const isCorrect = correctAnswers.some(correct => userAnswer.includes(correct));
 
     input.classList.remove("correct-answer", "wrong-answer");
 
-    if (userAnswer.includes(correctAnswer)) {
+    if (isCorrect) {
       score++;
       input.classList.add("correct-answer");
       feedback.textContent = "Correct";
