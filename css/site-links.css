@@ -1,3 +1,20 @@
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1rem;
+  z-index: 1000;
+  background: #111827;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.7rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
 .top-links,
 .footer-links {
   display: flex;
@@ -63,6 +80,14 @@
 .resource-card ol {
   margin-bottom: 0;
   padding-left: 1.3rem;
+}
+
+.legal-note {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  color: #4b5563;
 }
 
 @media (max-width: 768px) {
