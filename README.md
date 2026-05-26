@@ -12,6 +12,7 @@ This project is intentionally simple and must stay simple:
 - `app.html` — lesson app page
 - `app.js` — lesson engine and reading logic
 - `css/style.css` — main site styling
+- `css/site-links.css` — shared navigation, footer, resource-page, and accessibility helper styles
 - Small support JavaScript files — safe helper features only
 
 ## Current working features
@@ -31,6 +32,19 @@ This project is intentionally simple and must stay simple:
 - Bubbles coaching messages
 - Progress report
 - Mobile-friendly layout foundation
+- Public support pages
+- Basic SEO metadata and sitemap
+
+## Public pages
+
+- `index.html` — homepage
+- `app.html` — reading lesson app
+- `daily-reading-practice.html` — useful SEO/help content page
+- `parent-tutor-guide.html` — helper guide
+- `about.html` — about page
+- `contact.html` — contact status and feedback guidance
+- `privacy.html` — plain-language privacy policy
+- `terms.html` — plain-language terms of use
 
 ## Development rules
 
@@ -45,7 +59,7 @@ Safe work means:
 3. Make small useful improvements.
 4. Preserve working features.
 5. Commit changes with clear messages.
-6. Update `LOCKED-CHECKPOINT.md` after a new stable stage.
+6. Update `LOCKED-CHECKPOINT.md` and `PROJECT-STATUS.md` after a new stable stage.
 
 ## Product direction
 
@@ -69,10 +83,9 @@ Bubbles should not act like an open-ended chatbot until safety and content contr
 
 ## Next useful queue
 
-1. Strengthen Level A-D lesson quality.
-2. Add Level E planning notes for future 5th-8th grade growth.
-3. Add printable worksheet planning.
-4. Improve footer links and sitemap.
-5. Add parent/tutor guidance pages.
-6. Add accessibility checks.
-7. Add SEO content pages carefully.
+1. Review and strengthen all 30 lessons for smoother Level A-D progression.
+2. Add one free sample printable worksheet page.
+3. Add accessibility checks and manual testing notes.
+4. Add more useful SEO content pages carefully.
+5. Add a safe contact form only after privacy/spam handling is decided.
+6. Do not add live ads, payments, tracking, or accounts yet.
