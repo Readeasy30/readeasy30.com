@@ -12,6 +12,7 @@ Use this structure:
 - `app.html` = lesson app page
 - `app.js` = lesson engine and reading logic
 - `css/style.css` = styling
+- `css/site-links.css` = shared navigation, resource-page, and accessibility helper styling
 - Supporting JavaScript files may stay separate when they add small features safely
 
 Do not convert this project to React, Vite, Next.js, TypeScript, or another framework unless the owner explicitly changes the architecture later.
@@ -63,8 +64,16 @@ Confirmed pieces:
 The repo now includes:
 
 - `README.md` for project overview and workflow rules
+- `AGENTS.md`
+- `AGENT-INSTRUCTIONS.md`
+- `LOCKED-CHECKPOINT.md`
 - `parent-tutor-guide.html` for a public support page
-- `css/site-links.css` for shared footer and resource-page navigation styles
+- `daily-reading-practice.html` for one useful SEO/help content page
+- `about.html`
+- `contact.html`
+- `privacy.html`
+- `terms.html`
+- `css/site-links.css` for shared footer, navigation, resource-page, and skip-link styles
 - `robots.txt`
 - `sitemap.xml`
 - `LEVEL-E-ROADMAP.md`
@@ -76,9 +85,10 @@ The homepage now includes:
 
 - canonical URL
 - EducationalApplication schema markup
+- stronger top navigation
 - stronger footer navigation
-- link to the parent/tutor guide
-- sitemap link
+- skip-to-content accessibility link
+- links to daily practice, parent/tutor guide, about, contact, privacy, terms, and sitemap
 
 ## Lesson App SEO / Navigation Status
 
@@ -88,7 +98,26 @@ The lesson app page now includes:
 - robots meta tag
 - theme-color meta tag
 - shared `css/site-links.css` footer styles
-- footer navigation linking Home, Lesson App, Parent / Tutor Guide, and Sitemap
+- skip-to-content accessibility link
+- top navigation to Home, Daily Practice, and Parent / Tutor Guide
+- footer navigation linking Home, Lesson App, Daily Practice, Parent / Tutor Guide, About, Contact, Privacy, Terms, and Sitemap
+
+## Support Page Status
+
+Added support and legal foundation pages:
+
+- `about.html`
+- `contact.html`
+- `privacy.html`
+- `terms.html`
+
+These are plain-language starter pages. Review before adding accounts, forms, analytics, live ads, payments, or user-submitted content.
+
+## Content Page Status
+
+Added `daily-reading-practice.html` as the first useful SEO/help content page.
+
+This page supports the future content cluster around daily reading practice, parent reading help, adult reading help, ESL reading practice, and practical reading skills.
 
 ## Build Rule Going Forward
 
@@ -111,15 +140,18 @@ Suggested next work:
 1. Review all 30 lessons for reading-level progression.
 2. Strengthen Level A through Level D text quality.
 3. Add a free sample printable worksheet page.
-4. Add accessibility checks.
-5. Keep Bubbles calm and simple.
-6. Keep the site easy for adults, parents, ESL learners, and struggling readers.
+4. Add accessibility testing notes.
+5. Add more useful SEO content pages carefully.
+6. Keep Bubbles calm and simple.
+7. Keep the site easy for adults, parents, ESL learners, and struggling readers.
 
 ## Connector Note
 
 On 2026-05-26, the homepage and supporting files committed successfully. A full `app.html` replacement was previously blocked by connector safety checks, so app-page navigation should be updated only in small safe patches.
 
 On 2026-05-26, a small `app.html` update committed successfully to add lesson app canonical metadata, robots/theme metadata, shared footer styling, and footer navigation.
+
+On 2026-05-26, the production support-page build queue continued successfully. One full sitemap update was blocked once by connector safety checks. A smaller sitemap update then committed successfully.
 
 ## Important Warning
 
