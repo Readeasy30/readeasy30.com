@@ -80,6 +80,16 @@ The homepage now includes:
 - link to the parent/tutor guide
 - sitemap link
 
+## Lesson App SEO / Navigation Status
+
+The lesson app page now includes:
+
+- canonical URL for `https://readeasy30.com/app.html`
+- robots meta tag
+- theme-color meta tag
+- shared `css/site-links.css` footer styles
+- footer navigation linking Home, Lesson App, Parent / Tutor Guide, and Sitemap
+
 ## Build Rule Going Forward
 
 Use this workflow every time:
@@ -102,13 +112,14 @@ Suggested next work:
 2. Strengthen Level A through Level D text quality.
 3. Add a free sample printable worksheet page.
 4. Add accessibility checks.
-5. Improve app footer links when connector write filter allows the `app.html` update.
-6. Keep Bubbles calm and simple.
-7. Keep the site easy for adults, parents, ESL learners, and struggling readers.
+5. Keep Bubbles calm and simple.
+6. Keep the site easy for adults, parents, ESL learners, and struggling readers.
 
 ## Connector Note
 
-On 2026-05-26, the homepage and supporting files committed successfully. A full `app.html` replacement was blocked by connector safety checks, so app-page navigation should be updated later in smaller patches or by Codex.
+On 2026-05-26, the homepage and supporting files committed successfully. A full `app.html` replacement was previously blocked by connector safety checks, so app-page navigation should be updated only in small safe patches.
+
+On 2026-05-26, a small `app.html` update committed successfully to add lesson app canonical metadata, robots/theme metadata, shared footer styling, and footer navigation.
 
 ## Important Warning
 
