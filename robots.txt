@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://readeasy30.com/sitemap.xml
