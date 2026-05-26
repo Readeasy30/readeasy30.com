@@ -1,6 +1,6 @@
 # ReadEasy30 Locked Checkpoint
 
-Date locked: 2026-05-25
+Date locked: 2026-05-26
 
 ## Current Locked Architecture
 
@@ -14,7 +14,7 @@ Use this structure:
 - `css/style.css` = styling
 - Supporting JavaScript files may stay separate when they add small features safely
 
-Do not convert this project to React, Vite, Next.js, or another framework unless the owner explicitly changes the architecture later.
+Do not convert this project to React, Vite, Next.js, TypeScript, or another framework unless the owner explicitly changes the architecture later.
 
 ## Locked Working Features
 
@@ -34,10 +34,14 @@ The current app includes:
 - Bubbles coaching messages
 - Fluency coach
 - Achievement / badge system
-- Vocabulary pills
+- Vocabulary pills and word helper
 - Correct / retry answer feedback
 - Clear answers
 - Reset progress
+- Progress report
+- Reader type selector
+- Session plan helper
+- Startup fix to reopen the next open lesson
 - Mobile-friendly CSS foundation
 
 ## Day Selector Status
@@ -53,6 +57,28 @@ Confirmed pieces:
 - `loadLesson()` syncs `daySelect.value = currentLesson`
 - Future lessons are disabled until progress opens them
 - `css/style.css` contains `.day-picker` styling
+
+## Stable Repo Additions
+
+The repo now includes:
+
+- `README.md` for project overview and workflow rules
+- `parent-tutor-guide.html` for a public support page
+- `css/site-links.css` for shared footer and resource-page navigation styles
+- `robots.txt`
+- `sitemap.xml`
+- `LEVEL-E-ROADMAP.md`
+- `PRINTABLE-WORKSHEETS-PLAN.md`
+
+## Homepage SEO Status
+
+The homepage now includes:
+
+- canonical URL
+- EducationalApplication schema markup
+- stronger footer navigation
+- link to the parent/tutor guide
+- sitemap link
 
 ## Build Rule Going Forward
 
@@ -74,9 +100,15 @@ Suggested next work:
 
 1. Review all 30 lessons for reading-level progression.
 2. Strengthen Level A through Level D text quality.
-3. Add Level E planning notes for future 5th-8th grade expansion.
-4. Keep Bubbles calm and simple.
-5. Keep the site easy for adults, parents, ESL learners, and struggling readers.
+3. Add a free sample printable worksheet page.
+4. Add accessibility checks.
+5. Improve app footer links when connector write filter allows the `app.html` update.
+6. Keep Bubbles calm and simple.
+7. Keep the site easy for adults, parents, ESL learners, and struggling readers.
+
+## Connector Note
+
+On 2026-05-26, the homepage and supporting files committed successfully. A full `app.html` replacement was blocked by connector safety checks, so app-page navigation should be updated later in smaller patches or by Codex.
 
 ## Important Warning
 
