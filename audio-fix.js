@@ -4,10 +4,58 @@ function setAudioStatus(message) {
   }
 }
 
+function scoreReadEasyVoice(voice) {
+  if (!voice || !voice.name) return -100;
+
+  const name = voice.name.toLowerCase();
+  const lang = (voice.lang || "").toLowerCase();
+  let score = 0;
+
+  if (lang.startsWith("en-us")) score += 45;
+  else if (lang.startsWith("en-gb") || lang.startsWith("en-ca") || lang.startsWith("en-au")) score += 35;
+  else if (lang.startsWith("en")) score += 25;
+  else score -= 75;
+
+  // Best calm, natural female voices when the browser/device exposes them.
+  if (name.includes("aria")) score += 70;
+  if (name.includes("jenny")) score += 70;
+  if (name.includes("samantha")) score += 62;
+  if (name.includes("karen")) score += 58;
+  if (name.includes("zira")) score += 55;
+  if (name.includes("susan")) score += 50;
+  if (name.includes("victoria")) score += 48;
+  if (name.includes("google us english")) score += 45;
+
+  // Browser wording for newer cloud/natural voices.
+  if (name.includes("natural")) score += 35;
+  if (name.includes("online")) score += 25;
+  if (name.includes("neural")) score += 35;
+  if (name.includes("premium")) score += 20;
+
+  // Prefer female-coded names for this learning situation.
+  if (name.includes("female")) score += 30;
+  if (name.includes("woman")) score += 25;
+
+  // Avoid harsher or less suitable default male/system voices when alternatives exist.
+  if (name.includes("david")) score -= 40;
+  if (name.includes("mark")) score -= 35;
+  if (name.includes("guy")) score -= 30;
+  if (name.includes("male")) score -= 30;
+  if (name.includes("compact")) score -= 20;
+
+  return score;
+}
+
 function getReadableVoice() {
   if (!window.speechSynthesis || !window.speechSynthesis.getVoices) return null;
+
   const voices = window.speechSynthesis.getVoices();
-  return voices.find(voice => voice.lang && voice.lang.toLowerCase().startsWith("en")) || voices[0] || null;
+  const englishVoices = voices.filter(voice => voice.lang && voice.lang.toLowerCase().startsWith("en"));
+  const candidates = englishVoices.length ? englishVoices : voices;
+
+  return candidates
+    .slice()
+    .sort((a, b) => scoreReadEasyVoice(b) - scoreReadEasyVoice(a))[0] || null;
 }
 
 function speakReadEasyText(text, onStart, onEnd) {
@@ -26,14 +74,14 @@ function speakReadEasyText(text, onStart, onEnd) {
       const speech = new SpeechSynthesisUtterance(text);
       const voice = getReadableVoice();
 
-      speech.rate = 0.82;
-      speech.pitch = 1;
+      speech.rate = 0.78;
+      speech.pitch = 1.08;
       speech.volume = 1;
       speech.lang = voice && voice.lang ? voice.lang : "en-US";
       if (voice) speech.voice = voice;
 
       speech.onstart = () => {
-        setAudioStatus("Reading aloud now. Listen, then reread one sentence slowly.");
+        setAudioStatus("Reading aloud now in a calmer voice. Listen, then reread one sentence slowly.");
         if (typeof onStart === "function") onStart();
       };
 
