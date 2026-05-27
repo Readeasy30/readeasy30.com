@@ -29,9 +29,22 @@
     }
   }
 
+  function loadReadRepairHelpers() {
+    if (document.querySelector('script[src*="read-repair.js"]')) return;
+    const script = document.createElement("script");
+    script.src = "./read-repair.js?v=20260527-repair1";
+    script.defer = true;
+    document.body.appendChild(script);
+  }
+
+  function bootStartupFixes() {
+    reopenNextOpenLesson();
+    loadReadRepairHelpers();
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", reopenNextOpenLesson);
+    document.addEventListener("DOMContentLoaded", bootStartupFixes);
   } else {
-    setTimeout(reopenNextOpenLesson, 0);
+    setTimeout(bootStartupFixes, 0);
   }
 })();
