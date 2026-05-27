@@ -16,19 +16,20 @@ function scoreReadEasyVoice(voice) {
   else if (lang.startsWith("en")) score += 25;
   else score -= 75;
 
-  // Best calm, natural female voices when the browser/device exposes them.
-  if (name.includes("aria")) score += 70;
-  if (name.includes("jenny")) score += 70;
-  if (name.includes("samantha")) score += 62;
-  if (name.includes("karen")) score += 58;
-  if (name.includes("zira")) score += 55;
-  if (name.includes("susan")) score += 50;
-  if (name.includes("victoria")) score += 48;
-  if (name.includes("google us english")) score += 45;
+  // Teaching voice preference: calm, clear, pleasant female voices.
+  // Jenny is the preferred Bubbles/teaching voice when the browser exposes it.
+  if (name.includes("jenny")) score += 140;
+  if (name.includes("aria")) score += 105;
+  if (name.includes("samantha")) score += 85;
+  if (name.includes("victoria")) score += 78;
+  if (name.includes("karen")) score += 72;
+  if (name.includes("zira")) score += 68;
+  if (name.includes("susan")) score += 58;
+  if (name.includes("google us english")) score += 50;
 
   // Browser wording for newer cloud/natural voices.
-  if (name.includes("natural")) score += 35;
-  if (name.includes("online")) score += 25;
+  if (name.includes("natural")) score += 40;
+  if (name.includes("online")) score += 30;
   if (name.includes("neural")) score += 35;
   if (name.includes("premium")) score += 20;
 
@@ -37,10 +38,10 @@ function scoreReadEasyVoice(voice) {
   if (name.includes("woman")) score += 25;
 
   // Avoid harsher or less suitable default male/system voices when alternatives exist.
-  if (name.includes("david")) score -= 40;
-  if (name.includes("mark")) score -= 35;
-  if (name.includes("guy")) score -= 30;
-  if (name.includes("male")) score -= 30;
+  if (name.includes("david")) score -= 50;
+  if (name.includes("mark")) score -= 40;
+  if (name.includes("guy")) score -= 35;
+  if (name.includes("male")) score -= 35;
   if (name.includes("compact")) score -= 20;
 
   return score;
@@ -74,14 +75,14 @@ function speakReadEasyText(text, onStart, onEnd) {
       const speech = new SpeechSynthesisUtterance(text);
       const voice = getReadableVoice();
 
-      speech.rate = 0.78;
-      speech.pitch = 1.08;
+      speech.rate = 0.76;
+      speech.pitch = 1.06;
       speech.volume = 1;
       speech.lang = voice && voice.lang ? voice.lang : "en-US";
       if (voice) speech.voice = voice;
 
       speech.onstart = () => {
-        setAudioStatus("Reading aloud now in a calmer voice. Listen, then reread one sentence slowly.");
+        setAudioStatus(voice ? `Reading aloud with ${voice.name}. Listen, then reread one sentence slowly.` : "Reading aloud now. Listen, then reread one sentence slowly.");
         if (typeof onStart === "function") onStart();
       };
 
