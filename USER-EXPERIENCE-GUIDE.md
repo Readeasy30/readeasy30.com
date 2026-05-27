@@ -11,3 +11,10 @@ Rules:
 - Preserve working app features.
 - Avoid clutter.
 - Update status files after stable changes.
+
+AI workflow:
+
+- AI agents do repo file work with available tools.
+- The owner does not create, install, paste, or update repo files manually.
+- When a safe file change is needed, update the file directly and commit it.
+- Continue safe work when the next step is clear.
