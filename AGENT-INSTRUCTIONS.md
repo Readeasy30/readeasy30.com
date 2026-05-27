@@ -52,6 +52,17 @@ Preserve this structure:
 
 Do not redesign or replace the lesson engine without a specific owner request.
 
+## File Work Rule
+
+AI and Codex do file changes directly.
+
+Do not ask Gerry to create files.
+Do not ask Gerry to paste files.
+Do not ask Gerry to update files.
+Do not give Gerry manual copy-and-paste file work when repo tools or Codex can do the work.
+
+When file work is needed, update the repo files directly and commit the safe change.
+
 ## Content Rules
 
 Every lesson and page should be:
@@ -91,6 +102,22 @@ Future path:
 - Level E and beyond should move carefully toward 5th-8th grade reading skills without overwhelming the learner.
 
 Use `LEVEL-E-ROADMAP.md` before creating future Level E lessons.
+
+## UX Rules
+
+Follow `USER-EXPERIENCE-GUIDE.md` before changing app layout, page layout, lesson flow, navigation, buttons, or major copy.
+
+UX priorities:
+
+- clear start
+- clear next step
+- plain words
+- large readable text
+- large buttons
+- mobile-first layout
+- calm tone
+- no clutter
+- preserve working app features
 
 ## Bubbles Coach Rules
 
@@ -172,14 +199,15 @@ When making changes:
 1. Check existing files first.
 2. Preserve working structure.
 3. Do not rebuild features that already exist.
-4. Make one safe upgrade at a time.
+4. Make safe upgrades in committed stages.
 5. Use full-section updates when tiny patches would be fragile.
 6. Keep navigation consistent.
 7. Keep footer consistent.
 8. Add public pages to sitemap when created.
 9. Avoid breaking mobile layout.
 10. Commit after the upgrade works.
-11. Update `LOCKED-CHECKPOINT.md` when a new stable stage is reached.
+11. Update `LOCKED-CHECKPOINT.md` and `PROJECT-STATUS.md` when a new stable stage is reached.
+12. Continue the safe queue without pausing when the next safe step is obvious.
 
 ## Current Stable Support Files
 
@@ -189,6 +217,9 @@ The repo includes:
 - `AGENTS.md`
 - `AGENT-INSTRUCTIONS.md`
 - `LOCKED-CHECKPOINT.md`
+- `PROJECT-STATUS.md`
+- `USER-EXPERIENCE-GUIDE.md`
+- `GOALS-OBJECTIVES.md`
 - `LEVEL-E-ROADMAP.md`
 - `PRINTABLE-WORKSHEETS-PLAN.md`
 - `robots.txt`
@@ -199,10 +230,9 @@ The repo includes:
 1. Strengthen lesson quality and progression before adding flashy features.
 2. Add a free sample printable worksheet page.
 3. Add accessibility checks.
-4. Improve app footer links when connector write filters allow the `app.html` update.
-5. Add more parent/tutor support pages carefully.
-6. Add SEO content pages carefully.
-7. Keep Bubbles calm and controlled.
+4. Add more parent/tutor support pages carefully.
+5. Add SEO content pages carefully.
+6. Keep Bubbles calm and controlled.
 
 ## Owner Preferences
 
