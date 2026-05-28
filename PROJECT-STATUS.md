@@ -14,6 +14,7 @@ Locked structure:
 - `grade-path-lessons.js` = expanded 30-day lesson ladder through Grade 8 readiness
 - `calm-reading-practice-30-minutes-a-day.html` = SEO/support page for the 30-minute calm reading routine
 - `adult-reading-practice-without-shame.html` = SEO/support page for adult no-shame reading practice
+- `esl-reading-practice-everyday-english.html` = SEO/support page for everyday ESL reading practice
 - `sample-reading-worksheet.html` = free printable worksheet page
 - `reading-levels-beginner-to-8th-grade.html` = SEO/support page for the A-H reading path
 - `adult-reading-practice.html` = SEO/support page for adult readers rebuilding confidence
@@ -90,6 +91,9 @@ Completed on 2026-05-28:
 - Linked the adult no-shame page from `adult-reading-practice.html` navigation, content, and footer.
 - Updated `sitemap.xml` to include the adult no-shame page.
 - Linked the adult no-shame page from the homepage navigation, Helpful Resources section, and footer.
+- Added `esl-reading-practice-everyday-english.html` from the marketing-system ESL SEO draft.
+- Linked the everyday ESL page from `esl-reading-practice.html` navigation, resource section, and footer.
+- Updated `sitemap.xml` to include the everyday ESL page using the compact sitemap format.
 
 ## Pages Now Available
 
@@ -98,6 +102,7 @@ Completed on 2026-05-28:
 - `daily-reading-practice.html`
 - `calm-reading-practice-30-minutes-a-day.html`
 - `adult-reading-practice-without-shame.html`
+- `esl-reading-practice-everyday-english.html`
 - `parent-tutor-guide.html`
 - `reading-levels-beginner-to-8th-grade.html`
 - `adult-reading-practice.html`
@@ -154,6 +159,8 @@ The first attempt to create this status file was also blocked. This shorter vers
 
 The first formatted sitemap update for the ESL page was blocked by connector safety checks. A smaller sitemap format committed successfully.
 
+The first sitemap update for the everyday ESL page was blocked by connector safety checks. A smaller compact sitemap format committed successfully.
+
 Updating `privacy.html` footer links was blocked twice by connector safety checks. Do not force it here; retry later in Codex if needed.
 
 ## Next Safe Queue
@@ -163,8 +170,10 @@ Updating `privacy.html` footer links was blocked twice by connector safety check
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
-6. Retry Privacy footer/resource links later in Codex if needed.
-7. Keep Bubbles calm and controlled.
+6. Add everyday ESL page to homepage/helpful resource links when safe.
+7. Add everyday ESL page to marketing posting log when safe.
+8. Retry Privacy footer/resource links later in Codex if needed.
+9. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
