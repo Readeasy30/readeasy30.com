@@ -89,6 +89,7 @@ Completed on 2026-05-28:
 - Added `adult-reading-practice-without-shame.html` from the marketing-system adult reading SEO draft.
 - Linked the adult no-shame page from `adult-reading-practice.html` navigation, content, and footer.
 - Updated `sitemap.xml` to include the adult no-shame page.
+- Linked the adult no-shame page from the homepage navigation, Helpful Resources section, and footer.
 
 ## Pages Now Available
 
@@ -162,9 +163,8 @@ Updating `privacy.html` footer links was blocked twice by connector safety check
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
-6. Add adult no-shame page to homepage/helpful resource links when safe.
-7. Retry Privacy footer/resource links later in Codex if needed.
-8. Keep Bubbles calm and controlled.
+6. Retry Privacy footer/resource links later in Codex if needed.
+7. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
