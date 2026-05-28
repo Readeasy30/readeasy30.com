@@ -15,6 +15,7 @@ Locked structure:
 - `sample-reading-worksheet.html` = free printable worksheet page
 - `reading-levels-beginner-to-8th-grade.html` = SEO/support page for the A-H reading path
 - `adult-reading-practice.html` = SEO/support page for adult readers rebuilding confidence
+- `esl-reading-practice.html` = SEO/support page for ESL readers practicing everyday English
 - `css/style.css` = main styling
 - `css/site-links.css` = shared navigation, footer, resource page, and accessibility helper styles
 
@@ -84,6 +85,9 @@ Completed on 2026-05-28:
 - Added `adult-reading-practice.html` as an SEO/support page for adult readers.
 - Linked the adult reading page from the homepage navigation, helpful resources, and footer.
 - Updated `sitemap.xml` to include the adult reading page.
+- Added `esl-reading-practice.html` as an SEO/support page for ESL readers.
+- Linked the ESL reading page from the homepage navigation, helpful resources, and footer.
+- Updated `sitemap.xml` to include the ESL reading page using a smaller connector-safe sitemap format.
 
 ## Pages Now Available
 
@@ -93,6 +97,7 @@ Completed on 2026-05-28:
 - `parent-tutor-guide.html`
 - `reading-levels-beginner-to-8th-grade.html`
 - `adult-reading-practice.html`
+- `esl-reading-practice.html`
 - `sample-reading-worksheet.html`
 - `about.html`
 - `contact.html`
@@ -123,13 +128,15 @@ Resolution: the sitemap update was retried in a smaller compact format and commi
 
 The first attempt to create this status file was also blocked. This shorter version was used instead.
 
+The first formatted sitemap update for the ESL page was blocked by connector safety checks. A smaller sitemap format committed successfully.
+
 ## Next Safe Queue
 
 1. Manually test `app.html` in browser after deployment.
 2. Confirm placement check shows 8 steps.
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
-5. Add ESL reading practice SEO page.
+5. Add internal links from support pages to the new SEO pages.
 6. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
