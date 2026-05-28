@@ -11,6 +11,7 @@ Locked structure:
 - `index.html` = homepage
 - `app.html` = lesson app
 - `app.js` = lesson engine
+- `grade-path-lessons.js` = expanded 30-day lesson ladder through Grade 8 readiness
 - `css/style.css` = main styling
 - `css/site-links.css` = shared navigation, footer, resource page, and accessibility helper styles
 
@@ -66,6 +67,9 @@ Completed on 2026-05-28:
 - Updated README to point to the shared education growth plan in `marketing-system`.
 - Recorded ReadEasy30 as part of the ReadEasy30 + MathEasy30 campaign system.
 - Added `CODEX-WORKFLOW.md` for Codex-first repo editing.
+- Added `grade-path-lessons.js` with an expanded 30-day lesson ladder from early reading through Grade 8 readiness.
+- Updated `app.html` manual level buttons from A-D to A-H.
+- Wired the expanded grade path after the stable `app.js` engine without replacing the engine.
 
 ## Pages Now Available
 
@@ -79,6 +83,21 @@ Completed on 2026-05-28:
 - `terms.html`
 - `sitemap.xml`
 
+## Lesson Path Status
+
+The app now has a 30-day progression with these bands:
+
+1. Level A = early reader
+2. Level B = Grade 1 path
+3. Level C = Grade 2 path
+4. Level D = Grade 3 path
+5. Level E = Grade 4 path
+6. Level F = Grade 5 path
+7. Level G = Grades 6-7 path
+8. Level H = Grade 8 readiness
+
+The lesson engine remains in `app.js`. The expanded content lives in `grade-path-lessons.js` so the stable app logic is not demolished.
+
 ## Blocked / Resolved
 
 A full formatted sitemap replacement was blocked once by connector safety checks.
@@ -89,13 +108,13 @@ The first attempt to create this status file was also blocked. This shorter vers
 
 ## Next Safe Queue
 
-1. Review all 30 lessons for reading-level progression.
-2. Strengthen Level A-D lesson quality.
-3. Add a free sample printable worksheet page.
-4. Add accessibility testing notes.
-5. Add more useful SEO content pages carefully.
-6. Keep ReadEasy30 aligned with the shared education growth plan in `marketing-system`.
-7. Plan contact form safety before adding a working form.
+1. Manually test `app.html` in browser after deployment.
+2. Confirm placement check shows 8 steps.
+3. Confirm manual levels A-H start at the right day.
+4. Confirm Day 30 reaches Grade 8 readiness content.
+5. Add a free sample printable worksheet page.
+6. Add accessibility testing notes.
+7. Add more useful SEO content pages carefully.
 8. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
