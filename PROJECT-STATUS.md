@@ -16,6 +16,7 @@ Locked structure:
 - `reading-levels-beginner-to-8th-grade.html` = SEO/support page for the A-H reading path
 - `adult-reading-practice.html` = SEO/support page for adult readers rebuilding confidence
 - `esl-reading-practice.html` = SEO/support page for ESL readers practicing everyday English
+- `GRADE-8-STATIC-QA.md` = static QA notes for the expanded A-H path
 - `css/style.css` = main styling
 - `css/site-links.css` = shared navigation, footer, resource page, and accessibility helper styles
 
@@ -93,6 +94,7 @@ Completed on 2026-05-28:
 - Added internal links from `about.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 - Added internal links from `contact.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 - Updated `terms.html` footer links to include the current resource cluster.
+- Added `GRADE-8-STATIC-QA.md` after static review of `app.html`, `app.js`, `grade-path-lessons.js`, and `startup-fix.js`.
 
 ## Pages Now Available
 
@@ -124,6 +126,22 @@ The app now has a 30-day progression with these bands:
 8. Level H = Grade 8 readiness
 
 The lesson engine remains in `app.js`. The expanded content lives in `grade-path-lessons.js` so the stable app logic is not demolished.
+
+## Static QA Result
+
+Static review found no obvious architecture-breaking issue in the expanded A-H path.
+
+Confirmed:
+
+- `app.html` loads `app.js` before `grade-path-lessons.js`.
+- Manual level buttons A-H are present.
+- Placement label starts as Step 1 of 8.
+- Placement rendering uses `placementSteps.length`.
+- `grade-path-lessons.js` replaces the starter lesson data with 30 lessons.
+- `levelStart` is expanded for A-H.
+- `startup-fix.js` uses `lessons.length` dynamically and loads after the expanded path.
+
+Manual browser QA is still required after deployment.
 
 ## Blocked / Resolved
 
