@@ -90,6 +90,8 @@ Completed on 2026-05-28:
 - Updated `sitemap.xml` to include the ESL reading page using a smaller connector-safe sitemap format.
 - Added internal links from `daily-reading-practice.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 - Added internal links from `parent-tutor-guide.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
+- Added internal links from `about.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
+- Added internal links from `contact.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 
 ## Pages Now Available
 
@@ -138,7 +140,7 @@ The first formatted sitemap update for the ESL page was blocked by connector saf
 2. Confirm placement check shows 8 steps.
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
-5. Add internal links from About and Contact pages to the new SEO pages.
+5. Add internal links from Privacy and Terms pages to the main resources only if appropriate.
 6. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
