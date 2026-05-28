@@ -16,6 +16,18 @@ Locked structure:
 
 No framework conversion has been made.
 
+## Codex-First Workflow
+
+Codex is the primary workflow for routine ReadEasy30 repository editing.
+
+The ChatGPT GitHub connector should be used only for small reads, checks, reviews, or emergency single-file edits when Codex is unavailable.
+
+Reason: connector write-action labels like `create_file` or `update_file` can confuse the owner and slow the workflow.
+
+Current workflow file:
+
+- `CODEX-WORKFLOW.md`
+
 ## Shared Education Growth Alignment
 
 ReadEasy30 is now connected to the shared Wholelychit education growth system with MathEasy30.
@@ -53,6 +65,7 @@ Completed on 2026-05-28:
 
 - Updated README to point to the shared education growth plan in `marketing-system`.
 - Recorded ReadEasy30 as part of the ReadEasy30 + MathEasy30 campaign system.
+- Added `CODEX-WORKFLOW.md` for Codex-first repo editing.
 
 ## Pages Now Available
 
