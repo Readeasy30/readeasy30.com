@@ -1,6 +1,6 @@
 # ReadEasy30 Locked Checkpoint
 
-Date locked: 2026-05-26
+Date locked: 2026-05-28
 
 ## Current Locked Architecture
 
@@ -10,7 +10,8 @@ Use this structure:
 
 - `index.html` = marketing homepage
 - `app.html` = lesson app page
-- `app.js` = lesson engine and reading logic
+- `app.js` = stable lesson engine and reading logic
+- `grade-path-lessons.js` = expanded 30-day reading ladder through Grade 8 readiness
 - `css/style.css` = styling
 - `css/site-links.css` = shared navigation, resource-page, and accessibility helper styling
 - Supporting JavaScript files may stay separate when they add small features safely
@@ -24,7 +25,8 @@ The current app includes:
 - Placement check
 - Manual starting level choice
 - 30 reading lessons
-- Levels A, B, C, and D
+- Levels A through H
+- Early reader through Grade 8 readiness path
 - Day selector / jump-to-day control
 - Locked future lessons
 - Progress tracking with localStorage
@@ -44,6 +46,23 @@ The current app includes:
 - Session plan helper
 - Startup fix to reopen the next open lesson
 - Mobile-friendly CSS foundation
+
+## Grade Path Status
+
+The app now uses `grade-path-lessons.js` to safely replace the original starter lesson data without replacing the stable engine in `app.js`.
+
+Current 30-day path:
+
+1. Level A = early reader
+2. Level B = Grade 1 path
+3. Level C = Grade 2 path
+4. Level D = Grade 3 path
+5. Level E = Grade 4 path
+6. Level F = Grade 5 path
+7. Level G = Grades 6-7 path
+8. Level H = Grade 8 readiness
+
+Day 30 now practices Grade 8 readiness skills: evidence, bias, missing information, synthesis, argument, and explaining thinking.
 
 ## Day Selector Status
 
@@ -67,6 +86,9 @@ The repo now includes:
 - `AGENTS.md`
 - `AGENT-INSTRUCTIONS.md`
 - `LOCKED-CHECKPOINT.md`
+- `PROJECT-STATUS.md`
+- `CODEX-WORKFLOW.md`
+- `grade-path-lessons.js`
 - `parent-tutor-guide.html` for a public support page
 - `daily-reading-practice.html` for one useful SEO/help content page
 - `about.html`
@@ -101,6 +123,8 @@ The lesson app page now includes:
 - skip-to-content accessibility link
 - top navigation to Home, Daily Practice, and Parent / Tutor Guide
 - footer navigation linking Home, Lesson App, Daily Practice, Parent / Tutor Guide, About, Contact, Privacy, Terms, and Sitemap
+- expanded manual level buttons A-H
+- `grade-path-lessons.js` loaded after `app.js`
 
 ## Support Page Status
 
@@ -133,25 +157,25 @@ Use this workflow every time:
 
 Next recommended upgrade:
 
-Improve lesson quality and progression, not structure.
+Test and polish the expanded Grade 8 readiness lesson path.
 
 Suggested next work:
 
-1. Review all 30 lessons for reading-level progression.
-2. Strengthen Level A through Level D text quality.
-3. Add a free sample printable worksheet page.
-4. Add accessibility testing notes.
-5. Add more useful SEO content pages carefully.
-6. Keep Bubbles calm and simple.
-7. Keep the site easy for adults, parents, ESL learners, and struggling readers.
+1. Manually test `app.html` after deployment.
+2. Confirm placement check shows 8 steps.
+3. Confirm manual level buttons A-H load correctly.
+4. Confirm Day 30 displays Grade 8 readiness content.
+5. Add a free sample printable worksheet page.
+6. Add accessibility testing notes.
+7. Add more useful SEO content pages carefully.
+8. Keep Bubbles calm and simple.
+9. Keep the site easy for adults, parents, ESL learners, and struggling readers.
 
 ## Connector Note
 
-On 2026-05-26, the homepage and supporting files committed successfully. A full `app.html` replacement was previously blocked by connector safety checks, so app-page navigation should be updated only in small safe patches.
+On 2026-05-26, the homepage and supporting files committed successfully. A full `app.html` replacement was previously blocked by connector safety checks, so app-page navigation should be updated only in small safe patches when possible.
 
-On 2026-05-26, a small `app.html` update committed successfully to add lesson app canonical metadata, robots/theme metadata, shared footer styling, and footer navigation.
-
-On 2026-05-26, the production support-page build queue continued successfully. One full sitemap update was blocked once by connector safety checks. A smaller sitemap update then committed successfully.
+On 2026-05-28, `app.html` was safely updated to load `grade-path-lessons.js` and show manual levels A-H.
 
 ## Important Warning
 
