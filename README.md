@@ -10,7 +10,8 @@ This project is intentionally simple and must stay simple:
 
 - `index.html` — marketing homepage
 - `app.html` — lesson app page
-- `app.js` — lesson engine and reading logic
+- `app.js` — stable lesson engine and reading logic
+- `grade-path-lessons.js` — expanded 30-day reading path from early reader through Grade 8 readiness
 - `css/style.css` — main site styling
 - `css/site-links.css` — shared navigation, footer, resource-page, and accessibility helper styles
 - Small support JavaScript files — safe helper features only
@@ -20,7 +21,8 @@ This project is intentionally simple and must stay simple:
 - Placement check
 - Manual level choice
 - 30 reading lessons
-- Levels A through D
+- Levels A through H
+- Early reader through Grade 8 readiness path
 - Day selector
 - Locked future lessons
 - localStorage progress tracking
@@ -34,6 +36,23 @@ This project is intentionally simple and must stay simple:
 - Mobile-friendly layout foundation
 - Public support pages
 - Basic SEO metadata and sitemap
+
+## Reading level path
+
+ReadEasy30 now uses a 30-day progression:
+
+1. Level A — early reader
+2. Level B — Grade 1 path
+3. Level C — Grade 2 path
+4. Level D — Grade 3 path
+5. Level E — Grade 4 path
+6. Level F — Grade 5 path
+7. Level G — Grades 6-7 path
+8. Level H — Grade 8 readiness
+
+The stable app engine stays in `app.js`.
+
+The expanded lesson content is loaded from `grade-path-lessons.js` after `app.js` so the lesson engine, placement, progress, day selector, read aloud, and Bubbles features are preserved.
 
 ## Public pages
 
@@ -96,12 +115,19 @@ Bubbles should encourage readers to slow down, reread, find proof in the story, 
 
 Bubbles should not act like an open-ended chatbot until safety and content controls are ready.
 
+## QA file
+
+Use `GRADE-8-PATH-QA-CHECKLIST.md` to test the expanded reading path after deployment.
+
 ## Next useful queue
 
-1. Review and strengthen all 30 lessons for smoother Level A-D progression.
-2. Add one free sample printable worksheet page.
-3. Add accessibility checks and manual testing notes.
-4. Add more useful SEO content pages carefully.
-5. Keep ReadEasy30 aligned with the shared education growth plan in `marketing-system`.
-6. Add a safe contact form only after privacy/spam handling is decided.
-7. Do not add live ads, payments, tracking, or accounts yet.
+1. Manually test `app.html` after deployment.
+2. Confirm placement check shows 8 steps.
+3. Confirm manual levels A-H load the correct lesson bands.
+4. Confirm Day 30 reaches Grade 8 readiness content.
+5. Add one free sample printable worksheet page.
+6. Add accessibility checks and manual testing notes.
+7. Add more useful SEO content pages carefully.
+8. Keep ReadEasy30 aligned with the shared education growth plan in `marketing-system`.
+9. Add a safe contact form only after privacy/spam handling is decided.
+10. Do not add live ads, payments, tracking, or accounts yet.
