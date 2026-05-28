@@ -1,20 +1,16 @@
 # AGENTS.md
 
-## File work rule
+## Work mode
 
-AI and Codex handle file work directly.
+Use direct repository edits for routine ReadEasy30 work when write access is available.
 
-Do not ask Gerry to create files.
-Do not ask Gerry to paste files.
-Do not ask Gerry to update files.
+Routine safe work is already authorized for this project. Make useful changes in clear committed stages and continue through the safe queue until finished or blocked.
 
-Use direct file updates for normal website work.
+## Communication mode
 
-Use full file updates when that is cleaner than small patches.
+Keep messages brief. Give a compact summary after several useful commits or when blocked.
 
-Commit useful changes with clear messages.
-
-## Normal safe tasks
+## Safe routine work
 
 - create website files
 - update HTML files
@@ -24,16 +20,22 @@ Commit useful changes with clear messages.
 - fix links
 - fix file paths
 - improve page text
+- improve navigation
+- improve footer
+- improve accessibility
 - improve mobile layout
 - update README files
 - update instruction files
+- update status and checkpoint files
 - improve simple app behavior
 - improve lesson text
+- improve reading flow
+- add manual test checklists
 
 ## Stop points
 
-Stop only for blocked writes, major code deletion, framework changes, private keys, payment setup, live tracking, live ads, or unclear repository state.
+Pause only for blocked writes, major code deletion, framework changes, private keys, payment setup, live tracking, live ads, unclear repository state, or a change that could break production in a way that cannot be safely repaired in the same work session.
 
 ## Tech rule
 
-Keep ReadEasy30 on HTML, CSS, and JavaScript unless the owner clearly requests a rebuild.
+Keep ReadEasy30 on HTML, CSS, and JavaScript. Do not switch to React, Vite, Next.js, TypeScript, or build tools unless Gerry clearly requests a rebuild.
