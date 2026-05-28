@@ -1,2 +1,2 @@
 ReadEasy30 add-on:
-Prioritize simple reading lessons, accessibility, parent/teacher trust, mobile-first practice pages, and no unsupported education outcome claims.
+Keep it non-React, non-Vite, static HTML/CSS/JS. Prioritize reading lessons, assessment, Bubbles coaching, progress tracking, accessibility, and mobile-first learning flow.
