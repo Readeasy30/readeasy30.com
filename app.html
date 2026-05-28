@@ -57,7 +57,7 @@
         </div>
 
         <div id="assessmentTest" class="assessment-test hidden">
-          <p id="assessmentStepLabel" class="assessment-step-label">Step 1 of 4</p>
+          <p id="assessmentStepLabel" class="assessment-step-label">Step 1 of 8</p>
           <h3 id="assessmentStoryTitle">Placement Reading</h3>
           <p id="assessmentStoryText" class="assessment-story">Loading placement reading...</p>
 
@@ -79,10 +79,14 @@
           <summary>Choose level manually instead</summary>
 
           <div class="placement-buttons">
-            <button onclick="setStartingLevel('A')">Level A<br><span>Short sentences</span></button>
-            <button onclick="setStartingLevel('B')">Level B<br><span>Longer sentences</span></button>
-            <button onclick="setStartingLevel('C')">Level C<br><span>Short paragraphs</span></button>
-            <button onclick="setStartingLevel('D')">Level D<br><span>Stronger reading</span></button>
+            <button onclick="setStartingLevel('A')">Level A<br><span>Early reader</span></button>
+            <button onclick="setStartingLevel('B')">Level B<br><span>Grade 1 path</span></button>
+            <button onclick="setStartingLevel('C')">Level C<br><span>Grade 2 path</span></button>
+            <button onclick="setStartingLevel('D')">Level D<br><span>Grade 3 path</span></button>
+            <button onclick="setStartingLevel('E')">Level E<br><span>Grade 4 path</span></button>
+            <button onclick="setStartingLevel('F')">Level F<br><span>Grade 5 path</span></button>
+            <button onclick="setStartingLevel('G')">Level G<br><span>Grades 6-7 path</span></button>
+            <button onclick="setStartingLevel('H')">Level H<br><span>Grade 8 readiness</span></button>
           </div>
         </details>
       </section>
@@ -109,7 +113,7 @@
         <div class="level-card">
           <span class="level-label">Current Reading Level</span>
           <h2 id="levelTitle">Level A</h2>
-          <p id="levelDescription">Short sentences and beginner reading confidence.</p>
+          <p id="levelDescription">Early-reader sentences and beginner reading confidence.</p>
         </div>
       </div>
 
@@ -201,6 +205,7 @@
   </main>
 
   <script src="./app.js?v=20260522-lessons3"></script>
+  <script src="./grade-path-lessons.js?v=20260528-grade8"></script>
   <script src="./audio-fix.js?v=20260526-audio1"></script>
   <script src="./session-timer.js?v=20260526-sessiongoal1"></script>
   <script src="./report.js?v=20260522-report2"></script>
