@@ -92,6 +92,7 @@ Completed on 2026-05-28:
 - Added internal links from `parent-tutor-guide.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 - Added internal links from `about.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 - Added internal links from `contact.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
+- Updated `terms.html` footer links to include the current resource cluster.
 
 ## Pages Now Available
 
@@ -134,13 +135,15 @@ The first attempt to create this status file was also blocked. This shorter vers
 
 The first formatted sitemap update for the ESL page was blocked by connector safety checks. A smaller sitemap format committed successfully.
 
+Updating `privacy.html` footer links was blocked twice by connector safety checks. Do not force it here; retry later in Codex if needed.
+
 ## Next Safe Queue
 
 1. Manually test `app.html` in browser after deployment.
 2. Confirm placement check shows 8 steps.
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
-5. Add internal links from Privacy and Terms pages to the main resources only if appropriate.
+5. Retry Privacy footer/resource links later in Codex if needed.
 6. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
