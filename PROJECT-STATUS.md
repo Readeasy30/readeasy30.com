@@ -12,6 +12,7 @@ Locked structure:
 - `app.html` = lesson app
 - `app.js` = lesson engine
 - `grade-path-lessons.js` = expanded 30-day lesson ladder through Grade 8 readiness
+- `calm-reading-practice-30-minutes-a-day.html` = SEO/support page for the 30-minute calm reading routine
 - `sample-reading-worksheet.html` = free printable worksheet page
 - `reading-levels-beginner-to-8th-grade.html` = SEO/support page for the A-H reading path
 - `adult-reading-practice.html` = SEO/support page for adult readers rebuilding confidence
@@ -96,12 +97,16 @@ Completed on 2026-05-28:
 - Updated `terms.html` footer links to include the current resource cluster.
 - Added `GRADE-8-STATIC-QA.md` after static review of `app.html`, `app.js`, `grade-path-lessons.js`, and `startup-fix.js`.
 - Updated `report.js` so the Progress Report now reflects Levels A-H instead of only A-D.
+- Added `calm-reading-practice-30-minutes-a-day.html` from the marketing-system SEO draft.
+- Linked the calm reading page from the homepage navigation, helpful resources, and footer.
+- Updated `sitemap.xml` to include the calm reading page.
 
 ## Pages Now Available
 
 - `index.html`
 - `app.html`
 - `daily-reading-practice.html`
+- `calm-reading-practice-30-minutes-a-day.html`
 - `parent-tutor-guide.html`
 - `reading-levels-beginner-to-8th-grade.html`
 - `adult-reading-practice.html`
@@ -167,8 +172,9 @@ Updating `privacy.html` footer links was blocked twice by connector safety check
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
-6. Retry Privacy footer/resource links later in Codex if needed.
-7. Keep Bubbles calm and controlled.
+6. Link the new calm reading page from Daily Practice and Parent/Tutor Guide when safe.
+7. Retry Privacy footer/resource links later in Codex if needed.
+8. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
