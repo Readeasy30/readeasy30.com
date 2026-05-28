@@ -46,6 +46,20 @@ This project is intentionally simple and must stay simple:
 - `privacy.html` — plain-language privacy policy
 - `terms.html` — plain-language terms of use
 
+## Connected growth system
+
+ReadEasy30 is part of the shared Wholelychit education growth system with MathEasy30.
+
+Shared planning lives in `Wholelychit/marketing-system`.
+
+Use these marketing-system files before creating new campaign work:
+
+- `EDUCATION-GROWTH-PLAN.md` — shared ReadEasy30 + MathEasy30 positioning and growth queue
+- `CAMPAIGNS/README.md` — campaign folder rules and index
+- `CAMPAIGNS/readeasy30-matheasy30-confidence-campaign.md` — first shared education campaign
+
+Website code stays in this repo. Shared marketing plans, campaign files, content batches, social posts, Canva notes, and growth tracking stay in `marketing-system`.
+
 ## Development rules
 
 Do not convert this project to React, Vite, Next.js, TypeScript, or any build tool.
@@ -60,6 +74,7 @@ Safe work means:
 4. Preserve working features.
 5. Commit changes with clear messages.
 6. Update `LOCKED-CHECKPOINT.md` and `PROJECT-STATUS.md` after a new stable stage.
+7. Put shared marketing and campaign planning in `Wholelychit/marketing-system`.
 
 ## Product direction
 
@@ -87,5 +102,6 @@ Bubbles should not act like an open-ended chatbot until safety and content contr
 2. Add one free sample printable worksheet page.
 3. Add accessibility checks and manual testing notes.
 4. Add more useful SEO content pages carefully.
-5. Add a safe contact form only after privacy/spam handling is decided.
-6. Do not add live ads, payments, tracking, or accounts yet.
+5. Keep ReadEasy30 aligned with the shared education growth plan in `marketing-system`.
+6. Add a safe contact form only after privacy/spam handling is decided.
+7. Do not add live ads, payments, tracking, or accounts yet.
