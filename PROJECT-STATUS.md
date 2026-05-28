@@ -100,6 +100,8 @@ Completed on 2026-05-28:
 - Added `calm-reading-practice-30-minutes-a-day.html` from the marketing-system SEO draft.
 - Linked the calm reading page from the homepage navigation, helpful resources, and footer.
 - Updated `sitemap.xml` to include the calm reading page.
+- Linked the calm reading page from `daily-reading-practice.html` navigation, resource section, and footer.
+- Linked the calm reading page from `parent-tutor-guide.html` navigation, resource section, and footer.
 
 ## Pages Now Available
 
@@ -172,9 +174,8 @@ Updating `privacy.html` footer links was blocked twice by connector safety check
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
-6. Link the new calm reading page from Daily Practice and Parent/Tutor Guide when safe.
-7. Retry Privacy footer/resource links later in Codex if needed.
-8. Keep Bubbles calm and controlled.
+6. Retry Privacy footer/resource links later in Codex if needed.
+7. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
