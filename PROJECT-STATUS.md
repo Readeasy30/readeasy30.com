@@ -1,6 +1,6 @@
 # ReadEasy30 Project Status
 
-Date updated: 2026-05-26
+Date updated: 2026-05-28
 
 ## Current Status
 
@@ -16,9 +16,23 @@ Locked structure:
 
 No framework conversion has been made.
 
+## Shared Education Growth Alignment
+
+ReadEasy30 is now connected to the shared Wholelychit education growth system with MathEasy30.
+
+Shared planning belongs in `Wholelychit/marketing-system`.
+
+Current shared planning files:
+
+- `EDUCATION-GROWTH-PLAN.md`
+- `CAMPAIGNS/README.md`
+- `CAMPAIGNS/readeasy30-matheasy30-confidence-campaign.md`
+
+Website code stays in this repo.
+
 ## Safe Production Queue Completed
 
-Completed in this build stage:
+Completed in earlier build stages:
 
 - Verified homepage metadata and navigation.
 - Confirmed main repo instruction files exist.
@@ -34,6 +48,11 @@ Completed in this build stage:
 - Updated sitemap with new public pages.
 - Updated README.
 - Updated locked checkpoint.
+
+Completed on 2026-05-28:
+
+- Updated README to point to the shared education growth plan in `marketing-system`.
+- Recorded ReadEasy30 as part of the ReadEasy30 + MathEasy30 campaign system.
 
 ## Pages Now Available
 
@@ -62,8 +81,9 @@ The first attempt to create this status file was also blocked. This shorter vers
 3. Add a free sample printable worksheet page.
 4. Add accessibility testing notes.
 5. Add more useful SEO content pages carefully.
-6. Plan contact form safety before adding a working form.
-7. Keep Bubbles calm and controlled.
+6. Keep ReadEasy30 aligned with the shared education growth plan in `marketing-system`.
+7. Plan contact form safety before adding a working form.
+8. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
