@@ -2,178 +2,133 @@
 
 Date updated: 2026-05-28
 
-## Current Status
+## What the site does
 
-ReadEasy30 is a simple HTML, CSS, and JavaScript GitHub Pages website.
+ReadEasy30 is a simple HTML, CSS, and JavaScript GitHub Pages reading-practice website. It provides a calm 30-minutes-a-day reading lesson app, a 30-day A-H reading path from early reader through Grade 8 readiness, Bubbles coaching messages, vocabulary support, read-aloud support, localStorage progress tracking, and public support resources for children, adults, ESL learners, parents, tutors, and struggling readers.
 
-Locked structure:
+ReadEasy30 is aligned with the shared Wholelychit education growth system with MathEasy30. Shared campaign and marketing planning belongs in `Wholelychit/marketing-system`; website code stays in this repo.
 
-- `index.html` = homepage
-- `app.html` = lesson app
-- `app.js` = lesson engine
-- `grade-path-lessons.js` = expanded 30-day lesson ladder through Grade 8 readiness
-- `calm-reading-practice-30-minutes-a-day.html` = SEO/support page for the 30-minute calm reading routine
-- `adult-reading-practice-without-shame.html` = SEO/support page for adult no-shame reading practice
-- `esl-reading-practice-everyday-english.html` = SEO/support page for everyday ESL reading practice
-- `sample-reading-worksheet.html` = free printable worksheet page
-- `reading-levels-beginner-to-8th-grade.html` = SEO/support page for the A-H reading path
-- `adult-reading-practice.html` = SEO/support page for adult readers rebuilding confidence
-- `esl-reading-practice.html` = SEO/support page for ESL readers practicing everyday English
-- `GRADE-8-STATIC-QA.md` = static QA notes for the expanded A-H path
-- `css/style.css` = main styling
-- `css/site-links.css` = shared navigation, footer, resource page, and accessibility helper styles
+## Current tech stack
 
-No framework conversion has been made.
+- Static HTML
+- CSS
+- JavaScript
+- GitHub Pages style hosting
 
-## Codex-First Workflow
+No framework conversion has been made. Do not convert this project to React, Vite, Next.js, TypeScript, or build tools unless Gerry clearly requests a rebuild.
 
-Codex is the primary workflow for routine ReadEasy30 repository editing.
+## Files/pages complete
 
-The ChatGPT GitHub connector should be used only for small reads, checks, reviews, or emergency single-file edits when Codex is unavailable.
-
-Reason: connector write-action labels like `create_file` or `update_file` can confuse the owner and slow the workflow.
-
-Current workflow file:
-
-- `CODEX-WORKFLOW.md`
-
-## Shared Education Growth Alignment
-
-ReadEasy30 is now connected to the shared Wholelychit education growth system with MathEasy30.
-
-Shared planning belongs in `Wholelychit/marketing-system`.
-
-Current shared planning files:
-
-- `EDUCATION-GROWTH-PLAN.md`
-- `CAMPAIGNS/README.md`
-- `CAMPAIGNS/readeasy30-matheasy30-confidence-campaign.md`
-
-Website code stays in this repo.
-
-## Safe Production Queue Completed
-
-Completed in earlier build stages:
-
-- Verified homepage metadata and navigation.
-- Confirmed main repo instruction files exist.
-- Added shared skip-link styling.
-- Added `about.html`.
-- Added `contact.html`.
-- Added `privacy.html`.
-- Added `terms.html`.
-- Added `daily-reading-practice.html`.
-- Updated homepage navigation and footer links.
-- Updated lesson app navigation and footer links.
-- Updated parent/tutor guide navigation and footer links.
-- Updated sitemap with new public pages.
-- Updated README.
-- Updated locked checkpoint.
-
-Completed on 2026-05-28:
-
-- Added `grade-path-lessons.js` with an expanded 30-day lesson ladder from early reading through Grade 8 readiness.
-- Updated `app.html` manual level buttons from A-D to A-H.
-- Wired the expanded grade path after the stable `app.js` engine without replacing the engine.
-- Added `GRADE-8-PATH-QA-CHECKLIST.md` for testing the expanded lesson path.
-- Added `sample-reading-worksheet.html` as a free printable worksheet page.
-- Added `ACCESSIBILITY-TESTING-NOTES.md`.
-- Added `reading-levels-beginner-to-8th-grade.html` as an SEO/support page for the A-H path.
-- Added `adult-reading-practice.html` as an SEO/support page for adult readers.
-- Added `esl-reading-practice.html` as an SEO/support page for ESL readers.
-- Added internal links from support pages to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
-- Updated `terms.html` footer links to include the current resource cluster.
-- Added `GRADE-8-STATIC-QA.md` after static review of `app.html`, `app.js`, `grade-path-lessons.js`, and `startup-fix.js`.
-- Updated `report.js` so the Progress Report now reflects Levels A-H instead of only A-D.
-- Added `calm-reading-practice-30-minutes-a-day.html` from the marketing-system SEO draft.
-- Linked the calm reading page from homepage, Daily Practice, Parent/Tutor Guide, sitemap, and footers.
-- Added `adult-reading-practice-without-shame.html` from the marketing-system adult reading SEO draft.
-- Linked the adult no-shame page from `adult-reading-practice.html` navigation, content, and footer.
-- Updated `sitemap.xml` to include the adult no-shame page.
-- Linked the adult no-shame page from the homepage navigation, Helpful Resources section, and footer.
-- Added `esl-reading-practice-everyday-english.html` from the marketing-system ESL SEO draft.
-- Linked the everyday ESL page from `esl-reading-practice.html` navigation, resource section, and footer.
-- Updated `sitemap.xml` to include the everyday ESL page using the compact sitemap format.
-
-## Pages Now Available
+Public pages currently available and covered by sitemap:
 
 - `index.html`
 - `app.html`
 - `daily-reading-practice.html`
 - `calm-reading-practice-30-minutes-a-day.html`
+- `adult-reading-practice.html`
 - `adult-reading-practice-without-shame.html`
+- `esl-reading-practice.html`
 - `esl-reading-practice-everyday-english.html`
 - `parent-tutor-guide.html`
 - `reading-levels-beginner-to-8th-grade.html`
-- `adult-reading-practice.html`
-- `esl-reading-practice.html`
 - `sample-reading-worksheet.html`
 - `about.html`
 - `contact.html`
 - `privacy.html`
 - `terms.html`
 - `sitemap.xml`
+- `robots.txt`
 
-## Lesson Path Status
+Core app and support files:
 
-The app now has a 30-day progression with these bands:
+- `app.js`
+- `grade-path-lessons.js`
+- `report.js`
+- `startup-fix.js`
+- `css/style.css`
+- `css/site-links.css`
+- `css/launch-fixes.css`
+- `README.md`
+- `AGENTS.md`
+- `CODEX-WORKFLOW.md`
+- `LOCKED-CHECKPOINT.md`
+- `GRADE-8-PATH-QA-CHECKLIST.md`
+- `GRADE-8-STATIC-QA.md`
+- `ACCESSIBILITY-TESTING-NOTES.md`
+- `CODEX-UNIVERSAL-REPO-AUDIT.txt`
 
-1. Level A = early reader
-2. Level B = Grade 1 path
-3. Level C = Grade 2 path
-4. Level D = Grade 3 path
-5. Level E = Grade 4 path
-6. Level F = Grade 5 path
-7. Level G = Grades 6-7 path
-8. Level H = Grade 8 readiness
+## Files/pages needing work
 
-The lesson engine remains in `app.js`. The expanded content lives in `grade-path-lessons.js` so the stable app logic is not demolished.
+- `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` were not found during this audit. They are optional but useful candidates for future repo control files.
+- `contact.html` does not have a live contact form by design. Add a form only after privacy, spam handling, and storage decisions are approved.
+- Manual browser QA is still required for `app.html`, placement, levels A-H, read aloud, day selector, localStorage progress, and progress report behavior.
+- Future useful content may include more printable worksheets and carefully scoped SEO resources.
 
-## Static QA Result
+## SEO status
 
-Static review found no obvious architecture-breaking issue in the expanded A-H path.
+Universal audit confirmed the sitemap-listed public pages have titles, meta descriptions, canonical URLs, and H1s. The site has multiple support/SEO pages for daily reading practice, calm 30-minute practice, adult reading, ESL reading, reading levels, parent/tutor support, and a printable worksheet.
 
-Confirmed:
+No live ads, tracking, payments, affiliate links, accounts, or public AI features were added.
 
-- `app.html` loads `app.js` before `grade-path-lessons.js`.
-- Manual level buttons A-H are present.
-- Placement label starts as Step 1 of 8.
-- Placement rendering uses `placementSteps.length`.
-- `grade-path-lessons.js` replaces the starter lesson data with 30 lessons.
-- `levelStart` is expanded for A-H.
-- `startup-fix.js` uses `lessons.length` dynamically and loads after the expanded path.
+## Sitemap/robots status
 
-QA fix made:
+- `sitemap.xml` exists and includes all public pages checked in this audit.
+- `robots.txt` exists and points to `https://readeasy30.com/sitemap.xml`.
+- The compact sitemap format is currently working and should be preserved unless a safe full replacement succeeds later.
 
-- `report.js` now maps progress to Levels A-H and updates goals/helper notes for the expanded path.
+## Footer/navigation status
 
-Manual browser QA is still required after deployment.
+Public pages include main navigation and footer navigation. During this audit, `privacy.html` footer links were updated to include the current resource cluster, including Calm Reading, Adult Reading Without Shame, Everyday ESL Reading, and the worksheet page.
 
-## Blocked / Resolved
+Navigation is intentionally broad because ReadEasy30 has several resource pages. Future cleanup may consolidate resource links if the footer becomes too large, but no risky navigation change is needed now.
 
-A full formatted sitemap replacement was blocked once by connector safety checks.
+## Trust/legal status
 
-Resolution: the sitemap update was retried in a smaller compact format and committed successfully.
+- `about.html` exists and states what ReadEasy30 does and does not promise.
+- `contact.html` exists and explains that no public contact form is connected yet.
+- `privacy.html` exists and states that localStorage progress is stored on the learner's device and that accounts, payments, live ads, and private school records are not currently collected.
+- `terms.html` exists and states that ReadEasy30 is practice support, not a replacement for a teacher, tutor, school plan, doctor, or reading specialist.
 
-The first attempt to create this status file was also blocked. This shorter version was used instead.
+## Monetization status
 
-The first formatted sitemap update for the ESL page was blocked by connector safety checks. A smaller sitemap format committed successfully.
+No live ads, live affiliate links, payment tools, tracking scripts, account systems, ordering systems, credentials, API keys, or public AI chatbot features are installed.
 
-The first sitemap update for the everyday ESL page was blocked by connector safety checks. A smaller compact sitemap format committed successfully.
+Future ads, premium resources, email signup, forms, accounts, analytics, or payments require privacy/safety review and direct approval before launch.
 
-Updating `privacy.html` footer links was blocked twice by connector safety checks. Do not force it here; retry later in Codex if needed.
+## QA status
 
-## Next Safe Queue
+Universal Codex Repo Audit completed on 2026-05-28 for `Wholelychit/readeasy30.com`.
+
+Checks run:
+
+- Read control files first: `README.md`, `PROJECT-STATUS.md`, `AGENTS.md`, `CODEX-WORKFLOW.md`, `sitemap.xml`, and `robots.txt`.
+- Confirmed missing optional control files: `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md`.
+- Checked sitemap-listed public pages for title, meta description, canonical URL, H1, navigation, footer, trust/legal presence, contact status, and stale placeholder text.
+- Checked `sitemap.xml` coverage and `robots.txt` sitemap pointer.
+- Checked responsive/readability CSS signals in `css/style.css`, `css/site-links.css`, and `css/launch-fixes.css`.
+- Checked for forbidden live integrations: ads, affiliate links, tracking scripts, payments, credentials, API keys, accounts, ordering integrations, and public AI.
+
+Static audit result: passed after the safe `privacy.html` footer update.
+
+Manual/browser QA still required after deployment.
+
+## Real blockers
+
+- Browser/manual QA is still required for the lesson app behavior and cannot be fully verified from static GitHub file reads alone.
+- Public contact form setup is intentionally blocked until privacy, spam handling, and storage decisions are approved.
+- Live ads, tracking, payments, affiliate links, accounts, credentials, API keys, and public AI are blocked until direct approval.
+
+## Next safe queue
 
 1. Manually test `app.html` in browser after deployment.
 2. Confirm placement check shows 8 steps.
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
-6. Add everyday ESL page to homepage/helpful resource links when safe.
-7. Add everyday ESL page to marketing posting log when safe.
-8. Retry Privacy footer/resource links later in Codex if needed.
-9. Keep Bubbles calm and controlled.
+6. Add `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` if useful for repo control consistency.
+7. Keep Bubbles calm and controlled.
+8. Add more printable worksheets or SEO pages only when they clearly improve learner/parent/tutor clarity.
+9. Do not add live ads, payments, tracking, accounts, API keys, public AI, or a contact form without direct approval.
 
 ## Do Not Repeat
 
