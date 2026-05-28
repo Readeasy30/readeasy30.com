@@ -13,6 +13,7 @@ Locked structure:
 - `app.js` = lesson engine
 - `grade-path-lessons.js` = expanded 30-day lesson ladder through Grade 8 readiness
 - `sample-reading-worksheet.html` = free printable worksheet page
+- `reading-levels-beginner-to-8th-grade.html` = SEO/support page for the A-H reading path
 - `css/style.css` = main styling
 - `css/site-links.css` = shared navigation, footer, resource page, and accessibility helper styles
 
@@ -75,6 +76,10 @@ Completed on 2026-05-28:
 - Updated README to document the A-H reading path.
 - Added `sample-reading-worksheet.html` as a free printable worksheet page.
 - Updated `sitemap.xml` to include the worksheet page.
+- Added `ACCESSIBILITY-TESTING-NOTES.md`.
+- Added `reading-levels-beginner-to-8th-grade.html` as an SEO/support page for the A-H path.
+- Linked the reading levels page from the homepage navigation, helpful resources, and footer.
+- Updated `sitemap.xml` to include the reading levels page.
 
 ## Pages Now Available
 
@@ -82,6 +87,7 @@ Completed on 2026-05-28:
 - `app.html`
 - `daily-reading-practice.html`
 - `parent-tutor-guide.html`
+- `reading-levels-beginner-to-8th-grade.html`
 - `sample-reading-worksheet.html`
 - `about.html`
 - `contact.html`
@@ -118,9 +124,8 @@ The first attempt to create this status file was also blocked. This shorter vers
 2. Confirm placement check shows 8 steps.
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
-5. Add accessibility testing notes.
-6. Add more useful SEO content pages carefully.
-7. Keep Bubbles calm and controlled.
+5. Add another useful SEO content page carefully.
+6. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
