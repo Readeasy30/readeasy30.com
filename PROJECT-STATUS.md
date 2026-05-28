@@ -95,6 +95,7 @@ Completed on 2026-05-28:
 - Added internal links from `contact.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 - Updated `terms.html` footer links to include the current resource cluster.
 - Added `GRADE-8-STATIC-QA.md` after static review of `app.html`, `app.js`, `grade-path-lessons.js`, and `startup-fix.js`.
+- Updated `report.js` so the Progress Report now reflects Levels A-H instead of only A-D.
 
 ## Pages Now Available
 
@@ -141,6 +142,10 @@ Confirmed:
 - `levelStart` is expanded for A-H.
 - `startup-fix.js` uses `lessons.length` dynamically and loads after the expanded path.
 
+QA fix made:
+
+- `report.js` now maps progress to Levels A-H and updates goals/helper notes for the expanded path.
+
 Manual browser QA is still required after deployment.
 
 ## Blocked / Resolved
@@ -161,8 +166,9 @@ Updating `privacy.html` footer links was blocked twice by connector safety check
 2. Confirm placement check shows 8 steps.
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
-5. Retry Privacy footer/resource links later in Codex if needed.
-6. Keep Bubbles calm and controlled.
+5. Confirm Progress Report shows Levels A-H correctly.
+6. Retry Privacy footer/resource links later in Codex if needed.
+7. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
