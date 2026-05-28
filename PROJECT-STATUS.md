@@ -13,6 +13,7 @@ Locked structure:
 - `app.js` = lesson engine
 - `grade-path-lessons.js` = expanded 30-day lesson ladder through Grade 8 readiness
 - `calm-reading-practice-30-minutes-a-day.html` = SEO/support page for the 30-minute calm reading routine
+- `adult-reading-practice-without-shame.html` = SEO/support page for adult no-shame reading practice
 - `sample-reading-worksheet.html` = free printable worksheet page
 - `reading-levels-beginner-to-8th-grade.html` = SEO/support page for the A-H reading path
 - `adult-reading-practice.html` = SEO/support page for adult readers rebuilding confidence
@@ -70,38 +71,24 @@ Completed in earlier build stages:
 
 Completed on 2026-05-28:
 
-- Updated README to point to the shared education growth plan in `marketing-system`.
-- Recorded ReadEasy30 as part of the ReadEasy30 + MathEasy30 campaign system.
-- Added `CODEX-WORKFLOW.md` for Codex-first repo editing.
 - Added `grade-path-lessons.js` with an expanded 30-day lesson ladder from early reading through Grade 8 readiness.
 - Updated `app.html` manual level buttons from A-D to A-H.
 - Wired the expanded grade path after the stable `app.js` engine without replacing the engine.
 - Added `GRADE-8-PATH-QA-CHECKLIST.md` for testing the expanded lesson path.
-- Updated README to document the A-H reading path.
 - Added `sample-reading-worksheet.html` as a free printable worksheet page.
-- Updated `sitemap.xml` to include the worksheet page.
 - Added `ACCESSIBILITY-TESTING-NOTES.md`.
 - Added `reading-levels-beginner-to-8th-grade.html` as an SEO/support page for the A-H path.
-- Linked the reading levels page from the homepage navigation, helpful resources, and footer.
-- Updated `sitemap.xml` to include the reading levels page.
 - Added `adult-reading-practice.html` as an SEO/support page for adult readers.
-- Linked the adult reading page from the homepage navigation, helpful resources, and footer.
-- Updated `sitemap.xml` to include the adult reading page.
 - Added `esl-reading-practice.html` as an SEO/support page for ESL readers.
-- Linked the ESL reading page from the homepage navigation, helpful resources, and footer.
-- Updated `sitemap.xml` to include the ESL reading page using a smaller connector-safe sitemap format.
-- Added internal links from `daily-reading-practice.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
-- Added internal links from `parent-tutor-guide.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
-- Added internal links from `about.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
-- Added internal links from `contact.html` to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
+- Added internal links from support pages to Reading Levels, Adult Reading, ESL Reading, and Worksheet pages.
 - Updated `terms.html` footer links to include the current resource cluster.
 - Added `GRADE-8-STATIC-QA.md` after static review of `app.html`, `app.js`, `grade-path-lessons.js`, and `startup-fix.js`.
 - Updated `report.js` so the Progress Report now reflects Levels A-H instead of only A-D.
 - Added `calm-reading-practice-30-minutes-a-day.html` from the marketing-system SEO draft.
-- Linked the calm reading page from the homepage navigation, helpful resources, and footer.
-- Updated `sitemap.xml` to include the calm reading page.
-- Linked the calm reading page from `daily-reading-practice.html` navigation, resource section, and footer.
-- Linked the calm reading page from `parent-tutor-guide.html` navigation, resource section, and footer.
+- Linked the calm reading page from homepage, Daily Practice, Parent/Tutor Guide, sitemap, and footers.
+- Added `adult-reading-practice-without-shame.html` from the marketing-system adult reading SEO draft.
+- Linked the adult no-shame page from `adult-reading-practice.html` navigation, content, and footer.
+- Updated `sitemap.xml` to include the adult no-shame page.
 
 ## Pages Now Available
 
@@ -109,6 +96,7 @@ Completed on 2026-05-28:
 - `app.html`
 - `daily-reading-practice.html`
 - `calm-reading-practice-30-minutes-a-day.html`
+- `adult-reading-practice-without-shame.html`
 - `parent-tutor-guide.html`
 - `reading-levels-beginner-to-8th-grade.html`
 - `adult-reading-practice.html`
@@ -174,8 +162,9 @@ Updating `privacy.html` footer links was blocked twice by connector safety check
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
-6. Retry Privacy footer/resource links later in Codex if needed.
-7. Keep Bubbles calm and controlled.
+6. Add adult no-shame page to homepage/helpful resource links when safe.
+7. Retry Privacy footer/resource links later in Codex if needed.
+8. Keep Bubbles calm and controlled.
 
 ## Do Not Repeat
 
