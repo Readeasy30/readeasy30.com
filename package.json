@@ -1,0 +1,11 @@
+{
+  "name": "readeasy30",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:links": "node scripts/check-static-links.mjs",
+    "check:sitemap": "node scripts/check-sitemap.mjs",
+    "check": "npm run check:links && npm run check:sitemap"
+  }
+}
