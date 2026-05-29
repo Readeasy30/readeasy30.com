@@ -6,7 +6,15 @@ Date updated: 2026-05-28
 
 ReadEasy30 is a simple HTML, CSS, and JavaScript GitHub Pages reading-practice website. It provides a calm 30-minutes-a-day reading lesson app, a 30-day A-H reading path from early reader through Grade 8 readiness, Bubbles coaching messages, vocabulary support, read-aloud support, localStorage progress tracking, and public support resources for children, adults, ESL learners, parents, tutors, and struggling readers.
 
+ReadEasy30 is a free, calm, no-shame reading practice site for adults, students, ESL learners, special education learners, older learners, parents, tutors, and anyone who wants simple practice toward about an 8th-grade level.
+
 ReadEasy30 is aligned with the shared Wholelychit education growth system with MathEasy30. Shared campaign and marketing planning belongs in `Wholelychit/marketing-system`; website code stays in this repo.
+
+## Locked mission
+
+ReadEasy30 and MathEasy30 are free, calm, beginner-friendly practice websites that help adults, students, ESL learners, and learners who need extra support build skills toward about an 8th-grade level.
+
+ReadEasy30 should not feel babyish. It should feel simple, respectful, and useful for adults and children.
 
 ## Current tech stack
 
@@ -59,6 +67,7 @@ Core app and support files:
 - `MANUAL-QA-CHECKLIST.md`
 - `CONTENT-PLAN.md`
 - `SEO-CHECKLIST.md`
+- `READEASY30-MATHEASY30-BUILD-BRIEF.md`
 
 ## Files/pages needing work
 
@@ -82,7 +91,7 @@ No live ads, tracking, payments, affiliate links, accounts, or public AI feature
 
 ## Footer/navigation status
 
-Public pages include main navigation and footer navigation. During this audit, `privacy.html` footer links were updated to include the current resource cluster, including Calm Reading, Adult Reading Without Shame, Everyday ESL Reading, and the worksheet page.
+Public pages include main navigation and footer navigation. During the universal audit, `privacy.html` footer links were updated to include the current resource cluster, including Calm Reading, Adult Reading Without Shame, Everyday ESL Reading, and the worksheet page.
 
 Navigation is intentionally broad because ReadEasy30 has several resource pages. Future cleanup may consolidate resource links if the footer becomes too large, but no risky navigation change is needed now.
 
@@ -98,6 +107,14 @@ Navigation is intentionally broad because ReadEasy30 has several resource pages.
 No live ads, live affiliate links, payment tools, tracking scripts, account systems, ordering systems, credentials, API keys, or public AI chatbot features are installed.
 
 Future ads, premium resources, email signup, forms, accounts, analytics, or payments require privacy/safety review and direct approval before launch.
+
+## Recent improvements
+
+- Universal Codex Repo Audit completed on 2026-05-28 for `Wholelychit/readeasy30.com`.
+- Added `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` for repo control consistency.
+- Updated `privacy.html` footer links to include current resource cluster links.
+- Added `READEASY30-MATHEASY30-BUILD-BRIEF.md` to lock the shared no-shame education mission with MathEasy30.
+- Locked public direction: free, calm, respectful reading practice toward about an 8th-grade level for adults, students, ESL learners, and learners who need extra support.
 
 ## QA status
 
@@ -130,8 +147,9 @@ Manual/browser QA still required after deployment.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
 6. Keep Bubbles calm and controlled.
-7. Add more printable worksheets or SEO pages only when they clearly improve learner/parent/tutor clarity.
-8. Do not add live ads, payments, tracking, accounts, API keys, public AI, or a contact form without direct approval.
+7. Use `READEASY30-MATHEASY30-BUILD-BRIEF.md` as the mission guardrail.
+8. Add more printable worksheets or SEO pages only when they clearly improve learner/parent/tutor clarity.
+9. Do not add live ads, payments, tracking, accounts, API keys, public AI, or a contact form without direct approval.
 
 ## Do Not Repeat
 
