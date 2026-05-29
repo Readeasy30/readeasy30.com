@@ -23,6 +23,9 @@
 - Added `phonics-reading-worksheet.html` as a printable beginner worksheet for short vowels, blending, simple sentences, and proof-finding.
 - Added phonics worksheet to `sitemap.xml`.
 - Linked phonics worksheet from `phonics-practice-for-beginners.html` and `printable-reading-worksheets.html`.
+- Added `main-idea-reading-worksheet.html` as a printable comprehension worksheet with short passages, main idea questions, proof check, and helper answer key.
+- Added main idea worksheet to `sitemap.xml`.
+- Linked main idea worksheet from `printable-reading-worksheets.html`.
 
 ## Safety guardrails followed
 
@@ -43,6 +46,7 @@
 - `phonics-practice-for-beginners.html`
 - `phonics-reading-worksheet.html`
 - `reading-comprehension-practice.html`
+- `main-idea-reading-worksheet.html`
 - `functional-literacy-practice.html`
 - `printable-reading-worksheets.html`
 - `worksheet.html`
@@ -58,6 +62,6 @@
 ## Next safe marketing work
 
 1. Consider improving homepage/footer navigation only if links become too crowded on mobile.
-2. Consider adding a main-idea worksheet only if it is genuinely useful and not filler.
+2. Consider adding a vocabulary-in-context worksheet only if it is genuinely useful and not filler.
 3. Keep homepage simple and useful; do not overload it with too many links above the fold.
-4. Browser-check homepage, phonics page, phonics worksheet, functional literacy page, worksheet hub, ESL pages, `worksheet.html`, and `sample-reading-worksheet.html` after deployment.
+4. Browser-check homepage, phonics page, phonics worksheet, main idea worksheet, functional literacy page, worksheet hub, ESL pages, `worksheet.html`, and `sample-reading-worksheet.html` after deployment.
