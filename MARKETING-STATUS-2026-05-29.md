@@ -32,6 +32,9 @@
 - Added `evidence-from-text-worksheet.html` as a printable comprehension worksheet for answer-plus-proof practice.
 - Added evidence worksheet to `sitemap.xml`.
 - Linked evidence worksheet from `printable-reading-worksheets.html` while preserving existing worksheet links.
+- Added `sequence-reading-worksheet.html` as a printable worksheet for first-next-last reading order.
+- Added sequence worksheet to `sitemap.xml`.
+- Linked sequence worksheet from `printable-reading-worksheets.html` while preserving existing functional literacy worksheet links.
 
 ## Safety guardrails followed
 
@@ -53,10 +56,12 @@
 - `phonics-reading-worksheet.html`
 - `reading-comprehension-practice.html`
 - `evidence-from-text-worksheet.html`
+- `sequence-reading-worksheet.html`
 - `main-idea-reading-worksheet.html`
 - `vocabulary-in-context-worksheet.html`
 - `functional-literacy-practice.html`
 - `functional-literacy-worksheet-1.html`
+- `functional-literacy-worksheet-2.html`
 - `printable-reading-worksheets.html`
 - `worksheet.html`
 - `sample-reading-worksheet.html`
@@ -70,7 +75,7 @@
 
 ## Next safe marketing work
 
-1. Consider improving homepage/footer navigation only if links become too crowded on mobile.
-2. Consider adding a sequence worksheet only if it is genuinely useful and not filler.
+1. Check homepage/footer navigation crowding before adding more public links.
+2. Consider adding a cause-and-effect worksheet only if it is genuinely useful and not filler.
 3. Keep homepage simple and useful; do not overload it with too many links above the fold.
-4. Browser-check homepage, phonics page, phonics worksheet, main idea worksheet, vocabulary worksheet, evidence worksheet, functional literacy page, worksheet hub, ESL pages, `worksheet.html`, and `sample-reading-worksheet.html` after deployment.
+4. Browser-check homepage, phonics page, phonics worksheet, main idea worksheet, vocabulary worksheet, evidence worksheet, sequence worksheet, functional literacy page, worksheet hub, ESL pages, `worksheet.html`, and `sample-reading-worksheet.html` after deployment.
