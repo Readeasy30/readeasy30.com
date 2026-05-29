@@ -39,6 +39,7 @@ Public pages currently available and covered by sitemap:
 - `esl-reading-practice-everyday-english.html`
 - `parent-tutor-guide.html`
 - `reading-levels-beginner-to-8th-grade.html`
+- `reading-comprehension-practice.html`
 - `sample-reading-worksheet.html`
 - `about.html`
 - `contact.html`
@@ -77,21 +78,23 @@ Core app and support files:
 
 ## SEO status
 
-Universal audit confirmed the sitemap-listed public pages have titles, meta descriptions, canonical URLs, and H1s. The site has multiple support/SEO pages for daily reading practice, calm 30-minute practice, adult reading, ESL reading, reading levels, parent/tutor support, and a printable worksheet.
+Universal audit confirmed the sitemap-listed public pages have titles, meta descriptions, canonical URLs, and H1s. The site has multiple support/SEO pages for daily reading practice, calm 30-minute practice, adult reading, ESL reading, reading comprehension, reading levels, parent/tutor support, and a printable worksheet.
 
-`SEO-CHECKLIST.md` now records the required title, description, canonical, H1, internal link, sitemap, readability, and monetization-safety checks for future pages.
+`SEO-CHECKLIST.md` records the required title, description, canonical, H1, internal link, sitemap, readability, and monetization-safety checks for future pages.
 
 No live ads, tracking, payments, affiliate links, accounts, or public AI features were added.
 
 ## Sitemap/robots status
 
-- `sitemap.xml` exists and includes all public pages checked in this audit.
+- `sitemap.xml` exists and includes all current public pages, including `reading-comprehension-practice.html`.
 - `robots.txt` exists and points to `https://readeasy30.com/sitemap.xml`.
 - The compact sitemap format is currently working and should be preserved unless a safe full replacement succeeds later.
 
 ## Footer/navigation status
 
 Public pages include main navigation and footer navigation. During the universal audit, `privacy.html` footer links were updated to include the current resource cluster, including Calm Reading, Adult Reading Without Shame, Everyday ESL Reading, and the worksheet page.
+
+The upgraded `reading-comprehension-practice.html` now has full navigation, footer links, and internal links into the current resource cluster.
 
 Navigation is intentionally broad because ReadEasy30 has several resource pages. Future cleanup may consolidate resource links if the footer becomes too large, but no risky navigation change is needed now.
 
@@ -114,6 +117,8 @@ Future ads, premium resources, email signup, forms, accounts, analytics, or paym
 - Added `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` for repo control consistency.
 - Updated `privacy.html` footer links to include current resource cluster links.
 - Added `READEASY30-MATHEASY30-BUILD-BRIEF.md` to lock the shared no-shame education mission with MathEasy30.
+- Upgraded `reading-comprehension-practice.html` from a thin page into a full support/SEO page with proof-finding steps, a practice passage, helper tips, and internal links.
+- Added `reading-comprehension-practice.html` to `sitemap.xml`.
 - Locked public direction: free, calm, respectful reading practice toward about an 8th-grade level for adults, students, ESL learners, and learners who need extra support.
 
 ## QA status
@@ -129,7 +134,7 @@ Checks run:
 - Checked responsive/readability CSS signals in `css/style.css`, `css/site-links.css`, and `css/launch-fixes.css`.
 - Checked for forbidden live integrations: ads, affiliate links, tracking scripts, payments, credentials, API keys, accounts, ordering integrations, and public AI.
 
-Static audit result: passed after the safe `privacy.html` footer update and control-file additions.
+Static audit result: passed after safe page and sitemap updates.
 
 Manual/browser QA still required after deployment.
 
@@ -157,3 +162,4 @@ Do not rebuild the day selector.
 Do not replace the lesson engine.
 Do not convert to React, Vite, Next.js, TypeScript, or build tools.
 Do not remove working localStorage progress, read-aloud, placement, or lesson navigation features.
+Do not recreate `reading-comprehension-practice.html`; it has already been upgraded and added to the sitemap.
