@@ -56,10 +56,12 @@ Core app and support files:
 - `GRADE-8-STATIC-QA.md`
 - `ACCESSIBILITY-TESTING-NOTES.md`
 - `CODEX-UNIVERSAL-REPO-AUDIT.txt`
+- `MANUAL-QA-CHECKLIST.md`
+- `CONTENT-PLAN.md`
+- `SEO-CHECKLIST.md`
 
 ## Files/pages needing work
 
-- `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` were not found during this audit. They are optional but useful candidates for future repo control files.
 - `contact.html` does not have a live contact form by design. Add a form only after privacy, spam handling, and storage decisions are approved.
 - Manual browser QA is still required for `app.html`, placement, levels A-H, read aloud, day selector, localStorage progress, and progress report behavior.
 - Future useful content may include more printable worksheets and carefully scoped SEO resources.
@@ -67,6 +69,8 @@ Core app and support files:
 ## SEO status
 
 Universal audit confirmed the sitemap-listed public pages have titles, meta descriptions, canonical URLs, and H1s. The site has multiple support/SEO pages for daily reading practice, calm 30-minute practice, adult reading, ESL reading, reading levels, parent/tutor support, and a printable worksheet.
+
+`SEO-CHECKLIST.md` now records the required title, description, canonical, H1, internal link, sitemap, readability, and monetization-safety checks for future pages.
 
 No live ads, tracking, payments, affiliate links, accounts, or public AI features were added.
 
@@ -102,13 +106,13 @@ Universal Codex Repo Audit completed on 2026-05-28 for `Wholelychit/readeasy30.c
 Checks run:
 
 - Read control files first: `README.md`, `PROJECT-STATUS.md`, `AGENTS.md`, `CODEX-WORKFLOW.md`, `sitemap.xml`, and `robots.txt`.
-- Confirmed missing optional control files: `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md`.
+- Confirmed optional control files were missing, then added `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` for repo control consistency.
 - Checked sitemap-listed public pages for title, meta description, canonical URL, H1, navigation, footer, trust/legal presence, contact status, and stale placeholder text.
 - Checked `sitemap.xml` coverage and `robots.txt` sitemap pointer.
 - Checked responsive/readability CSS signals in `css/style.css`, `css/site-links.css`, and `css/launch-fixes.css`.
 - Checked for forbidden live integrations: ads, affiliate links, tracking scripts, payments, credentials, API keys, accounts, ordering integrations, and public AI.
 
-Static audit result: passed after the safe `privacy.html` footer update.
+Static audit result: passed after the safe `privacy.html` footer update and control-file additions.
 
 Manual/browser QA still required after deployment.
 
@@ -125,10 +129,9 @@ Manual/browser QA still required after deployment.
 3. Confirm manual levels A-H start at the right day.
 4. Confirm Day 30 reaches Grade 8 readiness content.
 5. Confirm Progress Report shows Levels A-H correctly.
-6. Add `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` if useful for repo control consistency.
-7. Keep Bubbles calm and controlled.
-8. Add more printable worksheets or SEO pages only when they clearly improve learner/parent/tutor clarity.
-9. Do not add live ads, payments, tracking, accounts, API keys, public AI, or a contact form without direct approval.
+6. Keep Bubbles calm and controlled.
+7. Add more printable worksheets or SEO pages only when they clearly improve learner/parent/tutor clarity.
+8. Do not add live ads, payments, tracking, accounts, API keys, public AI, or a contact form without direct approval.
 
 ## Do Not Repeat
 
