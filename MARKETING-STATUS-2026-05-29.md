@@ -16,6 +16,10 @@
 - Added `esl-reading-comprehension.html` as a focused ESL comprehension page that covers main idea, details, proof-finding, rereading, and helper tips.
 - Added ESL comprehension page to `sitemap.xml`.
 - Linked ESL comprehension from `esl-reading-practice.html` and `esl-reading-practice-everyday-english.html`.
+- Found existing `functional-literacy-practice.html` already covered practical everyday reading.
+- Removed duplicate `practical-reading-practice.html` to avoid competing SEO pages.
+- Added canonical `functional-literacy-practice.html` to `sitemap.xml`.
+- Expanded `functional-literacy-practice.html` with stronger practical reading copy, examples, routine, worksheet links, and related resource links.
 
 ## Safety guardrails followed
 
@@ -35,6 +39,7 @@
 - `calm-reading-practice-30-minutes-a-day.html`
 - `phonics-practice-for-beginners.html`
 - `reading-comprehension-practice.html`
+- `functional-literacy-practice.html`
 - `printable-reading-worksheets.html`
 - `worksheet.html`
 - `sample-reading-worksheet.html`
@@ -48,7 +53,7 @@
 
 ## Next safe marketing work
 
-1. Consider one practical reading page around forms, signs, labels, schedules, and everyday literacy.
-2. Consider improving homepage/footer navigation only if links become too crowded on mobile.
+1. Consider improving homepage/footer navigation only if links become too crowded on mobile.
+2. Consider adding one more printable worksheet only if it is genuinely useful and not filler.
 3. Keep homepage simple and useful; do not overload it with too many links above the fold.
-4. Browser-check homepage, phonics page, worksheet hub, ESL pages, `worksheet.html`, and `sample-reading-worksheet.html` after deployment.
+4. Browser-check homepage, phonics page, functional literacy page, worksheet hub, ESL pages, `worksheet.html`, and `sample-reading-worksheet.html` after deployment.
