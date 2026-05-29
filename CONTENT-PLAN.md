@@ -1,6 +1,7 @@
 # ReadEasy30 Content Plan
 
-Date created: 2026-05-28
+Date created: 2026-05-28  
+Date updated: 2026-05-29
 
 ## Goal
 
@@ -27,6 +28,8 @@ Existing public content includes:
 
 - daily reading practice
 - calm 30-minute reading practice
+- beginner phonics practice
+- reading comprehension practice
 - adult reading practice
 - adult reading practice without shame
 - ESL reading practice
@@ -35,27 +38,32 @@ Existing public content includes:
 - reading levels from beginner to Grade 8
 - sample reading worksheet
 
+## Completed safe content pages
+
+1. `reading-comprehension-practice.html`
+   - Goal: explain how ReadEasy30 builds comprehension through short stories and questions.
+   - Audience: parents, tutors, adult learners.
+   - Status: complete and included in sitemap.
+
+2. `phonics-practice-for-beginners.html`
+   - Goal: simple sound/word practice for early readers.
+   - Audience: parents, tutors, adult beginners, ESL learners.
+   - Status: complete and included in sitemap.
+
 ## Next safe content pages
 
 Create these only when they add clear value and do not clutter the site.
 
-1. `phonics-practice-for-beginners.html`
-   - Goal: simple sound/word practice for early readers.
-   - Audience: parents, tutors, adult beginners, ESL learners.
-
-2. `reading-comprehension-practice.html`
-   - Goal: explain how ReadEasy30 builds comprehension through short stories and questions.
-   - Audience: parents, tutors, adult learners.
-
-3. `reading-practice-for-adults.html`
+1. `reading-practice-for-adults.html`
    - Goal: strengthen adult learner trust and reduce shame.
    - Audience: adult learners and helpers.
+   - Note: avoid duplication with `adult-reading-practice.html` and `adult-reading-practice-without-shame.html`; create only if there is a clearly different search need.
 
-4. `esl-reading-comprehension.html`
+2. `esl-reading-comprehension.html`
    - Goal: help ESL learners practice everyday reading and understanding.
    - Audience: ESL learners and tutors.
 
-5. `printable-reading-worksheets.html`
+3. `printable-reading-worksheets.html`
    - Goal: organize future worksheet pages.
    - Audience: parents, tutors, homeschool helpers, adult learners.
 
@@ -67,6 +75,7 @@ Create these only when they add clear value and do not clutter the site.
 - main idea worksheet
 - vocabulary-in-context worksheet
 - evidence-from-text worksheet
+- phonics sound practice worksheet
 
 ## Trust content ideas
 
@@ -75,6 +84,7 @@ Create these only when they add clear value and do not clutter the site.
 - why slow reading practice works
 - how to choose a reading level
 - what to do when a learner guesses words
+- how phonics and comprehension work together
 
 ## Monetization later
 
