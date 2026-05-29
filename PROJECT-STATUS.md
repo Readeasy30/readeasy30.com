@@ -1,12 +1,12 @@
 # ReadEasy30 Project Status
 
-Date updated: 2026-05-28
+Date updated: 2026-05-29
 
 ## What the site does
 
 ReadEasy30 is a simple HTML, CSS, and JavaScript GitHub Pages reading-practice website. It provides a calm 30-minutes-a-day reading lesson app, a 30-day A-H reading path from early reader through Grade 8 readiness, Bubbles coaching messages, vocabulary support, read-aloud support, localStorage progress tracking, and public support resources for children, adults, ESL learners, parents, tutors, and struggling readers.
 
-ReadEasy30 is a free, calm, no-shame reading practice site for adults, students, ESL learners, special education learners, older learners, parents, tutors, and anyone who wants simple practice toward about an 8th-grade level.
+ReadEasy30 is a free, calm, no-shame reading practice site for adults, students, ESL learners, older learners, parents, tutors, and anyone who wants simple practice toward about an 8th-grade level.
 
 ReadEasy30 is aligned with the shared Wholelychit education growth system with MathEasy30. Shared campaign and marketing planning belongs in `Wholelychit/marketing-system`; website code stays in this repo.
 
@@ -27,7 +27,7 @@ No framework conversion has been made. Do not convert this project to React, Vit
 
 ## Files/pages complete
 
-Public pages currently available and covered by sitemap:
+Public pages currently available and covered by sitemap include:
 
 - `index.html`
 - `app.html`
@@ -37,9 +37,23 @@ Public pages currently available and covered by sitemap:
 - `adult-reading-practice-without-shame.html`
 - `esl-reading-practice.html`
 - `esl-reading-practice-everyday-english.html`
+- `esl-reading-comprehension.html`
 - `parent-tutor-guide.html`
 - `reading-levels-beginner-to-8th-grade.html`
 - `reading-comprehension-practice.html`
+- `phonics-practice-for-beginners.html`
+- `printable-reading-worksheets.html`
+- `worksheet.html`
+- `functional-literacy-practice.html`
+- `functional-literacy-worksheet-1.html`
+- `functional-literacy-worksheet-2.html`
+- `functional-literacy-worksheet-3.html`
+- `phonics-reading-worksheet.html`
+- `main-idea-reading-worksheet.html`
+- `vocabulary-in-context-worksheet.html`
+- `evidence-from-text-worksheet.html`
+- `sequence-reading-worksheet.html`
+- `cause-and-effect-reading-worksheet.html`
 - `sample-reading-worksheet.html`
 - `about.html`
 - `contact.html`
@@ -78,7 +92,15 @@ Core app and support files:
 
 ## SEO status
 
-Universal audit confirmed the sitemap-listed public pages have titles, meta descriptions, canonical URLs, and H1s. The site has multiple support/SEO pages for daily reading practice, calm 30-minute practice, adult reading, ESL reading, reading comprehension, reading levels, parent/tutor support, and a printable worksheet.
+The site has public support/SEO pages for daily reading practice, calm 30-minute practice, adult reading, ESL reading, reading comprehension, reading levels, parent/tutor support, and printable worksheets.
+
+The first practical worksheet marketing cluster is now in place:
+
+1. `functional-literacy-worksheet-1.html` — schedules and appointment notes
+2. `functional-literacy-worksheet-2.html` — signs and simple instructions
+3. `functional-literacy-worksheet-3.html` — forms and labels
+
+`printable-reading-worksheets.html` now acts as the worksheet hub and links into the current worksheet library.
 
 `SEO-CHECKLIST.md` records the required title, description, canonical, H1, internal link, sitemap, readability, and monetization-safety checks for future pages.
 
@@ -86,15 +108,17 @@ No live ads, tracking, payments, affiliate links, accounts, or public AI feature
 
 ## Sitemap/robots status
 
-- `sitemap.xml` exists and includes all current public pages, including `reading-comprehension-practice.html`.
+- `sitemap.xml` exists and includes the current public page cluster, including the functional literacy worksheet trio.
 - `robots.txt` exists and points to `https://readeasy30.com/sitemap.xml`.
 - The compact sitemap format is currently working and should be preserved unless a safe full replacement succeeds later.
 
 ## Footer/navigation status
 
-Public pages include main navigation and footer navigation. During the universal audit, `privacy.html` footer links were updated to include the current resource cluster, including Calm Reading, Adult Reading Without Shame, Everyday ESL Reading, and the worksheet page.
+Public pages include main navigation and footer navigation.
 
-The upgraded `reading-comprehension-practice.html` now has full navigation, footer links, and internal links into the current resource cluster.
+The homepage points to the worksheet hub through top navigation and CTA buttons.
+
+The worksheet hub links to the active printable worksheet library, including phonics, main idea, vocabulary, evidence, sequence, and functional literacy pages.
 
 Navigation is intentionally broad because ReadEasy30 has several resource pages. Future cleanup may consolidate resource links if the footer becomes too large, but no risky navigation change is needed now.
 
@@ -118,23 +142,24 @@ Future ads, premium resources, email signup, forms, accounts, analytics, or paym
 - Updated `privacy.html` footer links to include current resource cluster links.
 - Added `READEASY30-MATHEASY30-BUILD-BRIEF.md` to lock the shared no-shame education mission with MathEasy30.
 - Upgraded `reading-comprehension-practice.html` from a thin page into a full support/SEO page with proof-finding steps, a practice passage, helper tips, and internal links.
-- Added `reading-comprehension-practice.html` to `sitemap.xml`.
+- Added practical worksheet funnel and launch support: worksheet hub, functional literacy landing page, and three functional literacy printable worksheets.
+- Upgraded adult and ESL landing pages to connect to functional literacy, worksheet pages, and the lesson app.
+- Built matching launch-copy assets in `Wholelychit/marketing-system` for the functional literacy worksheet trio.
 - Locked public direction: free, calm, respectful reading practice toward about an 8th-grade level for adults, students, ESL learners, and learners who need extra support.
 
 ## QA status
 
+Quality-control pass completed on 2026-05-29 for the current worksheet marketing cluster.
+
+Checks confirmed from repo file reads:
+
+- Homepage links to `printable-reading-worksheets.html` through top navigation and hero CTA.
+- `printable-reading-worksheets.html` links to the active worksheet library.
+- `sitemap.xml` includes `functional-literacy-worksheet-1.html`, `functional-literacy-worksheet-2.html`, and `functional-literacy-worksheet-3.html`.
+- Functional literacy worksheets 1, 2, and 3 include title, meta description, canonical URL, viewport tag, print button, no-subscription wording, Bubbles tip, questions, vocabulary, and helper answer key.
+- No live ads, live affiliate links, tracking scripts, payments, credentials, API keys, accounts, ordering integrations, or public AI tools were added.
+
 Universal Codex Repo Audit completed on 2026-05-28 for `Wholelychit/readeasy30.com`.
-
-Checks run:
-
-- Read control files first: `README.md`, `PROJECT-STATUS.md`, `AGENTS.md`, `CODEX-WORKFLOW.md`, `sitemap.xml`, and `robots.txt`.
-- Confirmed optional control files were missing, then added `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` for repo control consistency.
-- Checked sitemap-listed public pages for title, meta description, canonical URL, H1, navigation, footer, trust/legal presence, contact status, and stale placeholder text.
-- Checked `sitemap.xml` coverage and `robots.txt` sitemap pointer.
-- Checked responsive/readability CSS signals in `css/style.css`, `css/site-links.css`, and `css/launch-fixes.css`.
-- Checked for forbidden live integrations: ads, affiliate links, tracking scripts, payments, credentials, API keys, accounts, ordering integrations, and public AI.
-
-Static audit result: passed after safe page and sitemap updates.
 
 Manual/browser QA still required after deployment.
 
@@ -146,15 +171,17 @@ Manual/browser QA still required after deployment.
 
 ## Next safe queue
 
-1. Manually test `app.html` in browser after deployment.
-2. Confirm placement check shows 8 steps.
-3. Confirm manual levels A-H start at the right day.
-4. Confirm Day 30 reaches Grade 8 readiness content.
-5. Confirm Progress Report shows Levels A-H correctly.
-6. Keep Bubbles calm and controlled.
-7. Use `READEASY30-MATHEASY30-BUILD-BRIEF.md` as the mission guardrail.
-8. Add more printable worksheets or SEO pages only when they clearly improve learner/parent/tutor clarity.
-9. Do not add live ads, payments, tracking, accounts, API keys, public AI, or a contact form without direct approval.
+1. Manually open `https://readeasy30.com/printable-reading-worksheets.html` after deployment and check worksheet links.
+2. Manually open and print-test `functional-literacy-worksheet-1.html`, `functional-literacy-worksheet-2.html`, and `functional-literacy-worksheet-3.html`.
+3. Manually test `app.html` in browser after deployment.
+4. Confirm placement check shows 8 steps.
+5. Confirm manual levels A-H start at the right day.
+6. Confirm Day 30 reaches Grade 8 readiness content.
+7. Confirm Progress Report shows Levels A-H correctly.
+8. Keep Bubbles calm and controlled.
+9. Use `READEASY30-MATHEASY30-BUILD-BRIEF.md` as the mission guardrail.
+10. Use `Wholelychit/marketing-system` launch-copy files for Pinterest, Facebook, Reddit-safe, and library/nonprofit outreach.
+11. Do not add live ads, payments, tracking, accounts, API keys, public AI, affiliate links, or a contact form without direct approval.
 
 ## Do Not Repeat
 
@@ -162,4 +189,4 @@ Do not rebuild the day selector.
 Do not replace the lesson engine.
 Do not convert to React, Vite, Next.js, TypeScript, or build tools.
 Do not remove working localStorage progress, read-aloud, placement, or lesson navigation features.
-Do not recreate `reading-comprehension-practice.html`; it has already been upgraded and added to the sitemap.
+Do not recreate the current functional literacy worksheet trio; it is already built, linked from the worksheet hub, and included in the sitemap.
