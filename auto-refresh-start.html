@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Refresh Viewer</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}header{padding:18px 20px;background:#172033;color:#fff}main{padding:18px}.panel{display:flex;flex-wrap:wrap;gap:12px;align-items:end;background:#fff;border-radius:14px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,.08);margin-bottom:14px}label{display:grid;gap:6px;font-weight:700}input{padding:10px 12px;border:1px solid #cfd8e3;border-radius:10px;min-width:120px}button{border:0;border-radius:10px;padding:11px 14px;font-weight:800;cursor:pointer}.go{background:#20a46b;color:#fff}.stop{background:#d94242;color:#fff}.once{background:#e7edf7;color:#172033}#status{font-weight:700}iframe{width:100%;height:72vh;border:1px solid #cfd8e3;border-radius:14px;background:#fff}
+</style>
+</head>
+<body>
+<header><h1>Refresh Viewer</h1><p>Opens and starts the preview refresh.</p></header>
+<main>
+<section class="panel">
+<label>Page path <input id="path" value="/"></label>
+<label>Seconds <input id="seconds" type="number" min="3" value="15"></label>
+<button class="go" id="go" type="button">Restart</button>
+<button class="stop" id="stop" type="button">Stop</button>
+<button class="once" id="once" type="button">Refresh Once</button>
+<span id="status">Starting...</span>
+</section>
+<iframe id="frame" title="Site preview"></iframe>
+</main>
+<script>
+const pick=(id)=>document.getElementById(id);let clock=null;const q=new URLSearchParams(location.search);
+function seconds(){return Math.max(3,Number(pick('seconds').value)||15)*1000;}
+function target(){let p=pick('path').value||'/';if(p.includes('auto-refresh'))p='/';const u=new URL(p,location.origin);u.searchParams.set('_r',Date.now());return u.href;}
+function once(){pick('frame').src=target();pick('status').textContent='Running. Last refresh: '+new Date().toLocaleTimeString();}
+function stop(){if(clock)clearInterval(clock);clock=null;pick('status').textContent='Stopped';}
+function start(){stop();localStorage.refreshPath=pick('path').value||'/';localStorage.refreshSeconds=pick('seconds').value||'15';once();clock=setInterval(once,seconds());}
+pick('path').value=q.get('path')||localStorage.refreshPath||'/';pick('seconds').value=q.get('seconds')||localStorage.refreshSeconds||'15';pick('go').onclick=start;pick('stop').onclick=stop;pick('once').onclick=once;start();
+</script>
+</body>
+</html>
