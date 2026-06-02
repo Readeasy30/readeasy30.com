@@ -1,1 +1,79 @@
+markdown# SlotsFreeUSA / Bubbles Project Context
+1. CLAUDE.md (Main Configuration)
+## Project Overview
+- **Core Goal:** Developing monetization infrastructure for SlotsFreeUSA.com and the Bubbles pet-tech project.
+- **Primary Domain:** slotsfreeusa.com (Cloudflare managed)
+- **Tech Stack:** TypeScript, React, Tailwind CSS, Cloudflare Workers/Pages.
+- **Key Modules:** Affiliate tracking (Caesars/BetMGM), Pet-needs management.
+
+## Project Structure
+- `@ARCHITECTURE.md`: High-level system design and data flow.
+- `@STYLE.md`: Strict TypeScript and React coding standards.
+- `@API.md`: Details for affiliate reporting and tracking APIs.
+
+## Commands
+- **Dev:** `npx wrangler dev` (for Cloudflare Workers/Pages)
+- **Build:** `npm run build`
+- **Lint:** `npm run lint`
+- **Deploy:** `npx wrangler deploy`
+
+## IMPORTANT RULES
+- NEVER use `any` in TypeScript; use strict interfaces.
+- YOU MUST use functional components for all React development.
+- ENSURE all tracking links for Caesars Palace and BetMGM use current affiliate 
+markdown# System Architecture
+
+## Infrastructure
+- **Deployment:** Cloudflare Pages for frontends; Cloudflare Workers for serverless backends.
+- **Domain Management:** Managed via Cloudflare (e.g., slotsfreeusa.com, bransonblastusa.com).
+- **Version Control:** GitHub repositories connected directly to Cloudflare Pages.
+
+## Data Flow
+- **Affiliate Site:** User visits -> Redirects via Workers (to track clicks) -> Landing on Operator site (BetMGM/Caesars).
+- **Pet App (Bubbles):** React frontend -> Cloudflare D1/KV storage for pet-needs data.
+
+## External Integrations
+- Caesars Palace Online Casino & BetMGM (CPA/RevShare/Hybrid tracking).
+- Cloudflare API for automated DNS and certificate management.
+ STYLE.md (Coding Standards)
+markdown# Coding Standards
+
+## TypeScript & React
+- **Standard:** Use TypeScript for all logic; no JavaScript files allowed.
+- **Styling:** Use Tailwind CSS utility classes exclusively.
+- **State:** Prefer React Hooks (`useState`, `useContext`) over class-based state.
+
+## Naming Conventions
+- **Components:** PascalCase (e.g., `AffiliateTracker.tsx`)
+- **Functions:** camelCase (e.g., `getAffiliateReport()`)
+- **Files:** kebab-case (e.g., `casino-data-fetcher.ts`)
+
+## Best Practices
+- Always add meaningful comments to complex affiliate tracking logic.
+- Run `npm test` before requesting a commit or deployment.
+ API.mmarkdown# API & Integration Reference
+
+## Affiliate Platforms
+### BetMGM & Caesars Palace
+- **Goal:** Access tracking, reporting, and link generation.
+- **Contract Types:** CPA, RevShare, or Hybrid.
+- **Reporting:** Requires API access for daily conversion data.
+
+## Cloudflare Plugins & MCP
+- **Claude Integration:** Use `/plugin install cloudflare@cloudflare` to register Cloudflare Skills.
+- **Wrangler:** Use `wrangler.jsonc` for environment variable and secret managemd (External References)
+git-instructions.md (Workflow Rules)
+markdown# Git Workflow
+
+## Commit Message Format
+Follow Conventional Commits:
+- `feat: [Description]` for new site features (e.g., new casino review page).
+- `fix: [Description]` for tracking link or API fixes.
+- `docs: [Description]` for MD file updates.
+
+## Branching & Merging
+- Main branch is `main`.
+- Features should be developed in `feature/branch-name`.
+- Always check build status on Cloudflare Pages before merging PRs.
+
 
