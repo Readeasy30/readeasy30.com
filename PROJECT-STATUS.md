@@ -1,6 +1,6 @@
 # ReadEasy30 Project Status
 
-Date updated: 2026-05-29
+Date updated: 2026-06-02
 
 ## What the site does
 
@@ -84,6 +84,25 @@ Core app and support files:
 - `SEO-CHECKLIST.md`
 - `READEASY30-MATHEASY30-BUILD-BRIEF.md`
 
+## Marketing activation status
+
+ReadEasy30 is now connected to the active education marketing activation board in `Wholelychit/marketing-system`.
+
+Active marketing files:
+
+- `EDUCATION-MARKETING-ACTIVATION-BOARD.md`
+- `EDUCATION-SOCIAL-POSTS-BATCH-01.md`
+- `EDUCATION-CANVA-ACTIVATION-QUEUE.md`
+- `CAMPAIGN-PUBLISHING-TRACKER.md`
+- `video-system/EDUCATION-YOUTUBE-SHORTS-BATCH-01.md`
+- `OUTREACH/DAILY-EXECUTION-RULES.md`
+
+Campaign name:
+
+- `30 Minutes. One Calm Step.`
+
+ReadEasy30 homepage already links to MathEasy30 in the top navigation and footer, so no risky website code change was needed for activation.
+
 ## Files/pages needing work
 
 - `contact.html` does not have a live contact form by design. Add a form only after privacy, spam handling, and storage decisions are approved.
@@ -137,6 +156,7 @@ Future ads, premium resources, email signup, forms, accounts, analytics, or paym
 
 ## Recent improvements
 
+- Linked ReadEasy30 status to the active education marketing activation board in `Wholelychit/marketing-system` on 2026-06-02.
 - Universal Codex Repo Audit completed on 2026-05-28 for `Wholelychit/readeasy30.com`.
 - Added `MANUAL-QA-CHECKLIST.md`, `CONTENT-PLAN.md`, and `SEO-CHECKLIST.md` for repo control consistency.
 - Updated `privacy.html` footer links to include current resource cluster links.
@@ -154,6 +174,7 @@ Quality-control pass completed on 2026-05-29 for the current worksheet marketing
 Checks confirmed from repo file reads:
 
 - Homepage links to `printable-reading-worksheets.html` through top navigation and hero CTA.
+- Homepage cross-links to `https://matheasy30.com/`.
 - `printable-reading-worksheets.html` links to the active worksheet library.
 - `sitemap.xml` includes `functional-literacy-worksheet-1.html`, `functional-literacy-worksheet-2.html`, and `functional-literacy-worksheet-3.html`.
 - Functional literacy worksheets 1, 2, and 3 include title, meta description, canonical URL, viewport tag, print button, no-subscription wording, Bubbles tip, questions, vocabulary, and helper answer key.
@@ -168,20 +189,24 @@ Manual/browser QA still required after deployment.
 - Browser/manual QA is still required for the lesson app behavior and cannot be fully verified from static GitHub file reads alone.
 - Public contact form setup is intentionally blocked until privacy, spam handling, and storage decisions are approved.
 - Live ads, tracking, payments, affiliate links, accounts, credentials, API keys, and public AI are blocked until direct approval.
+- External social publishing must be completed through the owner’s social accounts or approved connected publishing tools.
 
 ## Next safe queue
 
-1. Manually open `https://readeasy30.com/printable-reading-worksheets.html` after deployment and check worksheet links.
-2. Manually open and print-test `functional-literacy-worksheet-1.html`, `functional-literacy-worksheet-2.html`, and `functional-literacy-worksheet-3.html`.
-3. Manually test `app.html` in browser after deployment.
-4. Confirm placement check shows 8 steps.
-5. Confirm manual levels A-H start at the right day.
-6. Confirm Day 30 reaches Grade 8 readiness content.
-7. Confirm Progress Report shows Levels A-H correctly.
-8. Keep Bubbles calm and controlled.
-9. Use `READEASY30-MATHEASY30-BUILD-BRIEF.md` as the mission guardrail.
-10. Use `Wholelychit/marketing-system` launch-copy files for Pinterest, Facebook, Reddit-safe, and library/nonprofit outreach.
-11. Do not add live ads, payments, tracking, accounts, API keys, public AI, affiliate links, or a contact form without direct approval.
+1. Use `Wholelychit/marketing-system/EDUCATION-MARKETING-ACTIVATION-BOARD.md` as the active campaign board.
+2. Create the first 3 Canva graphics from `EDUCATION-CANVA-ACTIVATION-QUEUE.md`.
+3. Publish Day 1 education social posts from `EDUCATION-SOCIAL-POSTS-BATCH-01.md`.
+4. Track published links in `CAMPAIGN-PUBLISHING-TRACKER.md`.
+5. Manually open `https://readeasy30.com/printable-reading-worksheets.html` after deployment and check worksheet links.
+6. Manually open and print-test `functional-literacy-worksheet-1.html`, `functional-literacy-worksheet-2.html`, and `functional-literacy-worksheet-3.html`.
+7. Manually test `app.html` in browser after deployment.
+8. Confirm placement check shows 8 steps.
+9. Confirm manual levels A-H start at the right day.
+10. Confirm Day 30 reaches Grade 8 readiness content.
+11. Confirm Progress Report shows Levels A-H correctly.
+12. Keep Bubbles calm and controlled.
+13. Use `READEASY30-MATHEASY30-BUILD-BRIEF.md` as the mission guardrail.
+14. Do not add live ads, payments, tracking, accounts, API keys, public AI, affiliate links, or a contact form without direct approval.
 
 ## Do Not Repeat
 
