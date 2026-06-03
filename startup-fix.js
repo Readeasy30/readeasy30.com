@@ -29,17 +29,30 @@
     }
   }
 
-  function loadReadRepairHelpers() {
-    if (document.querySelector('script[src*="read-repair.js"]')) return;
+  function addScript(id, src) {
+    if (document.getElementById(id)) return;
     const script = document.createElement("script");
-    script.src = "./read-repair.js?v=20260527-repair1";
+    script.id = id;
+    script.src = src;
     script.defer = true;
     document.body.appendChild(script);
+  }
+
+  function loadReadRepairHelpers() {
+    addScript("readRepairScript", "./read-repair.js?v=20260527-repair1");
+  }
+
+  function loadRead240PathHelpers() {
+    addScript("read240DataScript", "./curriculum-240.js?v=20260603-r1");
+    window.setTimeout(function () {
+      addScript("read240HelperScript", "./read-240-path-helper.js?v=20260603-rpath1");
+    }, 250);
   }
 
   function bootStartupFixes() {
     reopenNextOpenLesson();
     loadReadRepairHelpers();
+    loadRead240PathHelpers();
   }
 
   if (document.readyState === "loading") {
