@@ -1,64 +1,45 @@
 # CODEX-CURRENT-TASK.md
 
-Last updated: 2026-05-29
+Last updated: 2026-06-03
 
 ## Repository
 
 `Wholelychit/readeasy30.com`
 
-## Current operating mode
+## Current task: Safe repository review
 
-Use ChatGPT 5.5 and Codex as the production workflow.
+Find bugs, SEO problems, broken links, accessibility issues, bad mobile layout, performance problems, and practical improvement ideas.
 
-No local Git. No terminal Git. No VS Code requirement. No manual repo file creation or paste updates.
+## Rules
 
-Workflow:
+- Do not redesign the site.
+- Do not convert to React, Vite, Next.js, TypeScript, Tailwind, or any build tools.
+- Keep the current plain HTML/CSS/JS structure where this repo uses plain HTML/CSS/JS.
+- Do not delete major working code.
+- Do not add API keys, tracking scripts, ads, payment systems, affiliate links, or user accounts.
+- Do not make risky production changes.
+- Fix small safe issues directly when possible.
+- For larger or risky issues, list them clearly before changing anything.
+- Work in safe batches and do not stop after one small fix.
+- If this repo contains non-website, backend, template, or planning files, review only what applies and do not force a framework or structure change.
 
-1. ChatGPT 5.5 manages the plan.
-2. Codex performs repository work.
-3. GitHub stores files and commits.
-4. Cloudflare Pages publishes from GitHub when connected.
+## Check these areas
 
-## Current project focus
+1. HTML errors and missing tags
+2. Broken links and bad navigation
+3. SEO title tags, meta descriptions, canonical links, headings, and alt text
+4. Mobile layout problems
+5. Accessibility problems
+6. CSS conflicts or layout bugs
+7. JavaScript errors
+8. Page speed and image size issues
+9. Missing `robots.txt` or `sitemap.xml`
+10. Missing privacy, disclaimer, contact, or footer links if needed
 
-ReadEasy30 is a simple HTML/CSS/JS reading-practice website.
+## Deliverables
 
-Keep the locked architecture:
-
-- `index.html` = marketing/homepage
-- `app.html` = lesson app page
-- `app.js` = lesson and progress logic
-- `css/style.css` = styling
-- no React
-- no Vite
-- no Next.js
-- no framework rebuild
-
-## Current safe queue
-
-1. Preserve the stable non-React/non-Vite structure.
-2. Review existing lesson app behavior before changing it.
-3. Improve mobile-first usability only with small safe edits.
-4. Add or improve day selector only after checking existing app structure.
-5. Keep Bubbles as a calm reading coach, not an open-ended chatbot.
-6. Improve accessibility, titles, meta description, canonical URL, footer, robots.txt, and sitemap.xml.
-7. Keep progress tracking localStorage-first unless a later approved backend is added.
-8. Do not delete major working code.
+Report: summary reviewed, bugs found, SEO problems, broken links, mobile/layout problems, accessibility issues, performance problems, safe fixes completed, suggested next improvements, and commit messages used.
 
 ## Stop points
 
-Stop before:
-
-- framework migration
-- major code deletion
-- public AI/chatbot integrations
-- user accounts
-- upload systems
-- private keys or API keys
-- live ads or tracking
-- payment setup
-- anything that breaks the locked stable architecture
-
-## Reporting
-
-Report only after useful commits or a real blocker.
+Stop before private keys, API keys, live tracking, live ads, payment setup, user accounts, upload systems, affiliate links, framework migration, major code deletion, or anything that risks breaking production.
