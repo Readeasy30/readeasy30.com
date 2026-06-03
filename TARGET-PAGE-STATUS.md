@@ -7,7 +7,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | Page | File | Status |
 |---|---|---|
 | Home page | `index.html` | Complete with public 240-day links |
-| Current lesson app | `app.html` | Complete and working |
+| Current lesson app | `app.html` | Complete and working with safe 240-day bridge links |
 | 240-day reading path | `240-day-reading-path.html` | Complete |
 | Days 1-240 public curriculum | `days-1-240-curriculum.html` | Complete |
 | Internal 240-day lesson test page | `lesson-test-240.html` | Complete, noindex |
@@ -53,8 +53,8 @@ Use this file to track which public target pages and curriculum build pages are 
 
 | Target | Status | Notes |
 |---|---|---|
-| Live app Days 31-240 wiring | Pending | Do only after staged test/preview pages are checked |
-| Ask Bubbles preset question buttons | Pending | Add after curriculum wiring is stable |
+| Full live app Days 31-240 replacement | Pending | Do only after staged test/preview pages are checked |
+| Ask Bubbles preset question buttons | Pending | Add next as a safe helper layer |
 | Sister voice clip support | Pending | Add later if permission and audio files are provided |
 
 ## Current build rule
@@ -68,4 +68,4 @@ Do not replace the working app engine until the 240-day interactive lesson data 
 - `lesson-test-240.html` is available for internal verification.
 - `app-240.html` is available as a noindex preview app.
 - The public homepage now links to the 240-day path and Days 1-240 curriculum.
-- The current live app engine remains protected.
+- The current live app engine has safe 240-day bridge links but remains protected from full replacement.
