@@ -11,6 +11,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | 240-day reading path | `240-day-reading-path.html` | Complete |
 | Days 1-240 public curriculum | `days-1-240-curriculum.html` | Complete |
 | Internal 240-day lesson test page | `lesson-test-240.html` | Complete, noindex |
+| 240-day preview app | `app-240.html` | Complete, noindex |
 | Reading levels beginner to 8th grade | `reading-levels-beginner-to-8th-grade.html` | Complete |
 | Daily reading practice | `daily-reading-practice.html` | Complete |
 | Printable reading worksheets | `printable-reading-worksheets.html` | Complete |
@@ -43,6 +44,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | `level-h-lessons.js` | Complete: Days 211-240 |
 | `lesson-loader-240.js` | Complete: combines staged Levels B-H |
 | `lesson-test-240.js` | Complete: verifies staged lesson loader |
+| `app-240.js` | Complete: preview app script |
 | `read-240-path-helper.js` | Complete |
 | `240-DAY-UPDATE-BUNDLE.md` | Complete |
 | `APP-240-PREVIEW-TARGET.md` | Complete |
@@ -51,9 +53,8 @@ Use this file to track which public target pages and curriculum build pages are 
 
 | Target | Status | Notes |
 |---|---|---|
-| Homepage 240-day link refresh | Pending | Large write was blocked; use smaller Codex patch later |
-| Separate `app-240.html` preview app | Pending | Write was blocked; use Codex or smaller patch later |
-| Live app Days 31-240 wiring | Pending | Do only after staged test page is checked |
+| Homepage 240-day link refresh | Pending | Use a small patch only |
+| Live app Days 31-240 wiring | Pending | Do only after staged test/preview pages are checked |
 | Ask Bubbles preset question buttons | Pending | Add after curriculum wiring is stable |
 | Sister voice clip support | Pending | Add later if permission and audio files are provided |
 
@@ -66,4 +67,5 @@ Do not replace the working app engine until the 240-day interactive lesson data 
 - Days 31-240 interactive lesson data is complete and staged.
 - Levels B-H are loaded through `lesson-loader-240.js`.
 - `lesson-test-240.html` is available for internal verification.
+- `app-240.html` is available as a noindex preview app.
 - The current live app engine remains protected.
