@@ -10,6 +10,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | Current lesson app | `app.html` | Complete and working |
 | 240-day reading path | `240-day-reading-path.html` | Complete |
 | Days 1-240 public curriculum | `days-1-240-curriculum.html` | Complete |
+| Internal 240-day lesson test page | `lesson-test-240.html` | Complete, noindex |
 | Reading levels beginner to 8th grade | `reading-levels-beginner-to-8th-grade.html` | Complete |
 | Daily reading practice | `daily-reading-practice.html` | Complete |
 | Printable reading worksheets | `printable-reading-worksheets.html` | Complete |
@@ -33,6 +34,15 @@ Use this file to track which public target pages and curriculum build pages are 
 | `DAYS-1-240-CURRICULUM.md` | Complete |
 | `DAYS-31-240-CURRICULUM.md` | Complete |
 | `curriculum-240.js` | Complete |
+| `level-b-lessons.js` | Complete: Days 31-60 |
+| `level-c-lessons.js` | Complete: Days 61-90 |
+| `level-d-lessons.js` | Complete: Days 91-120 |
+| `level-e-lessons.js` | Complete: Days 121-150 |
+| `level-f-lessons.js` | Complete: Days 151-180 |
+| `level-g-lessons.js` | Complete: Days 181-210 |
+| `level-h-lessons.js` | Complete: Days 211-240 |
+| `lesson-loader-240.js` | Complete: combines staged Levels B-H |
+| `lesson-test-240.js` | Complete: verifies staged lesson loader |
 | `read-240-path-helper.js` | Complete |
 | `240-DAY-UPDATE-BUNDLE.md` | Complete |
 | `APP-240-PREVIEW-TARGET.md` | Complete |
@@ -43,10 +53,17 @@ Use this file to track which public target pages and curriculum build pages are 
 |---|---|---|
 | Homepage 240-day link refresh | Pending | Large write was blocked; use smaller Codex patch later |
 | Separate `app-240.html` preview app | Pending | Write was blocked; use Codex or smaller patch later |
-| Full interactive Days 31-240 lessons | Pending | Build level by level: B, C, D, E, F, G, H |
+| Live app Days 31-240 wiring | Pending | Do only after staged test page is checked |
 | Ask Bubbles preset question buttons | Pending | Add after curriculum wiring is stable |
 | Sister voice clip support | Pending | Add later if permission and audio files are provided |
 
 ## Current build rule
 
 Do not replace the working app engine until the 240-day interactive lesson data has been tested in a separate preview path.
+
+## Current 240-day lesson status
+
+- Days 31-240 interactive lesson data is complete and staged.
+- Levels B-H are loaded through `lesson-loader-240.js`.
+- `lesson-test-240.html` is available for internal verification.
+- The current live app engine remains protected.
