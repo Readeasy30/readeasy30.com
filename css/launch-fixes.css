@@ -2,21 +2,25 @@
   display: flex;
   gap: 0.8rem;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   margin-top: 1.2rem;
 }
 
 .start-button,
 .secondary-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 12rem;
+  min-height: 3rem;
   padding: 0.85rem 1.4rem;
   border-radius: 0.7rem;
   text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
+  line-height: 1.25;
 }
 
 .secondary-button {
@@ -33,12 +37,16 @@
 .trust-row {
   display: flex;
   justify-content: center;
+  align-items: stretch;
   gap: 0.7rem;
   flex-wrap: wrap;
   margin-top: 1rem;
 }
 
 .trust-row span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: white;
   border: 1px solid #dbeafe;
   border-radius: 999px;
@@ -46,16 +54,22 @@
   font-size: 0.8rem;
   font-weight: bold;
   padding: 0.45rem 0.7rem;
+  text-align: center;
 }
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.9rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
   margin-top: 1.1rem;
+  align-items: stretch;
 }
 
 .feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: 100%;
   background: #f8fafc;
   border: 1px solid #e5e7eb;
   border-radius: 0.9rem;
@@ -63,12 +77,16 @@
 }
 
 .feature-card h3 {
-  margin-bottom: 0.4rem;
+  margin: 0;
 }
 
 .feature-card p {
   margin: 0;
   color: #4b5563;
+}
+
+.feature-card p + p {
+  margin-top: auto;
 }
 
 .callout-card {
@@ -83,9 +101,16 @@
   margin-right: auto;
 }
 
+@media (max-width: 900px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .hero-buttons {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .start-button,
@@ -96,5 +121,22 @@
 
   .feature-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    gap: 0.65rem;
+  }
+
+  .trust-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .trust-row span,
+  .feature-card {
+    border-radius: 0.75rem;
   }
 }
