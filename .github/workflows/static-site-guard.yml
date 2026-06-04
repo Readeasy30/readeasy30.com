@@ -1,0 +1,63 @@
+name: Static Site Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Block known ReadEasy30 static-site regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Checking ReadEasy30 static site guardrails..."
+
+          if [ ! -f "index.html" ]; then
+            echo "ERROR: index.html is missing."
+            exit 1
+          fi
+
+          if [ ! -f "app.html" ]; then
+            echo "ERROR: app.html is missing."
+            exit 1
+          fi
+
+          if [ ! -f "app.js" ]; then
+            echo "ERROR: app.js is missing."
+            exit 1
+          fi
+
+          if [ ! -f "css/style.css" ]; then
+            echo "ERROR: css/style.css is missing."
+            exit 1
+          fi
+
+          if [ ! -f "sitemap.xml" ]; then
+            echo "ERROR: sitemap.xml is missing."
+            exit 1
+          fi
+
+          if [ ! -f "robots.txt" ]; then
+            echo "ERROR: robots.txt is missing."
+            exit 1
+          fi
+
+          if grep -RIl "vite" . --exclude-dir=.git --exclude-dir=.github | grep -q .; then
+            echo "ERROR: Vite references found. ReadEasy30 is locked as plain HTML/CSS/JS."
+            exit 1
+          fi
+
+          if grep -RIl "react" . --exclude-dir=.git --exclude-dir=.github | grep -q .; then
+            echo "ERROR: React references found. ReadEasy30 is locked as plain HTML/CSS/JS."
+            exit 1
+          fi
+
+          echo "Static site guard passed."
