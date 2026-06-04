@@ -1,1 +1,4 @@
+/app /app.html 301
+/app/ /app.html 301
 /adult-reading-practice.html /adult-reading-practice-without-shame.html 301
+https://www.readeasy30.com/* https://readeasy30.com/:splat 301
