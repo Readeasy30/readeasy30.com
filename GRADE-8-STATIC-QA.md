@@ -1,124 +1,118 @@
-# Grade 8 Static QA Notes
+# ReadEasy30 240-Day Static QA Notes
 
-Date added: 2026-05-28
+Date updated: 2026-06-06
 
 ## Purpose
 
-This file records a static code review of the expanded ReadEasy30 A-H lesson path.
+This file records the current static QA target after the Day One rebuild.
 
-This is not a replacement for browser testing. It confirms the repository wiring before live manual testing.
+It replaces the old notes that described the previous 30-day `grade-path-lessons.js` setup.
 
-## Files reviewed
+## Current app wiring
+
+The public app should use this simple script order:
+
+```text
+student-profiles.js
+app.js
+```
+
+The public app should not depend on the old helper-script stack.
+
+## Static QA target
+
+Review these files together:
 
 - `app.html`
 - `app.js`
-- `grade-path-lessons.js`
-- `startup-fix.js`
+- `student-profiles.js`
+- `parent-tutor-guide.html`
+- `README.md`
+- `PROJECT-STATUS.md`
+- `LOCKED-CHECKPOINT.md`
 
-## Static QA result
+## Confirmed intended architecture
 
-No obvious architecture-breaking issue was found in the static review.
+The clean app engine in `app.js` owns:
 
-## Confirmed wiring
-
-### App engine stays stable
-
-`app.js` still owns the lesson engine, including:
-
-- `lessons`
-- `addLesson()`
+- generated lesson data
+- 240-day path
+- level mapping
 - placement flow
 - answer checking
 - day selector
 - progress saving
 - read aloud
-- Bubbles coaching
-- achievements
-- fluency coach
-- startup loading
+- Bubbles messages
+- vocabulary display
+- timer
+- parent/tutor link path
 
-### Expanded lesson data loads after engine
+## Static checks to perform
 
-`app.html` loads scripts in this safe order:
+1. Confirm `app.html` has a mobile viewport tag.
+2. Confirm `app.html` has one clear H1.
+3. Confirm `app.html` links to `parent-tutor-guide.html`.
+4. Confirm `app.html` loads `student-profiles.js`.
+5. Confirm `app.html` loads `app.js`.
+6. Confirm `app.html` does not load `grade-path-lessons.js`.
+7. Confirm `app.html` does not load the old helper-script stack.
+8. Confirm `app.js` creates 240 lessons.
+9. Confirm `app.js` includes Level A-H mapping.
+10. Confirm `app.js` builds the day selector from the lessons array.
+11. Confirm `app.js` includes placement steps A-H.
+12. Confirm `app.js` saves progress in `localStorage`.
+13. Confirm `app.js` has read-aloud support that fails safely if unsupported.
+14. Confirm `parent-tutor-guide.html` has phone-friendly action buttons.
+15. Confirm `sitemap.xml` includes the main app, homepage, parent/tutor guide, worksheets, and reading + math page.
 
-1. `app.js`
-2. `grade-path-lessons.js`
-3. helper scripts
-4. `startup-fix.js`
+## Expected level bands
 
-This lets the stable engine load first, then lets the expanded A-H lesson data replace the starter A-D data.
-
-### Manual levels are present
-
-`app.html` includes manual level buttons for:
-
-- Level A
-- Level B
-- Level C
-- Level D
-- Level E
-- Level F
-- Level G
-- Level H
-
-### Placement path is expanded
-
-`grade-path-lessons.js` includes placement steps for:
-
-- A
-- B
-- C
-- D
-- E
-- F
-- G
-- H
-
-The placement label in `app.html` says `Step 1 of 8`, and `renderPlacementStep()` uses `placementSteps.length`, so the interface should reflect the expanded placement array.
-
-### Lesson count remains 30
-
-`grade-path-lessons.js` replaces the starter lesson data with 30 lessons.
-
-The app uses `lessons.length` for the lesson count and progress bar, so the lesson count should remain dynamic.
-
-### Level start map is expanded
-
-`grade-path-lessons.js` updates `levelStart` to:
-
-- A = Day 1
-- B = Day 4
-- C = Day 7
-- D = Day 11
-- E = Day 15
-- F = Day 19
-- G = Day 23
-- H = Day 27
-
-This supports manual starting points A-H.
-
-### Startup fix should still work
-
-`startup-fix.js` uses `lessons.length` and `currentLesson` dynamically.
-
-Because it loads after `grade-path-lessons.js`, it should reopen the next available lesson using the expanded 30-day path.
+- A starts at Day 1
+- B starts at Day 31
+- C starts at Day 61
+- D starts at Day 91
+- E starts at Day 121
+- F starts at Day 151
+- G starts at Day 181
+- H starts at Day 211
 
 ## Manual browser QA still required
 
-The next step is live browser testing:
+Static review cannot prove live browser behavior.
 
-1. Open `app.html` after deployment.
-2. Reset progress.
-3. Start Placement Check.
-4. Confirm it shows Step 1 of 8.
-5. Confirm all A-H placement steps render.
-6. Choose Level H manually.
-7. Confirm the app loads Day 27.
-8. Confirm Day 30 is Grade 8 readiness content when reached.
-9. Confirm answers, read aloud, day selector, and progress still work.
+Browser QA must still confirm:
+
+1. App loads.
+2. Story text appears.
+3. Day selector fills with 240 days.
+4. Placement check works.
+5. Manual levels work.
+6. Read Aloud works where supported.
+7. Check Answers works.
+8. Next Lesson works.
+9. Parent / Tutor Guide opens.
+10. Phone layout is readable without zooming.
+
+## Stop and fix if
+
+Stop and fix if static review or browser review finds:
+
+- `Loading story...` stays visible
+- day selector is empty
+- old scripts are loaded again
+- placement does not render
+- parent/tutor link is missing
+- answer checking does nothing
+- mobile buttons are too small
+- the app depends on deleted or stale files
 
 ## Do not change
 
-Do not replace the lesson engine.
-Do not rebuild the day selector.
 Do not convert to React, Vite, Next.js, TypeScript, or build tools.
+
+Do not re-add old app dependencies unless there is a clear tested reason.
+
+Do not remove the parent/tutor path.
+
+Do not add live ads, tracking, payments, affiliate links, accounts, uploads, public AI tools, scraping, or credentials.
