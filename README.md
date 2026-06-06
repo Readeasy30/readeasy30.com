@@ -1,133 +1,231 @@
 # ReadEasy30
 
-ReadEasy30 is a free, calm reading-practice website built for children, adults, ESL learners, older learners, parents, tutors, and struggling readers.
+ReadEasy30 is a 100% free, calm reading-practice website for learners who need steady support. It serves beginning readers, older learners, adult learners, ESL learners, parents, tutors, homeschool helpers, and community programs.
 
-The site helps learners practice reading with short daily lessons, simple questions, vocabulary support, read-aloud help, progress tracking, and Bubbles the calm reading coach.
+The public message is simple:
 
-## Current structure
+```text
+Start small. Read slowly. Practice a little each day.
+```
 
-This project is intentionally simple and must stay simple:
+## Day One production standard
 
-- `index.html` — marketing homepage
-- `app.html` — lesson app page
-- `app.js` — stable lesson engine and reading logic
-- `grade-path-lessons.js` — expanded 30-day reading path from early reader through Grade 8 readiness
-- `css/style.css` — main site styling
-- `css/site-links.css` — shared navigation, footer, resource-page, and accessibility helper styles
-- Small support JavaScript files — safe helper features only
+This repo must stay simple, mobile-friendly, and easy to maintain.
+
+Use plain files only:
+
+- HTML
+- CSS
+- JavaScript
+- GitHub
+- Cloudflare
+- Browser `localStorage` for simple device progress
+
+Do not convert this project to React, Vite, Next.js, TypeScript, a build system, or a server app.
+
+## Current public funnel
+
+The homepage should guide visitors in this order:
+
+1. Start Reading Now
+2. Find Starting Level
+3. Print Worksheets
+4. Parent / Tutor Help
+5. Reading + Math Plan
+
+Do not bring back a giant top navigation menu.
+
+Keep the homepage focused on:
+
+- 100% free reading practice
+- short daily lessons
+- placement help
+- read-aloud support
+- printable worksheets
+- parent/tutor help
+- ReadEasy30 + MathEasy30 connection
+
+## Current core files
+
+- `index.html` — clean SEO homepage funnel
+- `app.html` — clean reading app shell
+- `app.js` — clean 240-day app engine
+- `student-profiles.js` — learner/profile support
+- `parent-tutor-guide.html` — mobile-friendly helper guide
+- `printable-reading-worksheets.html` — worksheet hub
+- `free-reading-and-math-practice.html` — shared education campaign landing page
+- `sitemap.xml` — crawl priority map
+- `robots.txt` — crawler instructions
+- `css/style.css` — main styling
+- `css/site-links.css` — navigation/footer/link helpers
+
+## App standard
+
+The app should load only the core scripts needed for the stable experience.
+
+Current app shell loads:
+
+```text
+student-profiles.js
+app.js
+```
+
+Do not re-add the old fragile script stack unless there is a clear tested reason.
+
+Do not re-add these as app dependencies:
+
+```text
+level-b-lessons.js
+level-c-lessons.js
+level-d-lessons.js
+level-e-lessons.js
+level-f-lessons.js
+level-g-lessons.js
+level-h-lessons.js
+read-live-240-integration.js
+grade-path-lessons.js
+audio-fix.js
+session-timer.js
+report.js
+vocab-helper.js
+learner-mode.js
+session-plan.js
+startup-fix.js
+bubbles-question-buttons.js
+```
+
+Old support files may remain in the repo temporarily, but the public app should not depend on them.
 
 ## Current working features
 
-- Placement check
-- Manual level choice
-- 30 reading lessons
-- Levels A through H
-- Early reader through Grade 8 readiness path
-- Day selector
-- Locked future lessons
-- localStorage progress tracking
-- Streak count
-- Timer
-- Read Aloud
-- Vocabulary helper
-- Fluency coach
+The clean app engine in `app.js` provides:
+
+- 240 generated daily reading lessons
+- 8 reading levels: A through H
+- placement check
+- manual level choice
+- day selector
+- progress tracking
+- streak count
+- timer
+- read-aloud support
+- vocabulary words
+- short comprehension questions
 - Bubbles coaching messages
-- Progress report
-- Mobile-friendly layout foundation
-- Public support pages
-- Basic SEO metadata and sitemap
+- parent/tutor link inside the app
 
 ## Reading level path
 
-ReadEasy30 now uses a 30-day progression:
+- Level A — Days 1-30 — early-reader confidence
+- Level B — Days 31-60 — Grade 1 path
+- Level C — Days 61-90 — Grade 2 path
+- Level D — Days 91-120 — Grade 3 path
+- Level E — Days 121-150 — Grade 4 path
+- Level F — Days 151-180 — Grade 5 path
+- Level G — Days 181-210 — Grades 6-7 path
+- Level H — Days 211-240 — Grade 8 readiness
 
-1. Level A — early reader
-2. Level B — Grade 1 path
-3. Level C — Grade 2 path
-4. Level D — Grade 3 path
-5. Level E — Grade 4 path
-6. Level F — Grade 5 path
-7. Level G — Grades 6-7 path
-8. Level H — Grade 8 readiness
+## SEO standard
 
-The stable app engine stays in `app.js`.
+Every important public page should have:
 
-The expanded lesson content is loaded from `grade-path-lessons.js` after `app.js` so the lesson engine, placement, progress, day selector, read aloud, and Bubbles features are preserved.
+- one clear `<title>`
+- one useful meta description
+- canonical URL
+- mobile viewport
+- one clear H1
+- readable 7th-9th grade language
+- strong internal links
+- visible parent/tutor path
+- no fake urgency
+- no confusing paid/pricing language
+- no cluttered top navigation
 
-## Public pages
+Primary SEO pages:
 
-- `index.html` — homepage
-- `app.html` — reading lesson app
-- `daily-reading-practice.html` — useful SEO/help content page
-- `parent-tutor-guide.html` — helper guide
-- `about.html` — about page
-- `contact.html` — contact status and feedback guidance
-- `privacy.html` — plain-language privacy policy
-- `terms.html` — plain-language terms of use
+- `/`
+- `/app.html`
+- `/parent-tutor-guide.html`
+- `/printable-reading-worksheets.html`
+- `/free-reading-and-math-practice.html`
+- `/daily-reading-practice.html`
+- `/reading-levels-beginner-to-8th-grade.html`
+- `/adult-reading-practice-without-shame.html`
+- `/esl-reading-practice.html`
 
-## Connected growth system
+## Mobile and tutor standard
 
-ReadEasy30 is part of the shared Wholelychit education growth system with MathEasy30.
+The tutor/helper path must be easy to tap on a phone.
 
-Shared planning lives in `Wholelychit/marketing-system`.
+Top pages should link to:
 
-Use these marketing-system files before creating new campaign work:
+```text
+parent-tutor-guide.html
+```
 
-- `EDUCATION-GROWTH-PLAN.md` — shared ReadEasy30 + MathEasy30 positioning and growth queue
-- `CAMPAIGNS/README.md` — campaign folder rules and index
-- `CAMPAIGNS/readeasy30-matheasy30-confidence-campaign.md` — first shared education campaign
-
-Website code stays in this repo. Shared marketing plans, campaign files, content batches, social posts, Canva notes, and growth tracking stay in `marketing-system`.
-
-## Development rules
-
-Do not convert this project to React, Vite, Next.js, TypeScript, or any build tool.
-
-Do not redesign the app unless the owner clearly requests it.
-
-Safe work means:
-
-1. Read `AGENTS.md`, `AGENT-INSTRUCTIONS.md`, and `LOCKED-CHECKPOINT.md` first.
-2. Keep the locked HTML/CSS/JavaScript architecture.
-3. Make small useful improvements.
-4. Preserve working features.
-5. Commit changes with clear messages.
-6. Update `LOCKED-CHECKPOINT.md` and `PROJECT-STATUS.md` after a new stable stage.
-7. Put shared marketing and campaign planning in `Wholelychit/marketing-system`.
-
-## Product direction
-
-ReadEasy30 should grow into a trustworthy education site with:
-
-- stronger reading-level progression
-- practical reading lessons
-- printable worksheets
-- parent and tutor resources
-- future SEO content pages
-- future display ads only when they do not hurt trust
-- future premium resources only after the free core works well
+The app should also include a visible tutor/helper link near the lesson area.
 
 ## Bubbles coach rule
 
 Bubbles should stay calm and controlled.
 
-Bubbles should encourage readers to slow down, reread, find proof in the story, and keep practicing without shame.
+Bubbles should encourage learners to:
+
+- slow down
+- reread
+- find proof in the story
+- try one small step
+- keep practicing without shame
 
 Bubbles should not act like an open-ended chatbot until safety and content controls are ready.
 
-## QA file
+## Safety and product lock
 
-Use `GRADE-8-PATH-QA-CHECKLIST.md` to test the expanded reading path after deployment.
+Do not add:
 
-## Next useful queue
+- live ads
+- tracking scripts
+- payments
+- affiliate links
+- accounts
+- uploads
+- private keys
+- scraping
+- social automation
+- public AI tools
+- framework migrations
 
-1. Manually test `app.html` after deployment.
-2. Confirm placement check shows 8 steps.
-3. Confirm manual levels A-H load the correct lesson bands.
-4. Confirm Day 30 reaches Grade 8 readiness content.
-5. Add one free sample printable worksheet page.
-6. Add accessibility checks and manual testing notes.
-7. Add more useful SEO content pages carefully.
-8. Keep ReadEasy30 aligned with the shared education growth plan in `marketing-system`.
-9. Add a safe contact form only after privacy/spam handling is decided.
-10. Do not add live ads, payments, tracking, or accounts yet.
+Future ads or premium resources can be considered only after the free core works well and trust is protected.
+
+## Shared education growth
+
+ReadEasy30 is paired with MathEasy30.
+
+Shared marketing and campaign planning belongs in:
+
+```text
+Wholelychit/marketing-system
+```
+
+Website code stays in this repo.
+
+## QA checklist before public promotion
+
+Test on phone and desktop:
+
+1. Homepage loads and has the five-part funnel.
+2. `app.html` loads without getting stuck.
+3. Placement check opens.
+4. Manual levels A-H work.
+5. Jump to Day fills with 240 days.
+6. Read Aloud works.
+7. Check Answers works.
+8. Next Lesson works.
+9. Parent / Tutor Guide opens.
+10. Sitemap opens at `/sitemap.xml`.
+
+## Working rule
+
+Replace broken files cleanly. Do not stack small repairs on top of broken repairs.
+
+When changing a public page, prefer one complete-file replacement with a clear commit message.
