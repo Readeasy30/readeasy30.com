@@ -20,43 +20,49 @@ jobs:
 
           echo "Checking ReadEasy30 static site guardrails..."
 
-          if [ ! -f "index.html" ]; then
-            echo "ERROR: index.html is missing."
+          required_files=(
+            "index.html"
+            "app.html"
+            "app.js"
+            "css/style.css"
+            "sitemap.xml"
+            "robots.txt"
+          )
+
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "ERROR: $file is missing."
+              exit 1
+            fi
+          done
+
+          echo "Checking public HTML/CSS/JS files for framework regressions..."
+
+          # Only scan public website code. Documentation files intentionally mention
+          # React/Vite in warnings such as "do not use React/Vite" and must not fail CI.
+          mapfile -t public_files < <(find . \
+            -path "./.git" -prune -o \
+            -path "./.github" -prune -o \
+            -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" \) \
+            -print)
+
+          if printf '%s\n' "${public_files[@]}" | xargs grep -IlE "(from ['\"]react|import React|createRoot|ReactDOM|vite/client|@vite|vite\.config)" | grep -q .; then
+            echo "ERROR: React/Vite runtime references found in public site files."
             exit 1
           fi
 
-          if [ ! -f "app.html" ]; then
-            echo "ERROR: app.html is missing."
+          if grep -n "<script" app.html | grep -E "level-[b-h]-lessons|read-live-240-integration|grade-path-lessons|audio-fix|session-timer|report|vocab-helper|learner-mode|session-plan|startup-fix|bubbles-question-buttons"; then
+            echo "ERROR: Old ReadEasy30 app script stack is loaded by app.html."
             exit 1
           fi
 
-          if [ ! -f "app.js" ]; then
-            echo "ERROR: app.js is missing."
+          if ! grep -q "student-profiles.js" app.html; then
+            echo "ERROR: app.html must load student-profiles.js."
             exit 1
           fi
 
-          if [ ! -f "css/style.css" ]; then
-            echo "ERROR: css/style.css is missing."
-            exit 1
-          fi
-
-          if [ ! -f "sitemap.xml" ]; then
-            echo "ERROR: sitemap.xml is missing."
-            exit 1
-          fi
-
-          if [ ! -f "robots.txt" ]; then
-            echo "ERROR: robots.txt is missing."
-            exit 1
-          fi
-
-          if grep -RIl "vite" . --exclude-dir=.git --exclude-dir=.github | grep -q .; then
-            echo "ERROR: Vite references found. ReadEasy30 is locked as plain HTML/CSS/JS."
-            exit 1
-          fi
-
-          if grep -RIl "react" . --exclude-dir=.git --exclude-dir=.github | grep -q .; then
-            echo "ERROR: React references found. ReadEasy30 is locked as plain HTML/CSS/JS."
+          if ! grep -q "app.js" app.html; then
+            echo "ERROR: app.html must load app.js."
             exit 1
           fi
 
