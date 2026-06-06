@@ -5,7 +5,7 @@ Date locked: 2026-06-06
 Repository: `Wholelychit/readeasy30.com`
 Branch: `main`
 
-## Locked Day One state
+## Locked stable state
 
 ReadEasy30 is locked as a simple, mobile-first, static reading-practice website.
 
@@ -36,8 +36,8 @@ Do not bring back a giant top navigation menu.
 
 - `index.html` — clean SEO homepage funnel
 - `app.html` — clean reading app shell
-- `app.js` — clean 240-day app engine
-- `student-profiles.js` — learner/profile support
+- `app.js` — locked 240-day app engine
+- `student-profiles.js` — shared-device learner/profile support
 - `parent-tutor-guide.html` — mobile-friendly helper guide
 - `printable-reading-worksheets.html` — worksheet hub
 - `free-reading-and-math-practice.html` — shared reading + math plan
@@ -53,6 +53,13 @@ The public app shell loads only:
 ```text
 student-profiles.js
 app.js
+```
+
+Current locked app cache versions:
+
+```text
+student-profiles.js?v=20260606-students2
+app.js?v=20260606-locked1
 ```
 
 The app should not depend on the old fragile script stack.
@@ -79,109 +86,43 @@ startup-fix.js
 bubbles-question-buttons.js
 ```
 
-## Locked app features
+## Fixes locked on 2026-06-06
 
-The clean app engine in `app.js` provides:
+1. Student profile progress scoping is fixed.
+   - `student-profiles.js` now scopes `readEasy`, `readEasy30`, and `readeasy30` storage keys.
+   - Current app progress key `readeasy30.clean.progress.v1` is included.
 
-- 240 generated daily reading lessons
-- 8 reading levels: A through H
-- placement check
-- manual level choice
-- day selector
-- progress tracking
-- streak count
-- timer
-- read-aloud support
-- vocabulary words
-- short comprehension questions
-- Bubbles coaching messages
-- parent/tutor link inside the app
+2. Shared-device student progress is protected.
+   - Each student profile keeps its own reading progress on the same device.
+   - Reset is limited to the selected student.
 
-## Locked reading path
+3. Blank answers are blocked.
+   - Lesson answers cannot pass when blank.
+   - Placement answers cannot pass when blank.
 
-- Level A — Days 1-30 — early-reader confidence
-- Level B — Days 31-60 — Grade 1 path
-- Level C — Days 61-90 — Grade 2 path
-- Level D — Days 91-120 — Grade 3 path
-- Level E — Days 121-150 — Grade 4 path
-- Level F — Days 151-180 — Grade 5 path
-- Level G — Days 181-210 — Grades 6-7 path
-- Level H — Days 211-240 — Grade 8 readiness
+4. App files are cache-busted.
+   - `app.html` now loads the locked app script version.
 
-## Locked SEO standard
+## Commits included in this lock
 
-Every important public page should have:
+- `7334cc0ab0f4685e0a4cfcbcd676a48f0f9236f4` — fixed student profile progress scoping
+- `2f9c62d712b1e0ac330fc5b64327e8e5e014105e` — forced updated student profile script load
+- `c2ac98337c66ca7028788828fee0b61cd0d8ecc3` — fixed blank answer checking
+- `3bc892c2a36a1b4cbb3fbb2a3fc93c0b620e725f` — locked app script cache version
 
-- one clear title
-- useful meta description
-- canonical URL
-- mobile viewport
-- one clear H1
-- readable language
-- strong internal links
-- visible parent/tutor path
-- no fake urgency
-- no confusing paid/pricing language
-- no cluttered top navigation
+## Do not redo
 
-## Locked mobile/tutor standard
+Do not rebuild the app from scratch.
+Do not replace it with React, Vite, Node, or a framework.
+Do not rework student profiles unless a new bug is proven.
+Do not change storage keys without a migration.
+Do not overwrite the locked app with an older app version.
 
-The Parent / Tutor Help path must be easy to tap on a phone.
+## Next safe QA check
 
-Important pages should link to:
-
-```text
-parent-tutor-guide.html
-```
-
-Use the label:
-
-```text
-Parent / Tutor Help
-```
-
-## Bubbles rule
-
-Bubbles stays calm and controlled.
-
-Bubbles should encourage learners to slow down, reread, find proof in the story, try one small step, and keep practicing without shame.
-
-Do not turn Bubbles into an open-ended chatbot until safety and content controls are ready.
-
-## Safety lock
-
-Do not add without direct approval:
-
-- live ads
-- tracking scripts
-- payments
-- affiliate links
-- accounts
-- uploads
-- private keys
-- scraping
-- social automation
-- public AI tools
-- framework migrations
-
-## QA required after this checkpoint
-
-Manual/live QA is required on phone and desktop:
-
-1. Homepage loads.
-2. Homepage funnel buttons work.
-3. `app.html` loads without getting stuck.
-4. Placement check opens.
-5. Manual levels A-H work.
-6. Jump to Day fills with 240 days.
-7. Read Aloud works where supported.
-8. Check Answers works.
-9. Next Lesson works.
-10. Parent / Tutor Help opens.
-11. Sitemap opens at `/sitemap.xml`.
-
-## Working rule
-
-Replace broken files cleanly. Do not stack tiny repairs on broken repairs.
-
-For public pages, prefer complete-file replacement when the page is stale, cluttered, or inconsistent.
+1. Open `https://readeasy30.com/app.html`.
+2. Hard refresh the browser.
+3. Add Student 1 and Student 2.
+4. Complete one lesson as Student 1.
+5. Switch to Student 2 and confirm progress is separate.
+6. Leave answers blank and confirm the app blocks completion.
