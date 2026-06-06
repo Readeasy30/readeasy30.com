@@ -3,11 +3,12 @@
     appId: "readEasy30",
     appName: "ReadEasy30",
     subject: "reading",
-    scopePrefixes: ["readEasy"],
+    scopePrefixes: ["readEasy", "readEasy30", "readeasy30"],
     profilesKey: "readEasy30StudentProfiles",
     activeKey: "readEasy30ActiveStudent",
-    migratedKey: "readEasy30LegacyMigratedToProfiles",
+    migratedKey: "readEasy30LegacyMigratedToProfilesV2",
     dataPrefix: "readEasy30StudentData::",
+    appProgressKey: "readeasy30.clean.progress.v1",
     insertBeforeSelector: "#assessmentBox",
     resetSelector: ".danger-row button",
     resetLabel: "Reset This Student",
@@ -46,7 +47,7 @@
     try {
       const saved = JSON.parse(getRaw(CONFIG.profilesKey) || "[]");
       return Array.isArray(saved) ? saved.filter(profile => profile && profile.id && profile.name) : [];
-    } catch (error) {
+    } catch {
       return [];
     }
   }
@@ -154,10 +155,31 @@
     return getRaw(scopedKeyFor(profileId, key));
   }
 
+  function parseReadingState(profileId) {
+    try {
+      return JSON.parse(getProfileValue(profileId, CONFIG.appProgressKey) || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function getLevelFromLessonIndex(index) {
+    const day = (Number(index) || 0) + 1;
+    if (day <= 30) return "A";
+    if (day <= 60) return "B";
+    if (day <= 90) return "C";
+    if (day <= 120) return "D";
+    if (day <= 150) return "E";
+    if (day <= 180) return "F";
+    if (day <= 210) return "G";
+    return "H";
+  }
+
   function getReadingStats(profileId) {
-    const completed = Number(getProfileValue(profileId, "readEasyProgress")) || 0;
-    const streak = Number(getProfileValue(profileId, "readEasyStreak")) || 0;
-    const level = getProfileValue(profileId, "readEasyPlacementLevel") || "Not set";
+    const state = parseReadingState(profileId);
+    const completed = Array.isArray(state.completed) ? state.completed.length : 0;
+    const streak = Number(state.streak) || 0;
+    const level = state.currentLesson === undefined ? "Not set" : getLevelFromLessonIndex(state.currentLesson);
     return { completed, streak, level };
   }
 
@@ -317,7 +339,8 @@
     const style = document.createElement("style");
     style.id = `${CONFIG.appId}StudentProfileStyles`;
     style.textContent = `
-      .student-profile-box{margin-top:1.4rem;background:linear-gradient(180deg,#f8fafc,#eefcff);border:1px solid #cfeff5;border-radius:1rem;padding:1.2rem}.student-profile-header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}.student-profile-label{display:inline-block;margin:0 0 .45rem;padding:.25rem .55rem;background:#dff7fb;color:#0f7f92;border-radius:999px;font-size:.75rem;font-weight:bold;text-transform:uppercase;letter-spacing:.03em}.student-profile-header h2{margin-bottom:.35rem}.student-profile-header p{margin:.2rem 0 0;color:#555;line-height:1.7}.active-student-pill{background:#111827;color:white;border-radius:999px;padding:.45rem .75rem;font-weight:bold;white-space:nowrap}.student-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem;margin-top:1rem}.student-card{display:grid;gap:.25rem;text-align:left;background:white;color:#111827;border:2px solid #dbeafe;border-radius:.85rem;padding:.9rem;cursor:pointer;min-height:5.3rem}.student-card:hover,.student-card:focus{border-color:#1597ad;box-shadow:0 0 0 4px rgba(21,151,173,.12)}.student-card.active-student{border-color:#1597ad;background:#ecfeff}.student-name{font-weight:900;font-size:1.05rem}.student-stats{font-size:.82rem;color:#475569;line-height:1.4}.student-action{font-size:.78rem;font-weight:bold;color:#0f7f92}.add-student-form{margin-top:1rem;background:white;border:1px solid #dbeafe;border-radius:.85rem;padding:1rem}.add-student-form label{display:block;font-weight:bold;margin-bottom:.55rem}.add-student-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6rem}.add-student-row input{width:100%;padding:.8rem;border-radius:.65rem;border:1px solid #cbd5e1}.add-student-row button{background:#1597ad;color:white;border:none;border-radius:.65rem;padding:.8rem 1rem;font-weight:bold;cursor:pointer}.student-profile-note{font-size:.82rem;color:#64748b;margin:.7rem 0 0}.student-profile-actions{margin-top:.8rem}.student-remove-btn{background:#fff;color:#b91c1c;border:1px solid #fecaca;border-radius:.65rem;padding:.65rem .8rem;font-weight:bold;cursor:pointer}@media(max-width:768px){.student-profile-header{flex-direction:column}.active-student-pill{white-space:normal}.add-student-row{grid-template-columns:1fr}.add-student-row button,.student-remove-btn{width:100%}}`;
+      .student-profile-box{margin-top:1.4rem;background:linear-gradient(180deg,#f8fafc,#eefcff);border:1px solid #cfeff5;border-radius:1rem;padding:1.2rem}.student-profile-header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}.student-profile-label{display:inline-block;margin:0 0 .45rem;padding:.25rem .55rem;background:#dff7fb;color:#0f7f92;border-radius:999px;font-size:.75rem;font-weight:bold;text-transform:uppercase;letter-spacing:.03em}.student-profile-header h2{margin-bottom:.35rem}.student-profile-header p{margin:.2rem 0 0;color:#555;line-height:1.7}.active-student-pill{background:#111827;color:white;border-radius:999px;padding:.45rem .75rem;font-weight:bold;white-space:nowrap}.student-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem;margin-top:1rem}.student-card{display:grid;gap:.25rem;text-align:left;background:white;color:#111827;border:2px solid #dbeafe;border-radius:.85rem;padding:.9rem;cursor:pointer;min-height:5.3rem}.student-card:hover,.student-card:focus{border-color:#1597ad;box-shadow:0 0 0 4px rgba(21,151,173,.12)}.student-card.active-student{border-color:#1597ad;background:#ecfeff}.student-name{font-weight:900;font-size:1.05rem}.student-stats{font-size:.82rem;color:#475569;line-height:1.4}.student-action{font-size:.78rem;font-weight:bold;color:#0f7f92}.add-student-form{margin-top:1rem;background:white;border:1px solid #dbeafe;border-radius:.85rem;padding:1rem}.add-student-form label{display:block;font-weight:bold;margin-bottom:.55rem}.add-student-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6rem}.add-student-row input{width:100%;padding:.8rem;border-radius:.65rem;border:1px solid #cbd5e1}.add-student-row button{background:#1597ad;color:white;border:none;border-radius:.65rem;padding:.8rem 1rem;font-weight:bold;cursor:pointer}.student-profile-note{font-size:.82rem;color:#64748b;margin:.7rem 0 0}.student-profile-actions{margin-top:.8rem}.student-remove-btn{background:#fff;color:#b91c1c;border:1px solid #fecaca;border-radius:.65rem;padding:.65rem .8rem;font-weight:bold;cursor:pointer}@media(max-width:768px){.student-profile-header{flex-direction:column}.active-student-pill{white-space:normal}.add-student-row{grid-template-columns:1fr}.add-student-row button,.student-remove-btn{width:100%}}
+    `;
     document.head.appendChild(style);
   }
 
