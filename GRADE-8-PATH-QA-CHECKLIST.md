@@ -1,119 +1,144 @@
-# Grade 8 Path QA Checklist
+# ReadEasy30 240-Day App QA Checklist
 
-Date added: 2026-05-28
+Date updated: 2026-06-06
 
 ## Purpose
 
-Use this checklist to test the expanded ReadEasy30 lesson path from early reading through Grade 8 readiness.
+Use this checklist to test the clean ReadEasy30 app after the Day One rebuild.
 
-The goal is to confirm the new content works without changing or breaking the stable lesson engine.
+The app now uses a clean app shell and one clean app engine:
 
-## Files involved
+```text
+app.html
+app.js
+student-profiles.js
+```
 
-- `app.html`
-- `app.js`
-- `grade-path-lessons.js`
-- `LOCKED-CHECKPOINT.md`
-- `PROJECT-STATUS.md`
+The public app should no longer depend on `grade-path-lessons.js` or the old helper-script stack.
 
-## Critical architecture rule
+## Current app facts
 
-Do not replace the lesson engine in `app.js`.
+The clean app provides:
 
-The expanded path is loaded through `grade-path-lessons.js` after `app.js`.
+- 240 generated daily reading lessons
+- 8 levels: A through H
+- placement check
+- manual level choice
+- jump-to-day selector
+- progress tracking
+- streak count
+- timer
+- read-aloud support
+- vocabulary words
+- comprehension questions
+- Bubbles coaching messages
+- parent/tutor link inside the app
 
-## Browser test steps
+## Level path
 
-1. Open `app.html` after deployment.
-2. Reset progress on the test device.
-3. Confirm the placement check says Step 1 of 8.
-4. Start the placement check.
-5. Confirm the placement check progresses through Levels A, B, C, D, E, F, G, and H.
-6. Confirm Read Placement Aloud still works.
-7. Confirm manual level buttons show A through H.
-8. Click each manual level and confirm the lesson starts near the correct band.
-9. Confirm the Day selector still shows 30 total days.
-10. Confirm future days remain locked until progress opens them.
-11. Complete Day 1 and confirm progress saves.
-12. Refresh the page and confirm progress remains saved.
-13. Use Read Aloud on a lesson and confirm the text reads aloud.
-14. Check answers with correct text and confirm success feedback appears.
-15. Check answers with wrong text and confirm retry feedback appears.
-16. Confirm Bubbles gives calm coaching messages.
-17. Confirm vocabulary pills appear for each lesson.
-18. Confirm the Fluency Coach still appears.
-19. Confirm the Achievement area still appears.
-20. Confirm Reset Progress still clears placement and lesson progress.
+- Level A — Days 1-30 — early-reader confidence
+- Level B — Days 31-60 — Grade 1 path
+- Level C — Days 61-90 — Grade 2 path
+- Level D — Days 91-120 — Grade 3 path
+- Level E — Days 121-150 — Grade 4 path
+- Level F — Days 151-180 — Grade 5 path
+- Level G — Days 181-210 — Grades 6-7 path
+- Level H — Days 211-240 — Grade 8 readiness
 
-## Level checks
+## Phone QA steps
 
-### Level A
+1. Open `https://readeasy30.com/app.html` on a phone.
+2. Confirm the page loads without staying on `Loading story...`.
+3. Confirm the top buttons are easy to tap.
+4. Tap `Find Starting Level`.
+5. Confirm the placement check opens.
+6. Tap `Start Placement Check`.
+7. Confirm Step 1 appears.
+8. Confirm the placement story text is readable.
+9. Confirm answer boxes are easy to tap.
+10. Tap `Read Placement Aloud` and confirm audio works where supported.
+11. Return to the lesson area.
+12. Confirm `Jump to Day` contains 240 day options.
+13. Choose Day 31 and confirm Level B appears.
+14. Choose Day 61 and confirm Level C appears.
+15. Choose Day 91 and confirm Level D appears.
+16. Choose Day 121 and confirm Level E appears.
+17. Choose Day 151 and confirm Level F appears.
+18. Choose Day 181 and confirm Level G appears.
+19. Choose Day 211 and confirm Level H appears.
+20. Confirm the Parent / Tutor Help link opens `parent-tutor-guide.html`.
 
-Confirm Level A uses short early-reader sentences.
+## Desktop QA steps
 
-### Level B
+1. Open `https://readeasy30.com/app.html` on desktop.
+2. Confirm the story title appears.
+3. Confirm Bubbles message appears.
+4. Confirm vocabulary pills appear.
+5. Type answers into the three answer boxes.
+6. Tap `Check Answers`.
+7. Confirm correct answers show success feedback.
+8. Confirm weak answers show retry feedback.
+9. Tap `Clear Answers`.
+10. Confirm answers clear.
+11. Tap `Next Lesson`.
+12. Confirm the next lesson appears.
+13. Refresh the browser.
+14. Confirm progress is still saved on the device.
+15. Tap `Reset This Student` only on a test device.
+16. Confirm reset clears progress.
 
-Confirm Level B feels like Grade 1 reading practice with simple details.
+## Read-aloud QA
 
-### Level C
+1. Tap `Read Aloud` on a lesson.
+2. Confirm the browser reads the story text where speech synthesis is supported.
+3. Confirm the page still works if read-aloud is not supported by the browser.
 
-Confirm Level C uses Grade 2 paragraph practice, sequence, and main idea.
+## Tutor/helper QA
 
-### Level D
+1. Open `https://readeasy30.com/parent-tutor-guide.html` on a phone.
+2. Confirm the text is readable without zooming.
+3. Confirm buttons are easy to tap.
+4. Confirm `Open Lesson App` works.
+5. Confirm `Start Placement Check` works.
+6. Confirm `Print Worksheets` works.
 
-Confirm Level D uses Grade 3 skills like cause and effect and simple inference.
+## Stop and fix if
 
-### Level E
+Stop and fix if any of these happen:
 
-Confirm Level E uses Grade 4 nonfiction skills like context clues and author purpose.
+- the story never loads
+- placement check does not open
+- day selector is empty
+- day selector does not show 240 days
+- manual level buttons fail
+- next lesson does not work
+- answer boxes cannot be typed into
+- check answers button does nothing
+- parent/tutor guide link fails
+- phone layout requires zooming
 
-### Level F
+## Do not re-add
 
-Confirm Level F uses Grade 5 skills like comparison, evidence, and practical reading.
+Do not re-add the old script stack as app dependencies:
 
-### Level G
+```text
+grade-path-lessons.js
+level-b-lessons.js
+level-c-lessons.js
+level-d-lessons.js
+level-e-lessons.js
+level-f-lessons.js
+level-g-lessons.js
+level-h-lessons.js
+read-live-240-integration.js
+audio-fix.js
+session-timer.js
+report.js
+vocab-helper.js
+learner-mode.js
+session-plan.js
+startup-fix.js
+bubbles-question-buttons.js
+```
 
-Confirm Level G uses Grades 6-7 skills like claims, evidence, source checking, and theme.
-
-### Level H
-
-Confirm Level H uses Grade 8 readiness skills like bias, counterargument, synthesis, and critical thinking.
-
-## Day 30 check
-
-Day 30 should focus on reading like a thinker.
-
-It should ask the learner to:
-
-- identify what strong readers do
-- name evidence, bias, or missing information
-- explain thinking
-
-## Mobile checks
-
-1. Open on a phone-sized screen.
-2. Confirm placement buttons are readable.
-3. Confirm A-H manual level buttons do not feel cramped.
-4. Confirm questions and answer boxes are easy to tap.
-5. Confirm footer links remain usable.
-
-## Stop points
-
-Stop and record a blocker if:
-
-- lessons do not load
-- placement does not start
-- manual levels fail
-- day selector breaks
-- progress does not save
-- read aloud fails across normal supported browsers
-- the app shows only the old A-D path
-
-## Next polish after QA
-
-After these checks pass, the next safe work is:
-
-1. Add one printable sample worksheet page.
-2. Add an accessibility notes file.
-3. Add an SEO page about reading levels and daily practice.
-4. Review each lesson answer pattern for easier accepted answers.
+Old files may remain in the repo temporarily, but the public app should not depend on them.
