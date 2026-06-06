@@ -1,87 +1,122 @@
 # Codex Workflow
 
-Last updated: 2026-05-29
+Last updated: 2026-06-06
+
+Repository: `Wholelychit/readeasy30.com`
 
 ## Purpose
 
-Codex is the main workflow for routine ReadEasy30 repository editing.
+Codex and AI helpers should protect the clean Day One ReadEasy30 state.
 
-ReadEasy30 must stay simple, stable, and easy to maintain.
+ReadEasy30 must stay simple, stable, mobile-first, and easy to maintain.
 
-## Current Stack
+## Current stack
 
-ReadEasy30 uses:
+Use only:
 
 - HTML
 - CSS
 - JavaScript
-- GitHub Pages style static hosting
+- GitHub
+- Cloudflare
+- browser `localStorage` for simple device progress
 
-Do not convert this project to React, Vite, Next.js, TypeScript, or any build tool unless Gerry clearly requests a full rebuild later.
+Do not convert this project to React, Vite, Next.js, TypeScript, a build system, or a server app.
 
-## Why Codex Is Primary
+## Current locked public funnel
 
-Codex should handle routine repo work directly because it can read the repo, make safe file edits, and commit useful changes without making Gerry manually paste, create, replace, or update files.
+The homepage should guide visitors in this order:
 
-The ChatGPT GitHub connector may show internal write-action labels like `create_file` or `update_file`. Those labels can be confusing. Use that connector mainly for small reads, checks, reviews, or emergency single-file edits when Codex is unavailable.
+1. Start Reading Now
+2. Find Starting Level
+3. Print Worksheets
+4. Parent / Tutor Help
+5. Reading + Math Plan
 
-The connector may also block harmless plain-text website updates. When this happens, Codex should keep work small and continue through safe tasks instead of stopping.
+Do not bring back a giant top navigation menu.
 
-## Connector Workaround Rules
+## Current app lock
 
-- Use small, focused commits.
-- Avoid giant full-file replacements when a smaller update works.
-- If a large status file update is blocked, create a small dated status file instead.
-- If a connector write is blocked, split the work into smaller commits.
-- Do not ask Gerry to manually paste file contents when repo write access works.
-- Keep working through the safe queue until a real blocker appears.
+The public app shell loads only:
 
-## Required Read Order
+```text
+student-profiles.js
+app.js
+```
+
+The clean `app.js` engine now owns the 240-day path, placement check, progress tracking, timer, read-aloud support, vocabulary, Bubbles coaching, and parent/tutor link.
+
+Do not re-add the old app script stack unless there is a clear tested reason.
+
+## Write-path rule
+
+Use safe repository edits only when a reliable write path is available.
+
+Do not use ChatGPT GitHub connector writes unless Gerry explicitly authorizes one specific write action in the current chat.
+
+Preferred write paths:
+
+1. Codex with a working non-connector write path
+2. GitHub website editor
+3. github.dev
+4. GitHub Desktop
+5. local Git after it is correctly installed
+
+Read-only connector checks are allowed.
+
+## Required read order
 
 Before editing, read these files when they exist:
 
 1. `README.md`
 2. `AGENTS.md`
 3. `AGENT-INSTRUCTIONS.md`
-4. `LOCKED-CHECKPOINT.md`
-5. `FILE-MANAGEMENT.md`
-6. `PROJECT-STATUS.md`
-7. `CODEX-WORKFLOW.md`
-8. `CONNECTOR-WORKAROUND.md`
+4. `PROJECT-STATUS.md`
+5. `LOCKED-CHECKPOINT.md`
+6. `CODEX-WORKFLOW.md`
+7. current file being changed
+8. relevant sitemap/robots files
 
-## Safe Work Allowed
+## Safe work allowed
 
-Codex may directly handle:
+- full-file public page replacements when stale or cluttered
+- mobile layout improvements
+- accessibility improvements
+- SEO metadata improvements
+- sitemap and robots checks
+- worksheet/support page improvements
+- parent/tutor guide improvements
+- safe app bug fixes after live QA confirms the bug
+- README/status/checkpoint updates
+- QA checklist updates
 
-- Markdown documentation updates
-- homepage copy improvements
-- support page improvements
-- footer and navigation fixes
-- SEO metadata checks
-- sitemap and robots.txt updates
-- accessibility notes and test checklists
-- simple CSS improvements
-- small JavaScript repairs that preserve current behavior
-- lesson text improvements that keep the same app structure
-- checkpoint and project-status updates
-- static link and sitemap check scripts
-
-## Do Not Change Without Direct Approval
-
-Do not do these without direct approval:
+## Do not change without direct approval
 
 - framework conversion
 - React, Vite, Next.js, TypeScript, or build-tool migration
-- major deletion of working app code
-- payment setup
 - live ads
 - live tracking scripts
+- payment setup
+- affiliate links
 - accounts or logins
 - private keys or API tokens
-- replacing the lesson engine
-- rebuilding the day selector
+- public AI tools
+- uploads
+- scraping
+- social automation
+- removing the parent/tutor path
 
-## ReadEasy30 Product Rules
+## Replacement rule
+
+If a public file is stale, cluttered, or inconsistent, replace the whole file cleanly.
+
+Do not stack tiny repairs on top of broken repairs.
+
+Do not create duplicate parallel systems.
+
+Do not make hidden production changes without updating the relevant status/checkpoint docs.
+
+## Product rules
 
 Keep Bubbles calm, helpful, and controlled.
 
@@ -89,19 +124,17 @@ Bubbles should encourage the reader to slow down, reread, look for proof in the 
 
 Bubbles should not become an open-ended chatbot until safety and content controls are ready.
 
-## Current Safe Queue
+## Current safe queue
 
-1. Run or maintain static link checks.
-2. Run or maintain sitemap checks.
-3. Browser-check the worksheet funnel.
-4. Review all 30 lessons for smoother reading-level progression.
-5. Strengthen Level A-D lesson quality.
-6. Add more useful SEO content pages carefully.
-7. Keep ReadEasy30 aligned with the shared education growth plan in `Wholelychit/marketing-system`.
-8. Plan contact form safety before adding a working form.
+1. Run live phone and desktop QA.
+2. Fix only verified live-page issues.
+3. Keep the five-step homepage funnel.
+4. Keep the app dependency list clean.
+5. Improve worksheet/support pages only after the app passes QA.
+6. Keep ReadEasy30 aligned with MathEasy30 through `Wholelychit/marketing-system` planning only.
 
-## Reporting Rule
+## Reporting rule
 
-Commit useful safe changes. Report after several useful commits or when a real blocker appears.
+After useful commits, report changed files and commit SHAs.
 
-Record blockers in small dated status files when the main status file is too large or blocked.
+If blocked, clearly state the blocker and stop changing files.
