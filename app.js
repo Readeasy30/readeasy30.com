@@ -14,62 +14,14 @@ const levelInfo = {
 const levelStarts = { A: 0, B: 30, C: 60, D: 90, E: 120, F: 150, G: 180, H: 210 };
 
 const placementSteps = [
-  {
-    level: "A",
-    title: "Placement Reading A",
-    story: "Ben has a red hat. He puts the hat on his bed.",
-    questions: ["Who has a red hat?", "What color is the hat?", "Where does Ben put the hat?"],
-    answers: ["ben", "red", "bed"]
-  },
-  {
-    level: "B",
-    title: "Placement Reading B",
-    story: "Nina packed her lunch before school. She put an apple, a sandwich, and water in her bag.",
-    questions: ["When did Nina pack lunch?", "Name one food she packed.", "Where did she put the lunch?"],
-    answers: ["before school", "apple|sandwich", "bag"]
-  },
-  {
-    level: "C",
-    title: "Placement Reading C",
-    story: "Carlos wanted to finish his book report. He read two chapters, wrote down the main idea, and asked his sister to listen while he explained the story.",
-    questions: ["What did Carlos want to finish?", "What did he write down?", "Who listened to him explain the story?"],
-    answers: ["book report", "main idea", "sister"]
-  },
-  {
-    level: "D",
-    title: "Placement Reading D",
-    story: "Maya noticed that reading became easier when she slowed down and looked for clues. Instead of guessing, she reread confusing sentences and used nearby words to understand new vocabulary.",
-    questions: ["What helped reading become easier for Maya?", "What did she do instead of guessing?", "What helped her understand new vocabulary?"],
-    answers: ["slowed down|slow", "reread", "nearby words|clues"]
-  },
-  {
-    level: "E",
-    title: "Placement Reading E",
-    story: "After several weeks of practice, Devon compared two short articles about gardens. One article explained how to plant seeds, while the other described how compost helps soil hold water.",
-    questions: ["What did Devon compare?", "What did one article explain?", "What did compost help soil do?"],
-    answers: ["two short articles|articles", "plant seeds", "hold water"]
-  },
-  {
-    level: "F",
-    title: "Placement Reading F",
-    story: "A community center changed its evening schedule because more families asked for homework help. The director added reading practice on Tuesday and math practice on Thursday so volunteers could focus on one subject at a time.",
-    questions: ["Why did the schedule change?", "What was added on Tuesday?", "Why were subjects split by day?"],
-    answers: ["families asked|homework help", "reading practice", "focus"]
-  },
-  {
-    level: "G",
-    title: "Placement Reading G",
-    story: "The author argues that daily practice works best when it is predictable, short, and encouraging. The passage supports this idea by describing learners who improved after repeating small skills over time.",
-    questions: ["What does the author argue?", "What three words describe the best practice?", "What evidence supports the idea?"],
-    answers: ["daily practice", "predictable short encouraging", "learners improved|repeating small skills"]
-  },
-  {
-    level: "H",
-    title: "Placement Reading H",
-    story: "When readers analyze a practical text, they must separate the main instruction from extra details. This skill matters because forms, notices, and workplace messages often include both required actions and background information.",
-    questions: ["What must readers separate?", "Why does this skill matter?", "Name one type of practical text mentioned."],
-    answers: ["main instruction", "required actions|background information", "forms|notices|workplace messages"]
-  }
+  { level: "A", title: "Placement Reading A", story: "Ben has a red hat. He puts the hat on his bed.", questions: ["Who has a red hat?", "What color is the hat?", "Where does Ben put the hat?"], answers: ["ben", "red", "bed"] },
+  { level: "B", title: "Placement Reading B", story: "Nina packed her lunch before school. She put an apple, a sandwich, and water in her bag.", questions: ["When did Nina pack lunch?", "Name one food she packed.", "Where did she put the lunch?"], answers: ["before school", "apple|sandwich", "bag"] },
+  { level: "C", title: "Placement Reading C", story: "Carlos wanted to finish his book report. He read two chapters, wrote down the main idea, and asked his sister to listen while he explained the story.", questions: ["What did Carlos want to finish?", "What did he write down?", "Who listened to him explain the story?"], answers: ["book report", "main idea", "sister"] },
+  { level: "D", title: "Placement Reading D", story: "Maya noticed that reading became easier when she slowed down and looked for clues. Instead of guessing, she reread confusing sentences and used nearby words to understand new vocabulary.", questions: ["What helped reading become easier for Maya?", "What did she do instead of guessing?", "What helped her understand new vocabulary?"], answers: ["slowed down|slow", "reread", "nearby words|clues"] },
+  { level: "E", title: "Placement Reading E", story: "After several weeks of practice, Devon compared two short articles about gardens. One article explained how to plant seeds, while the other described how compost helps soil hold water.", questions: ["What did Devon compare?", "What did one article explain?", "What did compost help soil do?"], answers: ["two short articles|articles", "plant seeds", "hold water"] },
+  { level: "F", title: "Placement Reading F", story: "A community center changed its evening schedule because more families asked for homework help. The director added reading practice on Tuesday and math practice on Thursday so volunteers could focus on one subject at a time.", questions: ["Why did the schedule change?", "What was added on Tuesday?", "Why were subjects split by day?"], answers: ["families asked|homework help", "reading practice", "focus"] },
+  { level: "G", title: "Placement Reading G", story: "The author argues that daily practice works best when it is predictable, short, and encouraging. The passage supports this idea by describing learners who improved after repeating small skills over time.", questions: ["What does the author argue?", "What three words describe the best practice?", "What evidence supports the idea?"], answers: ["daily practice", "predictable|short|encouraging", "learners improved|repeating small skills"] },
+  { level: "H", title: "Placement Reading H", story: "When readers analyze a practical text, they must separate the main instruction from extra details. This skill matters because forms, notices, and workplace messages often include both required actions and background information.", questions: ["What must readers separate?", "Why does this skill matter?", "Name one type of practical text mentioned."], answers: ["main instruction", "required actions|background information", "forms|notices|workplace messages"] }
 ];
 
 const storyTemplates = {
@@ -127,24 +79,32 @@ function getLevelForDay(day) {
 }
 
 function makeLesson(day) {
-  const level = getLevelForDay(day);
-  const info = levelInfo[level];
-  const templates = storyTemplates[level];
+  const levelKey = getLevelForDay(day);
+  const info = levelInfo[levelKey];
+  const templates = storyTemplates[levelKey];
   const template = templates[(day - 1) % templates.length];
   const levelDay = day - info.range[0] + 1;
   const title = `Day ${day}: ${template.topic}`;
   const story = `${template.story} Today is ${info.label}, lesson ${levelDay}. Read slowly, look for proof, and answer one question at a time.`;
-  const questions = [
-    "What is this reading mostly about?",
-    "Name one detail from the story.",
-    "What should the reader do when the text feels hard?"
-  ];
-  const answers = [
-    template.topic.toLowerCase().split(" ")[0],
-    template.vocab.join("|"),
-    "read slowly|reread|look for proof|try again"
-  ];
-  return { day, level: info.label, levelKey: level, levelDescription: info.description, title, story, questions, answers, vocab: template.vocab };
+  return {
+    day,
+    level: info.label,
+    levelKey,
+    levelDescription: info.description,
+    title,
+    story,
+    vocab: template.vocab,
+    questions: [
+      "What is this reading mostly about?",
+      "Name one detail from the story.",
+      "What should the reader do when the text feels hard?"
+    ],
+    answers: [
+      template.topic.toLowerCase().split(" ")[0],
+      template.vocab.join("|"),
+      "read slowly|reread|look for proof|try again"
+    ]
+  };
 }
 
 const lessons = Array.from({ length: 240 }, (_, index) => makeLesson(index + 1));
@@ -168,7 +128,6 @@ const timerCount = el("timerCount");
 const resultMessage = el("resultMessage");
 const coachMessage = el("coachMessage");
 const daySelect = el("daySelect");
-const nextBtn = el("nextBtn");
 const progressBar = el("progressBar");
 const progressText = el("progressText");
 const completeCard = el("completeCard");
@@ -184,7 +143,11 @@ function clampNumber(value, min, max) {
 
 function loadState() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { currentLesson: 0, completed: [], streak: 0 };
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (!saved || typeof saved !== "object") throw new Error("Bad saved state");
+    if (!Array.isArray(saved.completed)) saved.completed = [];
+    if (!Number.isFinite(Number(saved.streak))) saved.streak = 0;
+    return saved;
   } catch {
     return { currentLesson: 0, completed: [], streak: 0 };
   }
@@ -201,7 +164,16 @@ function normalize(text) {
 
 function answerMatches(input, accepted) {
   const value = normalize(input);
-  return String(accepted).split("|").some(part => value.includes(normalize(part)) || normalize(part).includes(value));
+  if (!value) return false;
+
+  return String(accepted).split("|").some(part => {
+    const term = normalize(part);
+    if (!term) return false;
+    if (value === term) return true;
+    if (value.length >= 3 && term.length >= 3 && value.includes(term)) return true;
+    if (value.length >= 4 && term.length >= 4 && term.includes(value)) return true;
+    return false;
+  });
 }
 
 function buildDaySelector() {
@@ -232,9 +204,9 @@ function renderLesson() {
   lessonPassed = false;
 
   vocabList.innerHTML = lesson.vocab.map(word => `<span class="vocab-pill">${word}</span>`).join("");
-  questionsDiv.innerHTML = lesson.questions.map((q, index) => `
+  questionsDiv.innerHTML = lesson.questions.map((question, index) => `
     <div class="question-block">
-      <label for="answer${index}">${index + 1}. ${q}</label>
+      <label for="answer${index}">${index + 1}. ${question}</label>
       <input id="answer${index}" type="text" autocomplete="off" placeholder="Type your answer" />
     </div>
   `).join("");
@@ -285,13 +257,22 @@ function checkAnswers() {
   const lesson = lessons[currentLesson];
   const inputs = lesson.questions.map((_, index) => el(`answer${index}`));
   let correct = 0;
+  let blanks = 0;
 
   inputs.forEach((input, index) => {
+    const blank = normalize(input.value) === "";
+    if (blank) blanks += 1;
     const ok = answerMatches(input.value, lesson.answers[index]);
     input.classList.toggle("answer-correct", ok);
     input.classList.toggle("answer-needs-work", !ok);
     if (ok) correct += 1;
   });
+
+  if (blanks > 0) {
+    resultMessage.textContent = "Please answer each question before checking. Blank answers do not count.";
+    coachMessage.textContent = "Try every question. A guess is better than leaving it blank.";
+    return;
+  }
 
   if (correct >= Math.ceil(lesson.questions.length * 0.67)) {
     markComplete();
@@ -346,7 +327,7 @@ function prevLesson() {
 }
 
 function resetProgress() {
-  const ok = confirm("Reset reading progress for this device?");
+  const ok = confirm("Reset reading progress for this student on this device?");
   if (!ok) return;
   state = { currentLesson: 0, completed: [], streak: 0 };
   currentLesson = 0;
@@ -397,14 +378,26 @@ function renderPlacementStep() {
 function checkPlacementAnswers() {
   const step = placementSteps[placementIndex];
   let score = 0;
+  let blanks = 0;
+
   step.questions.forEach((_, index) => {
     const input = el(`placementAnswer${index}`);
+    if (normalize(input.value) === "") blanks += 1;
     if (answerMatches(input.value, step.answers[index])) score += 1;
   });
+
+  if (blanks > 0) {
+    const result = el("assessmentResult");
+    result.classList.remove("hidden");
+    result.innerHTML = "<p>Please answer each placement question before checking.</p>";
+    return;
+  }
+
   placementScores.push({ level: step.level, score });
 
   if (placementIndex < placementSteps.length - 1 && score >= 2) {
     placementIndex += 1;
+    el("assessmentResult").classList.add("hidden");
     renderPlacementStep();
     return;
   }
@@ -414,8 +407,7 @@ function checkPlacementAnswers() {
 }
 
 function showPlacementResult(level) {
-  const start = levelStarts[level] || 0;
-  currentLesson = start;
+  currentLesson = levelStarts[level] || 0;
   el("assessmentTest").classList.add("hidden");
   const result = el("assessmentResult");
   result.classList.remove("hidden");
