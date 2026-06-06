@@ -1,182 +1,187 @@
 # ReadEasy30 Locked Checkpoint
 
-Date locked: 2026-05-28
+Date locked: 2026-06-06
 
-## Current Locked Architecture
+Repository: `Wholelychit/readeasy30.com`
+Branch: `main`
 
-This project is locked as a simple GitHub Pages reading-practice website.
+## Locked Day One state
 
-Use this structure:
+ReadEasy30 is locked as a simple, mobile-first, static reading-practice website.
 
-- `index.html` = marketing homepage
-- `app.html` = lesson app page
-- `app.js` = stable lesson engine and reading logic
-- `grade-path-lessons.js` = expanded 30-day reading ladder through Grade 8 readiness
-- `css/style.css` = styling
-- `css/site-links.css` = shared navigation, resource-page, and accessibility helper styling
-- Supporting JavaScript files may stay separate when they add small features safely
+Use only:
 
-Do not convert this project to React, Vite, Next.js, TypeScript, or another framework unless the owner explicitly changes the architecture later.
+- HTML
+- CSS
+- JavaScript
+- GitHub
+- Cloudflare
+- browser `localStorage` for simple device progress
 
-## Locked Working Features
+Do not convert this project to React, Vite, Next.js, TypeScript, a build system, or a server app.
 
-The current app includes:
+## Locked public funnel
 
-- Placement check
-- Manual starting level choice
-- 30 reading lessons
-- Levels A through H
-- Early reader through Grade 8 readiness path
-- Day selector / jump-to-day control
-- Locked future lessons
-- Progress tracking with localStorage
-- Streak count
-- Timer
-- Read Aloud
-- Placement Read Aloud
+The homepage must guide visitors in this order:
+
+1. Start Reading Now
+2. Find Starting Level
+3. Print Worksheets
+4. Parent / Tutor Help
+5. Reading + Math Plan
+
+Do not bring back a giant top navigation menu.
+
+## Locked core files
+
+- `index.html` — clean SEO homepage funnel
+- `app.html` — clean reading app shell
+- `app.js` — clean 240-day app engine
+- `student-profiles.js` — learner/profile support
+- `parent-tutor-guide.html` — mobile-friendly helper guide
+- `printable-reading-worksheets.html` — worksheet hub
+- `free-reading-and-math-practice.html` — shared reading + math plan
+- `sitemap.xml` — crawl priority map
+- `robots.txt` — crawler instructions
+- `README.md` — production standard
+- `PROJECT-STATUS.md` — current state and QA queue
+
+## Locked app standard
+
+The public app shell loads only:
+
+```text
+student-profiles.js
+app.js
+```
+
+The app should not depend on the old fragile script stack.
+
+Do not re-add these as public app dependencies unless there is a clear tested reason:
+
+```text
+level-b-lessons.js
+level-c-lessons.js
+level-d-lessons.js
+level-e-lessons.js
+level-f-lessons.js
+level-g-lessons.js
+level-h-lessons.js
+read-live-240-integration.js
+grade-path-lessons.js
+audio-fix.js
+session-timer.js
+report.js
+vocab-helper.js
+learner-mode.js
+session-plan.js
+startup-fix.js
+bubbles-question-buttons.js
+```
+
+## Locked app features
+
+The clean app engine in `app.js` provides:
+
+- 240 generated daily reading lessons
+- 8 reading levels: A through H
+- placement check
+- manual level choice
+- day selector
+- progress tracking
+- streak count
+- timer
+- read-aloud support
+- vocabulary words
+- short comprehension questions
 - Bubbles coaching messages
-- Fluency coach
-- Achievement / badge system
-- Vocabulary pills and word helper
-- Correct / retry answer feedback
-- Clear answers
-- Reset progress
-- Progress report
-- Reader type selector
-- Session plan helper
-- Startup fix to reopen the next open lesson
-- Mobile-friendly CSS foundation
+- parent/tutor link inside the app
 
-## Grade Path Status
+## Locked reading path
 
-The app now uses `grade-path-lessons.js` to safely replace the original starter lesson data without replacing the stable engine in `app.js`.
+- Level A — Days 1-30 — early-reader confidence
+- Level B — Days 31-60 — Grade 1 path
+- Level C — Days 61-90 — Grade 2 path
+- Level D — Days 91-120 — Grade 3 path
+- Level E — Days 121-150 — Grade 4 path
+- Level F — Days 151-180 — Grade 5 path
+- Level G — Days 181-210 — Grades 6-7 path
+- Level H — Days 211-240 — Grade 8 readiness
 
-Current 30-day path:
+## Locked SEO standard
 
-1. Level A = early reader
-2. Level B = Grade 1 path
-3. Level C = Grade 2 path
-4. Level D = Grade 3 path
-5. Level E = Grade 4 path
-6. Level F = Grade 5 path
-7. Level G = Grades 6-7 path
-8. Level H = Grade 8 readiness
+Every important public page should have:
 
-Day 30 now practices Grade 8 readiness skills: evidence, bias, missing information, synthesis, argument, and explaining thinking.
-
-## Day Selector Status
-
-The day selector is already built and should not be rebuilt from scratch.
-
-Confirmed pieces:
-
-- `app.html` contains `<select id="daySelect">`
-- `app.js` contains `buildDaySelector()`
-- `app.js` contains `jumpToDay()`
-- `app.js` connects `daySelect.addEventListener("change", jumpToDay)`
-- `loadLesson()` syncs `daySelect.value = currentLesson`
-- Future lessons are disabled until progress opens them
-- `css/style.css` contains `.day-picker` styling
-
-## Stable Repo Additions
-
-The repo now includes:
-
-- `README.md` for project overview and workflow rules
-- `AGENTS.md`
-- `AGENT-INSTRUCTIONS.md`
-- `LOCKED-CHECKPOINT.md`
-- `PROJECT-STATUS.md`
-- `CODEX-WORKFLOW.md`
-- `grade-path-lessons.js`
-- `parent-tutor-guide.html` for a public support page
-- `daily-reading-practice.html` for one useful SEO/help content page
-- `about.html`
-- `contact.html`
-- `privacy.html`
-- `terms.html`
-- `css/site-links.css` for shared footer, navigation, resource-page, and skip-link styles
-- `robots.txt`
-- `sitemap.xml`
-- `LEVEL-E-ROADMAP.md`
-- `PRINTABLE-WORKSHEETS-PLAN.md`
-
-## Homepage SEO Status
-
-The homepage now includes:
-
+- one clear title
+- useful meta description
 - canonical URL
-- EducationalApplication schema markup
-- stronger top navigation
-- stronger footer navigation
-- skip-to-content accessibility link
-- links to daily practice, parent/tutor guide, about, contact, privacy, terms, and sitemap
+- mobile viewport
+- one clear H1
+- readable language
+- strong internal links
+- visible parent/tutor path
+- no fake urgency
+- no confusing paid/pricing language
+- no cluttered top navigation
 
-## Lesson App SEO / Navigation Status
+## Locked mobile/tutor standard
 
-The lesson app page now includes:
+The Parent / Tutor Help path must be easy to tap on a phone.
 
-- canonical URL for `https://readeasy30.com/app.html`
-- robots meta tag
-- theme-color meta tag
-- shared `css/site-links.css` footer styles
-- skip-to-content accessibility link
-- top navigation to Home, Daily Practice, and Parent / Tutor Guide
-- footer navigation linking Home, Lesson App, Daily Practice, Parent / Tutor Guide, About, Contact, Privacy, Terms, and Sitemap
-- expanded manual level buttons A-H
-- `grade-path-lessons.js` loaded after `app.js`
+Important pages should link to:
 
-## Support Page Status
+```text
+parent-tutor-guide.html
+```
 
-Added support and legal foundation pages:
+Use the label:
 
-- `about.html`
-- `contact.html`
-- `privacy.html`
-- `terms.html`
+```text
+Parent / Tutor Help
+```
 
-These are plain-language starter pages. Review before adding accounts, forms, analytics, live ads, payments, or user-submitted content.
+## Bubbles rule
 
-## Content Page Status
+Bubbles stays calm and controlled.
 
-Added `daily-reading-practice.html` as the first useful SEO/help content page.
+Bubbles should encourage learners to slow down, reread, find proof in the story, try one small step, and keep practicing without shame.
 
-This page supports the future content cluster around daily reading practice, parent reading help, adult reading help, ESL reading practice, and practical reading skills.
+Do not turn Bubbles into an open-ended chatbot until safety and content controls are ready.
 
-## Build Rule Going Forward
+## Safety lock
 
-Use this workflow every time:
+Do not add without direct approval:
 
-1. Check current files first.
-2. Do not rebuild features that already exist.
-3. Make one small upgrade at a time.
-4. Commit after the upgrade works.
-5. Update this checkpoint or create a new checkpoint when the app reaches a new stable stage.
+- live ads
+- tracking scripts
+- payments
+- affiliate links
+- accounts
+- uploads
+- private keys
+- scraping
+- social automation
+- public AI tools
+- framework migrations
 
-## Next Safe Upgrade
+## QA required after this checkpoint
 
-Next recommended upgrade:
+Manual/live QA is required on phone and desktop:
 
-Test and polish the expanded Grade 8 readiness lesson path.
+1. Homepage loads.
+2. Homepage funnel buttons work.
+3. `app.html` loads without getting stuck.
+4. Placement check opens.
+5. Manual levels A-H work.
+6. Jump to Day fills with 240 days.
+7. Read Aloud works where supported.
+8. Check Answers works.
+9. Next Lesson works.
+10. Parent / Tutor Help opens.
+11. Sitemap opens at `/sitemap.xml`.
 
-Suggested next work:
+## Working rule
 
-1. Manually test `app.html` after deployment.
-2. Confirm placement check shows 8 steps.
-3. Confirm manual level buttons A-H load correctly.
-4. Confirm Day 30 displays Grade 8 readiness content.
-5. Add a free sample printable worksheet page.
-6. Add accessibility testing notes.
-7. Add more useful SEO content pages carefully.
-8. Keep Bubbles calm and simple.
-9. Keep the site easy for adults, parents, ESL learners, and struggling readers.
+Replace broken files cleanly. Do not stack tiny repairs on broken repairs.
 
-## Connector Note
-
-On 2026-05-26, the homepage and supporting files committed successfully. A full `app.html` replacement was previously blocked by connector safety checks, so app-page navigation should be updated only in small safe patches when possible.
-
-On 2026-05-28, `app.html` was safely updated to load `grade-path-lessons.js` and show manual levels A-H.
-
-## Important Warning
-
-Do not let AI or Codex redesign the whole app, replace the architecture, or remove the stable lesson engine. Future work should be careful expansion, not demolition.
+For public pages, prefer complete-file replacement when the page is stale, cluttered, or inconsistent.
