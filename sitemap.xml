@@ -1,35 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://readeasy30.com/</loc></url>
-<url><loc>https://readeasy30.com/app.html</loc></url>
-<url><loc>https://readeasy30.com/free-reading-and-math-practice.html</loc></url>
-<url><loc>https://readeasy30.com/240-day-reading-path.html</loc></url>
-<url><loc>https://readeasy30.com/days-1-240-curriculum.html</loc></url>
-<url><loc>https://readeasy30.com/daily-reading-practice.html</loc></url>
-<url><loc>https://readeasy30.com/calm-reading-practice-30-minutes-a-day.html</loc></url>
-<url><loc>https://readeasy30.com/adult-reading-practice-without-shame.html</loc></url>
-<url><loc>https://readeasy30.com/esl-reading-practice.html</loc></url>
-<url><loc>https://readeasy30.com/esl-reading-practice-everyday-english.html</loc></url>
-<url><loc>https://readeasy30.com/esl-reading-comprehension.html</loc></url>
-<url><loc>https://readeasy30.com/parent-tutor-guide.html</loc></url>
-<url><loc>https://readeasy30.com/reading-levels-beginner-to-8th-grade.html</loc></url>
-<url><loc>https://readeasy30.com/reading-comprehension-practice.html</loc></url>
-<url><loc>https://readeasy30.com/evidence-from-text-worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/cause-and-effect-reading-worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/sequence-reading-worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/main-idea-reading-worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/vocabulary-in-context-worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/phonics-practice-for-beginners.html</loc></url>
-<url><loc>https://readeasy30.com/phonics-reading-worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/functional-literacy-practice.html</loc></url>
-<url><loc>https://readeasy30.com/functional-literacy-worksheet-1.html</loc></url>
-<url><loc>https://readeasy30.com/functional-literacy-worksheet-2.html</loc></url>
-<url><loc>https://readeasy30.com/functional-literacy-worksheet-3.html</loc></url>
-<url><loc>https://readeasy30.com/printable-reading-worksheets.html</loc></url>
-<url><loc>https://readeasy30.com/worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/sample-reading-worksheet.html</loc></url>
-<url><loc>https://readeasy30.com/about.html</loc></url>
-<url><loc>https://readeasy30.com/contact.html</loc></url>
-<url><loc>https://readeasy30.com/privacy.html</loc></url>
-<url><loc>https://readeasy30.com/terms.html</loc></url>
+  <url>
+    <loc>https://readeasy30.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/app.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/parent-tutor-guide.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/printable-reading-worksheets.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/free-reading-and-math-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/daily-reading-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/reading-levels-beginner-to-8th-grade.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/phonics-practice-for-beginners.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/reading-comprehension-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/functional-literacy-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/adult-reading-practice-without-shame.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/esl-reading-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/240-day-reading-path.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/days-1-240-curriculum.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/evidence-from-text-worksheet.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/main-idea-reading-worksheet.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/sequence-reading-worksheet.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/vocabulary-in-context-worksheet.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://readeasy30.com/terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
