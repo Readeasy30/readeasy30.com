@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Free Math Practice App | MathEasy30</title>
+  <meta name="description" content="Use the free MathEasy30 math practice app. 240 calm daily math lessons from Level A to Level H. Includes a placement check, Bubbles the math coach, and progress saved on your device." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1597ad" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MathEasy30" />
+  <meta property="og:title" content="Free Math Practice App | MathEasy30" />
+  <meta property="og:description" content="Start free daily math practice with a placement check, 240 calm lessons, and Bubbles the math coach." />
+  <meta property="og:url" content="https://readeasy30.com/math/app.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://readeasy30.com/math/app.html" />
+
+  <link rel="stylesheet" href="../css/style.css?v=20260607-math1" />
+  <link rel="stylesheet" href="../css/site-links.css?v=20260607-math1" />
+
+  <style>
+    /* Math-specific styles */
+    .math-tip-box {
+      background: #f0fdf4;
+      border-left: 0.35rem solid #22c55e;
+      padding: 0.9rem 1rem;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .math-problems {
+      display: grid;
+      gap: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .math-problem {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.8rem;
+      padding: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .math-problem.problem-correct {
+      border-color: #86efac;
+      background: #f0fdf4;
+    }
+
+    .math-problem.problem-incorrect {
+      border-color: #fca5a5;
+      background: #fff1f2;
+    }
+
+    .math-question {
+      margin: 0 0 0.6rem;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .math-input-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.5rem;
+    }
+
+    .math-input {
+      width: 100%;
+      padding: 0.85rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 0.65rem;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .math-input:focus {
+      outline: none;
+      border-color: #1597ad;
+      box-shadow: 0 0 0 3px rgba(21, 151, 173, 0.12);
+    }
+
+    .math-input:disabled {
+      background: #f1f5f9;
+    }
+
+    .math-feedback {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: bold;
+      padding: 0.4rem 0;
+      line-height: 1.4;
+      min-height: 1.5rem;
+    }
+
+    .math-feedback.correct { color: #15803d; }
+    .math-feedback.incorrect { color: #b91c1c; }
+
+    .math-result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .math-result.hidden { display: none; }
+
+    .math-result.result-all-correct {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-left: 0.35rem solid #22c55e;
+      color: #14532d;
+    }
+
+    .math-result.result-mostly-correct {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-left: 0.35rem solid #f59e0b;
+      color: #713f12;
+    }
+
+    .math-result.result-needs-practice {
+      background: #fff1f2;
+      border: 1px solid #fca5a5;
+      border-left: 0.35rem solid #ef4444;
+      color: #7f1d1d;
+    }
+
+    .math-hint-text {
+      display: block;
+      margin-top: 0.5rem;
+      color: #6b7280;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .bubbles-math-box {
+      margin-top: 1.4rem;
+      background: linear-gradient(180deg, #f0fdf4, #ecfeff);
+      border: 1px solid #a7f3d0;
+      padding: 1.2rem;
+      border-radius: 1rem;
+    }
+
+    .bubbles-math-label {
+      display: inline-block;
+      margin: 0 0 0.6rem;
+      padding: 0.25rem 0.6rem;
+      background: #d1fae5;
+      color: #065f46;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .bubbles-math-face {
+      font-size: 2.8rem;
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .bubbles-math-face.bubbles-speaking {
+      animation: bubbles-bounce 0.5s infinite alternate;
+    }
+
+    @keyframes bubbles-bounce {
+      from { transform: scale(1); }
+      to { transform: scale(1.12); }
+    }
+
+    .bubbles-math-answer {
+      background: white;
+      border: 1px solid #d1fae5;
+      border-radius: 0.75rem;
+      padding: 0.9rem;
+      margin: 0.8rem 0;
+      min-height: 3.5rem;
+      font-size: 0.97rem;
+      line-height: 1.6;
+      color: #134e4a;
+    }
+
+    .bubbles-math-quick-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .bubbles-math-quick-buttons button {
+      background: white;
+      border: 1px solid #a7f3d0;
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      color: #065f46;
+    }
+
+    .bubbles-math-quick-buttons button:hover,
+    .bubbles-math-quick-buttons button:focus {
+      background: #d1fae5;
+    }
+
+    .bubbles-input-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    .bubbles-input-row input {
+      padding: 0.75rem;
+      border: 1px solid #a7f3d0;
+      border-radius: 0.6rem;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .bubbles-input-row button {
+      background: #1597ad;
+      color: white;
+      border: none;
+      border-radius: 0.6rem;
+      padding: 0.75rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .bubbles-voice-status {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 0.4rem;
+    }
+
+    .danger-row {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .danger-row button {
+      background: white;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      border-radius: 0.65rem;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .placement-buttons { grid-template-columns: repeat(2, 1fr); }
+      .bubbles-input-row { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalApplication",
+    "name": "MathEasy30 Practice App",
+    "url": "https://readeasy30.com/math/app.html",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "isAccessibleForFree": true,
+    "description": "A free math practice app with a placement check, 240 daily lessons (Levels A–H), and Bubbles the math coach.",
+    "publisher": { "@type": "Organization", "name": "MathEasy30 / ReadEasy30", "url": "https://readeasy30.com/" }
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <main id="main-content" class="lesson-page">
+    <section class="lesson-card">
+      <p class="eyebrow">100% Free • 240 Daily Math Lessons • Calm Practice</p>
+      <h1>MathEasy30 Practice App</h1>
+      <p class="lesson-subtitle">Start where you are. Work slowly. Use Bubbles, the placement check, and short problems to build math confidence one day at a time.</p>
+
+      <nav class="top-links" aria-label="Math app navigation">
+        <a href="index.html">MathEasy30 Home</a>
+        <a href="#mathAssessmentBox">Find Starting Level</a>
+        <a href="../app.html">ReadEasy30 Reading App</a>
+        <a href="../parent-tutor-guide.html">Parent / Tutor Help</a>
+        <a href="../free-reading-and-math-practice.html">Reading + Math Plan</a>
+      </nav>
+
+      <div class="hero-buttons">
+        <a href="#mathLessonArea" class="start-button">Start Today's Lesson</a>
+        <a href="#mathAssessmentBox" class="secondary-button">Take Placement Check</a>
+        <a href="../parent-tutor-guide.html" class="secondary-button">Tutor Help</a>
+      </div>
+
+      <!-- Student profiles injected here by student-profiles-math.js -->
+
+      <section id="mathAssessmentBox" class="assessment-box">
+        <div class="assessment-header">
+          <div>
+            <p class="assessment-label">Placement Check</p>
+            <h2>Find a Comfortable Starting Level</h2>
+            <p>Answer one short problem at a time. MathEasy30 will suggest a calm starting level. You can also choose a level yourself below.</p>
+          </div>
+        </div>
+
+        <div id="mathAssessmentIntro" class="assessment-intro">
+          <button class="primary-action" type="button" onclick="startMathPlacementTest()">Start Placement Check</button>
+          <p class="small-note">No pressure. This only helps choose a good starting point.</p>
+        </div>
+
+        <div id="mathAssessmentTest" class="assessment-test hidden">
+          <p id="mathAssessmentStepLabel" class="assessment-step-label">Check 1 of 8</p>
+          <h3 id="mathAssessmentTitle">Number Check A</h3>
+          <p id="mathAssessmentProblem" class="assessment-story">Loading...</p>
+          <div class="math-input-row" style="margin-top:0.8rem;">
+            <input
+              type="text"
+              id="mathAssessmentAnswer"
+              class="math-input"
+              placeholder="Your answer"
+              autocomplete="off"
+              autocorrect="off"
+              inputmode="text"
+              aria-label="Placement check answer"
+            />
+          </div>
+          <p id="mathAssessmentHint" class="math-hint-text"></p>
+          <div class="button-row" style="margin-top:0.9rem;">
+            <button type="button" onclick="checkMathPlacementAnswer()">Check Answer</button>
+            <button type="button" onclick="restartMathPlacementTest()">Restart</button>
+          </div>
+        </div>
+
+        <div id="mathAssessmentResult" class="assessment-result hidden"></div>
+
+        <details class="manual-levels">
+          <summary>Choose level manually instead</summary>
+          <div class="placement-buttons">
+            <button type="button" onclick="setMathStartingLevel('A')">Level A<br><span>Number sense</span></button>
+            <button type="button" onclick="setMathStartingLevel('B')">Level B<br><span>Add/subtract 20</span></button>
+            <button type="button" onclick="setMathStartingLevel('C')">Level C<br><span>Place value, ×</span></button>
+            <button type="button" onclick="setMathStartingLevel('D')">Level D<br><span>Times tables, ÷</span></button>
+            <button type="button" onclick="setMathStartingLevel('E')">Level E<br><span>Decimals, %</span></button>
+            <button type="button" onclick="setMathStartingLevel('F')">Level F<br><span>Money, measure</span></button>
+            <button type="button" onclick="setMathStartingLevel('G')">Level G<br><span>Ratios, equations</span></button>
+            <button type="button" onclick="setMathStartingLevel('H')">Level H<br><span>Pre-algebra</span></button>
+          </div>
+        </details>
+      </section>
+
+      <!-- ─── Progress ─────────────────────────────── -->
+
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span id="mathProgressLabel">0 of 240 days complete</span>
+          <span id="mathStreakDisplay">🔥 Streak: 0 days</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar" id="mathProgressBar"></div>
+        </div>
+        <p class="level-label" style="margin-top:0.6rem;" id="mathLevelDisplay"></p>
+      </div>
+
+      <!-- ─── Daily Lesson ──────────────────────────── -->
+
+      <section id="mathLessonArea" style="margin-top:1.5rem;" aria-live="polite">
+        <p>Loading your lesson…</p>
+      </section>
+
+      <div style="margin-top:1rem;">
+        <button type="button" class="small-btn" onclick="readMathProblemAloud()">🔊 Read Problems Aloud</button>
+      </div>
+
+      <!-- ─── Bubbles Math Coach ────────────────────── -->
+
+      <div class="bubbles-math-box">
+        <p class="bubbles-math-label">Bubbles Math Coach</p>
+        <span class="bubbles-math-face" id="bubblesMathFace" role="img" aria-label="Bubbles the math coach">🫧</span>
+        <div class="bubbles-math-answer" id="bubblesMathAnswer" aria-live="polite">
+          Hi, I am Bubbles. I help math learners slow down, read carefully, and try one step at a time. Start with one calm lesson.
+        </div>
+        <div class="bubbles-math-quick-buttons">
+          <button type="button" data-bubbles-math-question="Where should I start?">Where do I start?</button>
+          <button type="button" data-bubbles-math-question="What if math feels hard?">Math feels hard</button>
+          <button type="button" data-bubbles-math-question="What if I get it wrong?">I got it wrong</button>
+          <button type="button" data-bubbles-math-question="How long should I practice?">How long to practice?</button>
+          <button type="button" onclick="introduceMathBubbles()">Hear Bubbles speak</button>
+        </div>
+        <div class="bubbles-input-row">
+          <input
+            type="text"
+            id="bubblesMathInput"
+            placeholder="Ask Bubbles a math question…"
+            aria-label="Ask Bubbles a question"
+          />
+          <button type="button" onclick="askMathBubbles()">Ask</button>
+        </div>
+        <p class="bubbles-voice-status" id="bubblesMathVoiceStatus">Ask Bubbles a question about math practice.</p>
+      </div>
+
+      <!-- ─── Helper note ───────────────────────────── -->
+
+      <section class="status-card" style="margin-top:1.4rem;">
+        <h2>Note for Parents and Tutors</h2>
+        <p>Each session should feel calm. Stop before frustration grows. Praise effort, not just the correct answer. Mistakes show what to practice next.</p>
+        <p>Use the placement check to find a comfortable starting level. If the problems feel too easy or too hard, choose a different level from the list above.</p>
+        <p>Progress is saved on this device. Each student can have their own profile. Use first names, initials, or nicknames.</p>
+        <div class="hero-buttons">
+          <a href="../parent-tutor-guide.html" class="secondary-button">Parent / Tutor Guide</a>
+          <a href="../free-reading-and-math-practice.html" class="secondary-button">Reading + Math Plan</a>
+        </div>
+      </section>
+
+      <!-- ─── Reset ────────────────────────────────── -->
+
+      <div class="danger-row">
+        <p class="small-note">Progress is saved on this device only.</p>
+        <button type="button" onclick="resetMathProgressOnDevice()">Reset Progress on This Device</button>
+      </div>
+
+      <footer class="app-footer" style="margin-top:1.5rem;">
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">MathEasy30 Home</a>
+          <a href="../index.html">ReadEasy30</a>
+          <a href="../free-reading-and-math-practice.html">Reading + Math Plan</a>
+          <a href="../privacy.html">Privacy</a>
+          <a href="../terms.html">Terms</a>
+        </nav>
+        <p>© 2026 MathEasy30 / ReadEasy30. Free calm math practice for learners and helpers.</p>
+      </footer>
+
+    </section>
+  </main>
+
+  <script src="student-profiles-math.js"></script>
+  <script src="app.js"></script>
+  <script src="bubbles-math.js"></script>
+</body>
+</html>
