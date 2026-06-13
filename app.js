@@ -1,7 +1,5 @@
 const STORAGE_KEY = "readeasy30.clean.progress.v1";
-spx-tastytrade-autotrader: code-complete; needs local .env (TT_SECRET, TT_REFRESH) + a local run to confirm the live connection.
-claude-seo-agent Worker: built, not deployed; needs CLAUDE_API_KEY + GOOGLE_JSON secrets set, then deploy.
-README path fixes (Wholelychit/ → Readeasy30/) where not yet done.
+
 const levelInfo = {
   A: { label: "Level A", range: [1, 30], description: "Early-reader sentences, familiar words, and beginner confidence." },
   B: { label: "Level B", range: [31, 60], description: "Longer sentences, everyday vocabulary, and stronger comprehension." },
@@ -109,7 +107,40 @@ function makeLesson(day) {
   };
 }
 
-const lessons = Array.from({ length: 240 }, (_, index) => makeLesson(index + 1));
+// --- 240-day staged-data wiring (added 2026-06-12) ---------------------------
+// Use the 240 UNIQUE reading lessons staged in level-a..h via lesson-loader-240.js.
+// Mapped into the exact shape makeLesson() returns so all render/check code is
+// unchanged. Falls back to the generated storyTemplates plan if staged data is
+// missing, so the app never renders empty.
+function buildStagedReadingLessons() {
+  var staged = (typeof window !== "undefined" && Array.isArray(window.READEASY_NEXT_PATH_LESSONS))
+    ? window.READEASY_NEXT_PATH_LESSONS
+    : [];
+  if (!staged.length) return null;
+  return staged.map(function (s) {
+    var info = levelInfo[s.level] || { label: "Level " + (s.level || ""), description: "" };
+    var vocab = Array.isArray(s.vocab) ? s.vocab.map(function (v) {
+      if (v && typeof v === "object" && v.word) return v.meaning ? (v.word + " \u2014 " + v.meaning) : v.word;
+      return String(v);
+    }) : [];
+    var qs = Array.isArray(s.questions) ? s.questions : [];
+    return {
+      day: s.day,
+      level: info.label,
+      levelKey: s.level,
+      levelDescription: info.description,
+      title: "Day " + s.day + ": " + (s.title || "Reading"),
+      story: s.story || "",
+      vocab: vocab,
+      questions: qs.map(function (q) { return q.prompt; }),
+      answers: qs.map(function (q) { return String(q.answer); })
+    };
+  });
+}
+
+const lessons = buildStagedReadingLessons() ||
+  Array.from({ length: 240 }, (_, index) => makeLesson(index + 1));
+// ----------------------------------------------------------------------------
 
 let state = loadState();
 let currentLesson = clampNumber(state.currentLesson || 0, 0, lessons.length - 1);
