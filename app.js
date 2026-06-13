@@ -1,5 +1,7 @@
 const STORAGE_KEY = "readeasy30.clean.progress.v1";
-
+spx-tastytrade-autotrader: code-complete; needs local .env (TT_SECRET, TT_REFRESH) + a local run to confirm the live connection.
+claude-seo-agent Worker: built, not deployed; needs CLAUDE_API_KEY + GOOGLE_JSON secrets set, then deploy.
+README path fixes (Wholelychit/ → Readeasy30/) where not yet done.
 const levelInfo = {
   A: { label: "Level A", range: [1, 30], description: "Early-reader sentences, familiar words, and beginner confidence." },
   B: { label: "Level B", range: [31, 60], description: "Longer sentences, everyday vocabulary, and stronger comprehension." },
