@@ -1,3 +1,69 @@
+# CLAUDE.md — Repository Working Rules
+
+GitHub is the source of truth for this project.
+
+## Required startup steps
+
+Before making claims or edits, Claude must:
+
+1. Read this CLAUDE.md file.
+2. Read STATUS.md if it exists.
+3. Inspect the real GitHub file tree.
+4. Trust actual repository files over memory, chat summaries, or old notes.
+5. Report any mismatch before editing.
+
+## Permissions
+
+Claude may read, write, create, rename, and delete files inside this GitHub repository when needed to complete Gerry’s requested task.
+
+Claude must not delete important files unless there is a clear reason.
+
+If deleting files, Claude must say what was deleted and why.
+
+## Work style
+
+- Make the best reasonable assumption and continue.
+- Do not ask many small questions.
+- Keep answers short and useful.
+- Use full-file replacements when practical.
+- Avoid tiny scattered edits.
+- Do not redesign unless Gerry asks.
+- Keep plain HTML, CSS, and JavaScript unless Gerry clearly asks otherwise.
+- No React, Vite, Node build tools, npm build systems, or complicated routing for ReadEasy30 unless Gerry clearly approves.
+
+## Website rules
+
+For consumer-facing pages:
+
+- Use simple language.
+- Aim for grade 7–9 reading level.
+- Mobile-first layout.
+- Fast loading.
+- Clear buttons.
+- Good SEO basics.
+- No fake claims.
+- No broken links.
+
+## Commit rules
+
+After changes, commit with a clear message.
+
+Preferred commit message format:
+
+`Update repo files: short description`
+
+## End-of-task report
+
+At the end, report only:
+
+1. Repo worked on
+2. Files changed
+3. Commit made
+4. What to check next
+5. Any blocker
+
+---
+
 # ReadEasy30 — Project Context for Claude
 
 ## Project Overview
