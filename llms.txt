@@ -1,0 +1,10 @@
+# ReadEasy30
+
+ReadEasy30 provides gentle 30-day reading practice for children, struggling readers, older learners, and families.
+
+## Core pages
+
+- / — Homepage
+- /app.html — Reading practice app
+- /worksheet.html — Worksheet page
+- /disclaimer.html — Disclaimer if present
