@@ -120,7 +120,7 @@ function buildStagedReadingLessons() {
   return staged.map(function (s) {
     var info = levelInfo[s.level] || { label: "Level " + (s.level || ""), description: "" };
     var vocab = Array.isArray(s.vocab) ? s.vocab.map(function (v) {
-      if (v && typeof v === "object" && v.word) return v.meaning ? (v.word + " \u2014 " + v.meaning) : v.word;
+      if (v && typeof v === "object" && v.word) return v.meaning ? (v.word + " — " + v.meaning) : v.word;
       return String(v);
     }) : [];
     var qs = Array.isArray(s.questions) ? s.questions : [];
@@ -221,12 +221,21 @@ function buildDaySelector() {
   });
 }
 
+function wrapStoryWords(story) {
+  return story.split(/(\s+)/).map(function(token) {
+    if (/^\s+$/.test(token)) return token;
+    var spoken = token.replace(/[^a-zA-Z'—-]/g, "");
+    var safe = (spoken || token).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    return '<span class="story-word" onclick="speak(\'' + safe + '\')">' + token + '</span>';
+  }).join("");
+}
+
 function renderLesson() {
   const lesson = lessons[currentLesson];
   if (!lesson) return;
 
   storyTitle.textContent = lesson.title;
-  storyText.textContent = lesson.story;
+  storyText.innerHTML = wrapStoryWords(lesson.story);
   lessonCount.textContent = `Lesson ${lesson.day} of ${lessons.length}`;
   levelTitle.textContent = lesson.level;
   levelDescription.textContent = lesson.levelDescription;
@@ -236,7 +245,11 @@ function renderLesson() {
   resultMessage.textContent = "";
   lessonPassed = false;
 
-  vocabList.innerHTML = lesson.vocab.map(word => `<span class="vocab-pill">${word}</span>`).join("");
+  vocabList.innerHTML = lesson.vocab.map(word => {
+    var safe = word.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    return `<span class="vocab-pill" onclick="speak('${safe}')" title="Tap to hear">${word}</span>`;
+  }).join("");
+
   questionsDiv.innerHTML = lesson.questions.map((question, index) => `
     <div class="question-block">
       <label for="answer${index}">${index + 1}. ${question}</label>
