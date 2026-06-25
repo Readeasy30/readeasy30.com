@@ -1,2 +1,2 @@
-# Cloudflare Pages redirects for ReadEasy30
-# Keep /app and /app/ pointed at the stable app.html page.
+# Cloudflare Pages redirects for MathEasy30
+# Clean URLs handled automatically by Cloudflare Pages — no /app rules (they cause a loop).
