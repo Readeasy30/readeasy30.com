@@ -51,8 +51,10 @@ jobs:
             exit 1
           fi
 
-          if grep -n "<script" app.html | grep -E "level-[b-h]-lessons|read-live-240-integration|grade-path-lessons|audio-fix|session-timer|report|vocab-helper|learner-mode|session-plan|startup-fix|bubbles-question-buttons"; then
-            echo "ERROR: Old ReadEasy30 app script stack is loaded by app.html."
+          # Check app.html does not load scripts that were removed in the clean rebuild.
+          # level-b-lessons.js through level-h-lessons.js are valid and expected.
+          if grep -n "<script" app.html | grep -E "read-live-240-integration|grade-path-lessons|audio-fix|session-timer|report\.js|vocab-helper|learner-mode|session-plan|startup-fix|bubbles-question-buttons"; then
+            echo "ERROR: Removed ReadEasy30 scripts are loaded by app.html."
             exit 1
           fi
 
