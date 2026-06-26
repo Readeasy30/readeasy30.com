@@ -4,16 +4,80 @@ on:
     - cron: '0 13 * * *'  # 8am CT daily
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   marketing-check:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Site health check
+        id: health
+        run: |
+          set -euo pipefail
+          PROBLEMS=""
+
+          # Check required files exist
+          for file in index.html app.html app.js css/style.css sitemap.xml robots.txt; do
+            if [ ! -f "$file" ]; then
+              PROBLEMS="$PROBLEMS\n- Missing file: $file"
+            fi
+          done
+
+          # Check site responds
+          HTTP=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/ || echo "000")
+          if [ "$HTTP" != "200" ]; then
+            PROBLEMS="$PROBLEMS\n- readeasy30.com returned HTTP $HTTP (expected 200)"
+          fi
+
+          # Check app page responds
+          HTTP2=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/app.html || echo "000")
+          if [ "$HTTP2" != "200" ]; then
+            PROBLEMS="$PROBLEMS\n- readeasy30.com/app.html returned HTTP $HTTP2"
+          fi
+
+          # Check math page responds
+          HTTP3=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/math/ || echo "000")
+          if [ "$HTTP3" != "200" ]; then
+            PROBLEMS="$PROBLEMS\n- readeasy30.com/math/ returned HTTP $HTTP3"
+          fi
+
+          if [ -n "$PROBLEMS" ]; then
+            echo "problems=true" >> $GITHUB_OUTPUT
+            echo "PROBLEMS<<EOF" >> $GITHUB_OUTPUT
+            echo -e "$PROBLEMS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+            echo "Site problems found:"
+            echo -e "$PROBLEMS"
+          else
+            echo "problems=false" >> $GITHUB_OUTPUT
+            echo "All site checks passed."
+          fi
+
+      - name: Open issue if problems found
+        if: steps.health.outputs.problems == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const problems = `${{ steps.health.outputs.PROBLEMS }}`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Site health issue detected — ${today}`,
+              body: `## Daily Site Check Found Problems\n\nDate: ${today}\n\n### Problems:\n${problems}\n\n### Next step:\nOpen a Claude Code session on this repo and type: **Fix today's site issue.**`,
+              labels: []
+            });
+
       - name: Get today's marketing task
         run: |
           RESPONSE=$(curl -s --max-time 10 https://marketing-auto.workers.dev/today || echo '{"status":"unavailable"}')
           echo "Today's marketing task:"
           echo "$RESPONSE"
 
-      - name: Ping marketing scheduler
-        run: |
-          echo "Marketing check complete for $(date)"
+      - name: Done
+        run: echo "Daily check complete for $(date)"
