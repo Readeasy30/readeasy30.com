@@ -1,4 +1,7 @@
+Replace .github/workflows/daily-marketing.yml in readeasy30.com and matheasy30.com with this exact content (identical in both, just swap domain checks for matheasy30.com's own files/URLs where noted). Commit to main: "Fix daily-marketing.yml: remove dead endpoint, fix invalid empty step".
+
 name: Daily Marketing Check
+
 on:
   schedule:
     - cron: '0 13 * * *'  # 8am CT daily
@@ -20,32 +23,23 @@ jobs:
         run: |
           set -euo pipefail
           PROBLEMS=""
-
-          # Check required files exist
           for file in index.html app.html app.js css/style.css sitemap.xml robots.txt; do
             if [ ! -f "$file" ]; then
               PROBLEMS="$PROBLEMS\n- Missing file: $file"
             fi
           done
-
-          # Check site responds
           HTTP=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/ || echo "000")
           if [ "$HTTP" != "200" ]; then
             PROBLEMS="$PROBLEMS\n- readeasy30.com returned HTTP $HTTP (expected 200)"
           fi
-
-          # Check app page responds
           HTTP2=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/app.html || echo "000")
           if [ "$HTTP2" != "200" ]; then
             PROBLEMS="$PROBLEMS\n- readeasy30.com/app.html returned HTTP $HTTP2"
           fi
-
-          # Check math page responds
           HTTP3=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/math/ || echo "000")
           if [ "$HTTP3" != "200" ]; then
             PROBLEMS="$PROBLEMS\n- readeasy30.com/math/ returned HTTP $HTTP3"
           fi
-
           if [ -n "$PROBLEMS" ]; then
             echo "problems=true" >> $GITHUB_OUTPUT
             echo "PROBLEMS<<EOF" >> $GITHUB_OUTPUT
@@ -73,11 +67,26 @@ jobs:
               labels: []
             });
 
-      - name: Get today's marketing task
+      - name: Pick today's marketing task
         run: |
-          RESPONSE=$(curl -s --max-time 10 https://marketing-auto.workers.dev/today || echo '{"status":"unavailable"}')
-          echo "Today's marketing task:"
-          echo "$RESPONSE"
+          TASKS=(
+            "Share a lesson link on X/Twitter"
+            "Post a tip in a homeschool Facebook group"
+            "Reply to 3 relevant Reddit threads in r/homeschool or r/ESL"
+            "Submit site to a new educational directory"
+            "Email one homeschool blogger about a link exchange"
+            "Post a student success story on socials"
+            "Check and respond to any site contact form messages"
+            "Update meta descriptions on 2 lesson pages for SEO"
+          )
+          DAY=$(date +%j)
+          IDX=$(( (10#$DAY) % ${#TASKS[@]} ))
+          TASK="${TASKS[$IDX]}"
+          echo "## Today's Marketing Task" >> $GITHUB_STEP_SUMMARY
+          echo "$TASK" >> $GITHUB_STEP_SUMMARY
+          echo "Task: $TASK"
 
-      - name: Done
-        run: echo "Daily check complete for $(date)"
+For matheasy30.com, change the three curl URL checks (/, /app.html, /math/) to matheasy30.com's own live paths — verify what those should be from the repo's actual file structure (likely https://matheasy30.com/, /app.html, and whatever level-selector or lesson path matheasy30.com actually serves) before committing.
+
+After committing both, trigger workflow_dispatch manually on each repo and confirm the run is green with no invalid-step errors and no dead-host calls.
+    
