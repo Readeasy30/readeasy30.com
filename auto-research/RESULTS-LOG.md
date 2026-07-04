@@ -13,3 +13,8 @@
 | Round | Change | Score Before | Score After | Result |
 |-------|--------|-------------|-------------|--------|
 | — | Baseline established | — | 11 | — |
+| 1 | Added `defer` to all 9 `<script>` tags | 11 | 2 | ✅ KEPT |
+
+---
+
+## Current best score: 2 (2 blocking CSS files remain)
