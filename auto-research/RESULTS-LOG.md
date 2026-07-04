@@ -14,9 +14,11 @@
 |-------|--------|-------------|-------------|--------|
 | — | Baseline established | — | 11 | — |
 | 1 | Added `defer` to all 9 `<script>` tags | 11 | 2 | ✅ KEPT |
-| 2 | Added `<link rel="preload">` hints for both CSS files | 2 | 2 | ❌ REVERTED (no improvement — CSS still blocks) |
+| 2 | Added `<link rel="preload">` hints for both CSS files | 2 | 2 | ❌ REVERTED |
+| 3 | Inlined both CSS files into `<style>` block, removed external `<link>` tags | 2 | 0 | ✅ KEPT |
 
 ---
 
-## Current best score: 2 (2 blocking CSS files remain)
-## Note: preload hints do not reduce the blocking count — the stylesheet links still block.
+## 🎉 GOAL REACHED: Score = 0
+## Total improvement: 11 → 0 (100% reduction in render-blocking requests)
+## Rounds run: 3 (2 kept, 1 reverted)
