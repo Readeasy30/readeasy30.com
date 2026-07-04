@@ -107,11 +107,6 @@ function makeLesson(day) {
   };
 }
 
-// --- 240-day staged-data wiring (added 2026-06-12) ---------------------------
-// Use the 240 UNIQUE reading lessons staged in level-a..h via lesson-loader-240.js.
-// Mapped into the exact shape makeLesson() returns so all render/check code is
-// unchanged. Falls back to the generated storyTemplates plan if staged data is
-// missing, so the app never renders empty.
 function buildStagedReadingLessons() {
   var staged = (typeof window !== "undefined" && Array.isArray(window.READEASY_NEXT_PATH_LESSONS))
     ? window.READEASY_NEXT_PATH_LESSONS
@@ -120,7 +115,7 @@ function buildStagedReadingLessons() {
   return staged.map(function (s) {
     var info = levelInfo[s.level] || { label: "Level " + (s.level || ""), description: "" };
     var vocab = Array.isArray(s.vocab) ? s.vocab.map(function (v) {
-      if (v && typeof v === "object" && v.word) return v.meaning ? (v.word + " \u2014 " + v.meaning) : v.word;
+      if (v && typeof v === "object" && v.word) return v.meaning ? (v.word + " — " + v.meaning) : v.word;
       return String(v);
     }) : [];
     var qs = Array.isArray(s.questions) ? s.questions : [];
@@ -140,7 +135,6 @@ function buildStagedReadingLessons() {
 
 const lessons = buildStagedReadingLessons() ||
   Array.from({ length: 240 }, (_, index) => makeLesson(index + 1));
-// ----------------------------------------------------------------------------
 
 let state = loadState();
 let currentLesson = clampNumber(state.currentLesson || 0, 0, lessons.length - 1);
@@ -198,7 +192,6 @@ function normalize(text) {
 function answerMatches(input, accepted) {
   const value = normalize(input);
   if (!value) return false;
-
   return String(accepted).split("|").some(part => {
     const term = normalize(part);
     if (!term) return false;
@@ -221,12 +214,21 @@ function buildDaySelector() {
   });
 }
 
+function wrapStoryWords(story) {
+  return story.split(/(\s+)/).map(function(token) {
+    if (/^\s+$/.test(token)) return token;
+    var spoken = token.replace(/[^a-zA-Z'—-]/g, "");
+    var safe = (spoken || token).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    return '<span class="story-word" onclick="speak(\'' + safe + '\')">' + token + '</span>';
+  }).join("");
+}
+
 function renderLesson() {
   const lesson = lessons[currentLesson];
   if (!lesson) return;
 
   storyTitle.textContent = lesson.title;
-  storyText.textContent = lesson.story;
+  storyText.innerHTML = wrapStoryWords(lesson.story);
   lessonCount.textContent = `Lesson ${lesson.day} of ${lessons.length}`;
   levelTitle.textContent = lesson.level;
   levelDescription.textContent = lesson.levelDescription;
@@ -236,7 +238,11 @@ function renderLesson() {
   resultMessage.textContent = "";
   lessonPassed = false;
 
-  vocabList.innerHTML = lesson.vocab.map(word => `<span class="vocab-pill">${word}</span>`).join("");
+  vocabList.innerHTML = lesson.vocab.map(word => {
+    var safe = word.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    return `<span class="vocab-pill" onclick="speak('${safe}')" title="Tap to hear">${word}</span>`;
+  }).join("");
+
   questionsDiv.innerHTML = lesson.questions.map((question, index) => `
     <div class="question-block">
       <label for="answer${index}">${index + 1}. ${question}</label>
