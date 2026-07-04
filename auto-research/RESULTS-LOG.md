@@ -14,7 +14,9 @@
 |-------|--------|-------------|-------------|--------|
 | — | Baseline established | — | 11 | — |
 | 1 | Added `defer` to all 9 `<script>` tags | 11 | 2 | ✅ KEPT |
+| 2 | Added `<link rel="preload">` hints for both CSS files | 2 | 2 | ❌ REVERTED (no improvement — CSS still blocks) |
 
 ---
 
 ## Current best score: 2 (2 blocking CSS files remain)
+## Note: preload hints do not reduce the blocking count — the stylesheet links still block.
