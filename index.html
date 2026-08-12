@@ -6,51 +6,64 @@
   <title>ReadEasy30 - Fun Sight Words & Reading for Kids</title>
   <style>
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: #fef2f2; color: #991b1b; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-    header { text-align: center; margin-bottom: 20px; }
-    h1 { font-size: 2.5rem; margin: 0; color: #dc2626; }
-    p.subtitle { font-size: 1.1rem; color: #991b1b; margin-top: 5px; }
-    .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); width: 100%; max-width: 480px; text-align: center; border: 2px solid #fecaca; }
-    .stats { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; font-size: 1.1rem; }
-    .stat-box { background: #fef2f2; padding: 10px 15px; border-radius: 8px; border: 1px solid #fecaca; }
-    .word-box { font-size: 3.5rem; font-weight: 800; color: #dc2626; margin: 20px 0; letter-spacing: 2px; text-transform: uppercase; }
-    .speaker-btn { background: #ef4444; color: white; border: none; padding: 12px 24px; font-size: 1.2rem; font-weight: bold; border-radius: 30px; cursor: pointer; margin-bottom: 20px; }
-    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
-    button.btn-opt { background: #f87171; color: white; border: none; padding: 18px; font-size: 1.5rem; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.1s, background 0.2s; }
-    button.btn-opt:hover { background: #dc2626; transform: translateY(-2px); }
-    .feedback { margin-top: 25px; font-size: 1.2rem; font-weight: bold; }
+    body { background: #fef2f2; color: #991b1b; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    .nav-bridge { background: #dc2626; color: white; padding: 12px 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .nav-bridge a { color: #bbf7d0; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; }
+    .container { padding: 20px; width: 100%; max-width: 480px; text-align: center; }
+    h1 { font-size: 2.2rem; margin: 10px 0 5px; color: #dc2626; }
+    .card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 2px solid #fecaca; margin-top: 15px; }
+    .stats { display: flex; justify-content: space-around; margin-bottom: 15px; font-weight: bold; font-size: 1.1rem; }
+    .stat-box { background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca; }
+    .word-box { font-size: 3.2rem; font-weight: 800; color: #dc2626; margin: 15px 0; letter-spacing: 2px; }
+    .speaker-btn { background: #ef4444; color: white; border: none; padding: 10px 20px; font-size: 1.1rem; font-weight: bold; border-radius: 25px; cursor: pointer; margin-bottom: 15px; }
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    button.btn-opt { background: #f87171; color: white; border: none; padding: 16px; font-size: 1.5rem; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.1s; }
+    button.btn-opt:active { transform: scale(0.98); }
+    .feedback { font-weight: bold; margin-top: 15px; font-size: 1.1rem; }
   </style>
 </head>
 <body>
-  <nav class="nav-bridge" style="background: #dc2626; color: white; padding: 10px 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <nav class="nav-bridge">
     <span style="font-weight: bold;">📚 ReadEasy 30</span>
-    <a href="https://matheasy30.com" style="color: #bbf7d0; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px;">Switch to Math 🧮 ➔</a>
+    <a href="https://matheasy30.com">Switch to Math 🧮 ➔</a>
   </nav>
-  <header>
-    <h1>ReadEasy 30 📚</h1>
-    <p class="subtitle">Learn 30 Sight Words a Month!</p>
-  </header>
 
-  <div class="card">
-    <div class="stats">
-      <div class="stat-box">⭐ Stars: <span id="stars">0</span></div>
-      <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
+  <div class="container">
+    <h1>ReadEasy 30</h1>
+    <p style="margin:0; color:#991b1b;">Learn 30 Sight Words a Month!</p>
+
+    <div class="card">
+      <div class="stats">
+        <div class="stat-box">⭐ Total Stars: <span id="totalStars">0</span></div>
+        <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
+      </div>
+
+      <button class="speaker-btn" onclick="speakWord()">🔊 Listen to Word</button>
+
+      <div class="word-box" id="wordDisplay">CAT</div>
+
+      <div class="options" id="optionsContainer"></div>
+
+      <div class="feedback" id="feedback">Match the spoken word!</div>
     </div>
-
-    <button class="speaker-btn" onclick="speakWord()">🔊 Listen to Word</button>
-
-    <div class="word-box" id="wordDisplay">CAT</div>
-
-    <div class="options" id="optionsContainer"></div>
-
-    <div class="feedback" id="feedback">Match the spoken word!</div>
   </div>
 
   <script>
-    const wordList = ["THE", "AND", "LIKE", "SEE", "CAN", "GO", "PLAY", "RUN", "BIG", "RED", "BLUE", "CAT", "DOG", "SUN", "STAR"];
-    let stars = 0;
+    const wordList = ["THE", "AND", "LIKE", "SEE", "CAN", "GO", "PLAY", "RUN", "BIG", "RED", "BLUE", "CAT", "DOG", "SUN", "STAR", "HELP", "JUMP", "LOOK", "MAKE", "FIND"];
+    let totalStars = parseInt(localStorage.getItem('read_stars') || '0');
     let streak = 0;
     let currentWord = "";
+
+    document.getElementById('totalStars').innerText = totalStars;
+
+    function speakWord() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(currentWord.toLowerCase());
+        utterance.rate = 0.8;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
 
     function generateWord() {
       currentWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -76,19 +89,13 @@
       speakWord();
     }
 
-    function speakWord() {
-      if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(currentWord.toLowerCase());
-        utterance.rate = 0.8;
-        window.speechSynthesis.speak(utterance);
-      }
-    }
-
     function checkWord(selected) {
       const feedback = document.getElementById('feedback');
       if (selected === currentWord) {
-        stars += 1;
+        totalStars += 1;
         streak += 1;
+        localStorage.setItem('read_stars', totalStars);
+        document.getElementById('totalStars').innerText = totalStars;
         feedback.innerHTML = "🌟 Awesome Reading!";
         feedback.style.color = "#16a34a";
       } else {
@@ -96,7 +103,6 @@
         feedback.innerHTML = Try again! That was \;
         feedback.style.color = "#dc2626";
       }
-      document.getElementById('stars').innerText = stars;
       document.getElementById('streak').innerText = streak;
       generateWord();
     }
