@@ -44,7 +44,8 @@
 
       <div class="options" id="optionsContainer"></div>
 
-      <div class="feedback" id="feedback">Match the spoken word!</div>
+            <button onclick="printWorksheet()" style="margin-top:15px; background:#dc2626; color:white; border:none; padding:10px 18px; border-radius:20px; font-weight:bold; cursor:pointer;">🖨️ Print Sight Words Practice Sheet</button>
+    <div class="feedback" id="feedback">Match the spoken word!</div>
     </div>
   </div>
 
@@ -108,6 +109,20 @@
     }
 
     generateWord();
+      function printWorksheet() {
+      let printWin = window.open('', '', 'width=800,height=600');
+      let html = '<html><head><title>ReadEasy30 Sight Words Sheet</title>';
+      html += '<style>body{font-family:sans-serif;padding:30px;} .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:1.4rem;margin-top:30px;}</style></head><body>';
+      html += '<h2>📚 ReadEasy30 - Sight Words Tracing & Reading</h2><p>Name: ______________________ Date: ____________ Stars: _____/10</p><hr><div class="q-grid">';
+      const sampleWords = ["THE", "AND", "LIKE", "SEE", "CAN", "GO", "PLAY", "RUN", "BIG", "RED"];
+      sampleWords.forEach((w, idx) => {
+        html += '<div>' + (idx + 1) + ') Read & Trace: <b>' + w + '</b> ➔ ______________</div>';
+      });
+      html += '</div></body></html>';
+      printWin.document.write(html);
+      printWin.document.close();
+      printWin.print();
+    }
   </script>
 </body>
 </html>
