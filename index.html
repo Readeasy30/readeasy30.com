@@ -1,205 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Free Reading Practice for Learners | ReadEasy30</title>
-  <meta name="description" content="ReadEasy30 is 100% free reading practice for learners, adults, ESL students, parents, tutors, and helpers. Start with short lessons, a placement check, read-aloud support, printable worksheets, and Bubbles the calm reading coach." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1597ad" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="ReadEasy30" />
-  <meta property="og:title" content="Free Reading Practice for Learners | ReadEasy30" />
-  <meta property="og:description" content="100% free calm reading practice with short lessons, placement help, read-aloud support, printable worksheets, and Bubbles coaching." />
-  <meta property="og:url" content="https://readeasy30.com/" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Free Reading Practice | ReadEasy30" />
-  <meta name="twitter:description" content="Start free daily reading practice with short lessons, placement help, read-aloud support, and printable worksheets." />
-
-  <link rel="canonical" href="https://readeasy30.com/" />
-  <link rel="stylesheet" href="css/style.css?v=20260522-home2" />
-  <link rel="stylesheet" href="css/launch-fixes.css?v=20260522-links1" />
-  <link rel="stylesheet" href="css/site-links.css?v=20260526-site2" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalApplication",
-    "name": "ReadEasy30",
-    "url": "https://readeasy30.com/",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "Any",
-    "isAccessibleForFree": true,
-    "description": "A free calm reading practice site with short lessons, placement help, read-aloud support, printable worksheets, and Bubbles the reading coach.",
-    "audience": [
-      { "@type": "Audience", "audienceType": "Beginning readers" },
-      { "@type": "Audience", "audienceType": "Adult learners" },
-      { "@type": "Audience", "audienceType": "ESL learners" },
-      { "@type": "Audience", "audienceType": "Parents, tutors, homeschool helpers, and community programs" }
-    ],
-    "publisher": { "@type": "Organization", "name": "ReadEasy30", "url": "https://readeasy30.com/" }
-  }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReadEasy30 - Fun Sight Words & Reading for Kids</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #fef2f2; color: #991b1b; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { font-size: 2.5rem; margin: 0; color: #dc2626; }
+    p.subtitle { font-size: 1.1rem; color: #991b1b; margin-top: 5px; }
+    .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); width: 100%; max-width: 480px; text-align: center; border: 2px solid #fecaca; }
+    .stats { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; font-size: 1.1rem; }
+    .stat-box { background: #fef2f2; padding: 10px 15px; border-radius: 8px; border: 1px solid #fecaca; }
+    .word-box { font-size: 3.5rem; font-weight: 800; color: #dc2626; margin: 20px 0; letter-spacing: 2px; text-transform: uppercase; }
+    .speaker-btn { background: #ef4444; color: white; border: none; padding: 12px 24px; font-size: 1.2rem; font-weight: bold; border-radius: 30px; cursor: pointer; margin-bottom: 20px; }
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+    button.btn-opt { background: #f87171; color: white; border: none; padding: 18px; font-size: 1.5rem; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.1s, background 0.2s; }
+    button.btn-opt:hover { background: #dc2626; transform: translateY(-2px); }
+    .feedback { margin-top: 25px; font-size: 1.2rem; font-weight: bold; }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header>
+    <h1>ReadEasy 30 📚</h1>
+    <p class="subtitle">Learn 30 Sight Words a Month!</p>
+  </header>
 
-  <main id="main-content" class="container">
+  <div class="card">
+    <div class="stats">
+      <div class="stat-box">⭐ Stars: <span id="stars">0</span></div>
+      <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
+    </div>
 
-    <header class="app-header hero">
-      <div class="logo">🫧 ReadEasy30</div>
-      <p class="eyebrow">100% Free Reading Practice • Calm Daily Lessons</p>
-      <h1>Free Reading Practice That Starts Small</h1>
-      <p class="subtitle">ReadEasy30 helps learners practice reading one calm step at a time. Start with short stories, simple questions, read-aloud support, printable worksheets, and Bubbles the reading coach.</p>
+    <button class="speaker-btn" onclick="speakWord()">🔊 Listen to Word</button>
 
-      <nav class="top-links" aria-label="Main navigation">
-        <a href="app.html">Start Reading Now</a>
-        <a href="app.html#assessmentBox">Find Starting Level</a>
-        <a href="printable-reading-worksheets.html">Print Worksheets</a>
-        <a href="parent-tutor-guide.html">Parent / Tutor Help</a>
-        <a href="free-reading-and-math-practice.html">Reading + Math Plan</a>
-      </nav>
+    <div class="word-box" id="wordDisplay">CAT</div>
 
-      <div class="hero-buttons">
-        <a href="app.html" class="start-button">Start Free Reading Practice</a>
-        <a href="app.html#assessmentBox" class="secondary-button">Find a Starting Level</a>
-        <a href="printable-reading-worksheets.html" class="secondary-button">Print Worksheets</a>
-      </div>
+    <div class="options" id="optionsContainer"></div>
 
-      <div class="trust-row">
-        <span>✅ 100% free</span><span>✅ No pressure</span><span>✅ Short lessons</span><span>✅ Read-aloud help</span><span>✅ Printable practice</span>
-      </div>
-    </header>
+    <div class="feedback" id="feedback">Match the spoken word!</div>
+  </div>
 
-    <section class="status-card callout-card">
-      <h2>Start Here: One Calm Reading Lesson</h2>
-      <p>The first goal is not perfection. The goal is to read a little, think a little, answer a little, and come back tomorrow.</p>
-      <div class="hero-buttons">
-        <a href="app.html" class="start-button">Open the Lesson App</a>
-        <a href="app.html#assessmentBox" class="secondary-button">Take the Placement Check</a>
-      </div>
-    </section>
+  <script>
+    const wordList = ["THE", "AND", "LIKE", "SEE", "CAN", "GO", "PLAY", "RUN", "BIG", "RED", "BLUE", "CAT", "DOG", "SUN", "STAR"];
+    let stars = 0;
+    let streak = 0;
+    let currentWord = "";
 
-    <section class="status-card">
-      <h2>What Learners Get</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h3>Short Reading Lessons</h3>
-          <p>Practice with small stories, simple questions, vocabulary support, and calm review.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Starting-Level Help</h3>
-          <p>Use the placement check or choose a level manually so learners do not start too hard.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Read-Aloud Support</h3>
-          <p>Listen to the story when needed. Rereading and hearing the words are part of learning.</p>
-        </div>
-      </div>
-    </section>
+    function generateWord() {
+      currentWord = wordList[Math.floor(Math.random() * wordList.length)];
+      document.getElementById('wordDisplay').innerText = currentWord;
+      
+      let options = [currentWord];
+      while (options.length < 4) {
+        let randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+        if (!options.includes(randomWord)) options.push(randomWord);
+      }
+      options.sort(() => Math.random() - 0.5);
 
-    <section class="story-box">
-      <h2>Built for Calm Practice</h2>
-      <p>Reading practice works better when learners feel safe enough to try. ReadEasy30 keeps lessons short, clear, and encouraging.</p>
-      <div class="feature-list">
-        <p>✅ Helpful for beginning and struggling readers</p>
-        <p>✅ Respectful for adults rebuilding reading confidence</p>
-        <p>✅ Useful for ESL learners practicing everyday English</p>
-        <p>✅ Easy for parents, tutors, homeschool helpers, and community programs</p>
-      </div>
-    </section>
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = '';
+      options.forEach(w => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-opt';
+        btn.innerText = w;
+        btn.onclick = () => checkWord(w);
+        container.appendChild(btn);
+      });
 
-    <section class="questions">
-      <h2>How the 30-Minute Routine Works</h2>
-      <div class="feature-grid">
-        <div class="feature-card"><h3>1. Read</h3><p>Start with a short passage. Read slowly. Use read-aloud help when needed.</p></div>
-        <div class="feature-card"><h3>2. Think</h3><p>Pause for vocabulary, main idea, details, and proof from the story.</p></div>
-        <div class="feature-card"><h3>3. Answer</h3><p>Answer short questions and review mistakes without shame.</p></div>
-      </div>
-    </section>
+      speakWord();
+    }
 
-    <section class="bubbles-card">
-      <div class="bubbles-face">🫧</div>
-      <div>
-        <h2>Meet Bubbles</h2>
-        <p>Bubbles is the calm reading coach inside the lessons. Bubbles reminds learners to slow down, reread, try again, and keep going.</p>
-      </div>
-    </section>
+    function speakWord() {
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(currentWord.toLowerCase());
+        utterance.rate = 0.8;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
 
-    <section class="status-card callout-card">
-      <h2>Print Worksheets for Extra Practice</h2>
-      <p>Use printable reading worksheets for paper practice after a lesson. The worksheet hub includes phonics, main idea, vocabulary, evidence, sequence, and everyday reading practice.</p>
-      <div class="hero-buttons">
-        <a href="printable-reading-worksheets.html" class="start-button">Open Worksheet Hub</a>
-        <a href="phonics-practice-for-beginners.html" class="secondary-button">Practice Phonics</a>
-        <a href="reading-comprehension-practice.html" class="secondary-button">Practice Comprehension</a>
-      </div>
-    </section>
+    function checkWord(selected) {
+      const feedback = document.getElementById('feedback');
+      if (selected === currentWord) {
+        stars += 1;
+        streak += 1;
+        feedback.innerHTML = "🌟 Awesome Reading!";
+        feedback.style.color = "#16a34a";
+      } else {
+        streak = 0;
+        feedback.innerHTML = Try again! That was \;
+        feedback.style.color = "#dc2626";
+      }
+      document.getElementById('stars').innerText = stars;
+      document.getElementById('streak').innerText = streak;
+      generateWord();
+    }
 
-    <section class="status-card">
-      <h2>Parent and Tutor Help</h2>
-      <p>Helpers do not need to be reading specialists. A calm voice, short practice, and steady encouragement can make daily reading feel possible.</p>
-      <div class="feature-grid">
-        <div class="feature-card"><h3>Keep It Short</h3><p>Use one lesson or worksheet at a time. Stop before practice turns stressful.</p></div>
-        <div class="feature-card"><h3>Read Together</h3><p>Take turns reading. Let the learner hear the words, then try again.</p></div>
-        <div class="feature-card"><h3>Praise Effort</h3><p>Say what worked first. Fix mistakes second.</p></div>
-      </div>
-      <p><a href="parent-tutor-guide.html">Open the parent and tutor guide</a></p>
-    </section>
-
-    <section class="status-card callout-card">
-      <h2>Reading + Math Together</h2>
-      <p>Many learners need both reading and math support. Use ReadEasy30 and MathEasy30 together for one simple daily routine.</p>
-      <p><strong>Easy routine:</strong> 10 minutes reading, 10 minutes math, and 10 minutes reviewing mistakes calmly.</p>
-      <div class="hero-buttons">
-        <a href="free-reading-and-math-practice.html" class="start-button">Open Reading + Math Plan</a>
-        <a href="https://matheasy30.com/" class="secondary-button">Open MathEasy30</a>
-      </div>
-    </section>
-
-    <section class="questions">
-      <h2>More Reading Paths</h2>
-      <div class="feature-list">
-        <p>⭐ <a href="daily-reading-practice.html">Daily 30-minute reading practice plan</a></p>
-        <p>⭐ <a href="reading-levels-beginner-to-8th-grade.html">Reading levels from beginner to 8th grade</a></p>
-        <p>⭐ <a href="adult-reading-practice-without-shame.html">Adult reading practice without shame</a></p>
-        <p>⭐ <a href="esl-reading-practice.html">ESL reading practice</a></p>
-        <p>⭐ <a href="functional-literacy-practice.html">Everyday reading practice</a></p>
-      </div>
-    </section>
-
-    <section class="status-card callout-card">
-      <h2>Start Free Today</h2>
-      <p>Start where you are. Read slowly. Practice a little each day. Build confidence one lesson at a time.</p>
-      <div class="hero-buttons">
-        <a href="app.html" class="start-button">Start Reading Now</a>
-        <a href="app.html#assessmentBox" class="secondary-button">Find Starting Level</a>
-        <a href="printable-reading-worksheets.html" class="secondary-button">Print Worksheets</a>
-      </div>
-    </section>
-
-    <footer class="app-footer">
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="index.html">Home</a>
-        <a href="app.html">Start Reading Now</a>
-        <a href="app.html#assessmentBox">Find Starting Level</a>
-        <a href="printable-reading-worksheets.html">Worksheets</a>
-        <a href="parent-tutor-guide.html">Parent / Tutor Help</a>
-        <a href="free-reading-and-math-practice.html">Reading + Math</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="sitemap.xml">Sitemap</a>
-      </nav>
-      <p>ReadEasy30 is 100% free reading practice for learners who need calm, steady support.</p>
-      <p>© 2026 ReadEasy30</p>
-    </footer>
-
-  </main>
+    generateWord();
+  </script>
 </body>
 </html>
