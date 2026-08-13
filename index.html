@@ -1,128 +1,44 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReadEasy30 - Fun Sight Words & Reading for Kids</title>
-  <style>
-    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: #fef2f2; color: #991b1b; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-    .nav-bridge { background: #dc2626; color: white; padding: 12px 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .nav-bridge a { color: #bbf7d0; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; }
-    .container { padding: 20px; width: 100%; max-width: 480px; text-align: center; }
-    h1 { font-size: 2.2rem; margin: 10px 0 5px; color: #dc2626; }
-    .card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 2px solid #fecaca; margin-top: 15px; }
-    .stats { display: flex; justify-content: space-around; margin-bottom: 15px; font-weight: bold; font-size: 1.1rem; }
-    .stat-box { background: #fef2f2; padding: 8px 12px; border-radius: 8px; border: 1px solid #fecaca; }
-    .word-box { font-size: 3.2rem; font-weight: 800; color: #dc2626; margin: 15px 0; letter-spacing: 2px; }
-    .speaker-btn { background: #ef4444; color: white; border: none; padding: 10px 20px; font-size: 1.1rem; font-weight: bold; border-radius: 25px; cursor: pointer; margin-bottom: 15px; }
-    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    button.btn-opt { background: #f87171; color: white; border: none; padding: 16px; font-size: 1.5rem; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.1s; }
-    button.btn-opt:active { transform: scale(0.98); }
-    .feedback { font-weight: bold; margin-top: 15px; font-size: 1.1rem; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Shelf Websites | Business Websites in 72 Hours</title>
+<meta name="description" content="Get a professional business website built in 72 hours for only $199.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="nav-bridge">
-    <span style="font-weight: bold;">📚 ReadEasy 30</span>
-    <a href="https://matheasy30.com">Switch to Math 🧮 ➔</a>
-  </nav>
 
-  <div class="container">
-    <h1>ReadEasy 30</h1>
-    <p style="margin:0; color:#991b1b;">Learn 30 Sight Words a Month!</p>
+<header>
+<h1>Get a High-Converting Business Website in 72 Hours</h1>
+<p>Your professional business website. Built fast. Ready to grow.</p>
+<a class="button" href="order.html">Launch My Website — $199</a>
+</header>
 
-    <div class="card">
-      <div class="stats">
-        <div class="stat-box">⭐ Total Stars: <span id="totalStars">0</span></div>
-        <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
-      </div>
+<section>
+<h2>What You Get</h2>
+<div class="grid">
+<div>Mobile-first website</div>
+<div>Local SEO foundation</div>
+<div>Fast Cloudflare hosting</div>
+<div>Professional design</div>
+</div>
+</section>
 
-      <button class="speaker-btn" onclick="speakWord()">🔊 Listen to Word</button>
+<section>
+<h2>Simple Process</h2>
+<p>Order → We Build → You Launch</p>
+</section>
 
-      <div class="word-box" id="wordDisplay">CAT</div>
+<section>
+<h2>Website Care Plan</h2>
+<p>$49/month keeps your website secure, monitored, and updated.</p>
+<a class="button" href="care.html">View Care Plan</a>
+</section>
 
-      <div class="options" id="optionsContainer"></div>
+<footer>
+<p>© 2026 Top Shelf Websites</p>
+</footer>
 
-            <button onclick="printWorksheet()" style="margin-top:15px; background:#dc2626; color:white; border:none; padding:10px 18px; border-radius:20px; font-weight:bold; cursor:pointer;">🖨️ Print Sight Words Practice Sheet</button>
-    <div class="feedback" id="feedback">Match the spoken word!</div>
-    </div>
-  </div>
-
-  <script>
-    const wordList = ["THE", "AND", "LIKE", "SEE", "CAN", "GO", "PLAY", "RUN", "BIG", "RED", "BLUE", "CAT", "DOG", "SUN", "STAR", "HELP", "JUMP", "LOOK", "MAKE", "FIND"];
-    let totalStars = parseInt(localStorage.getItem('read_stars') || '0');
-    let streak = 0;
-    let currentWord = "";
-
-    document.getElementById('totalStars').innerText = totalStars;
-
-    function speakWord() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(currentWord.toLowerCase());
-        utterance.rate = 0.8;
-        window.speechSynthesis.speak(utterance);
-      }
-    }
-
-    function generateWord() {
-      currentWord = wordList[Math.floor(Math.random() * wordList.length)];
-      document.getElementById('wordDisplay').innerText = currentWord;
-      
-      let options = [currentWord];
-      while (options.length < 4) {
-        let randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-        if (!options.includes(randomWord)) options.push(randomWord);
-      }
-      options.sort(() => Math.random() - 0.5);
-
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = '';
-      options.forEach(w => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-opt';
-        btn.innerText = w;
-        btn.onclick = () => checkWord(w);
-        container.appendChild(btn);
-      });
-
-      speakWord();
-    }
-
-    function checkWord(selected) {
-      const feedback = document.getElementById('feedback');
-      if (selected === currentWord) {
-        totalStars += 1;
-        streak += 1;
-        localStorage.setItem('read_stars', totalStars);
-        document.getElementById('totalStars').innerText = totalStars;
-        feedback.innerHTML = "🌟 Awesome Reading!";
-        feedback.style.color = "#16a34a";
-      } else {
-        streak = 0;
-        feedback.innerHTML = Try again! That was \;
-        feedback.style.color = "#dc2626";
-      }
-      document.getElementById('streak').innerText = streak;
-      generateWord();
-    }
-
-    generateWord();
-      function printWorksheet() {
-      let printWin = window.open('', '', 'width=800,height=600');
-      let html = '<html><head><title>ReadEasy30 Sight Words Sheet</title>';
-      html += '<style>body{font-family:sans-serif;padding:30px;} .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:1.4rem;margin-top:30px;}</style></head><body>';
-      html += '<h2>📚 ReadEasy30 - Sight Words Tracing & Reading</h2><p>Name: ______________________ Date: ____________ Stars: _____/10</p><hr><div class="q-grid">';
-      const sampleWords = ["THE", "AND", "LIKE", "SEE", "CAN", "GO", "PLAY", "RUN", "BIG", "RED"];
-      sampleWords.forEach((w, idx) => {
-        html += '<div>' + (idx + 1) + ') Read & Trace: <b>' + w + '</b> ➔ ______________</div>';
-      });
-      html += '</div></body></html>';
-      printWin.document.write(html);
-      printWin.document.close();
-      printWin.print();
-    }
-  </script>
 </body>
 </html>
