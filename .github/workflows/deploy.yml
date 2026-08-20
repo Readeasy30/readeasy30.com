@@ -6,7 +6,19 @@ on:
       - main
 
 jobs:
+  guard:
+    name: Production Guard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run production guard
+        run: bash scripts/production-guard.sh
+
   deploy:
+    name: Deploy to Cloudflare Pages
+    needs: guard
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

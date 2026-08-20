@@ -1,87 +1,77 @@
-PROJECT: ReadEasy30
-ROLE: Technical maintenance + development
-STATUS: ACTIVE
+﻿# PROJECT CONTROL — ReadEasy30
 
-CURRENT TEACHER: Bubbles
+## Project
+ReadEasy30.com
 
-CORE RULES:
-- Preserve working code
-- No paid services
-- Open-source/free technology
-- HTML/CSS/JS preferred
-- Do not delete uncertain files
-- Archive before removal
-- Checkpoint before major changes
-- Verify deployment after major changes
+## Status
+ACTIVE — PRODUCTION SAFETY LOCKED
 
-CURRENT MISSION:
-Make ReadEasy30 fun, welcoming, accessible and functional.
+## Primary Teacher
+Bubbles — reading teacher
 
-CURRENT ARCHITECTURE:
-30-day core + extended learning path
-Bubbles reading coach
-Progress journey
-Lessons
-Vocabulary
-Practice
-Worksheets
-Parents
-Teachers
-About
+## Mission
+Keep ReadEasy30 functional for existing learners and improve it incrementally without disrupting working features.
 
-LAST CHECKPOINT:
-...
+## Architecture
+Static HTML/CSS/JS.
+GitHub main → Cloudflare Pages → readeasy30.com.
 
-NEXT TASK:
-...
+## Operating Rules
 
-KNOWN ISSUES:
-...
+- Preserve working code.
+- Repair before rebuilding.
+- Do not delete uncertain files.
+- Archive before removal.
+- Use open-source/free technology.
+- Protect existing learners.
+- Keep ReadEasy30 separate from MathEasy30.
+- Checkpoint meaningful changes.
+- Verify deployment after major changes.
+- Never experiment directly against production.
+- Roll back before investigating a failed release.
+- Never commit credentials or API keys.
 
-DO NOT TOUCH:
-...
-PROJECT: ReadEasy30
-ROLE: Technical maintenance + development
-STATUS: ACTIVE
+## Release Path
 
-CURRENT TEACHER: Bubbles
+LOCAL
+→ TEST
+→ GIT COMMIT
+→ GITHUB MAIN
+→ PRODUCTION GUARD
+→ CLOUDFLARE
+→ LIVE VERIFICATION
 
-CORE RULES:
-- Preserve working code
-- No paid services
-- Open-source/free technology
-- HTML/CSS/JS preferred
-- Do not delete uncertain files
-- Archive before removal
-- Checkpoint before major changes
-- Verify deployment after major changes
+## Recovery
 
-CURRENT MISSION:
-Make ReadEasy30 fun, welcoming, accessible and functional.
+Known repository checkpoint:
 
-CURRENT ARCHITECTURE:
-30-day core + extended learning path
-Bubbles reading coach
-Progress journey
-Lessons
-Vocabulary
-Practice
-Worksheets
-Parents
-Teachers
-About
+production-known-good-2026-08-20
 
-LAST CHECKPOINT:
-...
+Commit:
+a86f0d6e2599f5e817d72a61bbf2c9907135359c
 
-NEXT TASK:
-...
+## Current Known Situation
 
-KNOWN ISSUES:
-...
+The repository contains a substantial ReadEasy30 codebase, including the learner app, lesson files, Bubbles components, worksheets, curriculum, accessibility material, and production documentation.
 
-DO NOT TOUCH:
-...
-CHANGELOG.md
-BUILD-CHECKPOINT.md
-ARCHITECTURE.md
+The live domain is currently serving an older website than the intended newer learner build.
+
+Do not replace production until the correct intended build has been identified and tested.
+
+## DO NOT TOUCH
+
+- MathEasy30
+- Top Shelf Websites
+- Executive Avatar work
+- Anna repository
+- Unrelated files
+
+## Recovery Rule
+
+If work stops, update this file with:
+
+- What was completed
+- What was tested
+- What remains broken
+- Exact next task
+- Last known-good checkpoint
