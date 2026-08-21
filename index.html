@@ -1,1 +1,52 @@
-<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>ReadEasy30 - Free Reading Practice</title><script src='https://cdn.tailwindcss.com'></script></head><body class='bg-gray-50 text-gray-900 min-h-screen flex flex-col justify-between'><header class='bg-white border-b border-gray-200 py-4 px-6 shadow-sm'><div class='max-w-4xl mx-auto flex justify-between items-center'><h1 class='text-2xl font-black text-blue-600'>ReadEasy30</h1><p class='text-sm font-semibold text-gray-600'>30 Minutes a Day. Zero Cost.</p></div></header><main class='flex-grow p-4'><section class='max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-lg border border-gray-100 my-8'><div class='flex flex-col md:flex-row items-center justify-between gap-6'><div class='flex items-center space-x-4'><div class='w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md'>📖</div><div><h3 class='text-xl font-bold text-gray-900'>ReadEasy30 Coach</h3><p class='text-lg font-semibold text-blue-600 my-1' id='current-word'>Click 'Next Word' to begin</p><p class='text-xs text-gray-500' id='coach-status'>Take your time. 30 minutes a day builds fluent readers.</p></div></div><div class='w-full md:w-1/3 bg-gray-50 p-4 rounded-xl border border-gray-200'><div class='flex justify-between text-sm font-semibold text-gray-700 mb-2'><span>Daily Goal</span><span id='timer-display'>30:00 remaining</span></div><div class='w-full bg-gray-200 rounded-full h-3'><div id='progress-bar' class='bg-blue-600 h-3 rounded-full transition-all duration-500' style='width: 100%;'></div></div></div></div><div class='mt-6 flex flex-wrap gap-3 items-center justify-between border-t border-gray-100 pt-4'><div class='flex gap-2 flex-wrap'><button onclick='readCurrentWord()' class='px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow transition flex items-center gap-2'>🔊 Hear Word</button><button onclick='toggleSlowPacing()' id='pacing-btn' class='px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl transition'>🐢 Slow Speech: Off</button></div><div class='flex gap-2'><button onclick='previousWord()' class='px-4 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-xl transition'>&larr; Back</button><button onclick='nextWord()' class='px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow transition'>Next Word &rarr;</button></div></div></section></main><footer class='bg-white border-t border-gray-200 py-4 text-center text-sm text-gray-500'><p>&copy; 2026 ReadEasy30. Empowering readers everywhere at zero cost.</p></footer><script>const practiceList=[{word:'the',tip:'A fundamental building block word.'},{word:'and',tip:'Connects ideas together smoothly.'},{word:'look',tip:'Use your eyes to focus.'},{word:'because',tip:'Break it down: be-cause.'},{word:'through',tip:'Notice the ough sound pattern.'},{word:'comprehension',tip:'Understanding what you read step by step.'}];let currentIndex=0;let isSlowPaced=false;function updateDisplay(){const currentObj=practiceList[currentIndex];document.getElementById('current-word').innerText=currentObj.word;document.getElementById('coach-status').innerText=currentObj.tip;}function readCurrentWord(){const wordText=practiceList[currentIndex].word;if('speechSynthesis' in window){window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(wordText);utterance.rate=isSlowPaced?0.6:0.9;window.speechSynthesis.speak(utterance);}else{alert('Text-to-speech is not supported.');}}function toggleSlowPacing(){isSlowPaced=!isSlowPaced;const btn=document.getElementById('pacing-btn');btn.innerText=isSlowPaced?'🐢 Slow Speech: On':'🐢 Slow Speech: Off';btn.classList.toggle('bg-emerald-100',isSlowPaced);}function nextWord(){currentIndex=(currentIndex+1)%practiceList.length;updateDisplay();readCurrentWord();}function previousWord(){currentIndex=(currentIndex-1+practiceList.length)%practiceList.length;updateDisplay();readCurrentWord();}updateDisplay();</script></body></html>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReadEasy30 - Calm & Steady Reading Practice</title>
+  <style>
+    body { font-family: 'Comic Sans MS', sans-serif, system-ui; background-color: #f0f9ff; color: #1e293b; margin: 0; padding: 20px; text-align: center; }
+    main { max-width: 700px; margin: 40px auto; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); border: 4px solid #38bdf8; }
+    h1 { color: #0284c7; font-size: 2.8rem; margin-bottom: 5px; }
+    .subtitle { font-size: 1.3rem; color: #475569; margin-bottom: 30px; }
+    .grid { display: flex; flex-direction: column; gap: 15px; margin: 25px 0; }
+    .card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 2px solid #e2e8f0; text-decoration: none; color: inherit; display: block; transition: transform 0.1s, border-color 0.1s; }
+    .card:hover { transform: scale(1.02); border-color: #38bdf8; }
+    .card h2 { margin: 0 0 5px 0; font-size: 1.6rem; }
+    .reading-card h2 { color: #0284c7; }
+    .math-card h2 { color: #16a34a; }
+    .card p { margin: 0; font-size: 1.1rem; color: #64748b; }
+    .app-footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; color: #64748b; }
+    .footer-links a { margin: 0 10px; color: #0284c7; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>ReadEasy30 🎈</h1>
+    <p class="subtitle">A calm, steady place for fast learners to practice!</p>
+
+    <div class="grid">
+      <a href="app.html" class="card reading-card">
+        <h2>📚 Start Reading Now</h2>
+        <p>Fun, steady reading lessons with tap-to-speak words!</p>
+      </a>
+
+      <a href="https://matheasy30.com" class="card math-card">
+        <h2>➕ Math Practice Too</h2>
+        <p>Quick addition and number challenges on MathEasy30.com!</p>
+      </a>
+    </div>
+
+    <footer class="app-footer">
+      <nav class="footer-links">
+        <a href="printable-reading-worksheets.html">Worksheets</a>
+        <a href="parent-tutor-guide.html">Parent Help</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+      <p>&copy; 2026 ReadEasy30</p>
+    </footer>
+  </main>
+
+</body>
+</html>
