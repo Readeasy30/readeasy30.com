@@ -264,3 +264,126 @@
     initialize();
   }
 }());
+
+/**
+ * ReadEasy30 - Bubbles Automated Verbal Mobile Teacher Assistant
+ * Optimized for Mobile Safari, Android Chrome, and Accessibility/Special-Ed Tapping Targets.
+ */
+
+class BubblesVoiceCoach {
+  constructor() {
+    this.recognition = null;
+    this.isListening = false;
+    this.currentStoryText = "";
+    this.synth = window.speechSynthesis;
+    
+    // Core Elements for Speech Recognition (Using Webkit Prefix for Mobile iOS support)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      this.recognition = new SpeechRecognition();
+      this.setupRecognitionSettings();
+    } else {
+      console.warn("Verbal Input not natively supported on this browser profile.");
+    }
+  }
+
+  // Optimize speech settings specifically for young learners and special-ed tempos
+  setupRecognitionSettings() {
+    this.recognition.continuous = false; // Stops after every utterance to give immediate feedback
+    this.recognition.interimResults = false; // Only finalize clear matches
+    this.recognition.lang = 'en-US';
+
+    this.recognition.onstart = () => {
+      this.isListening = true;
+      this.updateCoachUI(true);
+    };
+
+    this.recognition.onerror = (event) => {
+      console.error("Speech Assistant recognition error:", event.error);
+      this.stopListening();
+    };
+
+    this.recognition.onend = () => {
+      this.isListening = false;
+      this.updateCoachUI(false);
+    };
+
+    this.recognition.onresult = (event) => {
+      const spokenText = event.results[0][0].transcript.toLowerCase().trim();
+      this.verifyStudentReading(spokenText);
+    };
+  }
+
+  // Triggers the mobile device microphone to listen safely
+  startListening(expectedText = "") {
+    if (!this.recognition || this.isListening) return;
+    this.currentStoryText = expectedText.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    
+    try {
+      this.recognition.start();
+    } catch (e) {
+      console.error("Failed to cycle microphone activation path:", e);
+    }
+  }
+
+  stopListening() {
+    if (this.recognition && this.isListening) {
+      this.recognition.stop();
+    }
+  }
+
+  // Evaluates spoken text against current word targeting logic
+  verifyStudentReading(spokenText) {
+    console.log(`Bubbles Coach Heard: "${spokenText}" | Expected: "${this.currentStoryText}"`);
+    
+    // Simple, robust verification loop
+    if (spokenText === this.currentStoryText || this.currentStoryText.includes(spokenText)) {
+      this.speakFeedback("Excellent reading! Let's keep moving forward!");
+      this.triggerSuccessAnimation();
+    } else {
+      // Gentle phonetic correction scaffolding for special education paths
+      this.speakFeedback(`So close! Let's try that one more time together.`);
+    }
+  }
+
+  // Calibrated warm classic reading coach parameters
+  speakFeedback(textToSpeak) {
+    if (!this.synth) return;
+    this.synth.cancel(); // Terminate lingering active playback threads
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    const voices = this.synth.getVoices();
+    
+    // Fallback prioritizing warmer premium natural accessibility voices on modern OS layers
+    const nativeCoachVoice = voices.find(v => v.name.includes('Google US English') || v.name.includes('Samantha') || v.lang === 'en-US');
+    if (nativeCoachVoice) utterance.voice = nativeCoachVoice;
+
+    utterance.rate = 0.85; // Slightly slower tempo for processing cadence support
+    utterance.pitch = 1.05; // Friendly, neutral instructional resonance
+    
+    this.synth.speak(utterance);
+  }
+
+  updateCoachUI(active) {
+    const coachButton = document.getElementById('bubbles-coach-trigger');
+    if (!coachButton) return;
+    if (active) {
+      coachButton.classList.add('bg-green-500', 'animate-pulse');
+      coachButton.innerText = "🎤 Bubbles is Listening...";
+    } else {
+      coachButton.classList.remove('bg-green-500', 'animate-pulse');
+      coachButton.innerText = "✨ Tap to Read to Bubbles";
+    }
+  }
+
+  triggerSuccessAnimation() {
+    // Interface feedback pipeline hooks (dispatched back to learner-mode.js/app.js state cascades)
+    const event = new CustomEvent('bubbles-lesson-passed', { detail: { timestamp: Date.now() } });
+    window.dispatchEvent(event);
+  }
+}
+
+// Global initialization logic linking the coach instance safely across document fragments
+document.addEventListener('DOMContentLoaded', () => {
+  window.BubblesCoachInstance = new BubblesVoiceCoach();
+});
