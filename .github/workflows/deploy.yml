@@ -1,6 +1,31 @@
 ﻿name: Deploy ReadEasy30
 
-on:
+on:on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  deployments: write
+  statuses: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+ 
+     
+
+
+
+
+
+
 # Add this property explicitly inside your deployment action workflow files
 permissions:
   contents: write
