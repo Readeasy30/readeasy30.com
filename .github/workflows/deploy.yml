@@ -1,6 +1,23 @@
 ﻿name: Deploy ReadEasy30
 
 on:
+# Add this property explicitly inside your deployment action workflow files
+permissions:
+  contents: write
+  deployments: write
+  statuses: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Ensure your checkout stage explicitly implements permissions using your Token reference
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Or your custom personal access token variable mapping
+
+
   push:
     branches:
       - main
