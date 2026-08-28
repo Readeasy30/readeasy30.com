@@ -1,0 +1,97 @@
+generate_curriculum.py
+python generate_curriculum.py
+python generate_curriculum.py
+pythonimport json
+import os
+import requests
+
+# Point this directly to your local, free Ollama API instance
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+MODEL_NAME = "llama3"  # Change to "qwen2.5-coder" if that is what you have loaded
+
+# Build out a curriculum matrix structure
+grade_bands = {
+    "Level A": {"grade": "Pre-K to Kindergarten", "focus": "Short phonetic words, simple sights"},
+    "Level B": {"grade": "1st Grade Readiness", "focus": "CVC words, short sentences"},
+    "Level C": {"grade": "2nd Grade", "focus": "Compound words, basic dialogue"},
+    "Level D": {"grade": "3rd Grade", "focus": "Paragraph transitions, simple vocabulary context"},
+    "Level E": {"grade": "4th Grade", "focus": "Descriptive adverbs, historical contexts"},
+    "Level F": {"grade": "5th Grade", "focus": "Scientific themes, non-fiction reading comprehension"},
+    "Level G": {"grade": "6th-7th Grade", "focus": "Complex sentence structures, logical inferences"},
+    "Level H": {"grade": "8th Grade Readiness", "focus": "Advanced analysis, informational texts"}
+}
+
+def generate_lesson_data(level_key, grade_info, day_number, theme):
+    prompt = f"""
+    You are an expert Special Education teacher and reading literacy coach.
+    Generate a reading lesson block for an app.
+    Target Group Tier: {level_key} ({grade_info['grade']}).
+    Focus Parameter: {grade_info['focus']}.
+    Current Track Sequence: Day {day_number} out of 240.
+    Thematic Topic: {theme}.
+
+    Output strictly a valid JSON object. Do not wrap it in markdown block syntax. 
+    Use this exact template key structure:
+    {{
+      "day": {day_number},
+      "level": "{level_key}",
+      "levelDescription": "{grade_info['focus']}",
+      "title": "Title for Day {day_number}",
+      "story": "Write 3 to 5 sentences appropriate for this specific grade band level.",
+      "vocab": ["word1", "word2", "word3"],
+      "questions": [
+        "Write a simple text-evidence question based on the story.",
+        "Write another comprehension check question."
+      ],
+      "answers": [
+        "short simple keyword or keyphrase answer",
+        "another direct answer keyword"
+      ]
+    }}
+    """
+    
+    payload = {
+        "model": MODEL_NAME,
+        "prompt": prompt,
+        "stream": False,
+        "format": "json"
+    }
+
+    try:
+        response = requests.post(OLLAMA_API_URL, json=payload, timeout=30)
+        response.raise_for_status()
+        raw_text = response.json().get("response", "")
+        return json.loads(raw_text)
+    except Exception as e:
+        print(f"[-] Error processing Day {day_number} for {level_key}: {e}")
+        return None
+
+def main():
+    print("[+] Starting automatic curriculum lesson block generator pipeline...")
+    
+    # We will generate a sample set for Level A to build a foundation
+    generated_lessons = []
+    sample_topics = ["Happy Pets", "The Sunny Park", "Big Blue Oceans", "Forest Trees", "Yummy Apples"]
+    
+    for idx, topic in enumerate(sample_topics, start=1):
+        print(f"[->] Generating Day {idx} for Level A topic: '{topic}'...")
+        lesson_json = generate_lesson_data("Level A", grade_bands["Level A"], idx, topic)
+        
+        if lesson_json:
+            generated_lessons.append(lesson_json)
+            
+    if generated_lessons:
+        output_file = "curriculum-data-patch.js"
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write("// Auto-Generated Reading App Lesson Dataset Array Block\n")
+            f.write("const lessons = ")
+            f.write(json.dumps(generated_lessons, indent=2))
+            f.write(";\n")
+            
+        print(f"[+] Success! Lesson data saved completely to: {output_file}")
+        print("[+] You can paste this array right into your curriculum-240.js file!")
+
+if __name__ == "__main__":
+    main()
+Use code with caution.How to Run This ScriptMake sure you have Ollama running locally on your computer.Install the requests library in your terminal:bashpip install requests
+Use code with caution.Run the script:bash
