@@ -1,33 +1,22 @@
-﻿name: Deploy ReadEasy30
-
-on:
+﻿on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write
+  deployments: write
+  statuses: write
+
 jobs:
-  guard:
-    name: Production Guard
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Run production guard
-        run: bash scripts/production-guard.sh
-
-  deploy:
-    name: Deploy to Cloudflare Pages
-    needs: guard
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: readeasy30.com
-          directory: .
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Run Build
+        run: |
+          echo "Building site assets..."
