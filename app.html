@@ -1,53 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReadEasy30 - Calm & Steady Reading Practice</title>
-  <style>
-    body { font-family: 'Comic Sans MS', sans-serif, system-ui; background-color: #f0f9ff; color: #1e293b; margin: 0; padding: 20px; text-align: center; }
-    main { max-width: 700px; margin: 40px auto; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); border: 4px solid #38bdf8; }
-    h1 { color: #0284c7; font-size: 2.8rem; margin-bottom: 5px; }
-    .subtitle { font-size: 1.3rem; color: #475569; margin-bottom: 30px; }
-    .grid { display: flex; flex-direction: column; gap: 15px; margin: 25px 0; }
-    .card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 2px solid #e2e8f0; text-decoration: none; color: inherit; display: block; transition: transform 0.1s, border-color 0.1s; }
-    .card:hover { transform: scale(1.02); border-color: #38bdf8; }
-    .card h2 { margin: 0 0 5px 0; font-size: 1.6rem; }
-    .reading-card h2 { color: #0284c7; }
-    .math-card h2 { color: #16a34a; }
-    .card p { margin: 0; font-size: 1.1rem; color: #64748b; }
-    .app-footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; color: #64748b; }
-    .footer-links a { margin: 0 10px; color: #0284c7; text-decoration: none; font-weight: bold; }
-    .footer-links a:hover { text-decoration: underline; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadEasy30 - Calm & Steady Reading Practice</title>
+    <!-- Tailwind CSS for modern, high-utility styling -->
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        /* OpenDyslexic font integration for special education accommodation */
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url('https://jsdelivr.net') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .dyslexic-mode, .dyslexic-mode input, .dyslexic-mode select, .dyslexic-mode button {
+            font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+        }
+        /* Style hooks match your application logic */
+        .story-word {
+            display: inline-block;
+            cursor: pointer;
+            padding: 0 2px;
+            margin: 0 1px;
+            border-radius: 4px;
+            transition: background-color 0.1s;
+        }
+        .story-word:hover {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+        .vocab-pill {
+            display: inline-block;
+            cursor: pointer;
+            padding: 6px 14px;
+            background-color: #f0fdf4;
+            border: 2px solid #bbf7d0;
+            color: #166534;
+            font-weight: bold;
+            border-radius: 9999px;
+            transition: transform 0.1s;
+        }
+        .vocab-pill:active {
+            transform: scale(0.95);
+        }
+        .answer-correct {
+            border-color: #22c55e !important;
+            background-color: #f0fdf4 !important;
+        }
+        .answer-needs-work {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-sky-50 text-slate-800 font-sans transition-colors duration-200">
 
-  <main>
-    <h1>ReadEasy30 🎈</h1>
-    <p class="subtitle">A calm, steady place for fast learners to practice!</p>
+    <main class="max-w-2xl mx-auto my-6 px-4">
+        <!-- App Header Layout -->
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-sky-600 mb-1">ReadEasy30 🎈</h1>
+            <p class="text-sm text-slate-600">A calm, steady place for fast learners to practice!</p>
+        </header>
 
-    <div class="grid">
-      <a href="app.html" class="card reading-card">
-        <h2>📚 Start Reading Now</h2>
-        <p>Fun, steady reading lessons with tap-to-speak words!</p>
-      </a>
+        <!-- Accessibility Controls Component -->
+        <section class="bg-white border-2 border-sky-200 rounded-xl p-3 mb-6 shadow-sm flex flex-wrap justify-center gap-3 text-xs" aria-label="Accessibility Settings">
+            <button type="button" onclick="toggleDyslexicFont()" class="bg-slate-100 hover:bg-slate-200 border border-slate-300 font-semibold py-1.5 px-3 rounded-lg transition">
+                🔤 Toggle Readable Font
+            </button>
+            <button type="button" onclick="toggleDarkMode()" class="bg-slate-100 hover:bg-slate-200 border border-slate-300 font-semibold py-1.5 px-3 rounded-lg transition">
+                🌓 High Contrast Mode
+            </button>
+            <button type="button" onclick="resetProgress()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-semibold py-1.5 px-3 rounded-lg transition">
+                ♻️ Reset This Student
+            </button>
+        </section>
 
-      <a href="math-practice-too.html" class="card math-card">
-        <h2>➕ Math Practice Too</h2>
-        <p>Quick addition and number challenges to keep minds sharp!</p>
-      </a>
-    </div>
+        <!-- Live Metrics Tracking Engine Interface Nodes -->
+        <section class="bg-white border border-slate-200 rounded-xl p-4 mb-6 shadow-sm grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-sm font-bold">
+            <div id="completedCount" class="bg-slate-50 p-2 rounded-lg text-slate-700">Completed: 0</div>
+            <div id="streakCount" class="bg-slate-50 p-2 rounded-lg text-amber-700">Streak: 0</div>
+            <div id="timerCount" class="bg-slate-50 p-2 rounded-lg text-indigo-700">Time: 0:00</div>
+            <div class="bg-slate-50 p-2 rounded-lg text-sky-700 flex items-center justify-center gap-1">
+                Progress: <span id="progressText">0%</span>
+            </div>
+            <div class="col-span-2 sm:col-span-4 w-full bg-slate-100 h-3 rounded-full overflow-hidden mt-1">
+                <div id="progressBar" class="bg-sky-500 h-full transition-all duration-300" style="width: 0%;"></div>
+            </div>
+        </section>
 
-    <footer class="app-footer">
-      <nav class="footer-links">
-        <a href="printable-reading-worksheets.html">Worksheets</a>
-        <a href="parent-tutor-guide.html">Parent Help</a>
-        <a href="privacy.html">Privacy</a>
-      </nav>
-      <p>&copy; 2026 ReadEasy30</p>
-    </footer>
-  </main>
+        <!-- Day Selector Dynamic Dropdown Element -->
+        <div class="mb-4">
+            <label for="daySelect" class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Jump to Lesson Day:</label>
+            <select id="daySelect" class="w-full bg-white border-2 border-slate-200 rounded-xl p-3 font-medium text-slate-700 shadow-sm focus:border-sky-400 focus:outline-none"></select>
+        </div>
 
-</body>
-</html>
+        <!-- Main Reading Work Environment Panel Container -->
+        <article id="lessonArea" class="bg-white border-4 border-sky-400 rounded-2xl p-6 shadow-md mb-6">
+            
+            <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                <span id="storyLevel" class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Level</span>
+                <span id="lessonCount" class="text-xs font-bold text-slate-400">Lesson -- of 240</span>
+            </div>
+
+            <h2 id="storyTitle" class="text-2xl font-bold text-slate-800 mb-1 text-center">Story Title</h2>
+            <div id="levelTitle" class="text-xs font-bold text-center text-slate-400 uppercase tracking-wide mb-4">Level Title</div>
+
+            <!-- Active Story text panel element context -->
+            <div id="storyText" class="text-xl sm:text-2xl font-medium leading-relaxed text-slate-800 bg-slate-50 p-5 rounded-xl border border-slate-100 mb-6 text-left">
+                Loading lesson story data block matrix options...
+            </div>
+
+            <!-- Key Vocabulary Target Elements Wrapper -->
+            <div class="mb-6 text-left">
+                <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Key Vocabulary (Tap to hear):</span>
+                <div id="vocabList" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Bubbles Automated Voice Coach Dashboard Module Framework -->
+            <div id="bubblesCoachModule" class="bg-sky-50 border-2 border-sky-100 rounded-xl p-4 mb-6 text-center flex flex-col items-center">
+                <div id="bubblesAvatar" class="w-14 h-14 bg-gradient-to-tr from-sky-400 to-blue-500 rounded-full flex items-center justify-center text-2xl shadow-sm mb-2 transition-transform duration-150">
+                    🔵
+                </div>
+                <!-- Maps perfectly to your coachMessage assignment rules -->
+                <div id="coachMessage" class="text-sm font-medium text-sky-800 italic mb-4 max-w-md">
+                    "Loading your helpful guide..."
+                </div>
+                <div class="flex flex-col sm:flex-row gap-2 w-full justify-center">
+                    <button id="bubbles-coach-trigger" type="button" onclick="activateBubblesSpeechRecognition()" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-xl shadow transition transform active:scale-95 text-base flex items-center justify-center gap-2">
+                        🎤 Tap to Read to Bubbles
+                    </button>
+                    <button type="button" onclick="readStory()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl shadow transition transform active:scale-95 text-base flex items-center justify-center gap-2">
+                        🔊 Read Entire Story to Me
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lesson Comprehension Assessment Node -->
+            <section class="border-t border-slate-100 pt-6 text-left">
+                <h3 class="font-bold text-lg text-slate-800 mb-1 flex items-center gap-2">
+                    🧩 Lesson Comprehension
+                </h3>
+                <p id="levelDescription" class="text-xs text-slate-400 mb-4">Comprehension description tier loads automatically.</p>
+                
+                <div id="questionsDiv" class="space-y-4 mb-4"></div>
+                
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <button type="button" onclick="checkAnswers()" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 px-6 rounded-xl shadow transition text-sm">
+                        Check Answers
+                    </button>
+                    <button type="button" onclick="clearAnswers()" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold py-2.5 px-4 rounded-xl transition text-sm">
+                        Clear Answers
+                    </button>
+                </div>
+                <p id="resultMessage" class="mt-3 text-sm font-bold text-sky-700" aria-live="polite"></p>
+            </section>
+
+            <!-- Success Module State Window Elements Toggle -->
+            <div id="completeCard" class="hidden mt-6 bg-emerald-50 border-2 border-emerald-200 p-4 rounded-xl text-center">
+                <p id="completeMessage" class="font-bold text-emerald-800 text-base mb-3"></p>
+                <button type="button" onclick="nextLesson()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-6 rounded-lg text-sm shadow">
+                    Advance to Next Lesson &rarr;
+                </button>
+            </div>
+
+            <!-- Pagination Tracking Nav Node -->
+            <nav class="flex justify-between items-center border-t border-slate-100 mt-6 pt-4" aria-label="Step Navigation">
+                <button type="button" onclick="prevLesson()" class="text-slate-500 hover:text-slate-800 font-bold py-2 px-4 text-sm transition">
+                    &larr; Previous Day
+                </button>
+                <button type="button" onclick="nextLesson()" class="text-sky-600 hover:text-sky-800 font-bold py-2 px-4 text-sm transition">
