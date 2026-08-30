@@ -1,56 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReadEasy30 - Calm & Steady Reading Practice</title>
-  <style>
-    body { font-family: 'Comic Sans MS', sans-serif, system-ui; background-color: #f0f9ff; color: #1e293b; margin: 0; padding: 20px; text-align: center; }
-    main { max-width: 700px; margin: 40px auto; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); border: 4px solid #38bdf8; }
-    h1 { color: #0284c7; font-size: 2.8rem; margin-bottom: 5px; }
-    .subtitle { font-size: 1.3rem; color: #475569; margin-bottom: 30px; }
-    .grid { display: flex; flex-direction: column; gap: 15px; margin: 25px 0; }
-    .card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 2px solid #e2e8f0; text-decoration: none; color: inherit; display: block; transition: transform 0.1s, border-color 0.1s; }
-    .card:hover { transform: scale(1.02); border-color: #38bdf8; }
-    .card h2 { margin: 0 0 5px 0; font-size: 1.6rem; }
-    .reading-card h2 { color: #0284c7; }
-    .math-card h2 { color: #16a34a; }
-    .card p { margin: 0; font-size: 1.1rem; color: #64748b; }
-    .app-footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; color: #64748b; }
-    .footer-links a { margin: 0 10px; color: #0284c7; text-decoration: none; font-weight: bold; }
-  </style>
-</head>
-  <script src="bubbles.js?v=1cfea431"></script>
-  <script src="student-profiles.js?v=bdc01863"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadEasy30 | Free Foundational Reading Skills</title>
+    <style>
+        /* Warm, Accessible & Invitation-Focused Design System */
+        :root {
+            --bg-cream: #fdfbf7;
+            --text-dark: #2d2a26;
+            --brand-warm-amber: #f4a261;
+            --brand-terracotta: #e76f51;
+            --accent-mint: #e8f5e9;
+            --success-green: #4caf50;
+            --bubbles-body: #a8dadc;
+            --font-friendly: 'Lexend', 'Comic Neue', system-ui, sans-serif;
+        }
 
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: var(--font-friendly);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--brand-terracotta);
+            margin-bottom: 5px;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 0;
+        }
+
+        /* Bubbles Interactive Card Component */
+        .tutor-section {
+            background: #ffffff;
+            border: 3px solid #f1edd9;
+            border-radius: 28px;
+            padding: 25px;
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            margin-bottom: 25px;
+        }
+
+        .bubbles-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        /* Animated Avatar Element representing Bubbles */
+        .bubbles-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: var(--bubbles-body);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            box-shadow: inset 0 -8px 0 rgba(0,0,0,0.1);
+        }
+
+        /* Smooth speech animation indicator */
+        .bubbles-avatar.speaking {
+            animation: bounceTalk 0.5s infinite alternate ease-in-out;
+        }
+
+        @keyframes bounceTalk {
+            from { transform: translateY(0) scale(1); }
+            to { transform: translateY(-8px) scale(1.05); }
+        }
+
+        .speech-bubble {
+            background: #f7f9fa;
+            border-radius: 18px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eef2f3;
+        }
+
+        /* Exercises Grid Menu Layout */
+        .word-box {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+            margin: 20px 0;
+            min-height: 90px;
+        }
+
+        .btn-action {
+            background-color: var(--brand-warm-amber);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 var(--brand-terracotta);
+            transition: transform 0.1s;
+        }
+
+        .btn-action:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 var(--brand-terracotta);
+        }
+
+        /* Dynamic Progress Tracking System */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 12px;
+            border: 2px solid #f1edd9;
+        }
+
+        .stat-item {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .stat-num {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--success-green);
+        }
+    </style>
+</head>
 <body>
 
-  <main>
-    <h1>ReadEasy30 🎈</h1>
-    <p class="subtitle">A calm, steady place for fast learners to practice!</p>
+    <header>
+        <h1>ReadEasy30</h1>
+        <p class="subtitle">Your 30-Minute Daily Path to Reading Success</p>
+    </header>
 
-    <div class="grid">
-      <a href="app.html" class="card reading-card">
-        <h2>📚 Start Reading Now</h2>
-        <p>Fun, steady reading lessons with tap-to-speak words!</p>
-      </a>
+    <!-- Main Active Educational Layout View Window -->
+    <div class="tutor-section">
+        <div class="bubbles-container">
+            <div id="bubbles-avatar" class="bubbles-avatar">🧼</div>
+        </div>
+        
+        <div id="speech-bubble" class="speech-bubble">
+            Hello! I am Bubbles. Let's learn a brand new sight word together today!
+        </div>
 
-      <a href="https://matheasy30.com" class="card math-card">
-        <h2>➕ Math Practice Too</h2>
-        <p>Quick addition and number challenges on MathEasy30.com!</p>
-      </a>
+        <div id="word-display" class="word-box">CAT</div>
+
+        <button class="btn-action" onclick="app.handlePrimaryAction()">Listen & Read</button>
     </div>
 
-    <footer class="app-footer">
-      <nav class="footer-links">
-        <a href="printable-reading-worksheets.html">Worksheets</a>
-        <a href="parent-tutor-guide.html">Parent Help</a>
-        <a href="privacy.html">Privacy</a>
-      </nav>
-      <p>&copy; 2026 ReadEasy30</p>
-    </footer>
-  </main>
+    <!-- Live Performance Scorecard Dashboard Area -->
+    <div class="stats-bar">
+        <div class="stat-item">Words Mastered <span id="stat-words" class="stat-num">0</span></div>
+        <div class="stat-item">Daily Streak <span id="stat-streak" class="stat-num">0</span></div>
+    </div>
 
+    <script>
+        // Core Static Application Architecture Definition
+        class ReadEasyApp {
+            constructor() {
+                // Curated public domain phonics targets optimized for entry level learners
+                this.lessonWords = ["CAT", "SAT", "MAT", "THE", "AND", "YOU", "THAT", "WAS", "FOR", "ON"];
+                this.currentIndex = 0;
+                
+                // Initialize internal persistent browser cache values
+                this.score = parseInt(localStorage.getItem('re30_score')) || 0;
+                this.streak = parseInt(localStorage.getItem('re30_streak')) || 0;
+                
+                this.avatar = document.getElementById('bubbles-avatar');
+                this.bubble = document.getElementById('speech-bubble');
+                this.wordDisplay = document.getElementById('word-display');
+                
+                this.initAppView();
+            }
+
+            initAppView() {
+                this.updateMetricsDisplay();
+                this.loadCurrentWord();
+            }
+
+            loadCurrentWord() {
+                const targetWord = this.lessonWords[this.currentIndex];
+                this.wordDisplay.innerText = targetWord;
+            }
+
+            updateMetricsDisplay() {
+                document.getElementById('stat-words').innerText = this.score;
+                document.getElementById('stat-streak').innerText = this.streak;
+            }
+
+            // Executes native client-side speech narration mechanics 
+            speakText(message, callback) {
+                if (!window.speechSynthesis) return;
+
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(message);
+                
+                // Fine-tune delivery settings for child and adult literacy comprehension
+                utterance.rate = 0.80; 
+                utterance.pitch = 1.15; 
+
+                utterance.onstart = () => this.avatar.classList.add('speaking');
+                utterance.onend = () => {
+                    this.avatar.classList.remove('speaking');
+                    if (callback) callback();
+                };
+                utterance.onerror = () => this.avatar.classList.remove('speaking');
+
+                window.speechSynthesis.speak(utterance);
+            }
+
+            handlePrimaryAction() {
+                const activeWord = this.lessonWords[this.currentIndex];
+                this.bubble.innerText = `Listen closely: ${activeWord}. Can you say it out loud?`;
+                
+                this.speakText(activeWord, () => {
+                    // Automatically track progress milestones after narration completes
+                    setTimeout(() => {
+                        this.score += 1;
+                        if(this.streak === 0) this.streak = 1;
+                        
+                        localStorage.setItem('re30_score', this.score);
+                        localStorage.setItem('re30_streak', this.streak);
+                        this.updateMetricsDisplay();
+
+                        // Cycle systematically to next curriculum sequence point
+                        this.currentIndex = (this.currentIndex + 1) % this.lessonWords.length;
+                        this.loadCurrentWord();
+                        this.bubble.innerText = "Excellent reading! Let's try the next word.";
+                    }, 1200);
+                });
+            }
+        }
+
+        // Run application on container instantiation
+        let app;
+        window.addEventListener('DOMContentLoaded', () => {
+            app = new ReadEasyApp();
+        });
+    </script>
 </body>
 </html>
-
