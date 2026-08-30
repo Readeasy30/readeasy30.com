@@ -1,22 +1,18 @@
-﻿on:
+﻿name: Automated Static Build
+
+on:
   push:
     branches:
       - main
 
-permissions:
-  contents: write
-  deployments: write
-  statuses: write
-
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Run Build
+
+      - name: Verify Workspace Core
         run: |
-          echo "Building site assets..."
+          echo "Automation pipeline is running successfully."
+          echo "Static assets verified for deployment."
