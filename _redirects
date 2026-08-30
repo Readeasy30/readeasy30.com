@@ -1,4 +1,2 @@
-# Cloudflare Pages redirects for MathEasy30
-# Clean URLs handled automatically by Cloudflare Pages — no /app rules (they cause a loop).
-# Cloudflare Pages redirects for MathEasy30
-# Clean URLs handled automatically by Cloudflare Pages — no /app rules (they cause a loop).
+# Force all clean sub-URLs to fallback directly to the root application safely
+/*    /index.html   200
