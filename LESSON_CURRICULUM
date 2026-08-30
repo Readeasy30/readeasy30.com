@@ -1,0 +1,41 @@
+const LESSON_CURRICULUM = [
+    // Week 1: Short 'a' & Foundational Sight Words
+    { id: 1, level: "Level 1", title: "The Big Cat", text: "The big cat sat on a warm red mat.", vocabulary: ["CAT", "SAT", "MAT"], question: "Where did the big cat sit?", options: ["On a mat", "In a box", "On a tree"], correct: 0 },
+    { id: 2, level: "Level 1", title: "A Fun Map", text: "He has a map in his small tan cap.", vocabulary: ["MAP", "HAS", "CAP"], question: "What is in his cap?", options: ["A toy", "A map", "A pen"], correct: 1 },
+    { id: 3, level: "Level 1", title: "The Fast Van", text: "A man ran to the big blue van.", vocabulary: ["MAN", "RAN", "VAN"], question: "Who ran to the van?", options: ["A dog", "A boy", "A man"], correct: 2 },
+    { id: 4, level: "Level 1", title: "Dad and Jam", text: "Dad put sweet red jam on the hot ham.", vocabulary: ["DAD", "JAM", "HAM"], question: "What did Dad put on the ham?", options: ["Jam", "Milk", "Eggs"], correct: 0 },
+    { id: 5, level: "Level 1", title: "The Sad Bag", text: "A wet tag was on the big rag bag.", vocabulary: ["TAG", "RAG", "BAG"], question: "What was on the rag bag?", options: ["A bug", "A tag", "A hat"], correct: 1 },
+    { id: 6, level: "Level 1", title: "A Quick Nap", text: "The fat cat took a long warm nap.", vocabulary: ["FAT", "NAP", "CAT"], question: "Who took a long warm nap?", options: ["The fat cat", "The small dog", "The big bird"], correct: 0 },
+    
+    // Week 2: Short 'e' & Consonant Blends
+    { id: 7, level: "Level 2", title: "The Red Hen", text: "Ten men saw a big red hen in the pen.", vocabulary: ["TEN", "MEN", "HEN"], question: "What color was the hen?", options: ["Blue", "Red", "Black"], correct: 1 },
+    { id: 8, level: "Level 2", title: "A Wet Net", text: "He met a wet pet by the big fishing net.", vocabulary: ["MET", "WET", "NET"], question: "What kind of net was it?", options: ["A butterfly net", "A soccer net", "A fishing net"], correct: 2 },
+    { id: 9, level: "Level 2", title: "Ben's Bed", text: "Ben fed the dog and went straight to bed.", vocabulary: ["BEN", "FED", "BED"], question: "What did Ben do before going to bed?", options: ["Fed the dog", "Read a book", "Played a game"], correct: 0 },
+    { id: 10, level: "Level 2", title: "Get the Jet", text: "They set the small toy jet on the desk.", vocabulary: ["SET", "JET", "DESK"], question: "What toy did they put on the desk?", options: ["A car", "A train", "A jet"], correct: 2 },
+    { id: 11, level: "Level 2", title: "The Red Gem", text: "She left a bright red gem on the step.", vocabulary: ["GEM", "LEFT", "STEP"], question: "Where did she leave the gem?", options: ["On the step", "In her bag", "On the table"], correct: 0 },
+    { id: 12, level: "Level 2", title: "Help the Vet", text: "Meg sent her sick pet to the local vet.", vocabulary: ["MEG", "SENT", "VET"], question: "Why did Meg send her pet to the vet?", options: ["It was hungry", "It was sick", "It wanted to play"], correct: 1 },
+
+    // Week 3: Short 'i' & Early Sentence Structures
+    { id: 13, level: "Level 3", title: "The Tin Bin", text: "A big pin fell into the tin bin.", vocabulary: ["PIN", "TIN", "BIN"], question: "What fell into the tin bin?", options: ["A rock", "A pin", "A coin"], correct: 1 },
+    { id: 14, level: "Level 3", title: "A Big Pig", text: "The big fat pig dug a deep pit.", vocabulary: ["BIG", "PIG", "PIT"], question: "What did the big fat pig dig?", options: ["A hole", "A tunnel", "A deep pit"], correct: 2 },
+    { id: 15, level: "Level 3", title: "Sit and Win", text: "Tim can win if he sits very still.", vocabulary: ["TIM", "WIN", "SITS"], question: "How can Tim win the game?", options: ["By running fast", "By sitting still", "By yelling loud"], correct: 1 },
+    { id: 16, level: "Level 3", title: "The Wet Fin", text: "The fish has a shiny silver fin.", vocabulary: ["FISH", "FIN", "SILVER"], question: "What kind of fin does the fish have?", options: ["Shiny silver", "Bright orange", "Deep blue"], correct: 0 },
+    { id: 17, level: "Level 3", title: "The Zip Bag", text: "Fix the red zip on the heavy gym bag.", vocabulary: ["FIX", "ZIP", "BAG"], question: "What needs to be fixed on the bag?", options: ["The strap", "The handle", "The red zip"], correct: 2 },
+    { id: 18, level: "Level 3", title: "A Fun Kid", text: "The happy kid hid behind the big lid.", vocabulary: ["KID", "HID", "LID"], question: "Where did the happy kid hide?", options: ["Behind the lid", "Under the bed", "In the closet"], correct: 0 },
+
+    // Week 4: Short 'o' & Compound Recognition
+    { id: 19, level: "Level 4", title: "The Hot Pot", text: "The hot cooking pot sat on the stove.", vocabulary: ["HOT", "POT", "STOVE"], question: "What was hot in the kitchen?", options: ["The milk", "The cooking pot", "The plate"], correct: 1 },
+    { id: 20, level: "Level 4", title: "A Lazy Dog", text: "The brown dog can hop over the log.", vocabulary: ["DOG", "HOP", "LOG"], question: "What can the brown dog hop over?", options: ["A fence", "A log", "A rock"], correct: 1 },
+    { id: 21, level: "Level 4", title: "The Lost Mop", text: "Tom put the wet mop in the storage box.", vocabulary: ["TOM", "MOP", "BOX"], question: "Where did Tom put the wet mop?", options: ["In the storage box", "In the sink", "Outside"], correct: 0 },
+    { id: 22, level: "Level 4", title: "The Thick Fog", text: "A wild fox ran through the thick morning fog.", vocabulary: ["FOX", "FOG", "THICK"], question: "What ran through the thick morning fog?", options: ["A cat", "A deer", "A wild fox"], correct: 2 },
+    { id: 23, level: "Level 4", title: "Top of the Rock", text: "The spinning top stopped on a flat gray rock.", vocabulary: ["TOP", "ROCK", "FLAT"], question: "Where did the spinning top stop?", options: ["On a flat gray rock", "On the grass", "In the dirt"], correct: 0 },
+    { id: 24, level: "Level 4", title: "A Small Pond", text: "The green frog made a big plop in the pond.", vocabulary: ["FROG", "PLOP", "POND"], question: "What animal made a plop in the pond?", options: ["A fish", "A green frog", "A duck"], correct: 1 },
+
+    // Week 5: Short 'u' & Advanced Structural Fluency
+    { id: 25, level: "Level 5", title: "The Muddy Bug", text: "A tiny brown bug fell directly into the warm mud.", vocabulary: ["BUG", "MUD", "FALL"], question: "Where did the tiny brown bug fall?", options: ["Into the mud", "On a leaf", "In the water"], correct: 0 },
+    { id: 26, level: "Level 5", title: "Run in the Sun", text: "The energetic pup loves to run in the warm sun.", vocabulary: ["PUP", "RUN", "SUN"], question: "What does the energetic pup love to do?", options: ["Sleep all day", "Run in the sun", "Eat snacks"], correct: 1 },
+    { id: 27, level: "Level 5", title: "A Sweet Nut", text: "We found a hard brown nut inside the log hut.", vocabulary: ["NUT", "HUT", "HARD"], question: "Where was the hard brown nut found?", options: ["In the grass", "Inside the log hut", "On a tree branch"], correct: 1 },
+    { id: 28, level: "Level 5", title: "The Blue Mug", text: "She gave a warm hug over a hot cocoa mug.", vocabulary: ["HUG", "MUG", "WARM"], question: "What was inside the warm mug?", options: ["Cold milk", "Hot cocoa", "Warm water"], correct: 1 },
+    { id: 29, level: "Level 5", title: "The Heavy Bus", text: "The yellow school bus drove directly away from us.", vocabulary: ["BUS", "WAY", "FROM"], question: "What vehicle drove away from us?", options: ["A red car", "A big truck", "The yellow school bus"], correct: 2 },
+    { id: 30, level: "Level 5", title: "A Soft Rug", text: "The thick fuzzy rug feels cozy under my feet.", vocabulary: ["RUG", "SOFT", "FEET"], question: "How does the thick fuzzy rug feel?", options: ["Cold and wet", "Hard and rough", "Cozy under my feet"], correct: 2 }
+];
