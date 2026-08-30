@@ -31,7 +31,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -46,6 +46,31 @@
             margin-top: 0;
         }
 
+        /* Level Selector Styling */
+        .level-selector {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-level {
+            background: #ffffff;
+            border: 2px solid #f1edd9;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-level.active {
+            background-color: var(--brand-terracotta);
+            color: white;
+            border-color: var(--brand-terracotta);
+        }
+
         /* Bubbles Interactive Card Component */
         .tutor-section {
             background: #ffffff;
@@ -57,6 +82,7 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             margin-bottom: 25px;
+            box-sizing: border-box;
         }
 
         .bubbles-container {
@@ -139,6 +165,7 @@
             border-radius: 18px;
             padding: 12px;
             border: 2px solid #f1edd9;
+            box-sizing: border-box;
         }
 
         .stat-item {
@@ -161,6 +188,15 @@
         <p class="subtitle">Your 30-Minute Daily Path to Reading Success</p>
     </header>
 
+    <!-- Level Selector for Levels 1 through 5 Dropdowns/Buttons -->
+    <div class="level-selector">
+        <button class="btn-level active" onclick="app.changeLevel(1)">Level 1</button>
+        <button class="btn-level" onclick="app.changeLevel(2)">Level 2</button>
+        <button class="btn-level" onclick="app.changeLevel(3)">Level 3</button>
+        <button class="btn-level" onclick="app.changeLevel(4)">Level 4</button>
+        <button class="btn-level" onclick="app.changeLevel(5)">Level 5</button>
+    </div>
+
     <!-- Main Active Educational Layout View Window -->
     <div class="tutor-section">
         <div class="bubbles-container">
@@ -171,7 +207,7 @@
             Hello! I am Bubbles. Let's learn a brand new sight word together today!
         </div>
 
-        <div id="word-display" class="word-box">CAT</div>
+        <div id="word-display" class="word-box">...</div>
 
         <button class="btn-action" onclick="app.handlePrimaryAction()">Listen & Read</button>
     </div>
@@ -186,8 +222,16 @@
         // Core Static Application Architecture Definition
         class ReadEasyApp {
             constructor() {
-                // Curated public domain phonics targets optimized for entry level learners
-                this.lessonWords = ["CAT", "SAT", "MAT", "THE", "AND", "YOU", "THAT", "WAS", "FOR", "ON"];
+                // Expanded Curriculum Matrix: Levels 1 through 5 Sight Words
+                this.curriculum = {
+                    1: ["CAT", "SAT", "MAT", "THE", "AND", "YOU", "THAT", "WAS", "FOR", "ON"],
+                    2: ["THEY", "WITH", "HAVE", "THIS", "FROM", "WHAT", "THERE", "WHEN", "YOUR", "HOW"],
+                    3: ["ABOUT", "WHICH", "THEIR", "WOULD", "WRITE", "COULD", "PEOPLE", "WATER", "FIRST", "CALLED"],
+                    4: ["NUMBER", "SOUND", "PEOPLE", "THROUGH", "BEFORE", "LITTLE", "UNDER", "AROUND", "RIGHT", "ANOTHER"],
+                    5: ["AGAINST", "BECAUSE", "DIFFERENT", "THROUGH", "THOUGHT", "BEAUTIFUL", "ENOUGH", "BROUGHT", "BROTHER", "PICTURE"]
+                };
+                
+                this.currentLevel = 1;
                 this.currentIndex = 0;
                 
                 // Initialize internal persistent browser cache values
@@ -206,8 +250,25 @@
                 this.loadCurrentWord();
             }
 
+            changeLevel(levelNum) {
+                this.currentLevel = levelNum;
+                this.currentIndex = 0;
+                
+                // Update UI button highlights
+                const buttons = document.querySelectorAll('.btn-level');
+                buttons.forEach((btn, idx) => {
+                    if (idx === (levelNum - 1)) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                });
+
+                this.loadCurrentWord();
+                this.bubble.innerText = `Welcome to Level ${levelNum}! Let's try this word.`;
+                this.speakText(`Welcome to Level ${levelNum}`);
+            }
+
             loadCurrentWord() {
-                const targetWord = this.lessonWords[this.currentIndex];
+                const words = this.curriculum[this.currentLevel];
+                const targetWord = words[this.currentIndex];
                 this.wordDisplay.innerText = targetWord;
             }
 
@@ -230,41 +291,3 @@
                 utterance.onstart = () => this.avatar.classList.add('speaking');
                 utterance.onend = () => {
                     this.avatar.classList.remove('speaking');
-                    if (callback) callback();
-                };
-                utterance.onerror = () => this.avatar.classList.remove('speaking');
-
-                window.speechSynthesis.speak(utterance);
-            }
-
-            handlePrimaryAction() {
-                const activeWord = this.lessonWords[this.currentIndex];
-                this.bubble.innerText = `Listen closely: ${activeWord}. Can you say it out loud?`;
-                
-                this.speakText(activeWord, () => {
-                    // Automatically track progress milestones after narration completes
-                    setTimeout(() => {
-                        this.score += 1;
-                        if(this.streak === 0) this.streak = 1;
-                        
-                        localStorage.setItem('re30_score', this.score);
-                        localStorage.setItem('re30_streak', this.streak);
-                        this.updateMetricsDisplay();
-
-                        // Cycle systematically to next curriculum sequence point
-                        this.currentIndex = (this.currentIndex + 1) % this.lessonWords.length;
-                        this.loadCurrentWord();
-                        this.bubble.innerText = "Excellent reading! Let's try the next word.";
-                    }, 1200);
-                });
-            }
-        }
-
-        // Run application on container instantiation
-        let app;
-        window.addEventListener('DOMContentLoaded', () => {
-            app = new ReadEasyApp();
-        });
-    </script>
-</body>
-</html>
