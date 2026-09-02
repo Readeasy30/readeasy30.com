@@ -3,174 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReadEasy30 - Calm & Steady Reading Practice</title>
-    <!-- Tailwind CSS for utility-first responsive layout structures -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* OpenDyslexic font integration for learning accommodation */
-        @font-face {
-            font-family: 'OpenDyslexic';
-            src: url('https://jsdelivr.net') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        .dyslexic-mode, .dyslexic-mode input, .dyslexic-mode select, .dyslexic-mode button {
-            font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
-        }
-        
-        /* Interactive styling system matches look and feel of readeasy30 root layout */
-        :root {
-            --bg-cream: #fdfbf7;
-            --text-dark: #2d2a26;
-            --brand-warm-amber: #f4a261;
-            --brand-terracotta: #e76f51;
-            --accent-mint: #e8f5e9;
-            --success-green: #4caf50;
-            --bubbles-body: #a8dadc;
-        }
-
-        .story-word {
-            display: inline-block;
-            cursor: pointer;
-            padding: 0 4px;
-            margin: 0 2px;
-            border-radius: 6px;
-            transition: all 0.15s ease;
-        }
-        .story-word:hover {
-            background-color: #ffe8d6;
-            color: var(--brand-terracotta);
-            transform: scale(1.05);
-        }
-        .vocab-pill {
-            display: inline-block;
-            cursor: pointer;
-            padding: 8px 18px;
-            background-color: #ffffff;
-            border: 3px solid #f1edd9;
-            color: var(--text-dark);
-            font-weight: bold;
-            border-radius: 9999px;
-            transition: transform 0.1s, background-color 0.1s;
-        }
-        .vocab-pill:active {
-            transform: scale(0.95);
-        }
-        .answer-correct {
-            border-color: var(--success-green) !important;
-            background-color: #e8f5e9 !important;
-        }
-        .answer-needs-work {
-            border-color: var(--brand-terracotta) !important;
-            background-color: #fdf2f2 !important;
-        }
-
-        /* Continuous pulse bounce matching active speech synthesis status */
-        .bubbles-avatar-pulse.speaking {
-            animation: bounceTalk 0.5s infinite alternate ease-in-out;
-        }
-        @keyframes bounceTalk {
-            from { transform: translateY(0) scale(1); }
-            to { transform: translateY(-6px) scale(1.08); }
-        }
-    </style>
+    <title>ReadEasy30 App | Daily Reading Interface</title>
+    <!-- Tailwind CSS Engine for Immediate High-End Design Layouts -->
+    <script src="https://jsdelivr.net"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#fdfbf7] text-[#2d2a26] font-sans transition-colors duration-200 min-h-screen pb-12">
+<body class="bg-[#FAF9F6] text-gray-900 font-sans antialiased min-h-screen flex flex-col">
 
-    <main class="max-w-2xl mx-auto my-6 px-4">
-        <!-- App Header Layout -->
-        <header class="text-center mb-6">
-            <h1 class="text-4xl font-bold text-[#e76f51] mb-1">ReadEasy30 🎈</h1>
-            <p class="text-md text-[#2d2a26] opacity-80">Your calm, friendly place to practice everyday reading skills!</p>
-        </header>
-
-        <!-- Accessibility Controls Component -->
-        <section class="bg-white border-2 border-[#f1edd9] rounded-2xl p-4 mb-6 shadow-sm flex flex-wrap justify-center gap-3 text-xs" aria-label="Accessibility Settings">
-            <button type="button" onclick="toggleDyslexicFont()" class="bg-[#fdfbf7] hover:bg-[#ffe8d6] border-2 border-[#f1edd9] font-bold py-2 px-4 rounded-xl transition text-[#2d2a26]">
-                🔤 Friendly Reading Font
-            </button>
-            <button type="button" onclick="toggleDarkMode()" class="bg-[#fdfbf7] hover:bg-[#ffe8d6] border-2 border-[#f1edd9] font-bold py-2 px-4 rounded-xl transition text-[#2d2a26]">
-                🌓 High Contrast Mode
-            </button>
-            <button type="button" onclick="resetProgress()" class="bg-red-50 hover:bg-red-100 text-red-700 border-2 border-red-200 font-bold py-2 px-4 rounded-xl transition">
-                ♻️ Reset Progress
-            </button>
-        </section>
-
-        <!-- Live Metrics Tracking Engine Interface Nodes -->
-        <section class="bg-white border-2 border-[#f1edd9] rounded-2xl p-5 mb-6 shadow-sm grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-sm font-bold">
-            <div id="completedCount" class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-slate-700">Completed: 0</div>
-            <div id="streakCount" class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-amber-700">Streak: 0 🔥</div>
-            <div id="timerCount" class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-indigo-700">Time: 0:00</div>
-            <div class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-emerald-700 flex items-center justify-center gap-1">
-                Progress: <span id="progressText">0%</span>
+    <!-- Premium Reading Application Header Navigation -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between z-50 shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-600 text-white p-2 rounded-xl">
+                <svg xmlns="http://w3.org" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
             </div>
-            <div class="col-span-2 sm:col-span-4 w-full bg-[#fdfbf7] border border-[#f1edd9] h-4 rounded-full overflow-hidden mt-1">
-                <div id="progressBar" class="bg-[#4caf50] h-full transition-all duration-300" style="width: 0%;"></div>
+            <div>
+                <span class="font-bold text-gray-900 tracking-tight text-base block">ReadEasy30 Portal</span>
+                <span class="text-xs text-gray-500 font-medium">100% Free Learning Path</span>
             </div>
-        </section>
-
-        <!-- Day Selector Dynamic Dropdown Element -->
-        <div class="mb-6">
-            <label for="daySelect" class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-15">Jump to Lesson Day:</label>
-            <select id="daySelect" class="w-full bg-white border-2 border-[#f1edd9] rounded-xl p-3 font-medium text-slate-700 shadow-sm focus:border-[#f4a261] focus:outline-none"></select>
         </div>
+        
+        <!-- Live Action Status Elements -->
+        <div class="flex items-center gap-4">
+            <!-- Persistent 30-Minute Micro-Learning Timer Widget Layout -->
+            <div id="session-timer-display" class="bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider flex items-center gap-1.5">
+                <svg xmlns="http://w3.org" class="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span id="timer-countdown">30:00</span>
+            </div>
+            <a href="index.html" class="text-xs font-semibold text-gray-500 hover:text-gray-900 border border-gray-200 px-3 py-1.5 rounded-lg bg-white shadow-sm transition-all">
+                Exit App
+            </a>
+        </div>
+    </header>
 
-        <!-- Main Reading Work Environment Panel Container -->
-        <article id="lessonArea" class="bg-white border-4 border-[#f1edd9] rounded-3xl p-6 shadow-sm mb-6">
+    <!-- Professional Split-Screen Workspace Environment -->
+    <main class="flex-1 premium-container w-full py-6 md:py-10 grid grid-cols-1 md:grid-cols-5 gap-6">
+        
+        <!-- LEFT SCREEN: High-Legibility Typography Reading Pane (60% Width Layout) -->
+        <section class="md:col-span-3 flex flex-col justify-between lesson-reading-pane">
+            <div id="reading-content-area">
+                <!-- Metadata Target Block -->
+                <div class="mb-6">
+                    <span id="lesson-badge" class="bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-100">
+                        Loading Lesson...
+                    </span>
+                    <h2 id="lesson-title" class="heading-premium text-2xl md:text-3xl mt-3 mb-2 font-black">
+                        Connecting to Curriculum...
+                    </h2>
+                </div>
+
+                <!-- Main Focus Statement Wrapper -->
+                <div class="bg-blue-50/50 border-l-4 border-blue-500 p-4 rounded-r-xl mb-6">
+                    <p class="text-xs md:text-sm font-semibold text-blue-900">
+                        <strong>Daily Goal:</strong> Tap individual words highlighted in blue to hear their phonetic pronunciation guide instantly.
+                    </p>
+                </div>
+
+                <!-- Dynamic High-Contrast Reading Sandbox Text Space -->
+                <div id="lesson-body-text" class="kids-reading-text text-gray-800 font-medium tracking-normal mb-8 select-text selection:bg-blue-100 selection:text-blue-900">
+                    Please select a study module to populate your interactive reading sandbox.
+                </div>
+            </div>
+
+            <!-- Bottom Application Navigation Interface Elements -->
+            <div class="pt-6 border-t border-gray-100 flex items-center justify-between gap-4">
+                <button id="prev-lesson-btn" class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white border border-gray-200 rounded-xl text-gray-700 font-semibold text-sm hover:bg-gray-50 transition-colors shadow-sm">
+                    ← Previous
+                </button>
+                <button id="next-lesson-btn" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 rounded-xl text-white font-bold text-sm hover:bg-blue-700 transition-colors shadow-md shadow-blue-100">
+                    Next Lesson →
+                </button>
+            </div>
+        </section>
+
+        <!-- RIGHT SCREEN: Interactive Bubbles Voice Coach Panel & QA Grid (40% Width Layout) -->
+        <section class="md:col-span-2 flex flex-col gap-6">
             
-            <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
-                <span id="storyLevel" class="bg-[#e8f5e9] text-[#4caf50] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">Level 1</span>
-                <span id="lessonCount" class="text-xs font-bold text-slate-400">Lesson 1 of 5</span>
-            </div>
-
-            <h2 id="storyTitle" class="text-3xl font-bold text-slate-800 mb-1 text-center">The Big Hat</h2>
-            <div id="levelTitle" class="text-xs font-bold text-center text-slate-400 uppercase tracking-wide mb-4">Foundational Sight Words</div>
-
-            <!-- Active Story text panel element context -->
-            <div id="storyText" class="text-2xl sm:text-3xl font-medium leading-relaxed text-slate-800 bg-[#fdfbf7] p-6 rounded-2xl border-2 border-[#f1edd9] mb-6 text-left">
-                <!-- Dynamically populated inside script block below -->
-            </div>
-
-            <!-- Key Vocabulary Target Elements Wrapper -->
-            <div class="mb-6 text-left">
-                <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Key Vocabulary (Tap to hear):</span>
-                <div id="vocabList" class="flex flex-wrap gap-2.5"></div>
-            </div>
-
-            <!-- Bubbles Automated Voice Coach Dashboard Module Framework -->
-            <div id="bubblesCoachModule" class="bg-[#fdfbf7] border-2 border-[#f1edd9] rounded-2xl p-5 mb-6 text-center flex flex-col items-center">
-                <div id="bubblesAvatar" class="w-16 h-16 bg-[#a8dadc] rounded-full flex items-center justify-center text-3xl shadow-sm mb-2 transition-transform duration-150 bubbles-avatar-pulse">
-                    🧼
+            <!-- Voice Coach Interaction Hub Widget -->
+            <div id="voice-coach-card" class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+                <!-- Bubbles Visual Character Placeholder -->
+                <div id="bubbles-coach-avatar" class="w-20 h-20 bg-gradient-to-tr from-blue-500 to-indigo-600 text-white rounded-full flex items-center justify-center shadow-md bubbles-coach-active mb-4 font-black text-xl tracking-tight">
+                    BUBBLES
                 </div>
-                <!-- Maps perfectly to your coachMessage assignment rules -->
-                <div id="coachMessage" class="text-md font-medium text-slate-700 italic mb-4 max-w-md">
-                    "Hello! Tap the microphone button to practice reading this story out loud with me."
-                </div>
-                <div class="flex flex-col sm:flex-row gap-3 w-full justify-center">
-                    <button id="bubbles-coach-trigger" type="button" onclick="appEngine.listenToStudent()" class="bg-[#f4a261] hover:bg-[#e76f51] text-white font-bold py-3.5 px-6 rounded-xl shadow transition transform active:scale-95 text-base flex items-center justify-center gap-2">
-                        🎤 Tap to Read to Bubbles
-                    </button>
-                    <button type="button" onclick="appEngine.readEntireStory()" class="bg-[#4caf50] hover:bg-[#388e3c] text-white font-bold py-3.5 px-6 rounded-xl shadow transition transform active:scale-95 text-base flex items-center justify-center gap-2">
-                        🔊 Read Story to Me
-                    </button>
-                </div>
+                <h3 class="text-base font-bold text-gray-900 mb-1">Bubbles Voice Coach</h3>
+                <p id="voice-coach-status" class="text-xs text-gray-500 max-w-xs leading-normal">
+                    Ready to help you speak and learn! Click inside the text panel to start.
+                </p>
             </div>
 
-            <!-- Lesson Comprehension Assessment Node -->
-            <section class="border-t-2 border-[#f1edd9] pt-6 text-left">
-                <h3 class="font-bold text-xl text-slate-800 mb-1 flex items-center gap-2">
-                    🧩 Lesson Comprehension
-                </h3>
-                <p id="levelDescription" class="text-xs text-slate-400 mb-4">Read carefully and answer the quick target questions below.</p>
-                
-                <div id="questionsDiv" class="space-y-4 mb-4"></div>
-            </section>
-        </article>
+            <!-- Reading Comprehension Interactive Assessment Module Block -->
+            <div id="quiz-assessment-card" class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex-1 flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-md">
+                        Comprehension Check
+                    </span>
+                    <h4 id="quiz-question-text" class="text-sm md:text-base font-bold text-gray-900 mt-2 mb-4 leading-snug">
+                        Answer the questions regarding your text lesson segment to unlock your dynamic star badge.
+                    </h4>
+                    <!-- Options Target Grid Container -->
+                    <div id="quiz-options-container" class="flex flex-col gap-2.5">
+                        <!-- Instantiated buttons injected natively via app.js -->
+                    </div>
+                </div>
+                <!-- Dynamic feedback text output element -->
+                <div id="quiz-feedback-output" class="text-xs font-bold mt-4 text-center hidden"></div>
+            </div>
+
+        </section>
     </main>
 
+    <!-- Clean Administrative Sticky System Status Footer -->
+    <footer class="bg-white border-t border-gray-200 px-6 py-4 text-center text-[10px] text-gray-400 font-medium">
+        <p>ReadEasy30 Engine Sandbox Platform Core. Student profile persistence loaded successfully.</p>
+    </footer>
+
+    <!-- ==========================================================================
+         High-End Interactive Audio & Script Dependencies
+         ========================================================================== -->
+    <script src="student-profiles.js"></script>
+
     <script>
-        // Core Static Application Data Storage Matrix
-        const LESSON_CURRICULUM = [
-            { id: 1, level: "Level 1", title: "The Big Cat", text: "The big cat sat on a warm red mat.", vocabulary: ["CAT", "SAT", "MAT"], question: "Where did the big cat sit?", options: ["On a mat", "In a box", "On a tree"], correct: 0 },
-            { id: 2, level: "Level 1", title: "The Blue Bird", text: "A blue bird flew over the small blue lake.", vocabulary: ["BIRD", "FLEW", "LAKE"], question: "What color was the bird?", options: ["Red", "Blue", "Green"], correct: 1 },
+      // Core Static Application Data Storage Matrix
+      const LESSON_CURRICULUM = [
+        { 
+          id: 1, 
+          level: "Level 1", 
+          title: "The Big Cat", 
+          text: "The big cat sat on a warm red mat.", 
+          vocabulary: ["CAT", "SAT", "MAT"], 
+          question: "Where did the big cat sit?", 
+          options: ["On a mat", "In a box", "On a tree"], 
+          correct: 0 
+        }, 
+        { 
+          id: 2, 
+          level: "Level 1", 
+          title: "The Blue Bird", 
+          text: "A blue bird flew over the small blue lake.", 
+          vocabulary: ["BIRD", "FLEW", "LAKE"], 
+          question: "What color was the bird?", 
+          options: ["Red", "Blue", "Green"], 
+          correct: 1 
+        }
+      ]; // Array closed successfully to prevent build breaks
+    </script>
+
+    <!-- Main App Engine Execution Module -->
+    <script src="app.js"></script>
+
+</body>
+</html>
