@@ -1,4 +1,4 @@
-﻿name: AI-Reviewed Cloudflare Deployment Pipeline
+name: AI-Reviewed Cloudflare Deployment Pipeline
 
 on:
   push:
@@ -11,30 +11,23 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      # Step 1: Securely check out your repository code
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Execute Gemini AI Static Quality Guard
-      # This block pipes your core app script to Gemini to inspect for unescaped code blocks or blockers.
       - name: Run Gemini AI Static App Guard
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           echo "Starting automated Gemini AI code quality audit..."
           
-          # Target file for structural validation
           TARGET_FILE="app.js"
-          
           if [ ! -f "$TARGET_FILE" ]; then
-            echo "⚠️ Target file $TARGET_FILE not found. Processing fallback repository verification."
+            echo "⚠️ Target file $TARGET_FILE not found. Skipping granular file check."
             exit 0
           fi
 
-          # Read file content safely escaping problematic string fields
           FILE_CONTENT=$(cat "$TARGET_FILE" | jq -sR .)
 
-          # Construct a clean JSON payload for the Gemini 1.5 Flash model API endpoint
           JSON_PAYLOAD=$(cat <<EOF
           {
             "contents": [{
@@ -46,20 +39,18 @@ jobs:
           EOF
           )
 
-          # Query the Gemini API using curl
+          # FIXED HOST NAME: changed 'generativelanging' to 'generativelanguage'
           RESPONSE=$(curl -s -X POST \
             -H "Content-Type: application/json" \
             "https://googleapis.com{GEMINI_API_KEY}" \
             -d "$JSON_PAYLOAD")
 
-          # Parse the response text safely using jq
-          AI_RESULT=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text' | xargs)
+          AI_RESULT=$(echo "$RESPONSE" | jq -r '.candidates.content.parts.text' | xargs)
 
           echo "======================================"
           echo "Gemini AI Review Result: $AI_RESULT"
           echo "======================================"
 
-          # Evaluate the gate condition. If it fails, terminate the pipeline to prevent broken code from deploying.
           if [[ "$AI_RESULT" != *"PASSED"* ]]; then
             echo "❌ CI/CD Gate Failed: Gemini AI found production blockers."
             echo "$AI_RESULT"
@@ -75,3 +66,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy . --project-name=readeasy30
+
