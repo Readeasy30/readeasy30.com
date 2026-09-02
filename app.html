@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReadEasy30 App | Daily Reading Interface</title>
-    <!-- Tailwind CSS Engine for Immediate High-End Design Layouts -->
     <script src="https://jsdelivr.net"></script>
-    <link rel="stylesheet" href="style.css?v=63c5bcbf">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#FAF9F6] text-gray-900 font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- Premium Reading Application Header Navigation -->
     <header class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between z-50 shadow-sm">
         <div class="flex items-center gap-3">
             <div class="bg-blue-600 text-white p-2 rounded-xl">
@@ -24,9 +22,7 @@
             </div>
         </div>
         
-        <!-- Live Action Status Elements -->
         <div class="flex items-center gap-4">
-            <!-- Persistent 30-Minute Micro-Learning Timer Widget Layout -->
             <div id="session-timer-display" class="bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider flex items-center gap-1.5">
                 <svg xmlns="http://w3.org" class="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -39,13 +35,10 @@
         </div>
     </header>
 
-    <!-- Professional Split-Screen Workspace Environment -->
     <main class="flex-1 premium-container w-full py-6 md:py-10 grid grid-cols-1 md:grid-cols-5 gap-6">
         
-        <!-- LEFT SCREEN: High-Legibility Typography Reading Pane (60% Width Layout) -->
         <section class="md:col-span-3 flex flex-col justify-between lesson-reading-pane">
             <div id="reading-content-area">
-                <!-- Metadata Target Block -->
                 <div class="mb-6">
                     <span id="lesson-badge" class="bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-blue-100">
                         Loading Lesson...
@@ -55,20 +48,17 @@
                     </h2>
                 </div>
 
-                <!-- Main Focus Statement Wrapper -->
                 <div class="bg-blue-50/50 border-l-4 border-blue-500 p-4 rounded-r-xl mb-6">
                     <p class="text-xs md:text-sm font-semibold text-blue-900">
                         <strong>Daily Goal:</strong> Tap individual words highlighted in blue to hear their phonetic pronunciation guide instantly.
                     </p>
                 </div>
 
-                <!-- Dynamic High-Contrast Reading Sandbox Text Space -->
                 <div id="lesson-body-text" class="kids-reading-text text-gray-800 font-medium tracking-normal mb-8 select-text selection:bg-blue-100 selection:text-blue-900">
                     Please select a study module to populate your interactive reading sandbox.
                 </div>
             </div>
 
-            <!-- Bottom Application Navigation Interface Elements -->
             <div class="pt-6 border-t border-gray-100 flex items-center justify-between gap-4">
                 <button id="prev-lesson-btn" class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white border border-gray-200 rounded-xl text-gray-700 font-semibold text-sm hover:bg-gray-50 transition-colors shadow-sm">
                     ← Previous
@@ -79,12 +69,9 @@
             </div>
         </section>
 
-        <!-- RIGHT SCREEN: Interactive Bubbles Voice Coach Panel & QA Grid (40% Width Layout) -->
         <section class="md:col-span-2 flex flex-col gap-6">
             
-            <!-- Voice Coach Interaction Hub Widget -->
             <div id="voice-coach-card" class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
-                <!-- Bubbles Visual Character Placeholder -->
                 <div id="bubbles-coach-avatar" class="w-20 h-20 bg-gradient-to-tr from-blue-500 to-indigo-600 text-white rounded-full flex items-center justify-center shadow-md bubbles-coach-active mb-4 font-black text-xl tracking-tight">
                     BUBBLES
                 </div>
@@ -94,7 +81,6 @@
                 </p>
             </div>
 
-            <!-- Reading Comprehension Interactive Assessment Module Block -->
             <div id="quiz-assessment-card" class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex-1 flex flex-col justify-between">
                 <div>
                     <span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-md">
@@ -103,30 +89,20 @@
                     <h4 id="quiz-question-text" class="text-sm md:text-base font-bold text-gray-900 mt-2 mb-4 leading-snug">
                         Answer the questions regarding your text lesson segment to unlock your dynamic star badge.
                     </h4>
-                    <!-- Options Target Grid Container -->
-                    <div id="quiz-options-container" class="flex flex-col gap-2.5">
-                        <!-- Instantiated buttons injected natively via app.js -->
-                    </div>
+                    <div id="quiz-options-container" class="flex flex-col gap-2.5"></div>
                 </div>
-                <!-- Dynamic feedback text output element -->
                 <div id="quiz-feedback-output" class="text-xs font-bold mt-4 text-center hidden"></div>
             </div>
 
         </section>
     </main>
 
-    <!-- Clean Administrative Sticky System Status Footer -->
     <footer class="bg-white border-t border-gray-200 px-6 py-4 text-center text-[10px] text-gray-400 font-medium">
         <p>ReadEasy30 Engine Sandbox Platform Core. Student profile persistence loaded successfully.</p>
     </footer>
 
-    <!-- ==========================================================================
-         High-End Interactive Audio & Script Dependencies
-         ========================================================================== -->
-    <script src="student-profiles.js?v=bdc01863"></script>
-
+    <script src="student-profiles.js"></script>
     <script>
-      // Core Static Application Data Storage Matrix
       const LESSON_CURRICULUM = [
         { 
           id: 1, 
@@ -148,11 +124,9 @@
           options: ["Red", "Blue", "Green"], 
           correct: 1 
         }
-      ]; // Array closed successfully to prevent build breaks
+      ];
     </script>
-
-    <!-- Main App Engine Execution Module -->
-    <script src="app.js?v=98f8676e"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
