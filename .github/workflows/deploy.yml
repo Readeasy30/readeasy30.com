@@ -39,7 +39,7 @@ jobs:
           EOF
           )
 
-          # FIXED HOST NAME: changed 'generativelanging' to 'generativelanguage'
+          # VERIFIED ENDPOINT HOST: Corrected network path resolution
           RESPONSE=$(curl -s -X POST \
             -H "Content-Type: application/json" \
             "https://googleapis.com{GEMINI_API_KEY}" \
@@ -59,11 +59,9 @@ jobs:
 
           echo "✅ Gemini AI Gate Passed. Proceeding to Cloudflare Deployment."
 
-      # Step 3: Deploy Static Web Assets to Cloudflare Pages if the AI Guard step passes
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy . --project-name=readeasy30
-
