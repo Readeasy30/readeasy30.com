@@ -1,63 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReadEasy30 | Free Foundational Reading Platform</title>
-    <!-- Tailwind CSS for high-utility visual styling -->
-    <script src="https://tailwindcss.com"></script>
-    <style>
-        :root {
-            --bg-cream: #fdfbf7;
-            --text-dark: #2d2a26;
-            --brand-warm-amber: #f4a261;
-            --brand-terracotta: #e76f51;
-            --bubbles-body: #a8dadc;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReadEasy30 - The 30-Minute Reading Academy</title>
+  <script src="https://tailwindcss.com"></script>
 </head>
-<body class="bg-[#fdfbf7] text-[#2d2a26] font-sans min-h-screen flex flex-col justify-center items-center p-6">
+<body class="min-h-screen bg-amber-50/30 p-4 sm:p-8 font-sans antialiased text-stone-800">
 
-    <!-- Welcoming Landing Card Container -->
-    <main class="max-w-xl w-full bg-white border-4 border-[#f1edd9] rounded-3xl p-8 text-center shadow-sm">
+  <!-- Accessible Navigation Banner -->
+  <div class="max-w-5xl mx-auto bg-white rounded-3xl p-6 shadow-sm border border-amber-100/70 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl shadow-inner animate-bounce">
+        🫧
+      </div>
+      <div>
+        <h1 class="text-2xl font-black text-stone-950 tracking-tight">ReadEasy30</h1>
+        <p class="text-xs font-semibold uppercase tracking-wider text-amber-600">Bubbles AI Literacy Guide</p>
+      </div>
+    </div>
+    
+    <!-- Progression Marker -->
+    <div class="bg-stone-900 text-stone-100 px-5 py-2.5 rounded-2xl font-bold text-sm tracking-wide shadow-sm flex items-center gap-2">
+      <span>📖 CURRENT STEP:</span>
+      <span class="text-amber-400">Foundational Phonics</span>
+    </div>
+  </div>
+
+  <!-- Main Lesson Workspace -->
+  <div class="max-w-5xl mx-auto mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- Active Reading Focus Card (Left/Center) -->
+    <div class="lg:col-span-2 bg-white rounded-3xl p-8 border border-stone-100 shadow-md flex flex-col justify-between min-h-[400px]">
+      <div class="space-y-6">
+        <span class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-widest">Today's Sound Challenge</span>
+        <div class="py-8 text-center bg-stone-50 rounded-2xl border border-stone-100 shadow-inner">
+          <h2 class="text-7xl font-black text-stone-900 tracking-tight select-none">at</h2>
+        </div>
+        <p class="text-stone-600 text-lg leading-relaxed text-center max-w-md mx-auto">
+          Let's practice blending sounds together! Can you read this word segment out loud?
+        </p>
+      </div>
+
+      <!-- Large Target Interactive Controls -->
+      <div class="grid grid-cols-2 gap-4 mt-8">
+        <button class="py-4 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold rounded-xl transition-all active:scale-95 text-lg flex items-center justify-center gap-2">
+          🔊 Hear Sound
+        </button>
+        <button class="py-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition-all shadow-md active:scale-95 text-lg flex items-center justify-center gap-2">
+          Check Word ✨
+        </button>
+      </div>
+    </div>
+
+    <!-- Coach & Progression Path Sidebar (Right) -->
+    <div class="flex flex-col gap-6">
+      
+      <!-- Bubbles Avatar Guidance -->
+      <div class="bg-gradient-to-br from-amber-100/50 to-orange-50 rounded-3xl p-6 border border-amber-200/40 shadow-sm space-y-3">
+        <h3 class="font-bold text-stone-900 text-lg flex items-center gap-2">
+          <span>💬</span> Coach Bubbles Says:
+        </h3>
+        <p class="text-stone-700 text-sm leading-relaxed font-medium">
+          "You are doing fantastic! Put your finger on the screen under the letters. Make the first sound, then slide your finger over to lock them together!"
+        </p>
+      </div>
+
+      <!-- Quick Curriculum Milestone Blocks -->
+      <div class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-wider text-stone-400">Your Learning Tracks</h4>
         
-        <!-- Animated Avatar Element representing Bubbles -->
-        <div class="w-20 h-20 bg-[#a8dadc] rounded-full flex items-center justify-center text-4xl shadow-sm mb-4 mx-auto animate-bounce">
-            🧼
+        <div class="space-y-3">
+          <!-- Active Track Item -->
+          <div class="p-3 bg-amber-50 border border-amber-200/70 rounded-xl flex justify-between items-center text-sm font-semibold">
+            <span class="text-stone-800">Level 1: Short Vowel Sounds</span>
+            <span class="text-xs text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full font-bold">Active</span>
+          </div>
+          <!-- Locked Track Item -->
+          <div class="p-3 bg-stone-50/50 border border-stone-100 rounded-xl flex justify-between items-center text-sm font-medium text-stone-400 select-none">
+            <span>Level 2: Consonant Blends</span>
+            <span class="text-xs">🔒 Locked</span>
+          </div>
         </div>
+      </div>
 
-        <header class="mb-6">
-            <h1 class="text-4xl font-extrabold text-[#e76f51] mb-2">ReadEasy30</h1>
-            <p class="text-md opacity-80 font-medium">A friendly, calm, and free space dedicated to foundational reading practice.</p>
-        </header>
-
-        <section class="space-y-4 mb-6 text-left bg-[#fdfbf7] p-4 rounded-2xl border border-[#f1edd9] text-sm">
-            <div class="flex items-start gap-2">
-                <span>🎈</span>
-                <p><strong>Interactive practice modules:</strong> Levels 1 through 5 curriculum.</p>
-            </div>
-            <div class="flex items-start gap-2">
-                <span>🎤</span>
-                <p><strong>Voice interaction tracking:</strong> Read aloud right to Bubbles the Tutor.</p>
-            </div>
-            <div class="flex items-start gap-2">
-                <span>🔥</span>
-                <p><strong>Zero cost public domain framework:</strong> No accounts, no data tracking.</p>
-            </div>
-        </section>
-
-        <!-- Navigation Entry Point to Active app.html Layout -->
-        <div class="pt-2">
-            <a href="/app" class="inline-block bg-[#f4a261] hover:bg-[#e76f51] text-white font-bold text-lg py-4 px-8 rounded-2xl shadow-md transition transform active:scale-95 duration-100">
-                🚀 Enter Classroom App
-            </a>
-        </div>
-
-    </main>
-
-    <footer class="mt-8 text-xs opacity-50 tracking-wide font-medium">
-        Public Domain Resource • Hosted on Cloudflare Edge Networks
-    </footer>
+    </div>
+  </div>
 
 </body>
 </html>
