@@ -1,2 +1,14 @@
-# Force all clean sub-URLs to fallback directly to the root application safely
-/*    /index.html   200
+# ReadEasy30 — _headers
+# Security + performance headers for every page.
+# Applies to all static assets; Pages Functions routes are not affected.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-XSS-Protection: 0
+
+# Long cache for versioned assets (CSS/JS with ?v= cache-busting query strings)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
