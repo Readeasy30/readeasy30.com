@@ -3,89 +3,209 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReadEasy30 - The 30-Minute Reading Academy</title>
-  <script src="https://tailwindcss.com"></script>
+  <title>ReadEasy30 — The 30-Minute Reading Academy | Free Reading Practice</title>
+  <meta name="description" content="ReadEasy30 helps children, teens, and adults learn to read with 30 minutes of daily practice, an AI literacy coach named Bubbles, and a complete 240-day curriculum. 100% free.">
+  <meta property="og:title" content="ReadEasy30 — The 30-Minute Reading Academy">
+  <meta property="og:description" content="Free 240-day reading curriculum with Bubbles, your AI literacy coach. 30 minutes a day.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://readeasy30.com/">
+  <link rel="canonical" href="https://readeasy30.com/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
+  <!-- Tailwind Play CDN — correct URL (was https://tailwindcss.com, which loaded no styles at all) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-amber-50/30 p-4 sm:p-8 font-sans antialiased text-stone-800">
 
-  <!-- Accessible Navigation Banner -->
-  <div class="max-w-5xl mx-auto bg-white rounded-3xl p-6 shadow-sm border border-amber-100/70 flex flex-col sm:flex-row justify-between items-center gap-4">
-    <div class="flex items-center gap-4">
-      <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl shadow-inner animate-bounce">
-        🫧
+  <!-- Skip link for keyboard users -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-stone-900 focus:text-white focus:px-4 focus:py-2 focus:rounded-xl focus:font-bold">
+    Skip to content
+  </a>
+
+  <!-- Accessible Navigation -->
+  <header class="max-w-5xl mx-auto">
+    <nav aria-label="Main navigation" class="bg-white rounded-3xl p-4 sm:p-6 shadow-sm border border-amber-100/70 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <a href="/" class="flex items-center gap-4 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+        <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl shadow-inner animate-bounce motion-reduce:animate-none" aria-hidden="true">🫧</div>
+        <div>
+          <span class="text-2xl font-black text-stone-950 tracking-tight">ReadEasy30</span>
+          <span class="block text-xs font-semibold uppercase tracking-wider text-amber-600">Bubbles AI Literacy Guide</span>
+        </div>
+      </a>
+      <div class="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+        <a href="/app-240.html" class="px-3 py-2 rounded-xl text-sm font-semibold text-stone-700 hover:bg-amber-50 hover:text-stone-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">The App</a>
+        <a href="/free-reading-and-math-practice.html" class="px-3 py-2 rounded-xl text-sm font-semibold text-stone-700 hover:bg-amber-50 hover:text-stone-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">Free Practice</a>
+        <a href="/about.html" class="px-3 py-2 rounded-xl text-sm font-semibold text-stone-700 hover:bg-amber-50 hover:text-stone-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">About</a>
+        <a href="/contact.html" class="px-3 py-2 rounded-xl text-sm font-semibold text-stone-700 hover:bg-amber-50 hover:text-stone-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">Contact</a>
+        <a href="/app-240.html" class="ml-1 sm:ml-2 px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-sm font-bold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-800">Start Free</a>
       </div>
-      <div>
-        <h1 class="text-2xl font-black text-stone-950 tracking-tight">ReadEasy30</h1>
-        <p class="text-xs font-semibold uppercase tracking-wider text-amber-600">Bubbles AI Literacy Guide</p>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="max-w-5xl mx-auto mt-8 rounded-3xl bg-gradient-to-br from-amber-50 via-white to-orange-50 border border-amber-100/70 p-8 sm:p-12 text-center">
+      <p class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-widest">100% Free · No sign-up required</p>
+      <h1 class="mt-5 text-4xl sm:text-5xl font-black text-stone-950 tracking-tight">Learn to read in <span class="text-amber-600">30 minutes a day</span></h1>
+      <p class="mt-4 text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+        ReadEasy30 is a complete 240-day reading curriculum for children, teens, and adults — guided by Bubbles, your AI literacy coach. Tap, listen, and practice at your own pace.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/app-240.html" class="px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-2xl shadow-md text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-800">
+          Start the 240-Day Path →
+        </a>
+        <a href="/free-reading-and-math-practice.html" class="px-8 py-4 bg-white hover:bg-stone-50 text-stone-800 font-bold rounded-2xl border border-stone-200 text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+          Try Free Practice
+        </a>
       </div>
-    </div>
-    
+    </section>
+
     <!-- Progression Marker -->
-    <div class="bg-stone-900 text-stone-100 px-5 py-2.5 rounded-2xl font-bold text-sm tracking-wide shadow-sm flex items-center gap-2">
+    <div class="max-w-5xl mx-auto mt-8 bg-stone-900 text-stone-100 px-5 py-2.5 rounded-2xl font-bold text-sm tracking-wide shadow-sm flex items-center justify-center gap-2">
       <span>📖 CURRENT STEP:</span>
       <span class="text-amber-400">Foundational Phonics</span>
     </div>
-  </div>
 
-  <!-- Main Lesson Workspace -->
-  <div class="max-w-5xl mx-auto mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-    
-    <!-- Active Reading Focus Card (Left/Center) -->
-    <div class="lg:col-span-2 bg-white rounded-3xl p-8 border border-stone-100 shadow-md flex flex-col justify-between min-h-[400px]">
-      <div class="space-y-6">
-        <span class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-widest">Today's Sound Challenge</span>
-        <div class="py-8 text-center bg-stone-50 rounded-2xl border border-stone-100 shadow-inner">
-          <h2 class="text-7xl font-black text-stone-900 tracking-tight select-none">at</h2>
+    <!-- Main Lesson Workspace -->
+    <section aria-labelledby="lesson-heading" class="max-w-5xl mx-auto mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Active Reading Focus Card -->
+      <div class="lg:col-span-2 bg-white rounded-3xl p-8 border border-stone-100 shadow-md flex flex-col justify-between min-h-[400px]">
+        <div class="space-y-6">
+          <h2 id="lesson-heading" class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-widest inline-block">Today's Sound Challenge</h2>
+          <div class="py-8 text-center bg-stone-50 rounded-2xl border border-stone-100 shadow-inner">
+            <p class="text-7xl font-black text-stone-900 tracking-tight select-none" aria-label="The word segment at">at</p>
+          </div>
+          <p class="text-stone-600 text-lg leading-relaxed text-center max-w-md mx-auto">
+            Let's practice blending sounds together! Can you read this word segment out loud?
+          </p>
+          <p id="wordAnswer" hidden class="text-center text-amber-900 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 font-semibold" tabindex="-1">
+            "at" — the vowel sound you hear in <em>cat</em>, <em>bat</em>, and <em>hat</em>. 🎉
+          </p>
         </div>
-        <p class="text-stone-600 text-lg leading-relaxed text-center max-w-md mx-auto">
-          Let's practice blending sounds together! Can you read this word segment out loud?
-        </p>
-      </div>
 
-      <!-- Large Target Interactive Controls -->
-      <div class="grid grid-cols-2 gap-4 mt-8">
-        <button class="py-4 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold rounded-xl transition-all active:scale-95 text-lg flex items-center justify-center gap-2">
-          🔊 Hear Sound
-        </button>
-        <button class="py-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition-all shadow-md active:scale-95 text-lg flex items-center justify-center gap-2">
-          Check Word ✨
-        </button>
-      </div>
-    </div>
-
-    <!-- Coach & Progression Path Sidebar (Right) -->
-    <div class="flex flex-col gap-6">
-      
-      <!-- Bubbles Avatar Guidance -->
-      <div class="bg-gradient-to-br from-amber-100/50 to-orange-50 rounded-3xl p-6 border border-amber-200/40 shadow-sm space-y-3">
-        <h3 class="font-bold text-stone-900 text-lg flex items-center gap-2">
-          <span>💬</span> Coach Bubbles Says:
-        </h3>
-        <p class="text-stone-700 text-sm leading-relaxed font-medium">
-          "You are doing fantastic! Put your finger on the screen under the letters. Make the first sound, then slide your finger over to lock them together!"
-        </p>
-      </div>
-
-      <!-- Quick Curriculum Milestone Blocks -->
-      <div class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm space-y-4">
-        <h4 class="font-bold text-xs uppercase tracking-wider text-stone-400">Your Learning Tracks</h4>
-        
-        <div class="space-y-3">
-          <!-- Active Track Item -->
-          <div class="p-3 bg-amber-50 border border-amber-200/70 rounded-xl flex justify-between items-center text-sm font-semibold">
-            <span class="text-stone-800">Level 1: Short Vowel Sounds</span>
-            <span class="text-xs text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full font-bold">Active</span>
-          </div>
-          <!-- Locked Track Item -->
-          <div class="p-3 bg-stone-50/50 border border-stone-100 rounded-xl flex justify-between items-center text-sm font-medium text-stone-400 select-none">
-            <span>Level 2: Consonant Blends</span>
-            <span class="text-xs">🔒 Locked</span>
-          </div>
+        <!-- Large Target Interactive Controls -->
+        <div class="grid grid-cols-2 gap-4 mt-8">
+          <button type="button" id="hearBtn" class="py-4 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold rounded-xl transition-all active:scale-95 text-lg flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600" aria-label="Hear the word at spoken aloud">
+            🔊 Hear Sound
+          </button>
+          <button type="button" id="checkBtn" class="py-4 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl transition-all shadow-md active:scale-95 text-lg flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-800" aria-expanded="false" aria-controls="wordAnswer">
+            Check Word ✨
+          </button>
         </div>
       </div>
 
-    </div>
-  </div>
+      <!-- Coach & Progression Path Sidebar -->
+      <div class="flex flex-col gap-6">
 
+        <!-- Bubbles Avatar Guidance -->
+        <div class="bg-gradient-to-br from-amber-100/50 to-orange-50 rounded-3xl p-6 border border-amber-200/40 shadow-sm space-y-3">
+          <h3 class="font-bold text-stone-900 text-lg flex items-center gap-2">
+            <span aria-hidden="true">💬</span> Coach Bubbles Says:
+          </h3>
+          <p class="text-stone-700 text-sm leading-relaxed font-medium">
+            "You are doing fantastic! Put your finger on the screen under the letters. Make the first sound, then slide your finger over to lock them together!"
+          </p>
+        </div>
+
+        <!-- Quick Curriculum Milestone Blocks -->
+        <div class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm space-y-4">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-stone-400">Your Learning Tracks</h4>
+          <div class="space-y-3">
+            <div class="p-3 bg-amber-50 border border-amber-200/70 rounded-xl flex justify-between items-center text-sm font-semibold">
+              <span class="text-stone-800">Level 1: Short Vowel Sounds</span>
+              <span class="text-xs text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full font-bold">Active</span>
+            </div>
+            <div class="p-3 bg-stone-50/50 border border-stone-100 rounded-xl flex justify-between items-center text-sm font-medium text-stone-400 select-none" aria-disabled="true">
+              <span>Level 2: Consonant Blends</span>
+              <span class="text-xs">🔒 Locked</span>
+            </div>
+          </div>
+          <a href="/app-240.html" class="block text-center text-sm font-bold text-amber-700 hover:text-amber-800 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+            Continue in the App →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section aria-labelledby="features-heading" class="max-w-5xl mx-auto mt-10">
+      <h2 id="features-heading" class="text-2xl font-black text-stone-900 tracking-tight text-center">Everything you need to build reading confidence</h2>
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="/days-1-240-curriculum.html" class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm hover:shadow-md hover:border-amber-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+          <span class="text-3xl" aria-hidden="true">🗓️</span>
+          <h3 class="mt-3 font-bold text-stone-900">240-Day Curriculum</h3>
+          <p class="mt-1 text-sm text-stone-600">A structured day-by-day path from first sounds to fluent reading.</p>
+        </a>
+        <a href="/app-240.html" class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm hover:shadow-md hover:border-amber-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+          <span class="text-3xl" aria-hidden="true">🔊</span>
+          <h3 class="mt-3 font-bold text-stone-900">Tap-to-Speak Lessons</h3>
+          <p class="mt-1 text-sm text-stone-600">Tap any word to hear it read aloud with Bubbles as your coach.</p>
+        </a>
+        <a href="/functional-literacy-worksheet-1.html" class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm hover:shadow-md hover:border-amber-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+          <span class="text-3xl" aria-hidden="true">📝</span>
+          <h3 class="mt-3 font-bold text-stone-900">Printable Worksheets</h3>
+          <p class="mt-1 text-sm text-stone-600">Offline practice for cause &amp; effect, context clues, and functional literacy.</p>
+        </a>
+        <a href="/esl-reading-practice.html" class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm hover:shadow-md hover:border-amber-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+          <span class="text-3xl" aria-hidden="true">🌎</span>
+          <h3 class="mt-3 font-bold text-stone-900">ESL &amp; Adult Practice</h3>
+          <p class="mt-1 text-sm text-stone-600">Everyday English and judgment-free practice for adult learners.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="max-w-5xl mx-auto mt-10 bg-stone-900 rounded-3xl p-8 sm:p-10 text-center">
+      <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Start today — it's free</h2>
+      <p class="mt-2 text-stone-300">No account, no credit card, no pressure. Just 30 minutes a day.</p>
+      <a href="/app-240.html" class="mt-6 inline-block px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-900 font-black rounded-2xl text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+        Begin Lesson 1 →
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-5xl mx-auto mt-10 pb-8 text-center text-sm text-stone-500">
+    <nav aria-label="Footer navigation" class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+      <a href="/about.html" class="hover:text-amber-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">About</a>
+      <a href="/app-240.html" class="hover:text-amber-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">The App</a>
+      <a href="/240-day-reading-path.html" class="hover:text-amber-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">240-Day Path</a>
+      <a href="/free-reading-and-math-practice.html" class="hover:text-amber-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">Free Practice</a>
+      <a href="/contact.html" class="hover:text-amber-700 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">Contact</a>
+    </nav>
+    <p class="mt-4">© 2026 ReadEasy30. Made with 💛 for every reader.</p>
+  </footer>
+
+  <!-- Tiny inline behavior: Hear Sound uses the browser's built-in speech synthesis; Check Word reveals the answer -->
+  <script>
+    (function () {
+      var hearBtn = document.getElementById('hearBtn');
+      var checkBtn = document.getElementById('checkBtn');
+      var answer = document.getElementById('wordAnswer');
+
+      if (hearBtn) {
+        hearBtn.addEventListener('click', function () {
+          if (!('speechSynthesis' in window)) return;
+          window.speechSynthesis.cancel();
+          var utterance = new SpeechSynthesisUtterance('at');
+          utterance.lang = 'en-US';
+          utterance.rate = 0.7;
+          window.speechSynthesis.speak(utterance);
+        });
+      }
+
+      if (checkBtn && answer) {
+        checkBtn.addEventListener('click', function () {
+          var willShow = answer.hidden;
+          answer.hidden = !willShow;
+          checkBtn.setAttribute('aria-expanded', String(willShow));
+          if (willShow) answer.focus();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
