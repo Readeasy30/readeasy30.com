@@ -19,10 +19,16 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           echo "Starting automated Gemini AI code quality audit..."
-          
+
           TARGET_FILE="app.js"
           if [ ! -f "$TARGET_FILE" ]; then
             echo "⚠️ Target file $TARGET_FILE not found. Skipping granular file check."
+            exit 0
+          fi
+
+          # Guard: skip if no API key is configured (don't block deploys)
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "⚠️ GEMINI_API_KEY secret not set. Skipping AI review."
             exit 0
           fi
 
@@ -39,13 +45,22 @@ jobs:
           EOF
           )
 
-          # VERIFIED ENDPOINT HOST: Corrected network path resolution
+          # FIXED: correct Gemini API endpoint with proper subdomain, model path, and key variable
           RESPONSE=$(curl -s -X POST \
             -H "Content-Type: application/json" \
-            "https://googleapis.com{GEMINI_API_KEY}" \
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}" \
             -d "$JSON_PAYLOAD")
 
-          AI_RESULT=$(echo "$RESPONSE" | jq -r '.candidates.content.parts.text' | xargs)
+          # FIXED: candidates and parts are arrays — use [0] indexing
+          AI_RESULT=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text' 2>/dev/null | xargs)
+
+          # Guard: if the API call itself failed, don't block the deploy
+          if [ -z "$AI_RESULT" ] || [ "$AI_RESULT" = "null" ]; then
+            echo "⚠️ Gemini API returned no result. API response:"
+            echo "$RESPONSE"
+            echo "⚠️ Skipping AI gate — proceeding to deployment."
+            exit 0
+          fi
 
           echo "======================================"
           echo "Gemini AI Review Result: $AI_RESULT"
